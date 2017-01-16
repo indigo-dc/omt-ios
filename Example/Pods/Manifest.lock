@@ -1,9 +1,12 @@
 PODS:
-  - IndigoOmtIosLibrary (0.1.0)
+  - AppAuth (0.7.1)
+  - IndigoOmtIosLibrary (0.1.0):
+    - AppAuth
   - Nimble (5.1.1)
   - Quick (1.0.0)
 
 DEPENDENCIES:
+  - AppAuth
   - IndigoOmtIosLibrary (from `../`)
   - Nimble (~> 5.1.1)
   - Quick (~> 1.0.0)
@@ -13,10 +16,11 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  IndigoOmtIosLibrary: 23a2b3d51297dc40ca48b0b84147830ce75c26f5
+  AppAuth: c56d352b0d50bb34dbb302d7ba50b20aa6b6ae89
+  IndigoOmtIosLibrary: 98e09a147acb411b5c10706439130708a53829d2
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
 
-PODFILE CHECKSUM: 6ff0a668197ee49166e08143ff2d8072b73b11ab
+PODFILE CHECKSUM: 3b92dd5907adf430276985e63bb8c788d331272e
 
 COCOAPODS: 1.1.1

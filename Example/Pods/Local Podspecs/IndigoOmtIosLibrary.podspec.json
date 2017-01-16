@@ -19,5 +19,10 @@
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "IndigoOmtIosLibrary/Classes/**/*"
+  "source_files": "IndigoOmtIosLibrary/Classes/**/*",
+  "dependencies": {
+    "AppAuth": [
+
+    ]
+  }
 }

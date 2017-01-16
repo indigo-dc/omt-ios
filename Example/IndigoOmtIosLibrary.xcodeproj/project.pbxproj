@@ -10,6 +10,7 @@
 		0A5172F08F8C6250CD528E94 /* Pods_IndigoOmtIosLibrary_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		BCE3ACC08416E68D911F5B13 /* Pods_IndigoOmtIosLibrary_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */; };
+		D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF23981E2CEA830037AA41 /* Constants.swift */; };
 		D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */; };
 		D7EAC8021E2CBFE600110199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC7FB1E2CBFE600110199 /* Main.storyboard */; };
 		D7EAC8031E2CBFE600110199 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EAC7FC1E2CBFE600110199 /* MainViewController.swift */; };
@@ -42,6 +43,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE4D6AFE87B55B2E647AA4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D7DF23981E2CEA830037AA41 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7EAC7FB1E2CBFE600110199 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D7EAC7FC1E2CBFE600110199 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -148,10 +150,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D7DF23971E2CEA770037AA41 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D7DF23981E2CEA830037AA41 /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		D7EAC7F81E2CBFE600110199 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */,
+				D7DF23971E2CEA770037AA41 /* Common */,
 				D7EAC7FA1E2CBFE600110199 /* View Controllers */,
 			);
 			path = Classes;
@@ -381,6 +392,7 @@
 			files = (
 				D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */,
 				D7EAC8031E2CBFE600110199 /* MainViewController.swift in Sources */,
+				D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +510,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -512,6 +525,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
