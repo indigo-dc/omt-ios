@@ -2,14 +2,17 @@ PODS:
   - AppAuth (0.7.1)
   - IndigoOmtIosLibrary (0.1.0):
     - AppAuth
+    - SwiftyJSON
   - Nimble (5.1.1)
   - Quick (1.0.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - AppAuth
   - IndigoOmtIosLibrary (from `../`)
   - Nimble (~> 5.1.1)
   - Quick (~> 1.0.0)
+  - SwiftyJSON
 
 EXTERNAL SOURCES:
   IndigoOmtIosLibrary:
@@ -17,10 +20,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AppAuth: c56d352b0d50bb34dbb302d7ba50b20aa6b6ae89
-  IndigoOmtIosLibrary: 98e09a147acb411b5c10706439130708a53829d2
+  IndigoOmtIosLibrary: 5d56e69010a496dffec0a72648ca9e40e5a83af7
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 3b92dd5907adf430276985e63bb8c788d331272e
+PODFILE CHECKSUM: a4364d287f19f6d0126baaadc74983ce8c48c422
 
 COCOAPODS: 1.1.1

@@ -10,12 +10,15 @@
 		0A5172F08F8C6250CD528E94 /* Pods_IndigoOmtIosLibrary_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		BCE3ACC08416E68D911F5B13 /* Pods_IndigoOmtIosLibrary_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */; };
+		D7BEF7361E2F81B800ACD8DA /* UIDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */; };
+		D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7371E2F983000ACD8DA /* MainViewController.swift */; };
 		D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF23981E2CEA830037AA41 /* Constants.swift */; };
+		D7DF239B1E2D0A9A0037AA41 /* OIDCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF239A1E2D0A9A0037AA41 /* OIDCHelper.swift */; };
+		D7DF239D1E2E0DCB0037AA41 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF239C1E2E0DCB0037AA41 /* UIHelper.swift */; };
 		D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */; };
 		D7EAC8021E2CBFE600110199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC7FB1E2CBFE600110199 /* Main.storyboard */; };
-		D7EAC8031E2CBFE600110199 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EAC7FC1E2CBFE600110199 /* MainViewController.swift */; };
+		D7EAC8031E2CBFE600110199 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EAC7FC1E2CBFE600110199 /* LoginViewController.swift */; };
 		D7EAC8041E2CBFE600110199 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC7FE1E2CBFE600110199 /* Images.xcassets */; };
-		D7EAC8051E2CBFE600110199 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC7FF1E2CBFE600110199 /* Info.plist */; };
 		D7EAC8061E2CBFE600110199 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC8001E2CBFE600110199 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -43,10 +46,14 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE4D6AFE87B55B2E647AA4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDesignHelper.swift; sourceTree = "<group>"; };
+		D7BEF7371E2F983000ACD8DA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D7DF23981E2CEA830037AA41 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D7DF239A1E2D0A9A0037AA41 /* OIDCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OIDCHelper.swift; sourceTree = "<group>"; };
+		D7DF239C1E2E0DCB0037AA41 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7EAC7FB1E2CBFE600110199 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D7EAC7FC1E2CBFE600110199 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D7EAC7FC1E2CBFE600110199 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D7EAC7FE1E2CBFE600110199 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D7EAC7FF1E2CBFE600110199 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7EAC8001E2CBFE600110199 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -154,6 +161,9 @@
 			isa = PBXGroup;
 			children = (
 				D7DF23981E2CEA830037AA41 /* Constants.swift */,
+				D7DF239A1E2D0A9A0037AA41 /* OIDCHelper.swift */,
+				D7DF239C1E2E0DCB0037AA41 /* UIHelper.swift */,
+				D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -172,7 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				D7EAC7FB1E2CBFE600110199 /* Main.storyboard */,
-				D7EAC7FC1E2CBFE600110199 /* MainViewController.swift */,
+				D7EAC7FC1E2CBFE600110199 /* LoginViewController.swift */,
+				D7BEF7371E2F983000ACD8DA /* MainViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -277,7 +288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7EAC8041E2CBFE600110199 /* Images.xcassets in Resources */,
-				D7EAC8051E2CBFE600110199 /* Info.plist in Resources */,
 				D7EAC8061E2CBFE600110199 /* LaunchScreen.xib in Resources */,
 				D7EAC8021E2CBFE600110199 /* Main.storyboard in Resources */,
 			);
@@ -390,9 +400,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */,
 				D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */,
-				D7EAC8031E2CBFE600110199 /* MainViewController.swift in Sources */,
+				D7EAC8031E2CBFE600110199 /* LoginViewController.swift in Sources */,
+				D7DF239B1E2D0A9A0037AA41 /* OIDCHelper.swift in Sources */,
+				D7DF239D1E2E0DCB0037AA41 /* UIHelper.swift in Sources */,
 				D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */,
+				D7BEF7361E2F81B800ACD8DA /* UIDesignHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,11 +518,10 @@
 			baseConfigurationReference = 4885DB6317DAD4CD06989E5A /* Pods-IndigoOmtIosLibrary_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/IndigoOmtIosLibrary/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.psnc.IndigoOmtIosLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -523,7 +536,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/IndigoOmtIosLibrary/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = pl.psnc.IndigoOmtIosLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

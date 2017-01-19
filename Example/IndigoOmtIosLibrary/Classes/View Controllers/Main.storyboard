@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="S9j-jO-no6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gsx-ci-9PR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,45 +11,67 @@
         <!--INDIGO - Data Cloud-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="MainViewController" customModule="IndigoOmtIosLibrary_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="vXZ-lx-hvc" customClass="LoginViewController" customModule="IndigoOmtIosLibrary_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHF-u6-kfh">
-                                <rect key="frame" x="107.5" y="318.5" width="160" height="30"/>
+                                <rect key="frame" x="107.5" y="254.5" width="160" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ign-S8-CEM"/>
                                     <constraint firstAttribute="width" constant="160" id="y0n-JQ-LsO"/>
                                 </constraints>
-                                <state key="normal" title="Open login view"/>
+                                <state key="normal" title="Login with IAM"/>
                                 <connections>
-                                    <action selector="openLoginButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GC6-br-Q4a"/>
+                                    <action selector="loginButtonAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7QB-UX-GdY"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hHF-u6-kfh" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="jgm-3h-yq7"/>
-                            <constraint firstItem="hHF-u6-kfh" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="u45-W8-zxB"/>
+                            <constraint firstItem="hHF-u6-kfh" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-32" id="u45-W8-zxB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="INDIGO - Data Cloud" id="03k-eW-hva"/>
+                    <connections>
+                        <outlet property="loginButton" destination="hHF-u6-kfh" id="x85-eS-ROa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="972" y="37.331334332833585"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="Y3h-eq-xCz">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="c28-r1-Pfy" customClass="MainViewController" customModule="IndigoOmtIosLibrary_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YPj-Pu-gaI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Z6j-8q-ULa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xl3-Xh-Uuu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Main" id="fwo-0p-fn3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KRo-uE-jMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="833"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UfM-5V-haR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S9j-jO-no6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="S9j-jO-no6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oc9-nZ-HGZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Oc9-nZ-HGZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -61,6 +83,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aq7-wd-pKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-54" y="37"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pW8-s3-pxG">
+            <objects>
+                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Gsx-ci-9PR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SMk-uL-0k5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c28-r1-Pfy" kind="relationship" relationship="rootViewController" id="I0e-LA-ROp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R5u-Q8-sFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-55" y="833"/>
         </scene>
     </scenes>
 </document>

@@ -13,9 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // setup ui
+        UIDesignHelper.updateUI(application, window: window)
+        
+        // load configuration
+        OIDCHelper.default.loadConfig()
+        
+        // show login view as first view
+        if OIDCHelper.default.hasConfig == false {
+            self.window?.rootViewController = UIHelper.loadViewController("LoginNavigationController")
+        }
+        
         return true
     }
 
@@ -40,5 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    // MARK: - OAuth
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        OIDCHelper.default.resumeAuthorizationFlow(url)
+        return true
+    }
+    
 }

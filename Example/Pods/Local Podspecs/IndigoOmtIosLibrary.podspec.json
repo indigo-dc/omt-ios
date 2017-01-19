@@ -23,6 +23,9 @@
   "dependencies": {
     "AppAuth": [
 
+    ],
+    "SwiftyJSON": [
+
     ]
   }
 }
