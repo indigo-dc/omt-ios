@@ -4,6 +4,7 @@ use_frameworks!
 target 'IndigoOmtIosLibrary_Example' do
   pod 'IndigoOmtIosLibrary', :path => '../'
   pod 'AppAuth'
+  pod 'Alamofire'
   pod 'SwiftyJSON'
   
   target 'IndigoOmtIosLibrary_Tests' do

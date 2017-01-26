@@ -24,6 +24,9 @@
     "AppAuth": [
 
     ],
+    "Alamofire": [
+
+    ],
     "SwiftyJSON": [
 
     ]

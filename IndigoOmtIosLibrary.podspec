@@ -25,6 +25,7 @@ For more information visit https://github.com/indigo-dc
   s.ios.deployment_target = '9.0'
   s.source_files = 'IndigoOmtIosLibrary/Classes/**/*'
   s.dependency 'AppAuth'
+  s.dependency 'Alamofire'
   s.dependency 'SwiftyJSON'
 
 end
