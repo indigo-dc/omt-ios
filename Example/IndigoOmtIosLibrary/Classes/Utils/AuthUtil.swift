@@ -1,5 +1,5 @@
 //
-//  OIDCHelper.swift
+//  AuthUtil.swift
 //  IndigoOmtIosLibrary
 //
 //  Created by Sebastian Mamczak on 16.01.2017.
@@ -11,36 +11,45 @@ import AppAuth
 import SwiftyJSON
 import IndigoOmtIosLibrary
 
-fileprivate typealias OIDCHelperFetchUserInfoCallback = (JSON?, Error?) -> ()
+/// User info callback
+fileprivate typealias AuthUtilFetchUserInfoCallback = (JSON?, Error?) -> ()
 
-class OIDCHelper {
+/// Auth helper util for OAuth flow with AppAuth library.
+class AuthUtil {
     
-    // properties
+    // MARK: - properties
+    
+    /// Default instance of auth util.
+    static private (set) var `default`: AuthUtil = AuthUtil(userDefaultsKey: "authConfigKey")
+    
+    /// AppAuth library authorization flow session.
     private var currentAuthorizationFlow: OIDAuthorizationFlowSession?
-    private (set) var config: OIDCHelperConfig?
-    var hasConfig: Bool {
+    private var config: AuthConfig?
+    
+    /// UserDefaults key where config is stored.
+    private let userDefaultsKey: String
+    
+    /// True if config is not empty.
+    public var hasConfig: Bool {
         return config != nil
     }
     
-    // static properties
-    static private (set) var `default`: OIDCHelper = OIDCHelper()
-    
     // MARK: - lifecycle
     
-    private init() {
-        // empty
+    public init(userDefaultsKey: String) {
+        self.userDefaultsKey = userDefaultsKey
     }
     
     public func loadConfig() {
         if let data = UserDefaults.standard.data(forKey: "config") {
-            self.config = NSKeyedUnarchiver.unarchiveObject(with: data) as? OIDCHelperConfig
+            self.config = NSKeyedUnarchiver.unarchiveObject(with: data) as? AuthConfig
         }
         
         if hasConfig {
-            print("[OIDCHelper] Found config")
+            print("[AuthUtil] Found config")
         }
         else {
-            print("[OIDCHelper] Config was not found. User will have to authenticate in browser")
+            print("[AuthUtil] Config was not found. User will have to authenticate in browser")
         }
     }
     
@@ -49,18 +58,24 @@ class OIDCHelper {
         saveConfig(nil)
     }
     
-    private func saveConfig(_ configObj: OIDCHelperConfig?) {
+    private func saveConfig(_ configObj: AuthConfig?) {
+        // update object
+        self.config = configObj
+        
         var data: Data? = nil
         if let config = configObj {
+            // data will be stored in UserDefaults
             data = NSKeyedArchiver.archivedData(withRootObject: config)
         }
+        
+        // update UserDefaults
         UserDefaults.standard.set(data, forKey: "config")
         UserDefaults.standard.synchronize()
     }
     
     // MARK: - authorization flow
     
-    func beginAuthorizationFlow() {
+    public func beginAuthorizationFlow() {
         
         // check urls
         let issuerUrlOptional: URL? = URL(string: Constants.IssuerUrl)
@@ -79,7 +94,7 @@ class OIDCHelper {
         }
     }
     
-    func resumeAuthorizationFlow(_ url: URL) {
+    public func resumeAuthorizationFlow(_ url: URL) {
         if let authFlow = self.currentAuthorizationFlow {
             if authFlow.resumeAuthorizationFlow(with: url) {
                 self.currentAuthorizationFlow = nil
@@ -104,10 +119,10 @@ class OIDCHelper {
         }
     }
     
-    private func makeAuthorizationRequest(_ configuration: OIDServiceConfiguration, redirectUri: URL) {
+    private func makeAuthorizationRequest(_ serviceConfiguration: OIDServiceConfiguration, redirectUri: URL) {
         
         // prepare request object
-        let request = OIDAuthorizationRequest(configuration: configuration,
+        let request = OIDAuthorizationRequest(configuration: serviceConfiguration,
                                               clientId: Constants.ClientID,
                                               clientSecret: Constants.ClientSecret,
                                               scopes: Constants.Scopes,
@@ -126,8 +141,8 @@ class OIDCHelper {
                 self.clearConfig()
                 
                 // prepare new config
-                let helperConfig = OIDCHelperConfig()
-                helperConfig.authState = authState
+                let config = AuthConfig()
+                config.authState = authState
                 
                 // fetch user info
                 self.fetchUserInfo(authState) { userInfoJsonObj, errorObj in
@@ -143,10 +158,10 @@ class OIDCHelper {
                     if let userInfoJson = userInfoJsonObj {
                         
                         // extract username
-                        helperConfig.userName = userInfoJson["preferred_username"].string
+                        config.userName = userInfoJson["preferred_username"].string
                         
                         // save configuration
-                        self.saveConfig(helperConfig)
+                        self.saveConfig(config)
                     }
                 }
             }
@@ -158,7 +173,7 @@ class OIDCHelper {
         }
     }
     
-    private func fetchUserInfo(_ authState: OIDAuthState, callback: @escaping OIDCHelperFetchUserInfoCallback) {
+    private func fetchUserInfo(_ authState: OIDAuthState, callback: @escaping AuthUtilFetchUserInfoCallback) {
         
         // get proper endpoint
         let userInfoUrlObj = authState.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint
@@ -184,7 +199,7 @@ class OIDCHelper {
         }
     }
     
-    private func makeHttpRequest(_ url: URL, accessToken: String, callback: @escaping OIDCHelperFetchUserInfoCallback) {
+    private func makeHttpRequest(_ url: URL, accessToken: String, callback: @escaping AuthUtilFetchUserInfoCallback) {
         
         // prepare request
         var request = URLRequest(url: url)
@@ -208,30 +223,6 @@ class OIDCHelper {
             }
         }
         postTask.resume()
-    }
-    
-}
-
-class OIDCHelperConfig: NSObject, NSCoding {
-    
-    // MARK: - properties
-    
-    var authState: OIDAuthState?
-    var userName: String?
-    
-    // MARK: - lifecycle
-    
-    override init() {
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.authState = aDecoder.decodeObject(forKey: "authState") as? OIDAuthState
-        self.userName = aDecoder.decodeObject(forKey: "userName") as? String
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.authState, forKey: "authState")
-        aCoder.encode(self.userName, forKey: "userName")
     }
     
 }

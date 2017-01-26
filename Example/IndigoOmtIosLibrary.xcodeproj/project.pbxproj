@@ -12,8 +12,9 @@
 		BCE3ACC08416E68D911F5B13 /* Pods_IndigoOmtIosLibrary_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */; };
 		D7BEF7361E2F81B800ACD8DA /* UIDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */; };
 		D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7371E2F983000ACD8DA /* MainViewController.swift */; };
+		D7DC97B31E3648F900C25191 /* AuthUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC97B21E3648F900C25191 /* AuthUtil.swift */; };
+		D7DC97B61E36495700C25191 /* AuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC97B51E36495700C25191 /* AuthConfig.swift */; };
 		D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF23981E2CEA830037AA41 /* Constants.swift */; };
-		D7DF239B1E2D0A9A0037AA41 /* OIDCHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF239A1E2D0A9A0037AA41 /* OIDCHelper.swift */; };
 		D7DF239D1E2E0DCB0037AA41 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF239C1E2E0DCB0037AA41 /* UIHelper.swift */; };
 		D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */; };
 		D7EAC8021E2CBFE600110199 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC7FB1E2CBFE600110199 /* Main.storyboard */; };
@@ -48,8 +49,9 @@
 		8AFE4D6AFE87B55B2E647AA4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDesignHelper.swift; sourceTree = "<group>"; };
 		D7BEF7371E2F983000ACD8DA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D7DC97B21E3648F900C25191 /* AuthUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthUtil.swift; sourceTree = "<group>"; };
+		D7DC97B51E36495700C25191 /* AuthConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthConfig.swift; sourceTree = "<group>"; };
 		D7DF23981E2CEA830037AA41 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D7DF239A1E2D0A9A0037AA41 /* OIDCHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OIDCHelper.swift; sourceTree = "<group>"; };
 		D7DF239C1E2E0DCB0037AA41 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7EAC7FB1E2CBFE600110199 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -157,11 +159,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D7DC97B11E3648D400C25191 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D7DC97B21E3648F900C25191 /* AuthUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D7DC97B41E36494700C25191 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D7DC97B51E36495700C25191 /* AuthConfig.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D7DF23971E2CEA770037AA41 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				D7DF23981E2CEA830037AA41 /* Constants.swift */,
-				D7DF239A1E2D0A9A0037AA41 /* OIDCHelper.swift */,
 				D7DF239C1E2E0DCB0037AA41 /* UIHelper.swift */,
 				D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */,
 			);
@@ -173,6 +190,8 @@
 			children = (
 				D7EAC7F91E2CBFE600110199 /* AppDelegate.swift */,
 				D7DF23971E2CEA770037AA41 /* Common */,
+				D7DC97B41E36494700C25191 /* Model */,
+				D7DC97B11E3648D400C25191 /* Utils */,
 				D7EAC7FA1E2CBFE600110199 /* View Controllers */,
 			);
 			path = Classes;
@@ -401,9 +420,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */,
+				D7DC97B31E3648F900C25191 /* AuthUtil.swift in Sources */,
 				D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */,
+				D7DC97B61E36495700C25191 /* AuthConfig.swift in Sources */,
 				D7EAC8031E2CBFE600110199 /* LoginViewController.swift in Sources */,
-				D7DF239B1E2D0A9A0037AA41 /* OIDCHelper.swift in Sources */,
 				D7DF239D1E2E0DCB0037AA41 /* UIHelper.swift in Sources */,
 				D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */,
 				D7BEF7361E2F81B800ACD8DA /* UIDesignHelper.swift in Sources */,

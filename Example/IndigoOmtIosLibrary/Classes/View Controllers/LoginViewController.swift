@@ -23,8 +23,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonAction(_ sender: Any) {
         
-        
-        OIDCHelper.default.beginAuthorizationFlow()
+        AuthUtil.default.beginAuthorizationFlow()
     }
     
 }

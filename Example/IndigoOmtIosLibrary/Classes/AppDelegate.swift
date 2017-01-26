@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IndigoOmtIosLibrary
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIDesignHelper.updateUI(application, window: window)
         
         // load configuration
-        OIDCHelper.default.loadConfig()
+        //AuthUtil.default.loadConfig()
         
-        // show login view as first view
-        if OIDCHelper.default.hasConfig == false {
+        // show login view as first view if no config was found
+        if AuthUtil.default.hasConfig == false {
             self.window?.rootViewController = UIHelper.loadViewController("LoginNavigationController")
         }
         
@@ -55,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - OAuth
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        OIDCHelper.default.resumeAuthorizationFlow(url)
+        AuthUtil.default.resumeAuthorizationFlow(url)
         return true
     }
     
