@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIDesignHelper.updateUI(application, window: window)
         
         // load configuration
-        //AuthUtil.default.loadConfig()
+        AuthUtil.default.loadConfig()
         
         // show login view as first view if no config was found
         if AuthUtil.default.hasConfig == false {

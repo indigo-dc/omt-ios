@@ -11,9 +11,6 @@ import AppAuth
 import SwiftyJSON
 import IndigoOmtIosLibrary
 
-/// User info callback
-fileprivate typealias AuthUtilFetchUserInfoCallback = (JSON?, Error?) -> ()
-
 /// Auth helper util for OAuth flow with AppAuth library.
 class AuthUtil {
     
@@ -28,6 +25,9 @@ class AuthUtil {
     
     /// UserDefaults key where config is stored.
     private let userDefaultsKey: String
+    
+    /// API for retrieving user info from auth server.
+    private var userInfoApi: UserInfoApi?
     
     /// True if config is not empty.
     public var hasConfig: Bool {
@@ -54,16 +54,15 @@ class AuthUtil {
     }
     
     public func clearConfig() {
-        self.currentAuthorizationFlow = nil
         saveConfig(nil)
     }
     
-    private func saveConfig(_ configObj: AuthConfig?) {
+    private func saveConfig(_ config: AuthConfig?) {
         // update object
-        self.config = configObj
+        self.config = config
         
         var data: Data? = nil
-        if let config = configObj {
+        if let config = config {
             // data will be stored in UserDefaults
             data = NSKeyedArchiver.archivedData(withRootObject: config)
         }
@@ -105,17 +104,18 @@ class AuthUtil {
     private func beginAuthorizationFlow(with issuerUrl: URL, redirectUri: URL) {
         
         // find OAuth endpoints
-        OIDAuthorizationService.discoverConfiguration(forIssuer: issuerUrl) { configurationObj, error in
+        OIDAuthorizationService.discoverConfiguration(forIssuer: issuerUrl) { configuration, error in
             
-            // got configuration
-            if let configuration = configurationObj {
-                self.makeAuthorizationRequest(configuration, redirectUri: redirectUri)
-            }
-            else {
+            guard error == nil else {
                 
                 // show error
-                UIHelper.showError(error?.localizedDescription)
+                UIHelper.showError(error!.localizedDescription)
+                
+                return
             }
+            
+            // make request
+            self.makeAuthorizationRequest(configuration!, redirectUri: redirectUri)
         }
     }
     
@@ -132,10 +132,28 @@ class AuthUtil {
         
         // open browser for login purpose
         let rootViewController = UIHelper.getRootViewController()
-        self.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: rootViewController) { authStateObj, error in
+        self.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: rootViewController) { authState, error in
             
-            // get authorization
-            if let authState = authStateObj {
+            guard error == nil else {
+                
+                // show error
+                UIHelper.showError(error!.localizedDescription)
+                
+                return
+            }
+            
+            // fetch user info
+            self.fetchUserInfo(authState!) { userInfo, error in
+                
+                guard error == nil else {
+                    
+                    // show error
+                    UIHelper.showError(error!.localizedDescription)
+                    
+                    return
+                }
+                
+                print("Found user: \(userInfo)")
                 
                 // clear previous config
                 self.clearConfig()
@@ -143,86 +161,35 @@ class AuthUtil {
                 // prepare new config
                 let config = AuthConfig()
                 config.authState = authState
+                config.userInfo = userInfo
                 
-                // fetch user info
-                self.fetchUserInfo(authState) { userInfoJsonObj, errorObj in
-                    
-                    if let error = errorObj {
-                        
-                        // show error
-                        UIHelper.showError(error.localizedDescription)
-                        
-                        return
-                    }
-                    
-                    if let userInfoJson = userInfoJsonObj {
-                        
-                        // extract username
-                        config.userName = userInfoJson["preferred_username"].string
-                        
-                        // save configuration
-                        self.saveConfig(config)
-                    }
+                // save configuration
+                self.saveConfig(config)
+            }
+        }
+    }
+    
+    private func fetchUserInfo(_ authState: OIDAuthState, callback: @escaping UserInfoApiCallback) {
+        do {
+            // for background API activity
+            let queue = DispatchQueue.global()
+            
+            // create authorized api
+            let authSession = try FGAuthorizedSessionHelper(queue: queue, authState: authState)
+            self.userInfoApi = UserInfoApi(helper: authSession)
+            
+            // get proper endpoint
+            if let userInfoUrl = authState.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint {
+                
+                // get user info object
+                self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
+                    callback(userInfo, error)
                 }
             }
-            else {
-                
-                // show error
-                UIHelper.showError(error?.localizedDescription)
-            }
         }
-    }
-    
-    private func fetchUserInfo(_ authState: OIDAuthState, callback: @escaping AuthUtilFetchUserInfoCallback) {
-        
-        // get proper endpoint
-        let userInfoUrlObj = authState.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint
-        
-        // get user info in background
-        let bgQueue = DispatchQueue.global()
-        
-        // get fresh access token
-        AuthStateHelper.getAccessTokenInBackground(authState, dispatchQueue: bgQueue) { accessTokenObj, errorObj in
-            
-            if let error = errorObj {
-                
-                // return error
-                callback(nil, error)
-                return
-            }
-            
-            // make HTTP request to get user info json object
-            if let userInfoUrl = userInfoUrlObj, let accessToken = accessTokenObj {
-                
-                self.makeHttpRequest(userInfoUrl, accessToken: accessToken, callback: callback)
-            }
+        catch {
+            UIHelper.showError("Error: \(error.localizedDescription)")
         }
-    }
-    
-    private func makeHttpRequest(_ url: URL, accessToken: String, callback: @escaping AuthUtilFetchUserInfoCallback) {
-        
-        // prepare request
-        var request = URLRequest(url: url)
-        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        
-        // prepare session and task
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        let postTask = session.dataTask(with: request) { dataObj, responseObj, errorObj in
-            
-            if let error = errorObj {
-                
-                // return error
-                callback(nil, error)
-                
-                return
-            }
-            
-            if let data = dataObj {
-                let json = JSON(data: data)
-                callback(json, nil)
-            }
-        }
-        postTask.resume()
     }
     
 }

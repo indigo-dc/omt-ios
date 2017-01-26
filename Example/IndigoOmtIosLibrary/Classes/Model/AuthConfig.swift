@@ -14,7 +14,7 @@ class AuthConfig: NSObject, NSCoding {
     // MARK: - properties
     
     var authState: OIDAuthState?
-    var userName: String?
+    var userInfo: UserInfo?
     
     // MARK: - lifecycle
     
@@ -23,12 +23,12 @@ class AuthConfig: NSObject, NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         self.authState = aDecoder.decodeObject(forKey: "authState") as? OIDAuthState
-        self.userName = aDecoder.decodeObject(forKey: "userName") as? String
+        self.userInfo = aDecoder.decodeObject(forKey: "userInfo") as? UserInfo
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.authState, forKey: "authState")
-        aCoder.encode(self.userName, forKey: "userName")
+        aCoder.encode(self.userInfo, forKey: "userInfo")
     }
     
 }
