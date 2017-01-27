@@ -22,7 +22,7 @@ open class FGAuthorizedSessionHelper: FGAbstractSessionHelper {
     
     public init(queue: DispatchQueue, authState: OIDAuthState) throws {
         if authState.isAuthorized == false {
-            throw FGFutureGatewayError.unauthorizedState(error: "authState is not authorized")
+            throw FGFutureGatewayError.unauthorizedState(reason: "authState is not authorized")
         }
         self.authState = authState
         super.init(queue: queue)

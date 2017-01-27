@@ -35,12 +35,12 @@ class LoginViewController: UIViewController {
             }
             
             
-            
+            // fetch user info
             AuthUtil.default.fetchUserInfo(authState!) { userInfo, error in
                 
-                
-                print("User is fetched")
-                
+                if userInfo != nil {
+                    print("User is fetched")
+                }
             }
             
         }

@@ -20,7 +20,7 @@ class UserInfoApi: FGAbstractApi {
         manager.request(url).validate().responseObject(queue: self.queue) { (response: DataResponse<UserInfo>) in
             
             guard response.error == nil else {
-                callback(nil, FGFutureGatewayError.network(error: response.error!))
+                callback(nil, response.error)
                 return
             }
             

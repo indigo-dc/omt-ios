@@ -195,6 +195,16 @@ class AuthUtil {
                 // get user info object
                 self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
                     
+                    guard error == nil else {
+                        
+                        // return error in main thread
+                        DispatchQueue.main.async {
+                            callback(nil, error)
+                        }
+                        
+                        return
+                    }
+                    
                     print("Found user: \(userInfo)")
                     
                     // update configuration

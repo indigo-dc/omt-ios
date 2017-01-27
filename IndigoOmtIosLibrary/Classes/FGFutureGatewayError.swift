@@ -9,7 +9,7 @@
 import Foundation
 
 /// All Future Gateway Errors enumeration.
-public enum FGFutureGatewayError: Error {
+public enum FGFutureGatewayError: Error, LocalizedError {
     
     /// Captures any underlying Error from the URLSession API.
     case network(error: Error)
@@ -21,9 +21,34 @@ public enum FGFutureGatewayError: Error {
     case objectSerialization(reason: String)
     
     /// Auth state object is not authorized.
-    case unauthorizedState(error: String)
+    case unauthorizedState(reason: String)
     
     /// API version was not found for given root URL.
-    case versionNotFound(error: String)
+    case versionNotFound(reason: String)
+    
+    // MARK: - LocalizedError
+    
+    public var errorDescription: String? {
+        switch self {
+            
+        case .network(error: let error):
+            return "Future Gateway network error: \(error.localizedDescription)"
+            
+        case .jsonSerialization(error: let error):
+            return "Future Gateway JSON serialization error: \(error.localizedDescription)"
+            
+        case .objectSerialization(reason: let reason):
+            return "Future Gateway object serialization error: \(reason)"
+            
+        case .unauthorizedState(reason: let reason):
+            return "Future Gateway unauthorized state error: \(reason)"
+            
+        case .versionNotFound(reason: let reason):
+            return "Future Gateway version not found error: \(reason)"
+            
+        default:
+            return "Future Gateway error"
+        }
+    }
     
 }
