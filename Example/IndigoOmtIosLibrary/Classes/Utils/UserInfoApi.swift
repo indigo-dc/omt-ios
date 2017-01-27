@@ -10,7 +10,7 @@ import Foundation
 import IndigoOmtIosLibrary
 import Alamofire
 
-typealias UserInfoApiCallback = (_ userInfo: UserInfo?, _ error: FGFutureGatewayError?) -> ()
+typealias UserInfoApiCallback = (_ userInfo: UserInfo?, _ error: Error?) -> ()
 
 class UserInfoApi: FGAbstractApi {
     

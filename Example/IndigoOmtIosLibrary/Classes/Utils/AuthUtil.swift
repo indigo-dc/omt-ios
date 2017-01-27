@@ -11,6 +11,9 @@ import AppAuth
 import SwiftyJSON
 import IndigoOmtIosLibrary
 
+/// Auth util callback.
+typealias AuthUtilAuthorizationCallback = (_ authState: OIDAuthState?, _ error: Error?) -> ()
+
 /// Auth helper util for OAuth flow with AppAuth library.
 class AuthUtil {
     
@@ -74,7 +77,7 @@ class AuthUtil {
     
     // MARK: - authorization flow
     
-    public func beginAuthorizationFlow() {
+    public func beginAuthorizationFlow(callback: @escaping AuthUtilAuthorizationCallback) {
         
         // check urls
         let issuerUrlOptional: URL? = URL(string: Constants.IssuerUrl)
@@ -89,7 +92,7 @@ class AuthUtil {
         
         // process
         if let issuerUrl = issuerUrlOptional, let redirectUri = redirectUriOptional {
-            beginAuthorizationFlow(with: issuerUrl, redirectUri: redirectUri)
+            beginAuthorizationFlow(with: issuerUrl, redirectUri: redirectUri, callback: callback)
         }
     }
     
@@ -101,25 +104,27 @@ class AuthUtil {
         }
     }
     
-    private func beginAuthorizationFlow(with issuerUrl: URL, redirectUri: URL) {
+    private func beginAuthorizationFlow(with issuerUrl: URL, redirectUri: URL, callback: @escaping AuthUtilAuthorizationCallback) {
         
         // find OAuth endpoints
         OIDAuthorizationService.discoverConfiguration(forIssuer: issuerUrl) { configuration, error in
             
             guard error == nil else {
                 
-                // show error
-                UIHelper.showError(error!.localizedDescription)
+                // return error in main thread
+                DispatchQueue.main.async {
+                    callback(nil, error)
+                }
                 
                 return
             }
             
             // make request
-            self.makeAuthorizationRequest(configuration!, redirectUri: redirectUri)
+            self.makeAuthorizationRequest(configuration!, redirectUri: redirectUri, callback: callback)
         }
     }
     
-    private func makeAuthorizationRequest(_ serviceConfiguration: OIDServiceConfiguration, redirectUri: URL) {
+    private func makeAuthorizationRequest(_ serviceConfiguration: OIDServiceConfiguration, redirectUri: URL, callback: @escaping AuthUtilAuthorizationCallback) {
         
         // prepare request object
         let request = OIDAuthorizationRequest(configuration: serviceConfiguration,
@@ -136,40 +141,46 @@ class AuthUtil {
             
             guard error == nil else {
                 
-                // show error
-                UIHelper.showError(error!.localizedDescription)
+                // return error in main thread
+                DispatchQueue.main.async {
+                    callback(nil, error)
+                }
                 
                 return
             }
             
-            // fetch user info
-            self.fetchUserInfo(authState!) { userInfo, error in
-                
-                guard error == nil else {
-                    
-                    // show error
-                    UIHelper.showError(error!.localizedDescription)
-                    
-                    return
-                }
-                
-                print("Found user: \(userInfo)")
-                
-                // clear previous config
-                self.clearConfig()
-                
-                // prepare new config
-                let config = AuthConfig()
-                config.authState = authState
-                config.userInfo = userInfo
-                
-                // save configuration
-                self.saveConfig(config)
+            // clear previous config
+            self.clearConfig()
+            
+            // prepare new config
+            let config = AuthConfig()
+            config.authState = authState
+            
+            // save configuration
+            self.saveConfig(config)
+            
+            // return auth state object in main thread
+            DispatchQueue.main.async {
+                callback(authState, nil)
             }
         }
     }
     
-    private func fetchUserInfo(_ authState: OIDAuthState, callback: @escaping UserInfoApiCallback) {
+    // MARK: - utils
+    
+    public func fetchUserInfo(_ authState: OIDAuthState, callback: @escaping UserInfoApiCallback) {
+        
+        // check if user info already exists
+        if let userInfo = self.config?.userInfo {
+            
+            // in main thread
+            DispatchQueue.main.async {
+                callback(userInfo, nil)
+            }
+            
+            return
+        }
+        
         do {
             // for background API activity
             let queue = DispatchQueue.global()
@@ -183,12 +194,25 @@ class AuthUtil {
                 
                 // get user info object
                 self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
-                    callback(userInfo, error)
+                    
+                    print("Found user: \(userInfo)")
+                    
+                    // update configuration
+                    self.config?.userInfo = userInfo
+                    self.saveConfig(self.config)
+                    
+                    // in main thread
+                    DispatchQueue.main.async {
+                        callback(userInfo, nil)
+                    }
                 }
             }
         }
         catch {
-            UIHelper.showError("Error: \(error.localizedDescription)")
+            // in main thread
+            DispatchQueue.main.async {
+                callback(nil, error)
+            }
         }
     }
     

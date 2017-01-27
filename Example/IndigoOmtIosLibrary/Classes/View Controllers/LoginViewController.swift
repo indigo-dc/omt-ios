@@ -23,7 +23,27 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonAction(_ sender: Any) {
         
-        AuthUtil.default.beginAuthorizationFlow()
+        // begin authorization
+        AuthUtil.default.beginAuthorizationFlow() { authState, error in
+            
+            guard error == nil else {
+                
+                // show error
+                UIHelper.showError(error!.localizedDescription)
+                
+                return
+            }
+            
+            
+            
+            AuthUtil.default.fetchUserInfo(authState!) { userInfo, error in
+                
+                
+                print("User is fetched")
+                
+            }
+            
+        }
     }
     
 }
