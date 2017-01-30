@@ -10,8 +10,10 @@ import Foundation
 import IndigoOmtIosLibrary
 import Alamofire
 
+/// User info callback.
 typealias UserInfoApiCallback = (_ userInfo: UserInfo?, _ error: Error?) -> ()
 
+/// Helps fetching user info after authorization.
 class UserInfoApi: FGAbstractApi {
     
     func fetchUserInfo(_ url: URL, callback: @escaping UserInfoApiCallback) {
@@ -31,4 +33,8 @@ class UserInfoApi: FGAbstractApi {
         }
     }
     
+}
+
+enum UserInfoApiError: Error {
+    case notAuthorized(reason: String)
 }

@@ -168,7 +168,19 @@ class AuthUtil {
     
     // MARK: - utils
     
-    public func fetchUserInfo(_ authState: OIDAuthState, callback: @escaping UserInfoApiCallback) {
+    public func fetchUserInfo(_ callback: @escaping UserInfoApiCallback) {
+        guard
+            let authState = self.config?.authState,
+            authState.isAuthorized
+        else {
+            
+            // in main thread
+            DispatchQueue.main.async {
+                callback(nil, UserInfoApiError.notAuthorized(reason: "asas"))
+            }
+            
+            return
+        }
         
         // check if user info already exists
         if let userInfo = self.config?.userInfo {
@@ -181,47 +193,40 @@ class AuthUtil {
             return
         }
         
-        do {
-            // for background API activity
-            let queue = DispatchQueue.global()
+        // for background API activity
+        let queue = DispatchQueue.global()
+        
+        // create authorized api
+        let provider = AppAuthAccessTokenProvider(authState: authState, queue: queue)
+        let authSession = FGAuthorizedSessionHelper(queue: queue, provider: provider)
+        self.userInfoApi = UserInfoApi(helper: authSession)
+        
+        // get proper endpoint
+        if let userInfoUrl = authState.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint {
             
-            // create authorized api
-            let authSession = try FGAuthorizedSessionHelper(queue: queue, authState: authState)
-            self.userInfoApi = UserInfoApi(helper: authSession)
-            
-            // get proper endpoint
-            if let userInfoUrl = authState.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint {
+            // get user info object
+            self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
                 
-                // get user info object
-                self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
+                guard error == nil else {
                     
-                    guard error == nil else {
-                        
-                        // return error in main thread
-                        DispatchQueue.main.async {
-                            callback(nil, error)
-                        }
-                        
-                        return
-                    }
-                    
-                    print("Found user: \(userInfo)")
-                    
-                    // update configuration
-                    self.config?.userInfo = userInfo
-                    self.saveConfig(self.config)
-                    
-                    // in main thread
+                    // return error in main thread
                     DispatchQueue.main.async {
-                        callback(userInfo, nil)
+                        callback(nil, error)
                     }
+                    
+                    return
                 }
-            }
-        }
-        catch {
-            // in main thread
-            DispatchQueue.main.async {
-                callback(nil, error)
+                
+                print("Found user: \(userInfo)")
+                
+                // update configuration
+                self.config?.userInfo = userInfo
+                self.saveConfig(self.config)
+                
+                // in main thread
+                DispatchQueue.main.async {
+                    callback(userInfo, nil)
+                }
             }
         }
     }

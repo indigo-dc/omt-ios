@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AppAuth
 
 class LoginViewController: UIViewController {
     
@@ -36,10 +35,13 @@ class LoginViewController: UIViewController {
             
             
             // fetch user info
-            AuthUtil.default.fetchUserInfo(authState!) { userInfo, error in
+            DispatchQueue.global().async {
                 
-                if userInfo != nil {
-                    print("User is fetched")
+                AuthUtil.default.fetchUserInfo { userInfo, error in
+                    
+                    if userInfo != nil {
+                        print("User is fetched")
+                    }
                 }
             }
             

@@ -8,23 +8,19 @@
 
 import Foundation
 import Alamofire
-import AppAuth
 
 /// Authorized implementation of FGAbstractSessionHelper.
 open class FGAuthorizedSessionHelper: FGAbstractSessionHelper {
     
     // MARK: - properties
     
-    /// Auth state from AppAuth library.
-    public let authState: OIDAuthState
+    /// Access token provider.
+    public let provider: FGAccessTokenProvider
     
     // MARK: - lifecycle
     
-    public init(queue: DispatchQueue, authState: OIDAuthState) throws {
-        if authState.isAuthorized == false {
-            throw FGFutureGatewayError.unauthorizedState(reason: "authState is not authorized")
-        }
-        self.authState = authState
+    public init(queue: DispatchQueue, provider: FGAccessTokenProvider) {
+        self.provider = provider
         super.init(queue: queue)
     }
     
@@ -37,25 +33,29 @@ open class FGAuthorizedSessionHelper: FGAbstractSessionHelper {
         mutableUrlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         
         // add authorization token
-        mutableUrlRequest.setValue("Bearer \(extractAccessToken(authState))", forHTTPHeaderField: "Authorization")
+        mutableUrlRequest.setValue("Bearer \(self.provider.getAccessToken())", forHTTPHeaderField: "Authorization")
         
         return mutableUrlRequest
     }
     
     public override func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
-        completion(false, 0.0)
-    }
-    
-    /// Extracts token from authState object.
-    private func extractAccessToken(_ authState: OIDAuthState) -> String {
-        var accessToken = "none"
-        if let at = authState.lastTokenResponse?.accessToken {
-            accessToken = at
+        
+        // max number of retries
+        let maxRetryCount: UInt = 3
+        
+        guard
+            request.retryCount < maxRetryCount,
+            let response = request.task?.response as? HTTPURLResponse,
+            response.statusCode == 401
+        else {
+            completion(false, 0.0)
+            return
         }
-        if let at = authState.lastAuthorizationResponse.accessToken {
-            accessToken = at
+        
+        // try to get a new access token
+        provider.requestNewAccessToken { success in
+            completion(success, 0.0)
         }
-        return accessToken
     }
     
 }
