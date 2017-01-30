@@ -20,9 +20,6 @@ public enum FGFutureGatewayError: Error, LocalizedError {
     /// Remote JSON cannot be serialized to object instance.
     case objectSerialization(reason: String)
     
-    /// Auth state object is not authorized.
-    case unauthorizedState(reason: String)
-    
     /// API version was not found for given root URL.
     case versionNotFound(reason: String)
     
@@ -39,9 +36,6 @@ public enum FGFutureGatewayError: Error, LocalizedError {
             
         case .objectSerialization(reason: let reason):
             return "Future Gateway object serialization error: \(reason)"
-            
-        case .unauthorizedState(reason: let reason):
-            return "Future Gateway unauthorized state error: \(reason)"
             
         case .versionNotFound(reason: let reason):
             return "Future Gateway version not found error: \(reason)"
