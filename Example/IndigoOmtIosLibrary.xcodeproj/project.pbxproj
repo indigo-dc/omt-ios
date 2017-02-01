@@ -24,6 +24,7 @@
 		D7EAC8031E2CBFE600110199 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EAC7FC1E2CBFE600110199 /* LoginViewController.swift */; };
 		D7EAC8041E2CBFE600110199 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC7FE1E2CBFE600110199 /* Images.xcassets */; };
 		D7EAC8061E2CBFE600110199 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC8001E2CBFE600110199 /* LaunchScreen.xib */; };
+		D7ECDDA51E422A680033A657 /* FutureGatewayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ECDDA31E42280D0033A657 /* FutureGatewayUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		D7EAC7FE1E2CBFE600110199 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D7EAC7FF1E2CBFE600110199 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7EAC8001E2CBFE600110199 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		D7ECDD701E4209AC0033A657 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/IndigoOmtIosLibrary-bvxloghcxurdyiglmpxeccoumqkg/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		D7ECDDA31E42280D0033A657 /* FutureGatewayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureGatewayUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,7 @@
 		CF62B5895F934EFE55EE7A8D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7ECDD701E4209AC0033A657 /* Alamofire.framework */,
 				60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */,
 				67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */,
 			);
@@ -171,6 +175,7 @@
 				D7DC97B21E3648F900C25191 /* AuthUtil.swift */,
 				D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */,
 				D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */,
+				D7ECDDA31E42280D0033A657 /* FutureGatewayUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */,
 				D7DC97B61E36495700C25191 /* AuthConfig.swift in Sources */,
 				D7EAC8031E2CBFE600110199 /* LoginViewController.swift in Sources */,
+				D7ECDDA51E422A680033A657 /* FutureGatewayUtil.swift in Sources */,
 				D7DF239D1E2E0DCB0037AA41 /* UIHelper.swift in Sources */,
 				D78405101E3B6394003B6684 /* AppAuthAccessTokenProvider.swift in Sources */,
 				D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */,
