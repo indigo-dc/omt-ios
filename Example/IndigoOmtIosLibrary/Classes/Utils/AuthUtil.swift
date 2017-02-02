@@ -12,7 +12,7 @@ import SwiftyJSON
 import IndigoOmtIosLibrary
 
 /// Auth util callback.
-typealias AuthUtilAuthorizationCallback = (_ authState: OIDAuthState?, _ error: Error?) -> ()
+typealias AuthUtilAuthorizationCallback = (_ provider: FGAccessTokenProvider?, _ error: Error?) -> ()
 
 /// Auth helper util for OAuth flow with AppAuth library.
 class AuthUtil {
@@ -20,10 +20,12 @@ class AuthUtil {
     // MARK: - properties
     
     /// Default instance of auth util.
-    static private (set) var `default`: AuthUtil = AuthUtil(userDefaultsKey: "authConfigKey")
+    static let `default`: AuthUtil = AuthUtil(userDefaultsKey: "authConfigKey")
     
     /// AppAuth library authorization flow session.
     private var currentAuthorizationFlow: OIDAuthorizationFlowSession?
+    
+    /// Holds authorization object and user info.
     private var config: AuthConfig?
     
     /// UserDefaults key where config is stored.
@@ -32,8 +34,11 @@ class AuthUtil {
     /// API for retrieving user info from auth server.
     private var userInfoApi: UserInfoApi?
     
+    /// Background queue.
+    private let queue = DispatchQueue.global()
+    
     /// True if config is not empty.
-    public var hasConfig: Bool {
+    public var isAuthorized: Bool {
         return config != nil
     }
     
@@ -43,12 +48,12 @@ class AuthUtil {
         self.userDefaultsKey = userDefaultsKey
     }
     
-    public func loadConfig() {
+    public func loadState() {
         if let data = UserDefaults.standard.data(forKey: "config") {
             self.config = NSKeyedUnarchiver.unarchiveObject(with: data) as? AuthConfig
         }
         
-        if hasConfig {
+        if self.isAuthorized {
             print("[AuthUtil] Found config")
         }
         else {
@@ -56,11 +61,11 @@ class AuthUtil {
         }
     }
     
-    public func clearConfig() {
-        saveConfig(nil)
+    public func clearState() {
+        self.saveState(nil)
     }
     
-    private func saveConfig(_ config: AuthConfig?) {
+    private func saveState(_ config: AuthConfig?) {
         // update object
         self.config = config
         
@@ -150,33 +155,46 @@ class AuthUtil {
             }
             
             // clear previous config
-            self.clearConfig()
+            self.clearState()
             
             // prepare new config
             let config = AuthConfig()
             config.authState = authState
             
             // save configuration
-            self.saveConfig(config)
+            self.saveState(config)
             
             // return auth state object in main thread
             DispatchQueue.main.async {
-                callback(authState, nil)
+                if let provider = self.getAccessTokenProvider() {
+                    callback(provider, nil)
+                }
             }
         }
     }
     
     // MARK: - utils
     
-    public func fetchUserInfo(_ callback: @escaping UserInfoApiCallback) {
+    public func getAccessTokenProvider() -> FGAccessTokenProvider? {
         guard
             let authState = self.config?.authState,
             authState.isAuthorized
         else {
+            return nil
+        }
+        
+        return AppAuthAccessTokenProvider(authState: authState, queue: self.queue)
+    }
+    
+    public func fetchUserInfo(_ callback: @escaping UserInfoApiCallback) {
+        guard
+            let provider = self.getAccessTokenProvider(),
+            let userInfoUrl = self.config?.authState?.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint
+        else {
             
             // in main thread
             DispatchQueue.main.async {
-                callback(nil, UserInfoApiError.notAuthorized(reason: "asas"))
+                callback(nil, UserInfoApiError.notAuthorized(reason: "AuthUtil is not authorized"))
             }
             
             return
@@ -197,36 +215,29 @@ class AuthUtil {
         let queue = DispatchQueue.global()
         
         // create authorized api
-        let provider = AppAuthAccessTokenProvider(authState: authState, queue: queue)
         let authSession = FGAuthorizedSessionHelper(queue: queue, provider: provider)
         self.userInfoApi = UserInfoApi(helper: authSession)
         
-        // get proper endpoint
-        if let userInfoUrl = authState.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint {
+        // get user info object
+        self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
             
-            // get user info object
-            self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
+            guard error == nil else {
                 
-                guard error == nil else {
-                    
-                    // return error in main thread
-                    DispatchQueue.main.async {
-                        callback(nil, error)
-                    }
-                    
-                    return
-                }
-                
-                print("Found user: \(userInfo)")
-                
-                // update configuration
-                self.config?.userInfo = userInfo
-                self.saveConfig(self.config)
-                
-                // in main thread
+                // return error in main thread
                 DispatchQueue.main.async {
-                    callback(userInfo, nil)
+                    callback(nil, error)
                 }
+                
+                return
+            }
+            
+            // update configuration
+            self.config?.userInfo = userInfo
+            self.saveState(self.config)
+            
+            // in main thread
+            DispatchQueue.main.async {
+                callback(userInfo, nil)
             }
         }
     }

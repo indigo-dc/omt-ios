@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         
         // begin authorization
-        AuthUtil.default.beginAuthorizationFlow() { authState, error in
+        AuthUtil.default.beginAuthorizationFlow() { provider, error in
             
             guard error == nil else {
                 
@@ -33,18 +33,34 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            
-            // fetch user info
-            DispatchQueue.global().async {
-                
-                AuthUtil.default.fetchUserInfo { userInfo, error in
-                    
-                    if userInfo != nil {
-                        print("User is fetched")
-                    }
-                }
+            // initialize future gateway
+            let fgu = FutureGatewayUtil.default
+            if fgu.initializeFutureGateway(provider) {
+                print("Future gateway is initialized \(fgu.getFutureGateway()!)")
+            }
+            else {
+                print("Future gateway initialization failed")
             }
             
+            // load main view controller
+            let mainViewController = UIHelper.loadViewController("MainViewController")
+            mainViewController.navigationItem.hidesBackButton = true
+            self.navigationController?.pushViewController(mainViewController, animated: true)
+            
+            // fetch user info
+            self.fetchUserInfo()
+        }
+    }
+    
+    private func fetchUserInfo() {
+        DispatchQueue.global().async {
+            
+            AuthUtil.default.fetchUserInfo { userInfo, error in
+                
+                if userInfo != nil {
+                    print("User is fetched \(userInfo!)")
+                }
+            }
         }
     }
     

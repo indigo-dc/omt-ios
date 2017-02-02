@@ -9,7 +9,7 @@
 import Foundation
 
 /// Future Gateway entry object.
-open class FGFutureGateway {
+open class FGFutureGateway: CustomStringConvertible {
     
     // MARK: - properties
     
@@ -24,6 +24,11 @@ open class FGFutureGateway {
     
     /// Task collection API.
     public let taskCollection: FGTaskCollectionApi
+    
+    /// CustomStringConvertible
+    public var description: String {
+        return "FGFutureGateway { apiVersion: \(apiVersion) }"
+    }
     
     // MARK: - lifecycle
     

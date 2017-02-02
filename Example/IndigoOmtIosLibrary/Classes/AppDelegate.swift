@@ -20,11 +20,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // setup ui
         UIDesignHelper.updateUI(application, window: window)
         
-        // load configuration
-        AuthUtil.default.loadConfig()
+        // load state
+        let au = AuthUtil.default
+        au.loadState()
         
-        // show login view as first view if no config was found
-        if AuthUtil.default.hasConfig == false {
+        // auth util is authorized
+        if au.isAuthorized {
+            
+            // init future gateway object
+            let fgu = FutureGatewayUtil.default
+            let success = fgu.initializeFutureGateway(au.getAccessTokenProvider())
+            
+            if success {
+                print("Future gateway object is initialized: \(fgu.getFutureGateway()!)")
+            }
+            else {
+                print("Future gateway initialization failed")
+            }
+        }
+        else {
+            // show login view as first view if not authorized
             self.window?.rootViewController = UIHelper.loadViewController("LoginNavigationController")
         }
         
