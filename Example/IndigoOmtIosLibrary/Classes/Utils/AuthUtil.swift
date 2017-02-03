@@ -164,7 +164,7 @@ class AuthUtil {
             // save configuration
             self.saveState(config)
             
-            // return auth state object in main thread
+            // return provider in main thread
             DispatchQueue.main.async {
                 if let provider = self.getAccessTokenProvider() {
                     callback(provider, nil)
@@ -186,7 +186,23 @@ class AuthUtil {
         return AppAuthAccessTokenProvider(authState: authState, queue: self.queue)
     }
     
+    public func getUserInfo() -> UserInfo? {
+        return self.config?.userInfo
+    }
+    
     public func fetchUserInfo(_ callback: @escaping UserInfoApiCallback) {
+        
+        // check if user info already exists
+        if let userInfo = getUserInfo() {
+            
+            // in main thread
+            DispatchQueue.main.async {
+                callback(userInfo, nil)
+            }
+            
+            return
+        }
+        
         guard
             let provider = self.getAccessTokenProvider(),
             let userInfoUrl = self.config?.authState?.lastAuthorizationResponse.request.configuration.discoveryDocument?.userinfoEndpoint
@@ -195,17 +211,6 @@ class AuthUtil {
             // in main thread
             DispatchQueue.main.async {
                 callback(nil, UserInfoApiError.notAuthorized(reason: "AuthUtil is not authorized"))
-            }
-            
-            return
-        }
-        
-        // check if user info already exists
-        if let userInfo = self.config?.userInfo {
-            
-            // in main thread
-            DispatchQueue.main.async {
-                callback(userInfo, nil)
             }
             
             return

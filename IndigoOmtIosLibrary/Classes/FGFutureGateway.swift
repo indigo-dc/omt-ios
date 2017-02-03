@@ -32,7 +32,7 @@ open class FGFutureGateway: CustomStringConvertible {
     
     // MARK: - lifecycle
     
-    public init(url: URL, provider: FGAccessTokenProvider) {
+    public init(url: URL, username: String, provider: FGAccessTokenProvider) {
         
         // create background dispatch queue
         let queue = DispatchQueue(label: "pl.psnc.futuregateway-queue", attributes: .concurrent)
@@ -45,9 +45,9 @@ open class FGFutureGateway: CustomStringConvertible {
         let apiResolver = FGApiResolver(url: url, versionID: self.apiVersion, helper: unauthSession)
         
         // create required APIs
-        self.applicationCollection = FGApplicationCollectionApi(resolver: apiResolver, helper: authSession)
-        self.infrastructureCollection = FGInfrastructureCollectionApi(resolver: apiResolver, helper: authSession)
-        self.taskCollection = FGTaskCollectionApi(resolver: apiResolver, helper: authSession)
+        self.applicationCollection = FGApplicationCollectionApi(username: username, resolver: apiResolver, helper: authSession)
+        self.infrastructureCollection = FGInfrastructureCollectionApi(username: username, resolver: apiResolver, helper: authSession)
+        self.taskCollection = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authSession)
     }
     
 }

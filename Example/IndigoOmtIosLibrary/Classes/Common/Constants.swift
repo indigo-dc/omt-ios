@@ -10,6 +10,11 @@ import Foundation
 
 class Constants {
     
+    static let tempUsername: String = "test"
+    
+    /// Future gateway instance URL.
+    static let FutureGatewayUrl: String = "YOUR_FUTURE_GATEWAY_URL"
+    
     /// Open ID Connect Issuer from which the configuration will be discovered
     static let IssuerUrl: String = "YOUR_ISSUER_URL"
     

@@ -24,19 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let au = AuthUtil.default
         au.loadState()
         
-        // auth util is authorized
-        if au.isAuthorized {
+        // auth util is authorized and we have user info
+        if au.isAuthorized, let userInfo = au.getUserInfo() {
+            
+            // username for future gateway
+            //let username = userInfo.preferredUsername
+            let username = Constants.tempUsername
             
             // init future gateway object
             let fgu = FutureGatewayUtil.default
-            let success = fgu.initializeFutureGateway(au.getAccessTokenProvider())
-            
-            if success {
-                print("Future gateway object is initialized: \(fgu.getFutureGateway()!)")
-            }
-            else {
-                print("Future gateway initialization failed")
-            }
+            fgu.initializeFutureGateway(username: username, provider: au.getAccessTokenProvider())
         }
         else {
             // show login view as first view if not authorized
