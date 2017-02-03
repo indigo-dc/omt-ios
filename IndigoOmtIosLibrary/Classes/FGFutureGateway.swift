@@ -39,8 +39,7 @@ open class FGFutureGateway: CustomStringConvertible {
         
         // create session helpers
         let unauthSession = FGUnauthorizedSessionHelper(queue: queue)
-        //let authSession = try FGAuthorizedSessionHelper(authState: authState)
-        let authSession = unauthSession
+        let authSession = FGAuthorizedSessionHelper(queue: queue, provider: provider)
         
         // create API resolver to get root url with version
         let apiResolver = FGApiResolver(url: url, versionID: self.apiVersion, helper: unauthSession)
