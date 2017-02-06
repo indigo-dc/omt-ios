@@ -27,6 +27,7 @@ class DataRequestSpec: QuickSpec {
                         
                         // verify
                         expect(response.error).to(beNetworkError())
+                        expect(response.error?.localizedDescription).toNot(beNil())
                     }
                 }
             }
@@ -44,6 +45,7 @@ class DataRequestSpec: QuickSpec {
                     // verify
                     expect(result.error).toNot(beNil())
                     expect(result.error).to(beJsonSerializationError())
+                    expect(result.error?.localizedDescription).toNot(beNil())
                 }
                 
                 it("object serialization error") {
@@ -58,6 +60,7 @@ class DataRequestSpec: QuickSpec {
                     // verify
                     expect(result.error).toNot(beNil())
                     expect(result.error).to(beObjectSerializationError())
+                    expect(result.error?.localizedDescription).toNot(beNil())
                 }
                 
                 it("no error") {

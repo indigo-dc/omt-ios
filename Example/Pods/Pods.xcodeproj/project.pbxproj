@@ -182,7 +182,6 @@
 		D34E79C2F4269EE7B51B3606 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F0B34D80F5925204745510 /* SafariServices.framework */; };
 		D48EC82FA62CD8C4507ED0C7 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D202C1D848EE9FF4BBB6CE6 /* SwiftyJSON-dummy.m */; };
 		D509840D46ECEEC76C462E2F /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79476422F0DEECA2142FF9F4 /* ParameterEncoding.swift */; };
-		D74326711E4357F1004887DE /* FGTaskCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D743266F1E4357B6004887DE /* FGTaskCollection.swift */; };
 		D75A45E0F18AA50D9771148D /* FGDateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0B368B3CAE575646A28C54 /* FGDateUtil.swift */; };
 		D75A92E81E437B0C003EAF59 /* FGApiResolverResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75A92E61E437AE2003EAF59 /* FGApiResolverResponse.swift */; };
 		D79C0408C47E7A5A5F3AAD24 /* OIDAuthState+IOS.h in Headers */ = {isa = PBXBuildFile; fileRef = DA07D25111A6B1AEB980B47B /* OIDAuthState+IOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -486,7 +485,6 @@
 		D36F669E521D1CBCE155D2E2 /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D495467B5CBB0974A6D28149 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D10C856CA5D4DE46F8CEF7 /* QuickConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QuickConfiguration.m; path = Sources/QuickObjectiveC/Configuration/QuickConfiguration.m; sourceTree = "<group>"; };
-		D743266F1E4357B6004887DE /* FGTaskCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskCollection.swift; sourceTree = "<group>"; };
 		D75A92E61E437AE2003EAF59 /* FGApiResolverResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiResolverResponse.swift; sourceTree = "<group>"; };
 		DA07D25111A6B1AEB980B47B /* OIDAuthState+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthState+IOS.h"; path = "Source/iOS/OIDAuthState+IOS.h"; sourceTree = "<group>"; };
 		DDD958654D702ABA3F6153F2 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
@@ -619,7 +617,6 @@
 				8310E087E043B8F5D64696B5 /* FGApiRootVersion.swift */,
 				5381F4462C90D69A4D129E08 /* FGApplication.swift */,
 				110FE7825FBFD9795750F17B /* FGTask.swift */,
-				D743266F1E4357B6004887DE /* FGTaskCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1510,7 +1507,6 @@
 				283F927A932AE8B33573E24A /* DataRequest+IndigoOmtIosLibrary.swift in Sources */,
 				7BAE3C3E200018ADB66E4E11 /* FGAbstractApi.swift in Sources */,
 				980D2C7C5D20EE4073105406 /* FGAbstractCollectionApi.swift in Sources */,
-				D74326711E4357F1004887DE /* FGTaskCollection.swift in Sources */,
 				D75A92E81E437B0C003EAF59 /* FGApiResolverResponse.swift in Sources */,
 				8A27E436446EDC3584080909 /* FGAbstractSessionHelper.swift in Sources */,
 				4AF9DCE999CDB1E8F19855F6 /* FGAccessTokenProvider.swift in Sources */,

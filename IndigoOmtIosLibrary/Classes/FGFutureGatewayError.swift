@@ -39,9 +39,6 @@ public enum FGFutureGatewayError: Error, LocalizedError {
             
         case .versionNotFound(reason: let reason):
             return "Future Gateway version not found error: \(reason)"
-            
-        default:
-            return "Future Gateway error"
         }
     }
     

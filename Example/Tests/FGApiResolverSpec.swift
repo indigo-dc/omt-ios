@@ -22,7 +22,7 @@ class FGApiResolverSpec: QuickSpec {
                 
                 let p = FGUnauthorizedSessionHelper(queue: DispatchQueue.global())
                 
-                let resolver = FGApiResolver(url: URL(string: "http://google.com")!, versionID: "", helper: p)
+                let resolver = FGApiResolver(baseUrl: URL(string: "http://google.com")!, versionID: "", helper: p)
                 var re: FGApiResolverResponse?
                 
                 // test
