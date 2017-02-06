@@ -9,36 +9,6 @@
 import Foundation
 import Alamofire
 
-/// Resolve API response.
-public struct FGApiResolverResponse: CustomStringConvertible {
-    
-    /// If false then result is from remote server response.
-    public var isLocalResponse: Bool
-    
-    /// Resolved URL or nil when error occured.
-    public var url: URL?
-    
-    /// Resolver error.
-    public var error: FGFutureGatewayError?
-    
-    public var description: String {
-        return "FGApiResolverResponse { isLocalResponse: \(isLocalResponse), url: \(url), error: \(error) }"
-    }
-    
-    // MARK: - lifecycle
-    
-    public init(isLocalResponse: Bool, url: URL?, error: FGFutureGatewayError?) {
-        self.isLocalResponse = isLocalResponse
-        self.url = url
-        self.error = error
-    }
-    
-    public init() {
-        self.init(isLocalResponse: false, url: nil, error: nil)
-    }
-    
-}
-
 /// Resolve API callback.
 public typealias FGApiResolverCallback = (_ response: FGApiResolverResponse) -> ()
 
@@ -68,22 +38,22 @@ open class FGApiResolver: FGAbstractApi {
     
     /// Resolves API URL for given version.
     /// Returns error when requested version is not available.
-    public func resolveApiUrl(_ callback: @escaping FGApiResolverCallback) {
+    public func resolveUrlWithVersion(_ callback: @escaping FGApiResolverCallback) {
         
         // url was resolved earlier
         if let url = self.resolvedUrl {
             self.queue.async {
-                callback(FGApiResolverResponse(isLocalResponse: true, url: url, error: nil))
+                callback(FGApiResolverResponse(url: url, error: nil))
             }
             return
         }
         
         // resolve url
-        manager.request(self.url).responseObject(queue: self.queue) { (response: DataResponse<FGApiRoot>) in
+        manager.request(self.url).validate().responseObject(queue: self.queue) { (response: DataResponse<FGApiRoot>) in
             
             // make sure there was no error
             guard response.error == nil else {
-                callback(FGApiResolverResponse(isLocalResponse: false, url: nil, error: response.error as? FGFutureGatewayError))
+                callback(FGApiResolverResponse(url: nil, error: response.error as? FGFutureGatewayError))
                 return
             }
             
@@ -101,7 +71,7 @@ open class FGApiResolver: FGAbstractApi {
                             self.resolvedUrl = self.url.appendingPathComponent(linkObj.href)
                             
                             // return the URL
-                            callback(FGApiResolverResponse(isLocalResponse: false, url: self.resolvedUrl, error: nil))
+                            callback(FGApiResolverResponse(url: self.resolvedUrl, error: nil))
                             return
                         }
                     }
@@ -109,7 +79,14 @@ open class FGApiResolver: FGAbstractApi {
             }
             
             // version was not found - raise error
-            callback(FGApiResolverResponse(isLocalResponse: false, url: nil, error: FGFutureGatewayError.versionNotFound(reason: "Requested version \(self.versionID) was not found at \(self.url)")))
+            callback(FGApiResolverResponse(url: nil, error: FGFutureGatewayError.versionNotFound(reason: "Requested version \(self.versionID) was not found at \(self.url)")))
+        }
+    }
+    
+    /// Resolves API base URL without appended versions.
+    public func resolveBaseUrl(_ callback: @escaping FGApiResolverCallback) {
+        self.queue.async {
+            callback(FGApiResolverResponse(url: self.url, error: nil))
         }
     }
     

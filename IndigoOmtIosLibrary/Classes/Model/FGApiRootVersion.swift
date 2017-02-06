@@ -35,8 +35,8 @@ open class FGApiRootVersion: FGObjectSerializable, CustomStringConvertible {
             let build = json["build:"].string,
             let linksArray = json["_links"].array,
             let mediaTypesDict = json["media-types"].dictionary
-            else {
-                return nil
+        else {
+            return nil
         }
         
         self.id = id

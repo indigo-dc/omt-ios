@@ -54,20 +54,27 @@ and then run shell script from root directory
 ./run_code_coverage.sh
 ```
 
-## Current coverage for IndigoOmtIosLibrary.framework is `0%`
+## Current coverage for IndigoOmtIosLibrary.framework is `28%`
 Files changed | - | - 
 --- | --- | ---
-FGUnauthorizedSessionHelper.swift | `0%` | :skull:
-FGAbstractApi.swift | `0%` | :skull:
-FGAbstractSessionHelper.swift | `0%` | :skull:
-FGApiResolver.swift | `0%` | :skull:
-FGApiRoot.swift | `0%` | :skull:
-FGApplication.swift | `0%` | :skull:
-FGAuthorizedSessionHelper.swift | `0%` | :skull:
-FGDateUtil.swift | `0%` | :skull:
+FGApiResolverResponse.swift | `0%` | :skull:
 FGFutureGatewayError.swift | `0%` | :skull:
 FGTask.swift | `0%` | :skull:
-DataRequest+IndigoOmtIosLibrary.swift | `0%` | :skull:
+FGTaskCollectionApi.swift | `0%` | :skull:
+FGUnauthorizedSessionHelper.swift | `0%` | :skull:
+FGAbstractSessionHelper.swift | `0%` | :skull:
+FGApiResolver.swift | `0%` | :skull:
+FGAbstractApi.swift | `0%` | :skull:
+FGAbstractCollectionApi.swift | `0%` | :skull:
+FGTaskCollection.swift | `0%` | :skull:
+FGApplication.swift | `0%` | :skull:
+FGAuthorizedSessionHelper.swift | `0%` | :skull:
+FGFutureGateway.swift | `0%` | :skull:
+FGApiRootVersion.swift | `100%` | :white_check_mark:
+FGApiRoot.swift | `100%` | :white_check_mark:
+FGApiRootLink.swift | `100%` | :white_check_mark:
+DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
+FGDateUtil.swift | `100%` | :white_check_mark:
 
 ---
 

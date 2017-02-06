@@ -27,8 +27,8 @@ open class FGApiRootLink: FGObjectSerializable, CustomStringConvertible {
         guard
             let rel = json["rel"].string,
             let href = json["href"].string
-            else {
-                return nil
+        else {
+            return nil
         }
         
         self.rel = rel
