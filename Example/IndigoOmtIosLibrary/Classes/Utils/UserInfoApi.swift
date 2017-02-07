@@ -18,8 +18,11 @@ class UserInfoApi: FGAbstractApi {
     
     func fetchUserInfo(_ url: URL, callback: @escaping UserInfoApiCallback) {
         
-        // remote
-        manager.request(url).validate().responseObject(queue: self.queue) { (response: DataResponse<UserInfo>) in
+        // payload to send
+        let payload = FGRequestHelperPayload(url: url, method: .get)
+        
+        // make request
+        self.send(payload) { (response: FGRequestHelperResponse<UserInfo>) in
             
             guard response.error == nil else {
                 callback(nil, response.error)
@@ -27,7 +30,7 @@ class UserInfoApi: FGAbstractApi {
             }
             
             // return user info
-            if let userInfo = response.result.value {
+            if let userInfo = response.value {
                 callback(userInfo, nil)
             }
         }

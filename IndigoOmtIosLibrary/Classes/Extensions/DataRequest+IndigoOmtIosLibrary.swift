@@ -47,10 +47,6 @@ public extension DataRequest {
                 return .failure(FGFutureGatewayError.jsonSerialization(error: result.error!))
         }
         
-        
-        print(swiftyJsonObject.rawString())
-        
-        
         guard let response = response, let responseObject = T(response: response, json: swiftyJsonObject) else {
             return .failure(FGFutureGatewayError.objectSerialization(reason: "JSON could not be serialized to generic type: \(T.self)"))
         }

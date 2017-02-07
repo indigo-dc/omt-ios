@@ -37,17 +37,21 @@ open class FGFutureGateway: CustomStringConvertible {
         // create background dispatch queue
         let queue = DispatchQueue(label: "pl.psnc.futuregateway-queue", attributes: .concurrent)
         
-        // create session helpers
+        // create session helpers for authorized and unauthorized access to API
         let unauthSession = FGSessionHelper(queue: queue, provider: nil)
         let authSession   = FGSessionHelper(queue: queue, provider: provider)
         
+        // create request helpers - one for each session helper
+        let unauthHelper = FGAlamofireRequestHelper(session: unauthSession)
+        let authHelper   = FGAlamofireRequestHelper(session: authSession)
+        
         // create API resolver to get root url with version
-        let apiResolver = FGApiResolver(baseUrl: url, versionID: self.apiVersion, helper: unauthSession)
+        let apiResolver = FGApiResolver(baseUrl: url, versionID: self.apiVersion, helper: unauthHelper)
         
         // create required APIs
-        self.applicationCollection = FGApplicationCollectionApi(username: username, resolver: apiResolver, helper: authSession)
-        self.infrastructureCollection = FGInfrastructureCollectionApi(username: username, resolver: apiResolver, helper: authSession)
-        self.taskCollection = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authSession)
+        self.applicationCollection    = FGApplicationCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
+        self.infrastructureCollection = FGInfrastructureCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
+        self.taskCollection           = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
     }
     
 }

@@ -14,17 +14,23 @@ open class FGAbstractApi {
     
     // MARK: - properties
     
-    /// Alamofire session manager.
-    public let manager: SessionManager
-    
-    /// Dispatch queue for remote requests.
-    public let queue: DispatchQueue
+    /// Request helper.
+    public let helper: FGRequestHelper
     
     // MARK: - lifecycle
     
-    public init(helper: FGSessionHelper) {
-        self.manager = helper.getSessionManager()
-        self.queue = helper.getDispatchQueue()
+    public init(helper: FGRequestHelper) {
+        self.helper = helper
+    }
+    
+    /// MARK: - public methods
+    
+    public func inBackground(callback: @escaping () -> ()) {
+        helper.getBackgroundQueue().async(execute: callback)
+    }
+    
+    public func send<Value: FGObjectSerializable>(_ payload: FGRequestHelperPayload, callback: @escaping FGRequestHelperCallback<Value>) {
+        helper.send(payload, callback: callback)
     }
     
 }

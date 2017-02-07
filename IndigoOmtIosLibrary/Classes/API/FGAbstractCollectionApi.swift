@@ -21,7 +21,7 @@ open class FGAbstractCollectionApi: FGAbstractApi {
     
     // MARK: - lifecycle
     
-    public init(username: String, resolver: FGApiResolver, helper: FGSessionHelper) {
+    public init(username: String, resolver: FGApiResolver, helper: FGRequestHelper) {
         self.username = username
         self.resolver = resolver
         super.init(helper: helper)

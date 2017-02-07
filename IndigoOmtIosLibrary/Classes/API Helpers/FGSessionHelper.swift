@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-/// Session helper class for Alamofire SessionsManager.
+/// Session helper class for Alamofire's SessionsManager.
 open class FGSessionHelper: RequestAdapter, RequestRetrier {
     
     // MARK: - properties

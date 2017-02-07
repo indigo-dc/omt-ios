@@ -221,7 +221,8 @@ class AuthUtil {
         
         // create authorized api
         let authSession = FGSessionHelper(queue: queue, provider: provider)
-        self.userInfoApi = UserInfoApi(helper: authSession)
+        let authHelper = FGAlamofireRequestHelper(session: authSession)
+        self.userInfoApi = UserInfoApi(helper: authHelper)
         
         // get user info object
         self.userInfoApi?.fetchUserInfo(userInfoUrl) { userInfo, error in
