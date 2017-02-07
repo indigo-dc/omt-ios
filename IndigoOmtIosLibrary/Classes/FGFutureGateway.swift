@@ -38,8 +38,8 @@ open class FGFutureGateway: CustomStringConvertible {
         let queue = DispatchQueue(label: "pl.psnc.futuregateway-queue", attributes: .concurrent)
         
         // create session helpers
-        let unauthSession = FGUnauthorizedSessionHelper(queue: queue)
-        let authSession = FGAuthorizedSessionHelper(queue: queue, provider: provider)
+        let unauthSession = FGSessionHelper(queue: queue, provider: nil)
+        let authSession   = FGSessionHelper(queue: queue, provider: provider)
         
         // create API resolver to get root url with version
         let apiResolver = FGApiResolver(baseUrl: url, versionID: self.apiVersion, helper: unauthSession)

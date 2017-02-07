@@ -220,7 +220,7 @@ class AuthUtil {
         let queue = DispatchQueue.global()
         
         // create authorized api
-        let authSession = FGAuthorizedSessionHelper(queue: queue, provider: provider)
+        let authSession = FGSessionHelper(queue: queue, provider: provider)
         self.userInfoApi = UserInfoApi(helper: authSession)
         
         // get user info object

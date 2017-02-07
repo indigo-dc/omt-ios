@@ -17,45 +17,6 @@ class FGApiResolverSpec: QuickSpec {
             
             
             
-            return;
-            it("e") {
-                
-                let p = FGUnauthorizedSessionHelper(queue: DispatchQueue.global())
-                
-                let resolver = FGApiResolver(baseUrl: URL(string: "http://google.com")!, versionID: "", helper: p)
-                var re: FGApiResolverResponse?
-                
-                // test
-                waitUntil { done in
-                    
-                    resolver.resolveUrlWithVersion { response in
-                        
-                        re = response
-                        
-                        
-                        expect(response.error).toNot(beNil())
-                        expect(response.url).to(beNil())
-                        
-                        
-                        done()
-                    }
-                }
-                
-                // verify
-                
-                
-                
-                
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
         }
     }
