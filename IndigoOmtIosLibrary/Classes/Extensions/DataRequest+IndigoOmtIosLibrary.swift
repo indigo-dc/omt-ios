@@ -10,12 +10,6 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-/// Interface for SwiftyJSON deserializer.
-public protocol FGObjectSerializable {
-    
-    init?(response: HTTPURLResponse, json: JSON)
-}
-
 /// Extension for deserializing SwiftyJSON objects.
 public extension DataRequest {
     

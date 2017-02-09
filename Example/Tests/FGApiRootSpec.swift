@@ -75,7 +75,7 @@ class FGApiRootSpec: QuickSpec {
                 }
             }
             
-            context("FGApiRoot") {
+            context("FGApiRootVersion") {
                 
                 it("not nil") {
                     

@@ -181,6 +181,8 @@
 		D7320E681E49B02500300456 /* FGTaskCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E621E49B02500300456 /* FGTaskCollection.swift */; };
 		D7320E6E1E49B06000300456 /* FGAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E6A1E49B06000300456 /* FGAccessTokenProvider.swift */; };
 		D7320E701E49B06000300456 /* FGSessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E6C1E49B06000300456 /* FGSessionHelper.swift */; };
+		D7C9C5AF1E4C5B3F0073C50A /* FGObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5AE1E4C5B3F0073C50A /* FGObjectSerializable.swift */; };
+		D7C9C5B11E4C5B520073C50A /* FGEmptyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B01E4C5B520073C50A /* FGEmptyObject.swift */; };
 		D7F96D6B1E49BDA800AECFAD /* FGRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F96D6A1E49BDA800AECFAD /* FGRequestHelper.swift */; };
 		D7F96D6D1E49C5E200AECFAD /* FGAlamofireRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F96D6C1E49C5E200AECFAD /* FGAlamofireRequestHelper.swift */; };
 		D98BE7799D3FC26F64CA55B5 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C10F9935683B1C6734738FA /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -483,6 +485,8 @@
 		D7320E621E49B02500300456 /* FGTaskCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskCollection.swift; sourceTree = "<group>"; };
 		D7320E6A1E49B06000300456 /* FGAccessTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAccessTokenProvider.swift; sourceTree = "<group>"; };
 		D7320E6C1E49B06000300456 /* FGSessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGSessionHelper.swift; sourceTree = "<group>"; };
+		D7C9C5AE1E4C5B3F0073C50A /* FGObjectSerializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGObjectSerializable.swift; sourceTree = "<group>"; };
+		D7C9C5B01E4C5B520073C50A /* FGEmptyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGEmptyObject.swift; sourceTree = "<group>"; };
 		D7DA22C2EDEFAA3EE56D8807 /* OIDServiceConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDServiceConfiguration.m; path = Source/OIDServiceConfiguration.m; sourceTree = "<group>"; };
 		D7F96D6A1E49BDA800AECFAD /* FGRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRequestHelper.swift; sourceTree = "<group>"; };
 		D7F96D6C1E49C5E200AECFAD /* FGAlamofireRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAlamofireRequestHelper.swift; sourceTree = "<group>"; };
@@ -1031,6 +1035,8 @@
 			isa = PBXGroup;
 			children = (
 				F29139B22F4ACB16024DF27D /* DataRequest+IndigoOmtIosLibrary.swift */,
+				D7C9C5B01E4C5B520073C50A /* FGEmptyObject.swift */,
+				D7C9C5AE1E4C5B3F0073C50A /* FGObjectSerializable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1449,6 +1455,7 @@
 				51909A1125D860A40C76D4F5 /* FGApiResolver.swift in Sources */,
 				D7320E671E49B02500300456 /* FGTask.swift in Sources */,
 				D7320E641E49B02500300456 /* FGApiRootLink.swift in Sources */,
+				D7C9C5B11E4C5B520073C50A /* FGEmptyObject.swift in Sources */,
 				3666D7D8DE0315D48A15ED70 /* FGApplicationCollectionApi.swift in Sources */,
 				3A05B680489A6413CAFDE705 /* FGDateUtil.swift in Sources */,
 				99B73D8F3EFF78FC1751C515 /* FGFutureGateway.swift in Sources */,
@@ -1458,6 +1465,7 @@
 				0A747A49299F580E80A914E3 /* FGInfrastructureCollectionApi.swift in Sources */,
 				1E6BDDA7D6FF478F85696EED /* FGTaskCollectionApi.swift in Sources */,
 				585577B2692A8C2288E1E749 /* IndigoOmtIosLibrary-dummy.m in Sources */,
+				D7C9C5AF1E4C5B3F0073C50A /* FGObjectSerializable.swift in Sources */,
 				D7320E661E49B02500300456 /* FGApplication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

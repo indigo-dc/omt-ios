@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import Alamofire
+import SwiftyJSON
 import IndigoOmtIosLibrary
 
 class DataRequestSpec: QuickSpec {
@@ -63,7 +64,7 @@ class DataRequestSpec: QuickSpec {
                     expect(result.error?.localizedDescription).toNot(beNil())
                 }
                 
-                it("no error") {
+                it("no error when object in response") {
                     
                     // prepare
                     let data = "{\"_links\": [{\"href\": \"/\", \"rel\": \"self\"}], \"versions\": [{\"status\": \"prototype\", \"updated\": \"2016-04-20\", \"build:\": \"v0.0.2-30-g37540b8-37540b8-37\", \"_links\": [{\"href\": \"v1.0\", \"rel\": \"self\"}], \"media-types\": {\"type\": \"application/json\"}, \"id\": \"v1.0\"}]}".data(using: .utf8)
@@ -76,6 +77,55 @@ class DataRequestSpec: QuickSpec {
                     expect(result.error).to(beNil())
                     expect(result.value).toNot(beNil())
                 }
+                
+                it("no error when empty response") {
+                    
+                    // prepare
+                    let data = "".data(using: .utf8)
+                    let url = URL(string: "http://example-server.com")!
+                    let statusCode = 204
+                    let response = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "1.0", headerFields: nil)
+                    
+                    // test
+                    let result: Result<FGEmptyObject> = DataRequest.serializeFGObject(request: nil, response: response, data: data, error: nil)
+                    
+                    // verify
+                    expect(result.error).to(beNil())
+                    expect(result.value).toNot(beNil())
+                }
+            }
+            
+            context("FGEmptyObject") {
+                it("Empty object when status code is invalid") {
+                    
+                    // prepare
+                    let url = URL(string: "http://example-server.com")!
+                    let statusCode = 404
+                    let response = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "1.0", headerFields: nil)
+                    let json = JSON("{}")
+                    
+                    // test
+                    let emptyObj = FGEmptyObject(response: response!, json: json)
+                    
+                    // verify
+                    expect(emptyObj).to(beNil())
+                }
+                
+                it("Not empty object when status code is invalid") {
+                    
+                    // prepare
+                    let url = URL(string: "http://example-server.com")!
+                    let statusCode = 204
+                    let response = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "1.0", headerFields: nil)
+                    let json = JSON("{}")
+                    
+                    // test
+                    let emptyObj = FGEmptyObject(response: response!, json: json)
+                    
+                    // verify
+                    expect(emptyObj).toNot(beNil())
+                }
+                
             }
         }
     }
