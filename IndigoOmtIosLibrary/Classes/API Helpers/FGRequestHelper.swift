@@ -12,22 +12,43 @@ import Foundation
 public typealias FGRequestHelperCallback<Value> = (FGRequestHelperResponse<Value>) -> ()
 
 /// The response of FGRequestHelper request method.
-public struct FGRequestHelperResponse<Value> {
+public struct FGRequestHelperResponse<Value>: CustomStringConvertible {
+    
+    // MARK: - properties
     
     /// The URL request sent to the server.
-    public let request: URLRequest?
+    public var request: URLRequest?
     
     /// The server's response to the URL request.
-    public let response: HTTPURLResponse?
+    public var response: HTTPURLResponse?
     
     /// The data returned by the server.
-    public let data: Data?
+    public var data: Data?
     
     /// Nil when no problems occurred.
-    public let error: Error?
+    public var error: FGFutureGatewayError?
     
     /// Requested object. nil when error occurred.
-    public let value: Value?
+    public var value: Value?
+    
+    /// CustomStringConvertible.
+    public var description: String {
+        return "FGRequestHelperResponse { error: \(error), value: \(value) }"
+    }
+    
+    // MARK: - lifecycle
+    
+    public init(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: FGFutureGatewayError?, value: Value?) {
+        self.request = request
+        self.response = response
+        self.data = data
+        self.error = error
+        self.value = value
+    }
+    
+    public  init() {
+        self.init(request: nil, response: nil, data: nil, error: nil, value: nil)
+    }
     
 }
 
@@ -45,29 +66,34 @@ public enum FGHTTPMethod: String {
 }
 
 /// The payload of FGRequestHelper request method.
-public struct FGRequestHelperPayload {
+public struct FGRequestHelperPayload: CustomStringConvertible {
     
     // MARK: - properties
     
     /// The URL of the payload.
-    public let url: URL
+    public var url: URL?
     
     /// HTTP method of the payload.
-    public let method: FGHTTPMethod
+    public var method: FGHTTPMethod
     
     /// Accepted respons encodings.
-    public private (set) var accept: [String]
+    public var accept: [String]
     
     /// HTTP request headers.
-    public private (set) var headers: [String: String]
+    public var headers: [String: String]
     
     /// URL parameters
-    public private (set) var parameters: [String: Any]
+    public var parameters: [String: Any]
+    
+    /// CustomStringConvertible.
+    public var description: String {
+        return "FGRequestHelperPayload { url: \(url), method: \(method) }"
+    }
     
     // MARK: - lifecycle
     
     /// The constructor.
-    public init(url: URL, method: FGHTTPMethod) {
+    public init(url: URL? = nil, method: FGHTTPMethod = .get) {
         self.url = url
         self.method = method
         self.parameters = [:]
@@ -77,11 +103,11 @@ public struct FGRequestHelperPayload {
     
     /// MARK: - public methods
     
-    public mutating func addParam(key: String, value: Any) {
+    public mutating func addParam(_ key: String, value: Any) {
         parameters[key] = value
     }
     
-    public mutating func addHeader(key: String, value: String) {
+    public mutating func addHeader(_ key: String, value: String) {
         headers[key] = value
     }
     

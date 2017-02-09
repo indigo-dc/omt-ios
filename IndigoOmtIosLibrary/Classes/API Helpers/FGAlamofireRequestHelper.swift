@@ -35,6 +35,21 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
     
     public func send<Value: FGObjectSerializable>(_ payload: FGRequestHelperPayload, callback: @escaping FGRequestHelperCallback<Value>) {
         
+        // check url
+        guard payload.url != nil else {
+            
+            // return error
+            let error = FGFutureGatewayError.urlIsEmpty(reason: "Payload has an empty URL")
+            
+            self.getBackgroundQueue().async {
+                callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
+            }
+            return
+        }
+        
+        // request url
+        let url: URL = payload.url!
+        
         // map method by raw value
         let method: HTTPMethod = HTTPMethod(rawValue: payload.method.rawValue) ?? HTTPMethod.get
         
@@ -43,7 +58,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
         
         // make request with validation
         self.manager
-            .request(payload.url, method: method, parameters: payload.parameters, encoding: URLEncoding.default, headers: payload.headers)
+            .request(url, method: method, parameters: payload.parameters, encoding: URLEncoding.default, headers: payload.headers)
             .validate()
             .validate(contentType: accept)
             .responseObject(queue: self.session.getDispatchQueue())
@@ -51,10 +66,10 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             
             // create response object
             let response = FGRequestHelperResponse(request: dataResponse.request,
-                                            response: dataResponse.response,
-                                            data: dataResponse.data,
-                                            error: dataResponse.error,
-                                            value: dataResponse.value)
+                                                   response: dataResponse.response,
+                                                   data: dataResponse.data,
+                                                   error: dataResponse.error as? FGFutureGatewayError,
+                                                   value: dataResponse.value)
             
             // execute
             callback(response)

@@ -22,7 +22,7 @@ class UserInfoApi: FGAbstractApi {
         let payload = FGRequestHelperPayload(url: url, method: .get)
         
         // make request
-        self.send(payload) { (response: FGRequestHelperResponse<UserInfo>) in
+        self.helper.send(payload) { (response: FGRequestHelperResponse<UserInfo>) in
             
             guard response.error == nil else {
                 callback(nil, response.error)

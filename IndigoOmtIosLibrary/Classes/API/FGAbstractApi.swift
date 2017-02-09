@@ -7,7 +7,38 @@
 //
 
 import Foundation
-import Alamofire
+
+/// API response object.
+public struct FGApiResponse<Value>: CustomStringConvertible {
+    
+    // MARK: - properties
+    
+    /// The error from the response.
+    public var error: FGFutureGatewayError?
+    
+    /// The value from the response.
+    public var value: Value?
+    
+    /// CustomStringConvertible.
+    public var description: String {
+        return "FGApiResponse { error: \(error), value: \(value) }"
+    }
+    
+    // MARK: - lifecycle
+    
+    public init(error: FGFutureGatewayError?, value: Value?) {
+        self.error = error
+        self.value = value
+    }
+    
+    public init() {
+        self.init(error: nil, value: nil)
+    }
+    
+}
+
+/// API response callback.
+public typealias FGApiResponseCallback<Value> = (FGApiResponse<Value>) -> ()
 
 /// Abstract class for any API implementation.
 open class FGAbstractApi {
@@ -21,16 +52,6 @@ open class FGAbstractApi {
     
     public init(helper: FGRequestHelper) {
         self.helper = helper
-    }
-    
-    /// MARK: - public methods
-    
-    public func inBackground(callback: @escaping () -> ()) {
-        helper.getBackgroundQueue().async(execute: callback)
-    }
-    
-    public func send<Value: FGObjectSerializable>(_ payload: FGRequestHelperPayload, callback: @escaping FGRequestHelperCallback<Value>) {
-        helper.send(payload, callback: callback)
     }
     
 }

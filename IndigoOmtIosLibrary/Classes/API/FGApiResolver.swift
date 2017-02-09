@@ -7,25 +7,6 @@
 //
 
 import Foundation
-import Alamofire
-
-/// The callback of FGApiResolver.
-public typealias FGApiResolverCallback = (_ response: FGApiResolverResponse) -> ()
-
-/// The response of FGApiResolver.
-public struct FGApiResolverResponse: CustomStringConvertible {
-    
-    /// Resolved URL or nil when error occured.
-    public var url: URL?
-    
-    /// Resolver error.
-    public var error: FGFutureGatewayError?
-    
-    public var description: String {
-        return "FGApiResolverResponse { url: \(url), error: \(error) }"
-    }
-    
-}
 
 /// Resolves API URL with version.
 open class FGApiResolver: FGAbstractApi {
@@ -53,12 +34,12 @@ open class FGApiResolver: FGAbstractApi {
     
     /// Resolves API URL for given version.
     /// Returns error when requested version is not available.
-    public func resolveUrlWithVersion(_ callback: @escaping FGApiResolverCallback) {
+    public func resolveUrlWithVersion(_ callback: @escaping FGApiResponseCallback<URL>) {
         
         // url was resolved earlier
         if let url = self.resolvedUrl {
-            self.inBackground {
-                callback(FGApiResolverResponse(url: url, error: nil))
+            self.helper.getBackgroundQueue().async {
+                callback(FGApiResponse(error: nil, value: url))
             }
             return
         }
@@ -71,7 +52,7 @@ open class FGApiResolver: FGAbstractApi {
             
             // make sure there was no error
             guard response.error == nil else {
-                callback(FGApiResolverResponse(url: nil, error: response.error as? FGFutureGatewayError))
+                callback(FGApiResponse(error: response.error, value: nil))
                 return
             }
             
@@ -89,7 +70,7 @@ open class FGApiResolver: FGAbstractApi {
                             self.resolvedUrl = self.baseUrl.appendingPathComponent(linkObj.href)
                             
                             // return the URL
-                            callback(FGApiResolverResponse(url: self.resolvedUrl, error: nil))
+                            callback(FGApiResponse(error: nil, value: self.resolvedUrl))
                             return
                         }
                     }
@@ -97,43 +78,9 @@ open class FGApiResolver: FGAbstractApi {
             }
             
             // version was not found - raise error
-            callback(FGApiResolverResponse(url: nil, error: FGFutureGatewayError.versionNotFound(reason: "Requested version \(self.versionID) was not found at \(self.baseUrl)")))
+            let error = FGFutureGatewayError.versionNotFound(reason: "Requested version \(self.versionID) was not found at \(self.baseUrl)")
+            callback(FGApiResponse(error: error, value: nil))
         }
-        
-        /*
-        // resolve url
-        manager.request(self.baseUrl).validate().responseObject(queue: self.helper.getBackgroundQueue()) { (response: DataResponse<FGApiRoot>) in
-            
-            // make sure there was no error
-            guard response.error == nil else {
-                callback(FGApiResolverResponse(url: nil, error: response.error as? FGFutureGatewayError))
-                return
-            }
-            
-            // find requested version
-            if let apiRootObj: FGApiRoot = response.result.value {
-                for versionObj: FGApiRootVersion in apiRootObj.versions {
-                    
-                    // version was found
-                    if versionObj.id == self.versionID {
-                        
-                        // get first link
-                        if let linkObj = versionObj.links.first {
-                            
-                            // save resolved URL
-                            self.resolvedUrl = self.baseUrl.appendingPathComponent(linkObj.href)
-                            
-                            // return the URL
-                            callback(FGApiResolverResponse(url: self.resolvedUrl, error: nil))
-                            return
-                        }
-                    }
-                }
-            }
-            
-            // version was not found - raise error
-            callback(FGApiResolverResponse(url: nil, error: FGFutureGatewayError.versionNotFound(reason: "Requested version \(self.versionID) was not found at \(self.baseUrl)")))
-        }*/
     }
     
 }

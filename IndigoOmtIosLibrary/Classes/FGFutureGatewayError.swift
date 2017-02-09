@@ -23,6 +23,9 @@ public enum FGFutureGatewayError: Error, LocalizedError {
     /// API version was not found for given root URL.
     case versionNotFound(reason: String)
     
+    /// Request URL was nil.
+    case urlIsEmpty(reason: String)
+    
     // MARK: - LocalizedError
     
     public var errorDescription: String? {
@@ -39,6 +42,9 @@ public enum FGFutureGatewayError: Error, LocalizedError {
             
         case .versionNotFound(reason: let reason):
             return "Future Gateway version not found error: \(reason)"
+            
+        case .urlIsEmpty(reason: let reason):
+            return "Future Gateway url is empty error: \(reason)"
         }
     }
     
