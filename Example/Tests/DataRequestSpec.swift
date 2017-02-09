@@ -24,11 +24,15 @@ class DataRequestSpec: QuickSpec {
                     let invalidServerUrl = URL(string: "http://invalid_server.url")!
                     
                     // test
-                    self.makeRequest(invalidServerUrl) { (response: DataResponse<FGApiRoot>) in
-                        
-                        // verify
-                        expect(response.error).to(beNetworkError())
-                        expect(response.error?.localizedDescription).toNot(beNil())
+                    waitUntil(timeout: 30) { done in
+                        Alamofire.request(invalidServerUrl).validate().responseObject { (response: DataResponse<FGApiRoot>) in
+                            
+                            // verify
+                            expect(response.error).to(beNetworkError())
+                            expect(response.error?.localizedDescription).toNot(beNil())
+                            
+                            done()
+                        }
                     }
                 }
             }
@@ -67,7 +71,7 @@ class DataRequestSpec: QuickSpec {
                 it("no error when object in response") {
                     
                     // prepare
-                    let data = "{\"_links\": [{\"href\": \"/\", \"rel\": \"self\"}], \"versions\": [{\"status\": \"prototype\", \"updated\": \"2016-04-20\", \"build:\": \"v0.0.2-30-g37540b8-37540b8-37\", \"_links\": [{\"href\": \"v1.0\", \"rel\": \"self\"}], \"media-types\": {\"type\": \"application/json\"}, \"id\": \"v1.0\"}]}".data(using: .utf8)
+                    let data = createApiRootString("v1.0").data(using: .utf8)
                     let response = HTTPURLResponse()
                     
                     // test
@@ -128,53 +132,5 @@ class DataRequestSpec: QuickSpec {
                 
             }
         }
-    }
-    
-    func makeRequest<T: FGObjectSerializable>(_ url: URL, callback: @escaping (DataResponse<T>) -> ()) {
-        waitUntil(timeout: 30) { done in
-            Alamofire
-                .request(url)
-                .validate()
-                .responseObject
-            { (response: DataResponse<T>) in
-                callback(response)
-                done()
-            }
-        }
-    }
-    
-}
-
-fileprivate func beNetworkError(test: @escaping (Error) -> () = { _ in }) -> MatcherFunc<Error> {
-    return MatcherFunc { expression, message in
-        message.postfixMessage = "be network error"
-        if let actual = try expression.evaluate(),
-            case let FGFutureGatewayError.network(error: error) = actual {
-            test(error)
-            return true
-        }
-        return false
-    }
-}
-
-fileprivate func beObjectSerializationError() -> MatcherFunc<Error> {
-    return MatcherFunc { expression, message in
-        message.postfixMessage = "be object serialization error"
-        if let actual = try expression.evaluate(),
-            case FGFutureGatewayError.objectSerialization(reason: _) = actual {
-            return true
-        }
-        return false
-    }
-}
-
-fileprivate func beJsonSerializationError() -> MatcherFunc<Error> {
-    return MatcherFunc { expression, message in
-        message.postfixMessage = "be json serialization error"
-        if let actual = try expression.evaluate(),
-            case FGFutureGatewayError.jsonSerialization(error: _) = actual {
-            return true
-        }
-        return false
     }
 }

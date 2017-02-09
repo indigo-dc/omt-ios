@@ -64,7 +64,7 @@ open class FGApiResolver: FGAbstractApi {
                     if versionObj.id == self.versionID {
                         
                         // get first link
-                        if let linkObj = versionObj.links.first {
+                        if let linkObj: FGApiRootLink = versionObj.links.first {
                             
                             // save resolved URL
                             self.resolvedUrl = self.baseUrl.appendingPathComponent(linkObj.href)

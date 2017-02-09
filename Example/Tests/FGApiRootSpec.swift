@@ -13,16 +13,15 @@ import IndigoOmtIosLibrary
 
 class FGApiRootSpec: QuickSpec {
     override func spec() {
+        let response = HTTPURLResponse()
+        
         describe("FGApiRoot model") {
-            
-            let response = HTTPURLResponse()
-            
             context("FGApiRoot") {
                 
                 it("not nil") {
                     
                     // prepare
-                    let str = "{\"_links\": [{\"href\": \"/\", \"rel\": \"self\"}], \"versions\": [{\"status\": \"prototype\", \"updated\": \"2016-04-20\", \"build:\": \"v0.0.2-30-g37540b8-37540b8-37\", \"_links\": [{\"href\": \"v1.0\", \"rel\": \"self\"}], \"media-types\": {\"type\": \"application/json\"}, \"id\": \"v1.0\"}]}"
+                    let str = createApiRootString("v1.0")
                     let json = JSON(parseJSON: str)
                     
                     // test
