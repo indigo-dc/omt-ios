@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import SwiftyJSON
 
 /// Future Gateway API root object

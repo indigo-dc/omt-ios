@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 /// The current status of the task.
 public enum FGTaskStatus: String {
     
-    /// Task status is currently unknown.
-    case notSet = "notSet"
+    /// Value for any Task status.
+    case any = "ANY"
     
     /// Task created but input still required.
     case waiting = "WAITING"
@@ -37,7 +38,7 @@ public enum FGTaskStatus: String {
 }
 
 /// Future Gateway Task object.
-open class FGTask {
+open class FGTask: FGObjectSerializable, CustomStringConvertible {
     
     // MARK: - properties
     
@@ -60,7 +61,7 @@ open class FGTask {
     public var taskDescription: String = ""
     
     /// The current status of the task.
-    public var status: FGTaskStatus = .notSet
+    public var status: FGTaskStatus = .any
     
     /// The user name submitting the task. This is retrieved from the token and if provided has to coincide.
     public var user: String = ""
@@ -77,10 +78,23 @@ open class FGTask {
     /// Information of the running task provided back to the user. This is needed to allow users to interact with the application. As an example, for a task running a VM the runtime_data can contains the ip address and the credentials. The format is similar to parameters with the addition of two optional time fields: creation and last_change.
     //public var runtimeData
     
+    /// CustomStringConvertible.
+    public var description: String {
+        return "FGTask { id: \(id), status: \(status) }"
+    }
+    
     // MARK: - lifecycle
     
-    public init() {
+    public required init?(response: HTTPURLResponse, json: JSON) {
+        guard
+            let id = json["id"].string,
+            let status = FGTaskStatus(rawValue: json["status"].stringValue)
+            else {
+                return nil
+        }
         
+        self.id = id
+        self.status = status
     }
     
 }
