@@ -67,3 +67,14 @@ func beJsonSerializationError() -> MatcherFunc<Error> {
         return false
     }
 }
+
+func beUrlIsEmptyError() -> MatcherFunc<Error> {
+    return MatcherFunc { expression, message in
+        message.postfixMessage = "be json serialization error"
+        if let actual = try expression.evaluate(),
+            case FGFutureGatewayError.urlIsEmpty(reason: _) = actual {
+            return true
+        }
+        return false
+    }
+}

@@ -54,29 +54,29 @@ and then run shell script from root directory
 ./run_code_coverage.sh
 ```
 
-## Current coverage for IndigoOmtIosLibrary.framework is `69%`
+## Current coverage for IndigoOmtIosLibrary.framework is `82%`
 Files changed | - | - 
 --- | --- | ---
 FGTask.swift | `0%` | :skull:
 FGTaskCollection.swift | `0%` | :skull:
 FGApplication.swift | `0%` | :skull:
 FGTaskCollectionApi.swift | `6%` | :skull:
-FGAlamofireRequestHelper.swift | `8%` | :skull:
-FGRequestHelper.swift | `69%` | :warning:
 FGFutureGatewayError.swift | `79%` | :warning:
+FGAbstractCollectionApi.swift | `100%` | :white_check_mark:
+FGRequestHelper.swift | `100%` | :white_check_mark:
+FGApiResolver.swift | `100%` | :white_check_mark:
 FGSessionHelper.swift | `100%` | :white_check_mark:
 FGEmptyObject.swift | `100%` | :white_check_mark:
 FGApplicationCollectionApi.swift | `100%` | :white_check_mark:
 FGDateUtil.swift | `100%` | :white_check_mark:
 FGFutureGateway.swift | `100%` | :white_check_mark:
+FGAlamofireRequestHelper.swift | `100%` | :white_check_mark:
 FGInfrastructureCollectionApi.swift | `100%` | :white_check_mark:
 FGApiRootLink.swift | `100%` | :white_check_mark:
 FGApiRoot.swift | `100%` | :white_check_mark:
 DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
 FGApiRootVersion.swift | `100%` | :white_check_mark:
 FGAbstractApi.swift | `100%` | :white_check_mark:
-FGAbstractCollectionApi.swift | `100%` | :white_check_mark:
-FGApiResolver.swift | `100%` | :white_check_mark:
 
 ---
 

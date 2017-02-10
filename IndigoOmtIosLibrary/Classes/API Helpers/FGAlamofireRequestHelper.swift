@@ -74,7 +74,6 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             // execute
             callback(response)
         }
-        
     }
     
 }

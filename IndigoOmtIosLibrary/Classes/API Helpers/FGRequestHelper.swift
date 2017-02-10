@@ -50,6 +50,7 @@ public struct FGRequestHelperResponse<Value>: CustomStringConvertible {
 
 /// HTTP methods enumeration.
 public enum FGHTTPMethod: String {
+    case notset  = "notset"
     case options = "OPTIONS"
     case get     = "GET"
     case head    = "HEAD"
@@ -89,7 +90,7 @@ public struct FGRequestHelperPayload: CustomStringConvertible {
     // MARK: - lifecycle
     
     /// The constructor.
-    public init(url: URL? = nil, method: FGHTTPMethod = .get) {
+    public init(url: URL? = nil, method: FGHTTPMethod) {
         self.url = url
         self.method = method
         self.parameters = [:]
