@@ -20,6 +20,11 @@ open class FGSessionHelper: RequestAdapter, RequestRetrier {
     /// Access token provider.
     public let provider: FGAccessTokenProvider?
     
+    /// Max number of retries.
+    public var maxRetryCount: UInt {
+        return 3
+    }
+    
     // MARK: - lifecycle
     
     public init(queue: DispatchQueue, provider: FGAccessTokenProvider?) {
@@ -61,17 +66,20 @@ open class FGSessionHelper: RequestAdapter, RequestRetrier {
     // MARK: - RequestRetrier
     
     public func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
+        shouldRetry(retryCount: request.retryCount, urlResponse: request.task?.response, completion: completion)
+    }
+    
+    public func shouldRetry(retryCount: UInt, urlResponse: URLResponse?, completion: @escaping RequestRetryCompletion) {
         if let provider = self.provider {
-            // max number of retries
-            let maxRetryCount: UInt = 3
             
             guard
-                request.retryCount < maxRetryCount,
-                let response = request.task?.response as? HTTPURLResponse,
-                response.statusCode == 401
-                else {
-                    completion(false, 0.0)
-                    return
+                retryCount < maxRetryCount,
+                let httpResponse = urlResponse as? HTTPURLResponse,
+                httpResponse.statusCode == 401
+            else {
+                // do not retry
+                completion(false, 0.0)
+                return
             }
             
             // try to get a new access token

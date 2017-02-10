@@ -46,10 +46,6 @@ public struct FGRequestHelperResponse<Value>: CustomStringConvertible {
         self.value = value
     }
     
-    public  init() {
-        self.init(request: nil, response: nil, data: nil, error: nil, value: nil)
-    }
-    
 }
 
 /// HTTP methods enumeration.

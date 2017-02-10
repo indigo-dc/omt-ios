@@ -13,7 +13,7 @@ import IndigoOmtIosLibrary
 
 class FGApiResolverSpec: QuickSpec {
     override func spec() {
-        let baseUrl = URL(string: "http://test-server.com")!
+        let baseUrl = Constants.notExistingServerUrl
         let versionID = "v1.0"
         let dummyHelper = DummyHelper()
         var resolver: FGApiResolver?
@@ -97,6 +97,7 @@ class FGApiResolverSpec: QuickSpec {
                             // verify
                             expect(response.error).to(beNil())
                             expect(response.value).toNot(beNil())
+                            expect(response.description).toNot(beNil())
                             
                             done()
                         }

@@ -23,6 +23,9 @@
 		D7C9C5B61E4C61EF0073C50A /* DummyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B41E4C61EF0073C50A /* DummyHelper.swift */; };
 		D7C9C5B81E4C66710073C50A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B71E4C66710073C50A /* Global.swift */; };
 		D7C9C5BA1E4C6F340073C50A /* DummyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */; };
+		D7C9C5D41E4C8D200073C50A /* FGSessionHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5D31E4C8D200073C50A /* FGSessionHelperSpec.swift */; };
+		D7C9C5D51E4CB7750073C50A /* DummyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */; };
+		D7C9C5D71E4DA4E10073C50A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5D61E4DA4E10073C50A /* Constants.swift */; };
 		D7DC97B31E3648F900C25191 /* AuthUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC97B21E3648F900C25191 /* AuthUtil.swift */; };
 		D7DC97B61E36495700C25191 /* AuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC97B51E36495700C25191 /* AuthConfig.swift */; };
 		D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF23981E2CEA830037AA41 /* Constants.swift */; };
@@ -72,6 +75,8 @@
 		D7C9C5B41E4C61EF0073C50A /* DummyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyHelper.swift; sourceTree = "<group>"; };
 		D7C9C5B71E4C66710073C50A /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyProvider.swift; sourceTree = "<group>"; };
+		D7C9C5D31E4C8D200073C50A /* FGSessionHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGSessionHelperSpec.swift; sourceTree = "<group>"; };
+		D7C9C5D61E4DA4E10073C50A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D7DC97B21E3648F900C25191 /* AuthUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthUtil.swift; sourceTree = "<group>"; };
 		D7DC97B51E36495700C25191 /* AuthConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthConfig.swift; sourceTree = "<group>"; };
 		D7DF23981E2CEA830037AA41 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -146,6 +151,7 @@
 				D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */,
 				D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */,
 				D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */,
+				D7C9C5D31E4C8D200073C50A /* FGSessionHelperSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -193,6 +199,7 @@
 		D7C9C5B21E4C61EF0073C50A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D7C9C5D61E4DA4E10073C50A /* Constants.swift */,
 				D7C9C5B31E4C61EF0073C50A /* DummyError.swift */,
 				D7C9C5B41E4C61EF0073C50A /* DummyHelper.swift */,
 				D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */,
@@ -468,6 +475,7 @@
 				D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */,
 				D7DC97B31E3648F900C25191 /* AuthUtil.swift in Sources */,
 				D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */,
+				D7C9C5D51E4CB7750073C50A /* DummyProvider.swift in Sources */,
 				D7DC97B61E36495700C25191 /* AuthConfig.swift in Sources */,
 				D7EAC8031E2CBFE600110199 /* LoginViewController.swift in Sources */,
 				D7ECDDA51E422A680033A657 /* FutureGatewayUtil.swift in Sources */,
@@ -484,6 +492,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C9C5D41E4C8D200073C50A /* FGSessionHelperSpec.swift in Sources */,
+				D7C9C5D71E4DA4E10073C50A /* Constants.swift in Sources */,
 				D7C9C5B81E4C66710073C50A /* Global.swift in Sources */,
 				D784B6E81E48A2C8003BC522 /* FGApiRootSpec.swift in Sources */,
 				D7C9C5B51E4C61EF0073C50A /* DummyError.swift in Sources */,

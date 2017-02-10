@@ -21,7 +21,7 @@ class DataRequestSpec: QuickSpec {
                 it("network error") {
                     
                     // prepare
-                    let invalidServerUrl = URL(string: "http://invalid_server.url")!
+                    let invalidServerUrl = Constants.notExistingServerUrl
                     
                     // test
                     waitUntil(timeout: 30) { done in

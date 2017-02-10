@@ -31,10 +31,6 @@ public struct FGApiResponse<Value>: CustomStringConvertible {
         self.value = value
     }
     
-    public init() {
-        self.init(error: nil, value: nil)
-    }
-    
 }
 
 /// API response callback.

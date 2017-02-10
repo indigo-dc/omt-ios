@@ -16,7 +16,7 @@ class FGFutureGatewaySpec: QuickSpec {
             context("init") {
                 it("create object") {
                     // prepare
-                    let url = URL(string: "http://my-server.com")!
+                    let url = URL(string: "http://future-gateway-server.com")!
                     let username = "username"
                     let provider = DummyProvider()
                     
