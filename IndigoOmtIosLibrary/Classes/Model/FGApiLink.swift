@@ -9,12 +9,15 @@
 import Foundation
 import SwiftyJSON
 
-/// Future Gateway API root link object
+/// Future Gateway API link object.
 open class FGApiLink: FGObjectSerializable, CustomStringConvertible {
     
     // MARK: - properties
     
+    /// Link reference.
     public var href: String = ""
+    
+    /// Link relationship.
     public var rel: String = ""
     
     public var description: String {

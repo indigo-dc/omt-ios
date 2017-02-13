@@ -70,17 +70,20 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     public var arguments: [String]  = []
     
     /// Input file for the application. When the task is create a list of filename is provided as input_files. These files have to be uploaded in order to make the task SCHEDULED. The task detail provide an object for the each input file with the attributes: name and status. The status can be NEEDED if the input file has not been provided or READY otherwise.
-    public var inputFiles: [String] = []
+    public var inputFiles: [FGInputFile] = []
     
     /// Output files of the application. During the task creation the user can specify a list of files to retrieve after the execution. The task details provides an object for each output file containing the name and the URL for download.
-    public var outputFiles: [String] = []
+    public var outputFiles: [FGOutputFile] = []
     
     /// Information of the running task provided back to the user. This is needed to allow users to interact with the application. As an example, for a task running a VM the runtime_data can contains the ip address and the credentials. The format is similar to parameters with the addition of two optional time fields: creation and last_change.
-    //public var runtimeData
+    public var runtimeData: [FGRuntimeData] = []
+    
+    /// Task links.
+    public var links: [FGApiLink] = []
     
     /// CustomStringConvertible.
     public var description: String {
-        return "FGTask { id: \(id), status: \(status) }"
+        return "FGTask { id: \(id), status: \(status), taskDescription: \(taskDescription) }"
     }
     
     // MARK: - lifecycle
@@ -88,13 +91,65 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     public required init?(response: HTTPURLResponse, json: JSON) {
         guard
             let id = json["id"].string,
-            let status = FGTaskStatus(rawValue: json["status"].stringValue)
-            else {
-                return nil
+            let taskDescription = json["description"].string,
+            let status = FGTaskStatus(rawValue: json["status"].stringValue),
+            let date = FGDateUtil.parseDate(json["date"].string),
+            let linksArray = json["_links"].array
+        else {
+            return nil
         }
         
         self.id = id
+        self.taskDescription = taskDescription
         self.status = status
+        self.date = date
+        
+        for linkJson in linksArray {
+            if let link = FGApiLink(response: response, json: linkJson) {
+                self.links.append(link)
+            }
+        }
+        
+        
+        if let application = json["application"].string {
+            self.application = application
+        }
+        if let infrastructureTask = json["infrastructure_task"].string {
+            self.infrastructureTask = infrastructureTask
+        }
+        if let user = json["user"].string {
+            self.user = user
+        }
+        if let argumentsArray = json["arguments"].array {
+            for argumentJson in argumentsArray {
+                self.arguments.append(argumentJson.stringValue)
+            }
+        }
+        if let inputFilesArray = json["input_files"].array {
+            for inputFileJson in inputFilesArray {
+                if let inputFile = FGInputFile(response: response, json: inputFileJson) {
+                    self.inputFiles.append(inputFile)
+                }
+            }
+        }
+        if let outputFiles = json["output_files"].array {
+            for outputFileJson in outputFiles {
+                if let outputFile = FGOutputFile(response: response, json: outputFileJson) {
+                    self.outputFiles.append(outputFile)
+                }
+            }
+        }
+        if let runtimeData = json["runtime_data"].array {
+            for runtimeDataJson in runtimeData {
+                if let runtimeDataObj = FGRuntimeData(response: response, json: runtimeDataJson) {
+                    self.runtimeData.append(runtimeDataObj)
+                }
+            }
+        }
+    }
+    
+    public init() {
+        // empty
     }
     
 }

@@ -38,4 +38,8 @@ open class FGTaskCollection: FGObjectSerializable, CustomStringConvertible {
         }
     }
     
+    public init() {
+        // empty
+    }
+    
 }

@@ -17,6 +17,7 @@ open class FGDateUtil {
     /// Supported dates formats.
     static let Formats = [
         "EEE MMM dd HH:mm:ss ZZZ yyyy",
+        "yyyy-MM-dd'T'HH:mm:ss.SSSZ",
         "yyyy-MM-dd'T'HH:mm:ssZ",
         "yyyy-MM-dd HH:mm:ss Z",
         "yyyy-MM-dd HH:mm:ss",

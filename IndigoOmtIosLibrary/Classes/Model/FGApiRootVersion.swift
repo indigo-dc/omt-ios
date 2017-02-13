@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-/// Future Gateway API root version object
+/// Future Gateway API root version object.
 open class FGApiRootVersion: FGObjectSerializable, CustomStringConvertible {
     
     // MARK: - properties
