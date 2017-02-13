@@ -174,7 +174,7 @@
 		CCE682653D53EC3C6F621D2D /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4505259B99F3C11256EC135E /* ParameterEncoding.swift */; };
 		D222ACD7A95A6B5B21FA816C /* OIDAuthorizationUICoordinatorIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 29E701D66ED28880FDFBAC9C /* OIDAuthorizationUICoordinatorIOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7320E631E49B02500300456 /* FGApiRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E5D1E49B02500300456 /* FGApiRoot.swift */; };
-		D7320E641E49B02500300456 /* FGApiRootLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E5E1E49B02500300456 /* FGApiRootLink.swift */; };
+		D7320E641E49B02500300456 /* FGApiLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E5E1E49B02500300456 /* FGApiLink.swift */; };
 		D7320E651E49B02500300456 /* FGApiRootVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E5F1E49B02500300456 /* FGApiRootVersion.swift */; };
 		D7320E661E49B02500300456 /* FGApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E601E49B02500300456 /* FGApplication.swift */; };
 		D7320E671E49B02500300456 /* FGTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7320E611E49B02500300456 /* FGTask.swift */; };
@@ -478,7 +478,7 @@
 		D6CA0247AB87DCB4DEDF622F /* NMBStringify.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMBStringify.m; path = Sources/NimbleObjectiveC/NMBStringify.m; sourceTree = "<group>"; };
 		D7144049648BDF74254B8903 /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		D7320E5D1E49B02500300456 /* FGApiRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRoot.swift; sourceTree = "<group>"; };
-		D7320E5E1E49B02500300456 /* FGApiRootLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootLink.swift; sourceTree = "<group>"; };
+		D7320E5E1E49B02500300456 /* FGApiLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiLink.swift; sourceTree = "<group>"; };
 		D7320E5F1E49B02500300456 /* FGApiRootVersion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootVersion.swift; sourceTree = "<group>"; };
 		D7320E601E49B02500300456 /* FGApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplication.swift; sourceTree = "<group>"; };
 		D7320E611E49B02500300456 /* FGTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTask.swift; sourceTree = "<group>"; };
@@ -988,8 +988,8 @@
 		D7320E5C1E49B02500300456 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D7320E5E1E49B02500300456 /* FGApiLink.swift */,
 				D7320E5D1E49B02500300456 /* FGApiRoot.swift */,
-				D7320E5E1E49B02500300456 /* FGApiRootLink.swift */,
 				D7320E5F1E49B02500300456 /* FGApiRootVersion.swift */,
 				D7320E601E49B02500300456 /* FGApplication.swift */,
 				D7320E611E49B02500300456 /* FGTask.swift */,
@@ -1454,7 +1454,7 @@
 				D7F96D6B1E49BDA800AECFAD /* FGRequestHelper.swift in Sources */,
 				51909A1125D860A40C76D4F5 /* FGApiResolver.swift in Sources */,
 				D7320E671E49B02500300456 /* FGTask.swift in Sources */,
-				D7320E641E49B02500300456 /* FGApiRootLink.swift in Sources */,
+				D7320E641E49B02500300456 /* FGApiLink.swift in Sources */,
 				D7C9C5B11E4C5B520073C50A /* FGEmptyObject.swift in Sources */,
 				3666D7D8DE0315D48A15ED70 /* FGApplicationCollectionApi.swift in Sources */,
 				3A05B680489A6413CAFDE705 /* FGDateUtil.swift in Sources */,

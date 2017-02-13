@@ -18,7 +18,7 @@ open class FGApiRootVersion: FGObjectSerializable, CustomStringConvertible {
     public var status: String = ""
     public var updated: Date = Date(timeIntervalSince1970: 0)
     public var build: String = ""
-    public var links: [FGApiRootLink] = []
+    public var links: [FGApiLink] = []
     public var mediaTypes: [String:String] = [:]
     
     public var description: String {
@@ -45,7 +45,7 @@ open class FGApiRootVersion: FGObjectSerializable, CustomStringConvertible {
         self.build = build
         
         for linkJson in linksArray {
-            if let link = FGApiRootLink(response: response, json: linkJson) {
+            if let link = FGApiLink(response: response, json: linkJson) {
                 self.links.append(link)
             }
         }

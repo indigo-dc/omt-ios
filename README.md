@@ -72,7 +72,7 @@ FGDateUtil.swift | `100%` | :white_check_mark:
 FGFutureGateway.swift | `100%` | :white_check_mark:
 FGAlamofireRequestHelper.swift | `100%` | :white_check_mark:
 FGInfrastructureCollectionApi.swift | `100%` | :white_check_mark:
-FGApiRootLink.swift | `100%` | :white_check_mark:
+FGApiLink.swift | `100%` | :white_check_mark:
 FGApiRoot.swift | `100%` | :white_check_mark:
 DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
 FGApiRootVersion.swift | `100%` | :white_check_mark:

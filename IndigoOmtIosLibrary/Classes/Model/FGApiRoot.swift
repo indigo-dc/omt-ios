@@ -14,11 +14,11 @@ open class FGApiRoot: FGObjectSerializable, CustomStringConvertible {
     
     // MARK: - properties
     
-    public var links: [FGApiRootLink] = []
+    public var links: [FGApiLink] = []
     public var versions: [FGApiRootVersion] = []
     
     public var description: String {
-        return "FGApiRootLink { links: \(links.count), versions: \(versions.count) }"
+        return "FGApiLink { links: \(links.count), versions: \(versions.count) }"
     }
     
     // MARK: - lifecycle
@@ -32,7 +32,7 @@ open class FGApiRoot: FGObjectSerializable, CustomStringConvertible {
         }
         
         for linkJson in linksArray {
-            if let link = FGApiRootLink(response: response, json: linkJson) {
+            if let link = FGApiLink(response: response, json: linkJson) {
                 self.links.append(link)
             }
         }

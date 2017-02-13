@@ -45,7 +45,7 @@ class FGApiRootSpec: QuickSpec {
                 }
             }
             
-            context("FGApiRootLink") {
+            context("FGApiLink") {
                 
                 it("not nil") {
                     
@@ -54,7 +54,7 @@ class FGApiRootSpec: QuickSpec {
                     let json = JSON(parseJSON: str)
                     
                     // test
-                    let apiRootLink = FGApiRootLink(response: response, json: json)
+                    let apiRootLink = FGApiLink(response: response, json: json)
                     
                     // verify
                     expect(apiRootLink).notTo(beNil())
@@ -67,7 +67,7 @@ class FGApiRootSpec: QuickSpec {
                     let json = JSON(parseJSON: "")
                     
                     // test
-                    let apiRootLink = FGApiRootLink(response: response, json: json)
+                    let apiRootLink = FGApiLink(response: response, json: json)
                     
                     // verify
                     expect(apiRootLink).to(beNil())

@@ -1,5 +1,5 @@
 //
-//  FGApiRootLink.swift
+//  FGApiLink.swift
 //  IndigoOmtIosLibrary
 //
 //  Created by Sebastian Mamczak on 01.02.2017.
@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 /// Future Gateway API root link object
-open class FGApiRootLink: FGObjectSerializable, CustomStringConvertible {
+open class FGApiLink: FGObjectSerializable, CustomStringConvertible {
     
     // MARK: - properties
     
@@ -18,7 +18,7 @@ open class FGApiRootLink: FGObjectSerializable, CustomStringConvertible {
     public var rel: String = ""
     
     public var description: String {
-        return "FGApiRootLink { href: \(href), rel: \(rel) }"
+        return "FGApiLink { href: \(href), rel: \(rel) }"
     }
     
     // MARK: - lifecycle
