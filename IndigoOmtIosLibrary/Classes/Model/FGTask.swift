@@ -91,26 +91,23 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     public required init?(response: HTTPURLResponse, json: JSON) {
         guard
             let id = json["id"].string,
-            let taskDescription = json["description"].string,
-            let status = FGTaskStatus(rawValue: json["status"].stringValue),
-            let date = FGDateUtil.parseDate(json["date"].string),
-            let linksArray = json["_links"].array
+            let status = FGTaskStatus(rawValue: json["status"].stringValue)
         else {
             return nil
         }
         
         self.id = id
-        self.taskDescription = taskDescription
         self.status = status
-        self.date = date
         
-        for linkJson in linksArray {
-            if let link = FGApiLink(response: response, json: linkJson) {
-                self.links.append(link)
-            }
+        if let taskDescription = json["description"].string {
+            self.taskDescription = taskDescription
         }
-        
-        
+        if let date = FGDateUtil.parseDate(json["date"].string) {
+            self.date = date
+        }
+        if let lastChange = FGDateUtil.parseDate(json["last_change"].string) {
+            self.lastChange = lastChange
+        }
         if let application = json["application"].string {
             self.application = application
         }
@@ -143,6 +140,13 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
             for runtimeDataJson in runtimeData {
                 if let runtimeDataObj = FGRuntimeData(response: response, json: runtimeDataJson) {
                     self.runtimeData.append(runtimeDataObj)
+                }
+            }
+        }
+        if let linksArray = json["_links"].array {
+            for linkJson in linksArray {
+                if let link = FGApiLink(response: response, json: linkJson) {
+                    self.links.append(link)
                 }
             }
         }

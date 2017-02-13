@@ -32,6 +32,7 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                             
                             // verify
                             expect(response.error).toNot(beNil())
+                            expect(response.error?.localizedDescription).toNot(beNil())
                             expect(response.error).to(beUrlIsEmptyError())
                             
                             done()

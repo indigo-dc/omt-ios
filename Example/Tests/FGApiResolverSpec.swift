@@ -58,6 +58,7 @@ class FGApiResolverSpec: QuickSpec {
                             
                             // verify
                             expect(response.error).to(beVersionNotFoundError())
+                            expect(response.error?.localizedDescription).toNot(beNil())
                             expect(response.value).to(beNil())
                             
                             done()

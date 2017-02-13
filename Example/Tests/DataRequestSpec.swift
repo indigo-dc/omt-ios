@@ -106,7 +106,7 @@ class DataRequestSpec: QuickSpec {
                     let url = URL(string: "http://example-server.com")!
                     let statusCode = 404
                     let response = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "1.0", headerFields: nil)
-                    let json = JSON("{}")
+                    let json = JSON(parseJSON: "{}")
                     
                     // test
                     let emptyObj = FGEmptyObject(response: response!, json: json)
@@ -121,7 +121,7 @@ class DataRequestSpec: QuickSpec {
                     let url = URL(string: "http://example-server.com")!
                     let statusCode = 204
                     let response = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "1.0", headerFields: nil)
-                    let json = JSON("{}")
+                    let json = JSON(parseJSON: "{}")
                     
                     // test
                     let emptyObj = FGEmptyObject(response: response!, json: json)
