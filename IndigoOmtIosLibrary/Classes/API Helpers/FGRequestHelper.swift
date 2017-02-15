@@ -31,6 +31,14 @@ public struct FGRequestHelperResponse<Value>: CustomStringConvertible {
     /// Requested object. nil when error occurred.
     public var value: Value?
     
+    /// Response data as string.
+    public var errorResponseBody: String? {
+        if let data = data {
+            return String(data: data, encoding: .utf8)
+        }
+        return nil
+    }
+    
     /// CustomStringConvertible.
     public var description: String {
         return "FGRequestHelperResponse { error: \(error), value: \(value) }"
@@ -50,7 +58,6 @@ public struct FGRequestHelperResponse<Value>: CustomStringConvertible {
 
 /// HTTP methods enumeration.
 public enum FGHTTPMethod: String {
-    case notset  = "notset"
     case options = "OPTIONS"
     case get     = "GET"
     case head    = "HEAD"
@@ -79,8 +86,11 @@ public struct FGRequestHelperPayload: CustomStringConvertible {
     /// HTTP request headers.
     public var headers: [String: String]
     
-    /// URL parameters
+    /// URL parameters.
     public var parameters: [String: Any]
+    
+    /// Body of the payload.
+    public var body: FGObjectSerializable?
     
     /// CustomStringConvertible.
     public var description: String {

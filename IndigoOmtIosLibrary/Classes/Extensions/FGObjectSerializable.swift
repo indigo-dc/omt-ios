@@ -13,4 +13,15 @@ import SwiftyJSON
 public protocol FGObjectSerializable {
     
     init?(response: HTTPURLResponse, json: JSON)
+    
+    func serialize() -> JSON
+    
+}
+
+extension FGObjectSerializable {
+    
+    public func serialize() -> JSON {
+        return JSON(parseString: "")
+    }
+    
 }

@@ -47,18 +47,12 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             return
         }
         
-        // request url
-        let url: URL = payload.url!
-        
-        // map method by raw value
-        let method: HTTPMethod = HTTPMethod(rawValue: payload.method.rawValue) ?? HTTPMethod.get
-        
         // acceptable content types
         let accept = payload.accept.isEmpty ? ["*/*"] : payload.accept
         
         // make request with validation
         self.manager
-            .request(url, method: method, parameters: payload.parameters, encoding: URLEncoding.default, headers: payload.headers)
+            .request(payload)
             .validate()
             .validate(contentType: accept)
             .responseObject(queue: self.session.getDispatchQueue())
@@ -74,6 +68,65 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             // execute
             callback(response)
         }
+    }
+    
+}
+
+extension FGRequestHelperPayload: URLRequestConvertible {
+    
+    public func asURLRequest() throws -> URLRequest {
+        
+        // create request
+        var request = try URLRequest(url: self.url!)
+        
+        // add method
+        request.httpMethod = self.method.rawValue
+        
+        // add headers
+        for (header, value) in self.headers {
+            request.setValue(value, forHTTPHeaderField: header)
+        }
+        
+        // add url params
+        request = encodeParams(request, with: self.parameters)
+        
+        // add body
+        if let body = self.body {
+            request.httpBody = try body.serialize().rawData(options: JSONSerialization.WritingOptions.prettyPrinted)
+        }
+        
+        return request
+    }
+    
+    private func encodeParams(_ request: URLRequest, with: Parameters) -> URLRequest {
+        var mutableRequest = request
+        
+        if var urlComponents = URLComponents(url: mutableRequest.url!, resolvingAgainstBaseURL: false), !parameters.isEmpty {
+            var queryString = ""
+            if let query = urlComponents.percentEncodedQuery {
+                queryString += query
+            }
+            if parameters.isEmpty == false && queryString.isEmpty == false {
+                queryString += "&"
+            }
+            queryString += makeQueryFromParams(parameters)
+            
+            urlComponents.percentEncodedQuery = queryString
+            mutableRequest.url = urlComponents.url
+        }
+        
+        return mutableRequest
+    }
+    
+    private func makeQueryFromParams(_ parameters: [String: Any]) -> String {
+        var components: [(String, String)] = []
+        
+        for key in parameters.keys {
+            let value = parameters[key]!
+            components += URLEncoding.default.queryComponents(fromKey: key, value: value)
+        }
+        
+        return components.map { (k, v) in "\(k)=\(v)" }.joined(separator: "&")
     }
     
 }

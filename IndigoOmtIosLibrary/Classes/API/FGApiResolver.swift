@@ -39,7 +39,7 @@ open class FGApiResolver: FGAbstractApi {
         // url was resolved earlier
         if let url = self.resolvedUrl {
             self.helper.getBackgroundQueue().async {
-                callback(FGApiResponse(error: nil, value: url))
+                callback(.success(url))
             }
             return
         }
@@ -52,7 +52,7 @@ open class FGApiResolver: FGAbstractApi {
             
             // make sure there was no error
             guard response.error == nil else {
-                callback(FGApiResponse(error: response.error, value: nil))
+                callback(.failure(response.error!, response.errorResponseBody))
                 return
             }
             
@@ -70,7 +70,7 @@ open class FGApiResolver: FGAbstractApi {
                             self.resolvedUrl = self.baseUrl.appendingPathComponent(linkObj.href)
                             
                             // return the URL
-                            callback(FGApiResponse(error: nil, value: self.resolvedUrl))
+                            callback(.success(self.resolvedUrl!))
                             return
                         }
                     }
@@ -79,7 +79,7 @@ open class FGApiResolver: FGAbstractApi {
             
             // version was not found - raise error
             let error = FGFutureGatewayError.versionNotFound(reason: "Requested version \(self.versionID) was not found at \(self.baseUrl)")
-            callback(FGApiResponse(error: error, value: nil))
+            callback(.failure(error, nil))
         }
     }
     
