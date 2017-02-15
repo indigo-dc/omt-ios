@@ -38,4 +38,16 @@ open class FGApiLink: FGObjectSerializable, CustomStringConvertible {
         self.href = href
     }
     
+    public init() {
+        // empty
+    }
+    
+    public func serialize() -> JSON {
+        var json = JSON([:])
+        json["rel"].string = self.rel
+        json["href"].string = self.href
+        
+        return json
+    }
+    
 }

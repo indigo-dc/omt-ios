@@ -43,6 +43,22 @@ class FGApiRootSpec: QuickSpec {
                     // verify
                     expect(apiRoot).to(beNil())
                 }
+                
+                it("should serialize") {
+                    
+                    // prepare
+                    let apiRoot = FGApiRoot()
+                    apiRoot.links = [FGApiLink()]
+                    apiRoot.versions = [FGApiRootVersion()]
+                    
+                    // test
+                    let serialized = apiRoot.serialize()
+                    
+                    // verify
+                    expect(serialized).toNot(beNil())
+                    expect(serialized["versions"].array).toNot(beEmpty())
+                    expect(serialized["_links"].array).toNot(beEmpty())
+                }
             }
             
             context("FGApiLink") {
@@ -72,6 +88,24 @@ class FGApiRootSpec: QuickSpec {
                     // verify
                     expect(apiRootLink).to(beNil())
                 }
+                
+                it("should serialize") {
+                    
+                    // prepare
+                    let rel = "self"
+                    let href = "/here"
+                    let apiLink = FGApiLink()
+                    apiLink.rel = rel
+                    apiLink.href = href
+                    
+                    // test
+                    let serialized = apiLink.serialize()
+                    
+                    // verify
+                    expect(serialized).toNot(beNil())
+                    expect(serialized["rel"].string).to(equal(rel))
+                    expect(serialized["href"].string).to(equal(href))
+                }
             }
             
             context("FGApiRootVersion") {
@@ -100,6 +134,39 @@ class FGApiRootSpec: QuickSpec {
                     
                     // verify
                     expect(apiRootVersion).to(beNil())
+                }
+                
+                it("should serialize") {
+                    
+                    // prepare
+                    let id = "1"
+                    let build = "build"
+                    let status = "prototype"
+                    let updated = Date()
+                    let mediaTypes = [
+                        "type": "application/json"
+                    ]
+                    let link = FGApiLink()
+                    link.rel = "self"
+                    link.href = "/"
+                    let apiRootVersion = FGApiRootVersion()
+                    apiRootVersion.id = id
+                    apiRootVersion.build = build
+                    apiRootVersion.status = status
+                    apiRootVersion.updated = updated
+                    apiRootVersion.mediaTypes = mediaTypes
+                    apiRootVersion.links.append(link)
+                    
+                    // test
+                    let serialized = apiRootVersion.serialize()
+                    
+                    // verify
+                    expect(serialized).toNot(beNil())
+                    expect(serialized["id"].string).to(equal(id))
+                    expect(serialized["build:"].string).to(equal(build))
+                    expect(serialized["status"].string).to(equal(status))
+                    expect(serialized["media-types"].dictionary).toNot(beEmpty())
+                    expect(serialized["_links"].array).toNot(beEmpty())
                 }
             }
             

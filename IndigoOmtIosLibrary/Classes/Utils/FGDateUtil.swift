@@ -29,13 +29,23 @@ open class FGDateUtil {
     static public func parseDate(_ input: String?) -> Date? {
         if let str = input {
             let formatter = DateFormatter()
+            formatter.locale = FGDateUtil.DefaultLocale
             for format in FGDateUtil.Formats {
                 formatter.dateFormat = format
-                formatter.locale = FGDateUtil.DefaultLocale
                 if let date = formatter.date(from: str) {
                     return date
                 }
             }
+        }
+        return nil
+    }
+    
+    static public func format(_ format: String, date: Date?) -> String? {
+        if let date = date {
+            let formatter = DateFormatter()
+            formatter.locale = FGDateUtil.DefaultLocale
+            formatter.dateFormat = format
+            return formatter.string(from: date)
         }
         return nil
     }

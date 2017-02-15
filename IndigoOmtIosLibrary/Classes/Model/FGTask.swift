@@ -76,7 +76,7 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     public var outputFiles: [FGOutputFile] = []
     
     /// Information of the running task provided back to the user. This is needed to allow users to interact with the application. As an example, for a task running a VM the runtime_data can contains the ip address and the credentials. The format is similar to parameters with the addition of two optional time fields: creation and last_change.
-    public var runtimeData: [FGRuntimeData] = []
+    public var runtimeData: [FGRuntimeDataObject] = []
     
     /// Task links.
     public var links: [FGApiLink] = []

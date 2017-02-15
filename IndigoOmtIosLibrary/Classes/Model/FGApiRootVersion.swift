@@ -32,7 +32,6 @@ open class FGApiRootVersion: FGObjectSerializable, CustomStringConvertible {
             let id = json["id"].string,
             let status = json["status"].string,
             let updated = FGDateUtil.parseDate(json["updated"].string),
-            let build = json["build:"].string,
             let linksArray = json["_links"].array,
             let mediaTypesDict = json["media-types"].dictionary
         else {
@@ -42,7 +41,10 @@ open class FGApiRootVersion: FGObjectSerializable, CustomStringConvertible {
         self.id = id
         self.status = status
         self.updated = updated
-        self.build = build
+        
+        if let build = json["build:"].string {
+            self.build = build
+        }
         
         for linkJson in linksArray {
             if let link = FGApiLink(response: response, json: linkJson) {
@@ -53,6 +55,22 @@ open class FGApiRootVersion: FGObjectSerializable, CustomStringConvertible {
         for (type, valueJson) in mediaTypesDict {
             self.mediaTypes[type] = valueJson.rawString()
         }
+    }
+    
+    public init() {
+        // empty
+    }
+    
+    public func serialize() -> JSON {
+        var json = JSON([:])
+        json["id"].string = self.id
+        json["status"].string = self.status
+        json["build:"].string = self.build
+        json["updated"].string = FGDateUtil.format("yyyy-MM-dd", date: self.updated)
+        json["media-types"].dictionaryObject = self.mediaTypes
+        json["_links"].arrayObject = self.links.map { $0.serialize().object }
+        
+        return json
     }
     
 }

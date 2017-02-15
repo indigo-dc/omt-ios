@@ -15,7 +15,7 @@ class FGDateUtilSpec: QuickSpec {
         describe("FGDateUtil") {
             context("parseDate") {
                 
-                it("invalid date") {
+                it("should not parse invalid date string") {
                     
                     // prepare
                     let dateString = "invalid date"
@@ -27,7 +27,7 @@ class FGDateUtilSpec: QuickSpec {
                     expect(date).to(beNil())
                 }
                 
-                it("valid date") {
+                it("should parse valid date") {
                     
                     // prepare
                     let comp = [2017, 1, 1, 12, 0, 0]
@@ -47,6 +47,35 @@ class FGDateUtilSpec: QuickSpec {
                     expect(components.minute).to(equal(comp[4]))
                     expect(components.second).to(equal(comp[5]))
                 }
+            }
+        }
+        
+        context("format") {
+            
+            it("should format date") {
+                
+                // prepare
+                let date = Date()
+                let format = "yyyy-MM-dd"
+                
+                // test
+                let dateString = FGDateUtil.format(format, date: date)
+                
+                // verify
+                expect(dateString).toNot(beNil())
+            }
+            
+            it("should return empty string when date is empty") {
+                
+                // prepare
+                let date: Date? = nil
+                let format = "yyyy-MM-dd"
+                
+                // test
+                let dateString = FGDateUtil.format(format, date: date)
+                
+                // verify
+                expect(dateString).to(beNil())
             }
         }
     }

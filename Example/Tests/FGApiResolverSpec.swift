@@ -33,7 +33,7 @@ class FGApiResolverSpec: QuickSpec {
                     dummyHelper.dummyError = FGFutureGatewayError.network(error: DummyError(msg: "A network error"))
                     
                     // test
-                    waitUntil(timeout: 10) { done in
+                    waitUntil(timeout: 60) { done in
                         resolver?.resolveUrlWithVersion { response in
                             
                             // verify
@@ -53,7 +53,7 @@ class FGApiResolverSpec: QuickSpec {
                     dummyHelper.dummyValue = makeObject(data) as FGApiRoot?
                     
                     // test
-                    waitUntil(timeout: 10) { done in
+                    waitUntil(timeout: 60) { done in
                         resolver?.resolveUrlWithVersion { response in
                             
                             // verify
@@ -73,7 +73,7 @@ class FGApiResolverSpec: QuickSpec {
                     dummyHelper.dummyValue = makeObject(data) as FGApiRoot?
                     
                     // test
-                    waitUntil(timeout: 10) { done in
+                    waitUntil(timeout: 60) { done in
                         resolver?.resolveUrlWithVersion { response in
                             
                             // verify
@@ -92,7 +92,7 @@ class FGApiResolverSpec: QuickSpec {
                     dummyHelper.dummyValue = makeObject(data) as FGApiRoot?
                     
                     // test
-                    waitUntil(timeout: 10) { done in
+                    waitUntil(timeout: 60) { done in
                         resolver?.resolveUrlWithVersion { response in
                             
                             // verify
@@ -112,7 +112,7 @@ class FGApiResolverSpec: QuickSpec {
                     dummyHelper.dummyValue = makeObject(data) as FGApiRoot?
                     
                     // test
-                    waitUntil(timeout: 10) { done in
+                    waitUntil(timeout: 60) { done in
                         resolver?.resolveUrlWithVersion { response in
                             
                             // verify
@@ -122,7 +122,7 @@ class FGApiResolverSpec: QuickSpec {
                             done()
                         }
                     }
-                    waitUntil(timeout: 10) { done in
+                    waitUntil(timeout: 60) { done in
                         resolver?.resolveUrlWithVersion { response in
                             
                             // verify

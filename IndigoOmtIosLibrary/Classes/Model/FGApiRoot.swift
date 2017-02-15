@@ -47,4 +47,16 @@ open class FGApiRoot: FGObjectSerializable, CustomStringConvertible {
         }
     }
     
+    public init() {
+        // empty
+    }
+    
+    public func serialize() -> JSON {
+        var json = JSON([:])
+        json["versions"].arrayObject = self.versions.map { $0.serialize().object }
+        json["_links"].arrayObject = self.links.map { $0.serialize().object }
+        
+        return json
+    }
+    
 }

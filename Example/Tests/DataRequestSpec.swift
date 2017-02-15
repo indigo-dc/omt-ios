@@ -24,7 +24,7 @@ class DataRequestSpec: QuickSpec {
                     let invalidServerUrl = Constants.notExistingServerUrl
                     
                     // test
-                    waitUntil(timeout: 30) { done in
+                    waitUntil(timeout: 60) { done in
                         Alamofire.request(invalidServerUrl).validate().responseObject { (response: DataResponse<FGApiRoot>) in
                             
                             // verify

@@ -118,7 +118,7 @@
 		88746C6536CE556B8357A13D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B9018FADD61FACD1F62D37 /* XCTest.framework */; };
 		8A632AF1FAE2F8C4A8E3E539 /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 14D6B509044C27C67E1532C0 /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A8AFE367A755A73DAD54F4E /* OIDTokenResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = ABE09CD813886FB9BE62843E /* OIDTokenResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B26F410EA1C082428304230 /* FGRuntimeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8D960FA6F029F9F70A71B /* FGRuntimeData.swift */; };
+		8B26F410EA1C082428304230 /* FGRuntimeDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A8D960FA6F029F9F70A71B /* FGRuntimeDataObject.swift */; };
 		8B4A313F9876312565B00FDA /* XCTestSuite+QuickTestSuiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 149BF1510772F00CE04E76BD /* XCTestSuite+QuickTestSuiteBuilder.m */; };
 		8F302AB1B938FB6976557D5C /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 37EA84D8C4172F1B6A33CC0C /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		8F829AD9B9D33173C9DBB8DE /* OIDAuthState.h in Headers */ = {isa = PBXBuildFile; fileRef = C7A3134F4D8F32948B345C38 /* OIDAuthState.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -380,7 +380,7 @@
 		5F869760FD03DA6454E4B38E /* FGEmptyObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGEmptyObject.swift; sourceTree = "<group>"; };
 		5FE178F169F0B861B154045B /* OIDAuthState+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthState+IOS.h"; path = "Source/iOS/OIDAuthState+IOS.h"; sourceTree = "<group>"; };
 		601A9FCD1C4496FEADE17A2C /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		62A8D960FA6F029F9F70A71B /* FGRuntimeData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGRuntimeData.swift; sourceTree = "<group>"; };
+		62A8D960FA6F029F9F70A71B /* FGRuntimeDataObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGRuntimeDataObject.swift; sourceTree = "<group>"; };
 		63757F05CCDF9F199FDE83B2 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
 		641423242990B18A18960EDA /* DSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DSL.swift; path = Sources/Nimble/DSL.swift; sourceTree = "<group>"; };
 		64A571DB7BBF29BA38B7EBB1 /* FGDateUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGDateUtil.swift; sourceTree = "<group>"; };
@@ -970,7 +970,7 @@
 				447F469B71E8B9759D89E112 /* FGApplication.swift */,
 				B1626FD4621D6643F651893F /* FGInputFile.swift */,
 				D157D4337CC288DF67F0D90C /* FGOutputFile.swift */,
-				62A8D960FA6F029F9F70A71B /* FGRuntimeData.swift */,
+				62A8D960FA6F029F9F70A71B /* FGRuntimeDataObject.swift */,
 				35CE99379CFBBA17C4A6DF5B /* FGTask.swift */,
 				5C07228CB98DD80A8DE50650 /* FGTaskCollection.swift */,
 			);
@@ -1573,7 +1573,7 @@
 				0F1A362C55361BD5AB0BC94A /* FGObjectSerializable.swift in Sources */,
 				AFC3B93E59A2F474761E535A /* FGOutputFile.swift in Sources */,
 				67E0B22C5976F7474E00EE34 /* FGRequestHelper.swift in Sources */,
-				8B26F410EA1C082428304230 /* FGRuntimeData.swift in Sources */,
+				8B26F410EA1C082428304230 /* FGRuntimeDataObject.swift in Sources */,
 				181D60FEEBF0E2D49E451844 /* FGSessionHelper.swift in Sources */,
 				D546DAC527B4E212F671E540 /* FGTask.swift in Sources */,
 				C49BF2819BEE8F7A73CB3E4C /* FGTaskCollection.swift in Sources */,

@@ -136,7 +136,7 @@ class FGTaskSpec: QuickSpec {
                 }
             }
             
-            context("FGRuntimeData") {
+            context("FGRuntimeDataObject") {
                 
                 it("should create object from json") {
                     
@@ -147,7 +147,7 @@ class FGTaskSpec: QuickSpec {
                     let json = JSON(parseJSON: jsonString)
                     
                     // test
-                    let runtimeData = FGRuntimeData(response: response, json: json)
+                    let runtimeData = FGRuntimeDataObject(response: response, json: json)
                     
                     // verify
                     expect(runtimeData).toNot(beNil())
@@ -162,7 +162,7 @@ class FGTaskSpec: QuickSpec {
                     let json = JSON(parseJSON: jsonString)
                     
                     // test
-                    let inputFile = FGRuntimeData(response: response, json: json)
+                    let inputFile = FGRuntimeDataObject(response: response, json: json)
                     
                     // verify
                     expect(inputFile).to(beNil())

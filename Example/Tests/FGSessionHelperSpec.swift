@@ -90,7 +90,7 @@ class FGSessionHelperSpec: QuickSpec {
                     let sessionManager = unauthSessionHelper.getSessionManager()
                     
                     // test
-                    waitUntil(timeout: 30) { done in
+                    waitUntil(timeout: 60) { done in
                         sessionManager.request(url).validate().responseString { (response: DataResponse<String>) in
                             
                             // verify
