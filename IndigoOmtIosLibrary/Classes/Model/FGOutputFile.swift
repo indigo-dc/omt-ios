@@ -15,10 +15,10 @@ open class FGOutputFile: FGObjectSerializable, CustomStringConvertible {
     // MARK: - properties
     
     /// Name of the output file.
-    public var name: String = ""
+    public var name: String?
     
     /// Download link to the output file.
-    public var url: String = ""
+    public var url: String?
     
     public var description: String {
         return "FGOutputApiLink { name: \(name), url: \(url) }"
@@ -36,6 +36,23 @@ open class FGOutputFile: FGObjectSerializable, CustomStringConvertible {
         
         self.name = name
         self.url = url
+    }
+    
+    public init() {
+        // empty
+    }
+    
+    public func serialize() -> JSON {
+        var json = JSON([:])
+        
+        if let name = name {
+            json["name"].string = name
+        }
+        if let url = url {
+            json["url"].string = url
+        }
+        
+        return json
     }
     
 }

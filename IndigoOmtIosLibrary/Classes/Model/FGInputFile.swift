@@ -17,7 +17,6 @@ public enum FGInputFileStatus: String {
     
     /// The input file has been provided.
     case ready = "READY"
-    
 }
 
 /// Future Gateway input file object.
@@ -26,10 +25,10 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
     // MARK: - properties
     
     /// Name of the input file.
-    public var name: String = ""
+    public var name: String?
     
     /// Status of the input file.
-    public var status: FGInputFileStatus = .needed
+    public var status: FGInputFileStatus?
     
     public var description: String {
         return "FGInputFile { name: \(name), status: \(status) }"
@@ -47,6 +46,23 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
         
         self.name = name
         self.status = status
+    }
+    
+    public init() {
+        // empty
+    }
+    
+    public func serialize() -> JSON {
+        var json = JSON([:])
+        
+        if let name = name {
+            json["name"].string = name
+        }
+        if let status = status {
+            json["status"].string = status.rawValue
+        }
+        
+        return json
     }
     
 }

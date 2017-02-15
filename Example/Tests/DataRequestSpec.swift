@@ -98,39 +98,6 @@ class DataRequestSpec: QuickSpec {
                     expect(result.value).toNot(beNil())
                 }
             }
-            
-            context("FGEmptyObject") {
-                it("Empty object when status code is invalid") {
-                    
-                    // prepare
-                    let url = URL(string: "http://example-server.com")!
-                    let statusCode = 404
-                    let response = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "1.0", headerFields: nil)
-                    let json = JSON(parseJSON: "{}")
-                    
-                    // test
-                    let emptyObj = FGEmptyObject(response: response!, json: json)
-                    
-                    // verify
-                    expect(emptyObj).to(beNil())
-                }
-                
-                it("Not empty object when status code is invalid") {
-                    
-                    // prepare
-                    let url = URL(string: "http://example-server.com")!
-                    let statusCode = 204
-                    let response = HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: "1.0", headerFields: nil)
-                    let json = JSON(parseJSON: "{}")
-                    
-                    // test
-                    let emptyObj = FGEmptyObject(response: response!, json: json)
-                    
-                    // verify
-                    expect(emptyObj).toNot(beNil())
-                }
-                
-            }
         }
     }
 }

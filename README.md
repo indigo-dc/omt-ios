@@ -54,32 +54,30 @@ and then run shell script from root directory
 ./run_code_coverage.sh
 ```
 
-## Current coverage for IndigoOmtIosLibrary.framework is `80%`
+## Current coverage for IndigoOmtIosLibrary.framework is `73%`
 Files changed | - | - 
 --- | --- | ---
-FGTaskCollection.swift | `0%` | :skull:
 FGApplication.swift | `0%` | :skull:
-FGTaskCollectionApi.swift | `3%` | :skull:
-FGApiRoot.swift | `100%` | :white_check_mark:
-DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
-FGApiRootVersion.swift | `100%` | :white_check_mark:
-FGOutputFile.swift | `100%` | :white_check_mark:
-FGAbstractApi.swift | `100%` | :white_check_mark:
-FGAbstractCollectionApi.swift | `100%` | :white_check_mark:
-FGRequestHelper.swift | `100%` | :white_check_mark:
-FGSessionHelper.swift | `100%` | :white_check_mark:
-FGTask.swift | `100%` | :white_check_mark:
-FGApiLink.swift | `100%` | :white_check_mark:
-FGEmptyObject.swift | `100%` | :white_check_mark:
-FGApplicationCollectionApi.swift | `100%` | :white_check_mark:
-FGDateUtil.swift | `100%` | :white_check_mark:
+FGTaskCollection.swift | `0%` | :skull:
+FGTaskCollectionApi.swift | `0%` | :skull:
+FGAbstractResolvedApi.swift | `16%` | :skull:
+FGRuntimeDataObject.swift | `41%` | :no_entry_sign:
+FGOutputFile.swift | `48%` | :no_entry_sign:
+FGInputFile.swift | `48%` | :no_entry_sign:
+FGTask.swift | `53%` | :warning:
+FGAbstractApi.swift | `71%` | :warning:
+FGRequestHelper.swift | `94%` | :white_check_mark:
+FGAlamofireRequestHelper.swift | `98%` | :white_check_mark:
 FGFutureGateway.swift | `100%` | :white_check_mark:
-FGFutureGatewayError.swift | `100%` | :white_check_mark:
-FGAlamofireRequestHelper.swift | `100%` | :white_check_mark:
-FGInfrastructureCollectionApi.swift | `100%` | :white_check_mark:
+FGApiLink.swift | `100%` | :white_check_mark:
 FGApiResolver.swift | `100%` | :white_check_mark:
-FGRuntimeData.swift | `100%` | :white_check_mark:
-FGInputFile.swift | `100%` | :white_check_mark:
+FGApiRoot.swift | `100%` | :white_check_mark:
+FGApiRootVersion.swift | `100%` | :white_check_mark:
+FGDateUtil.swift | `100%` | :white_check_mark:
+FGEmptyObject.swift | `100%` | :white_check_mark:
+DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
+FGFutureGatewayError.swift | `100%` | :white_check_mark:
+FGSessionHelper.swift | `100%` | :white_check_mark:
 
 ---
 

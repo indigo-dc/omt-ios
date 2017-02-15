@@ -55,6 +55,10 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
         }
     }
     
+    func serialize() -> JSON {
+        return JSON([:])
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init()
         name = aDecoder.decodeObject(forKey: "name") as! String

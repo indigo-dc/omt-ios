@@ -17,11 +17,3 @@ public protocol FGObjectSerializable {
     func serialize() -> JSON
     
 }
-
-extension FGObjectSerializable {
-    
-    public func serialize() -> JSON {
-        return JSON(parseString: "")
-    }
-    
-}

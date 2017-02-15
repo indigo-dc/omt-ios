@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A5172F08F8C6250CD528E94 /* Pods_IndigoOmtIosLibrary_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */; };
 		BCE3ACC08416E68D911F5B13 /* Pods_IndigoOmtIosLibrary_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */; };
+		D73420741E549ADF00032828 /* FGEmptyObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */; };
 		D78405101E3B6394003B6684 /* AppAuthAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */; };
 		D784B6E81E48A2C8003BC522 /* FGApiRootSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */; };
 		D784B6EA1E48C876003BC522 /* FGFutureGatewaySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */; };
@@ -63,6 +64,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE4D6AFE87B55B2E647AA4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGEmptyObjectSpec.swift; sourceTree = "<group>"; };
 		D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAuthAccessTokenProvider.swift; sourceTree = "<group>"; };
 		D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootSpec.swift; sourceTree = "<group>"; };
 		D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGFutureGatewaySpec.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				D7BF8AE41E449E5F009FA541 /* FGApiResolverSpec.swift */,
 				D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */,
 				D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */,
+				D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */,
 				D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */,
 				D7C9C5D31E4C8D200073C50A /* FGSessionHelperSpec.swift */,
 				D7C9C5DE1E51C18D0073C50A /* FGTaskSpec.swift */,
@@ -504,6 +507,7 @@
 				D784B6E81E48A2C8003BC522 /* FGApiRootSpec.swift in Sources */,
 				D7C9C5B51E4C61EF0073C50A /* DummyError.swift in Sources */,
 				D7BF8AE61E449E81009FA541 /* FGApiResolverSpec.swift in Sources */,
+				D73420741E549ADF00032828 /* FGEmptyObjectSpec.swift in Sources */,
 				D7C9C5D91E4DBBE30073C50A /* FGAlamofireRequestHelperSpec.swift in Sources */,
 				D7BF8AE31E449A2C009FA541 /* FGDateUtilSpec.swift in Sources */,
 				D7C9C5BA1E4C6F340073C50A /* DummyProvider.swift in Sources */,

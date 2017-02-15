@@ -46,6 +46,7 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                     let url = URL(string: Constants.notExistingServerUrl.absoluteString + "?secret=password")!
                     let param = "user"
                     let value = "myuser"
+                    
                     var payload = FGRequestHelperPayload(url: url, method: .get)
                     payload.addParam(param, value: value)
                     payload.addHeader("Cache-Control", value: "no-cache")
@@ -74,6 +75,7 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                     link.href = "/"
                     let param = "user"
                     let value = "myLogin"
+                    
                     var payload = FGRequestHelperPayload(url: Constants.notExistingServerUrl, method: .post)
                     payload.addParam(param, value: value)
                     payload.body = link

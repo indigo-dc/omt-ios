@@ -19,4 +19,12 @@ open class FGEmptyObject: FGObjectSerializable {
         }
     }
     
+    public init() {
+        // empty
+    }
+    
+    public func serialize() -> JSON {
+        return JSON("")
+    }
+    
 }
