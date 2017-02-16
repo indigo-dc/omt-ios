@@ -189,6 +189,10 @@
 		D73420711E547C7200032828 /* FGAbstractResolvedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73420701E547C7200032828 /* FGAbstractResolvedApi.swift */; };
 		D73420721E54892600032828 /* FGTaskApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734206C1E54775F00032828 /* FGTaskApi.swift */; };
 		D7561BCCD197F8063F31D14E /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0937730DE0A594B6E7A0C50A /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D760F5141E55CE4B004419C3 /* FGRequestHelperResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5131E55CE4B004419C3 /* FGRequestHelperResponse.swift */; };
+		D760F5161E55CF21004419C3 /* FGRequestHelperPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */; };
+		D760F5181E55E476004419C3 /* FGApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5171E55E476004419C3 /* FGApiResponse.swift */; };
+		D760F51A1E55F1CA004419C3 /* FGApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5191E55F1CA004419C3 /* FGApiResolver.swift */; };
 		D7BC9A8A1CD4501D7D7AD5DB /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF12D15D419E7FF327EE9FA /* Quick-dummy.m */; };
 		D8040C95CF0A4500D2791783 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45687C293534B947D624CA6 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DA41741F15AC3C93340F5BF3 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = DFF51288CDB7B97D3AFBFA5B /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -207,7 +211,7 @@
 		EF421D14B8CF4DCAB8F3B8CB /* FGInfrastructureCollectionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF52DDB9B95E33F39011DB5 /* FGInfrastructureCollectionApi.swift */; };
 		F07C1FF80CB1868915C29D64 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFEF6EE01ADE4E6E1DE04 /* Alamofire.swift */; };
 		F1138D4FB0EA87DFFE984BE2 /* Pods-IndigoOmtIosLibrary_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E36932912DA221BCD1FE92 /* Pods-IndigoOmtIosLibrary_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F20DCB6FC18925C549FF77F5 /* FGApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1E0D51ADE87BFA9CF6588 /* FGApiResolver.swift */; };
+		F20DCB6FC18925C549FF77F5 /* FGRootApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1E0D51ADE87BFA9CF6588 /* FGRootApiResolver.swift */; };
 		F3E2DDCD25CDB9B69C36A7FF /* FailureMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F8BE7720B67ECE9FB8185E /* FailureMessage.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F688732B5241D01211DE50DE /* OIDTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8861DB62B102B51330D52F18 /* OIDTokenResponse.m */; };
 		F698EF222FCCBF05740E7CEE /* OIDScopeUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 73798EE62D8A64475AC7ECE2 /* OIDScopeUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -497,6 +501,10 @@
 		D61F0BD8D1D471BB9C72D471 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		D734206C1E54775F00032828 /* FGTaskApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskApi.swift; sourceTree = "<group>"; };
 		D73420701E547C7200032828 /* FGAbstractResolvedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractResolvedApi.swift; sourceTree = "<group>"; };
+		D760F5131E55CE4B004419C3 /* FGRequestHelperResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRequestHelperResponse.swift; sourceTree = "<group>"; };
+		D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRequestHelperPayload.swift; sourceTree = "<group>"; };
+		D760F5171E55E476004419C3 /* FGApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiResponse.swift; sourceTree = "<group>"; };
+		D760F5191E55F1CA004419C3 /* FGApiResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiResolver.swift; sourceTree = "<group>"; };
 		DAE2D26158AC5C8E6F55C69B /* OIDAuthorizationService+IOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OIDAuthorizationService+IOS.m"; path = "Source/iOS/OIDAuthorizationService+IOS.m"; sourceTree = "<group>"; };
 		DC8376DBCD32E6BE95A99038 /* FGAbstractApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGAbstractApi.swift; sourceTree = "<group>"; };
 		DE37A8E1D2578494932A1F7F /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
@@ -527,7 +535,7 @@
 		F6B9018FADD61FACD1F62D37 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F7EEB4D16316AB5EF40E822F /* OIDScopes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDScopes.h; path = Source/OIDScopes.h; sourceTree = "<group>"; };
 		F84B41C1B96C17C35CB650CA /* Pods-IndigoOmtIosLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-IndigoOmtIosLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
-		F8F1E0D51ADE87BFA9CF6588 /* FGApiResolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGApiResolver.swift; sourceTree = "<group>"; };
+		F8F1E0D51ADE87BFA9CF6588 /* FGRootApiResolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGRootApiResolver.swift; sourceTree = "<group>"; };
 		FB6960ABFAF31A1044DB147B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FDC6F247B9E14745D2B54A2F /* BeNil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeNil.swift; path = Sources/Nimble/Matchers/BeNil.swift; sourceTree = "<group>"; };
 		FE8CCC6CE25521F761CD9A8D /* OIDServiceDiscovery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDServiceDiscovery.h; path = Source/OIDServiceDiscovery.h; sourceTree = "<group>"; };
@@ -901,6 +909,8 @@
 				8DA6F6EB8DFAA9C24D5A7719 /* FGAccessTokenProvider.swift */,
 				2A4BBB9D280B0F7413FC2AB5 /* FGAlamofireRequestHelper.swift */,
 				51D9521DC32175309EB3F56C /* FGRequestHelper.swift */,
+				D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */,
+				D760F5131E55CE4B004419C3 /* FGRequestHelperResponse.swift */,
 				6886E86A3AB05FC7FCFB00C0 /* FGSessionHelper.swift */,
 			);
 			path = "API Helpers";
@@ -1082,9 +1092,11 @@
 			children = (
 				DC8376DBCD32E6BE95A99038 /* FGAbstractApi.swift */,
 				D73420701E547C7200032828 /* FGAbstractResolvedApi.swift */,
-				F8F1E0D51ADE87BFA9CF6588 /* FGApiResolver.swift */,
+				D760F5191E55F1CA004419C3 /* FGApiResolver.swift */,
+				D760F5171E55E476004419C3 /* FGApiResponse.swift */,
 				0A5B37E6BFDE66024F4BB31A /* FGApplicationCollectionApi.swift */,
 				3EF52DDB9B95E33F39011DB5 /* FGInfrastructureCollectionApi.swift */,
+				F8F1E0D51ADE87BFA9CF6588 /* FGRootApiResolver.swift */,
 				D734206C1E54775F00032828 /* FGTaskApi.swift */,
 				4E906DF7A2ADD4954DC1C282 /* FGTaskCollectionApi.swift */,
 			);
@@ -1557,12 +1569,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9B60B0625B32EB0EA360F97 /* DataRequest+IndigoOmtIosLibrary.swift in Sources */,
+				D760F5141E55CE4B004419C3 /* FGRequestHelperResponse.swift in Sources */,
 				3FF794A24AB2B8E8470A3AE6 /* FGAbstractApi.swift in Sources */,
+				D760F5161E55CF21004419C3 /* FGRequestHelperPayload.swift in Sources */,
 				D73420721E54892600032828 /* FGTaskApi.swift in Sources */,
 				55DCC96F6B7BED97CFB7B1A5 /* FGAccessTokenProvider.swift in Sources */,
 				C76AE0B823E74DA733DF95B0 /* FGAlamofireRequestHelper.swift in Sources */,
 				03C5713A26BFE4D8078D688F /* FGApiLink.swift in Sources */,
-				F20DCB6FC18925C549FF77F5 /* FGApiResolver.swift in Sources */,
+				F20DCB6FC18925C549FF77F5 /* FGRootApiResolver.swift in Sources */,
 				5CC25B1F9211A492B9DAC23F /* FGApiRoot.swift in Sources */,
 				9986A63C18BAC89211AAE2BF /* FGApiRootVersion.swift in Sources */,
 				29E4E387DFA62D9C0FF6999C /* FGApplication.swift in Sources */,
@@ -1572,6 +1586,8 @@
 				58F8ED3D4C5FBD2CB0C57FE2 /* FGFutureGateway.swift in Sources */,
 				D1BBE898FDFA5CB8584DCB31 /* FGFutureGatewayError.swift in Sources */,
 				EF421D14B8CF4DCAB8F3B8CB /* FGInfrastructureCollectionApi.swift in Sources */,
+				D760F51A1E55F1CA004419C3 /* FGApiResolver.swift in Sources */,
+				D760F5181E55E476004419C3 /* FGApiResponse.swift in Sources */,
 				B5004C253EFAB50D34DC34F0 /* FGInputFile.swift in Sources */,
 				0F1A362C55361BD5AB0BC94A /* FGObjectSerializable.swift in Sources */,
 				AFC3B93E59A2F474761E535A /* FGOutputFile.swift in Sources */,

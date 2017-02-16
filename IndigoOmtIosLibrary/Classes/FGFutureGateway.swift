@@ -49,7 +49,7 @@ open class FGFutureGateway: CustomStringConvertible {
         let authHelper   = FGAlamofireRequestHelper(session: authSession)
         
         // create API resolver to get root url with version
-        let apiResolver = FGApiResolver(baseUrl: url, versionID: self.apiVersion, helper: unauthHelper)
+        let apiResolver = FGRootApiResolver(baseUrl: url, versionID: self.apiVersion, helper: unauthHelper)
         
         // create required APIs
         
