@@ -85,7 +85,6 @@
 		5CD931653B8243181191BB05 /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C85E843162682DB79906B0 /* ThrowError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		5D3526BCFEBD574B2DB1C192 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0758C7B2F1626A870FC6322 /* AFError.swift */; };
 		5E3E5F043B0AEC76A061D1C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FFA479AD80EC396F2D637C /* Foundation.framework */; };
-		5EC217851AE961E18063E01E /* FGAbstractCollectionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C6F321ED490E767156797 /* FGAbstractCollectionApi.swift */; };
 		5F4B6B7C584028F3B90CBF93 /* OIDErrorUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 191DE323A79EAC239529466E /* OIDErrorUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6191023C1EFC539A07AE6AEF /* XCTestObservationCenter+Register.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C81D2E362D8B5775C8A8CA /* XCTestObservationCenter+Register.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		62656A3B743B230C13215FC4 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = 46C7C33669DE58672198AC27 /* CwlCatchException.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -187,6 +186,8 @@
 		D546DAC527B4E212F671E540 /* FGTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CE99379CFBBA17C4A6DF5B /* FGTask.swift */; };
 		D5B8486DEBF2762A65FBECAF /* OIDAuthorizationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BF96CD95E7B6BAF89BC17D /* OIDAuthorizationResponse.m */; };
 		D711C93108D6D73238819996 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FFA479AD80EC396F2D637C /* Foundation.framework */; };
+		D73420711E547C7200032828 /* FGAbstractResolvedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73420701E547C7200032828 /* FGAbstractResolvedApi.swift */; };
+		D73420721E54892600032828 /* FGTaskApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734206C1E54775F00032828 /* FGTaskApi.swift */; };
 		D7561BCCD197F8063F31D14E /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0937730DE0A594B6E7A0C50A /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7BC9A8A1CD4501D7D7AD5DB /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF12D15D419E7FF327EE9FA /* Quick-dummy.m */; };
 		D8040C95CF0A4500D2791783 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45687C293534B947D624CA6 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -420,7 +421,6 @@
 		88AD334A1C4591BA25A202CF /* IndigoOmtIosLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IndigoOmtIosLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8997251CF80778BBB05CF522 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B43DB2A8C2B41C4657DF718 /* OIDServiceDiscovery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = OIDServiceDiscovery.m; path = Source/OIDServiceDiscovery.m; sourceTree = "<group>"; };
-		8B4C6F321ED490E767156797 /* FGAbstractCollectionApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGAbstractCollectionApi.swift; sourceTree = "<group>"; };
 		8B7044A9EE6BD938E9A6ED85 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		8C2082CA0287FCE66B9C5CBD /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		8DA6F6EB8DFAA9C24D5A7719 /* FGAccessTokenProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGAccessTokenProvider.swift; sourceTree = "<group>"; };
@@ -495,6 +495,8 @@
 		D467CF7B21380EDB7246F507 /* OIDURLQueryComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDURLQueryComponent.h; path = Source/OIDURLQueryComponent.h; sourceTree = "<group>"; };
 		D4C81D2E362D8B5775C8A8CA /* XCTestObservationCenter+Register.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestObservationCenter+Register.m"; path = "Sources/NimbleObjectiveC/XCTestObservationCenter+Register.m"; sourceTree = "<group>"; };
 		D61F0BD8D1D471BB9C72D471 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
+		D734206C1E54775F00032828 /* FGTaskApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskApi.swift; sourceTree = "<group>"; };
+		D73420701E547C7200032828 /* FGAbstractResolvedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractResolvedApi.swift; sourceTree = "<group>"; };
 		DAE2D26158AC5C8E6F55C69B /* OIDAuthorizationService+IOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OIDAuthorizationService+IOS.m"; path = "Source/iOS/OIDAuthorizationService+IOS.m"; sourceTree = "<group>"; };
 		DC8376DBCD32E6BE95A99038 /* FGAbstractApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGAbstractApi.swift; sourceTree = "<group>"; };
 		DE37A8E1D2578494932A1F7F /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
@@ -1079,10 +1081,11 @@
 			isa = PBXGroup;
 			children = (
 				DC8376DBCD32E6BE95A99038 /* FGAbstractApi.swift */,
-				8B4C6F321ED490E767156797 /* FGAbstractCollectionApi.swift */,
+				D73420701E547C7200032828 /* FGAbstractResolvedApi.swift */,
 				F8F1E0D51ADE87BFA9CF6588 /* FGApiResolver.swift */,
 				0A5B37E6BFDE66024F4BB31A /* FGApplicationCollectionApi.swift */,
 				3EF52DDB9B95E33F39011DB5 /* FGInfrastructureCollectionApi.swift */,
+				D734206C1E54775F00032828 /* FGTaskApi.swift */,
 				4E906DF7A2ADD4954DC1C282 /* FGTaskCollectionApi.swift */,
 			);
 			path = API;
@@ -1555,7 +1558,7 @@
 			files = (
 				A9B60B0625B32EB0EA360F97 /* DataRequest+IndigoOmtIosLibrary.swift in Sources */,
 				3FF794A24AB2B8E8470A3AE6 /* FGAbstractApi.swift in Sources */,
-				5EC217851AE961E18063E01E /* FGAbstractCollectionApi.swift in Sources */,
+				D73420721E54892600032828 /* FGTaskApi.swift in Sources */,
 				55DCC96F6B7BED97CFB7B1A5 /* FGAccessTokenProvider.swift in Sources */,
 				C76AE0B823E74DA733DF95B0 /* FGAlamofireRequestHelper.swift in Sources */,
 				03C5713A26BFE4D8078D688F /* FGApiLink.swift in Sources */,
@@ -1577,6 +1580,7 @@
 				181D60FEEBF0E2D49E451844 /* FGSessionHelper.swift in Sources */,
 				D546DAC527B4E212F671E540 /* FGTask.swift in Sources */,
 				C49BF2819BEE8F7A73CB3E4C /* FGTaskCollection.swift in Sources */,
+				D73420711E547C7200032828 /* FGAbstractResolvedApi.swift in Sources */,
 				A00FE2838507E14DDE3A1EDA /* FGTaskCollectionApi.swift in Sources */,
 				63F89DD4B5CA696479A2979E /* IndigoOmtIosLibrary-dummy.m in Sources */,
 			);

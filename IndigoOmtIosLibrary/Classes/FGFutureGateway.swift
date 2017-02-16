@@ -22,8 +22,11 @@ open class FGFutureGateway: CustomStringConvertible {
     /// Infrastructure collection API.
     public let infrastructureCollection: FGInfrastructureCollectionApi
     
+    /// Task API.
+    public let taskApi: FGTaskApi
+    
     /// Task collection API.
-    public let taskCollection: FGTaskCollectionApi
+    public let taskCollectionApi: FGTaskCollectionApi
     
     /// CustomStringConvertible
     public var description: String {
@@ -49,9 +52,13 @@ open class FGFutureGateway: CustomStringConvertible {
         let apiResolver = FGApiResolver(baseUrl: url, versionID: self.apiVersion, helper: unauthHelper)
         
         // create required APIs
+        
         self.applicationCollection    = FGApplicationCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
+        
         self.infrastructureCollection = FGInfrastructureCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
-        self.taskCollection           = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
+        
+        self.taskApi            = FGTaskApi(username: username, resolver: apiResolver, helper: authHelper)
+        self.taskCollectionApi  = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
     }
     
 }

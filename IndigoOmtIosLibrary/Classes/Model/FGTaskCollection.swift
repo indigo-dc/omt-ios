@@ -43,7 +43,7 @@ open class FGTaskCollection: FGObjectSerializable, CustomStringConvertible {
     }
     
     public func serialize() -> JSON {
-        var json = JSON({})
+        var json = JSON([:])
         
         if tasks.isEmpty == false {
             json["tasks"].arrayObject = tasks.map { $0.serialize().object }

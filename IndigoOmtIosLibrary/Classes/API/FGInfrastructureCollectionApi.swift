@@ -9,12 +9,9 @@
 import Foundation
 
 /// API for Future Gateway Infrastructure Collection.
-open class FGInfrastructureCollectionApi: FGAbstractCollectionApi {
+open class FGInfrastructureCollectionApi: FGAbstractResolvedApi {
     
     // MARK: - lifecycle
     
-    public init(username: String, resolver: FGApiResolver, helper: FGRequestHelper) {
-        super.init(apiPath: "infrastructures", username: username, resolver: resolver, helper: helper)
-    }
     
 }

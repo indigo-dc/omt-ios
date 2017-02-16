@@ -77,6 +77,9 @@ public struct FGRequestHelperPayload: CustomStringConvertible {
     /// The URL of the payload.
     public var url: URL?
     
+    /// This path will be appended to the resolved URL.
+    public var resourcePath: String?
+    
     /// HTTP method of the payload.
     public var method: FGHTTPMethod
     

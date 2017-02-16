@@ -76,8 +76,14 @@ extension FGRequestHelperPayload: URLRequestConvertible {
     
     public func asURLRequest() throws -> URLRequest {
         
+        // prepare url
+        var requestUrl = self.url!
+        if let path = self.resourcePath {
+            requestUrl.appendPathComponent(path)
+        }
+        
         // create request
-        var request = try URLRequest(url: self.url!)
+        var request = try URLRequest(url: requestUrl)
         
         // add method
         request.httpMethod = self.method.rawValue
