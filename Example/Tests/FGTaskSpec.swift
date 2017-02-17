@@ -16,8 +16,8 @@ class FGTaskSpec: QuickSpec {
         let response = HTTPURLResponse()
         let _ = FGTask()
         
-        describe("FGTask model") {
-            context("FGTask") {
+        describe("FGTask") {
+            context("methods") {
                 
                 it("should create object from json") {
                     
@@ -68,104 +68,43 @@ class FGTaskSpec: QuickSpec {
                     // verify
                     expect(task).to(beNil())
                 }
-            }
-            
-            context("FGInputFile") {
                 
-                it("should create object from json") {
+                it("should serialize") {
                     
                     // prepare
-                    let name = "file"
-                    let status = FGInputFileStatus.ready
-                    let jsonString = createInputFileString(name, status: status)
-                    let json = JSON(parseJSON: jsonString)
+                    let task = FGTask()
+                    task.id = "1"
+                    task.application = "2"
+                    task.infrastructureTask = "3"
+                    task.status = .waiting
+                    task.user = "user"
+                    task.taskDescription = "description"
+                    task.date = Date()
+                    task.lastChange = Date()
+                    task.arguments = ["arg"]
+                    task.inputFiles = [FGInputFile()]
+                    task.outputFiles = [FGOutputFile()]
+                    task.runtimeData = [FGRuntimeDataObject()]
+                    task.links = [FGApiLink()]
                     
                     // test
-                    let inputFile = FGInputFile(response: response, json: json)
+                    let serialized = task.serialize()
                     
                     // verify
-                    expect(inputFile).toNot(beNil())
-                    expect(inputFile?.name).to(equal(name))
-                    expect(inputFile?.status).to(equal(status))
-                }
-                
-                it("should not create object from json") {
-                    
-                    // prepare
-                    let jsonString = "{}"
-                    let json = JSON(parseJSON: jsonString)
-                    
-                    // test
-                    let inputFile = FGInputFile(response: response, json: json)
-                    
-                    // verify
-                    expect(inputFile).to(beNil())
-                }
-            }
-            
-            context("FGOutputFile") {
-                
-                it("should create object from json") {
-                    
-                    // prepare
-                    let name = "file"
-                    let url = "location?name=file"
-                    let jsonString = createOutputFileString(name, url: url)
-                    let json = JSON(parseJSON: jsonString)
-                    
-                    // test
-                    let outputFile = FGOutputFile(response: response, json: json)
-                    
-                    // verify
-                    expect(outputFile).toNot(beNil())
-                    expect(outputFile?.name).to(equal(name))
-                    expect(outputFile?.url).to(equal(url))
-                }
-                
-                it("should not create object from json") {
-                    
-                    // prepare
-                    let jsonString = "{}"
-                    let json = JSON(parseJSON: jsonString)
-                    
-                    // test
-                    let inputFile = FGOutputFile(response: response, json: json)
-                    
-                    // verify
-                    expect(inputFile).to(beNil())
-                }
-            }
-            
-            context("FGRuntimeDataObject") {
-                
-                it("should create object from json") {
-                    
-                    // prepare
-                    let name = "name"
-                    let value = "value"
-                    let jsonString = createRuntimeDataString(name, value: value)
-                    let json = JSON(parseJSON: jsonString)
-                    
-                    // test
-                    let runtimeData = FGRuntimeDataObject(response: response, json: json)
-                    
-                    // verify
-                    expect(runtimeData).toNot(beNil())
-                    expect(runtimeData?.name).to(equal(name))
-                    expect(runtimeData?.value).to(equal(value))
-                }
-                
-                it("should not create object from json") {
-                    
-                    // prepare
-                    let jsonString = "{}"
-                    let json = JSON(parseJSON: jsonString)
-                    
-                    // test
-                    let inputFile = FGRuntimeDataObject(response: response, json: json)
-                    
-                    // verify
-                    expect(inputFile).to(beNil())
+                    expect(serialized).toNot(beNil())
+                    expect(serialized["id"].string).toNot(beNil())
+                    expect(serialized["application"].string).toNot(beNil())
+                    expect(serialized["infrastructure_task"].string).toNot(beNil())
+                    expect(serialized["status"].string).toNot(beNil())
+                    expect(serialized["user"].string).toNot(beNil())
+                    expect(serialized["description"].string).toNot(beNil())
+                    expect(serialized["date"].string).toNot(beNil())
+                    expect(serialized["last_change"].string).toNot(beNil())
+                    expect(serialized["arguments"].array).toNot(beNil())
+                    expect(serialized["input_files"].array).toNot(beNil())
+                    expect(serialized["output_files"].array).toNot(beNil())
+                    expect(serialized["runtime_data"].array).toNot(beNil())
+                    expect(serialized["_links"].array).toNot(beNil())
                 }
             }
         }

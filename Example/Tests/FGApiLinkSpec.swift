@@ -1,8 +1,8 @@
 //
-//  FGApiRootSpec.swift
+//  FGApiLinkSpec.swift
 //  IndigoOmtIosLibrary
 //
-//  Created by Sebastian Mamczak on 06.02.2017.
+//  Created by Sebastian Mamczak on 16.02.2017.
 //  Copyright © 2017 CocoaPods. All rights reserved.
 //
 
@@ -11,25 +11,25 @@ import Nimble
 import SwiftyJSON
 import IndigoOmtIosLibrary
 
-class FGApiRootSpec: QuickSpec {
+class FGApiLinkSpec: QuickSpec {
     override func spec() {
         let response = HTTPURLResponse()
         
-        describe("FGApiRoot") {
+        describe("FGApiLink") {
             context("methods") {
                 
                 it("not nil") {
                     
                     // prepare
-                    let str = createApiRootString("v1.0")
+                    let str = "{\"href\": \"/\", \"rel\": \"self\"}"
                     let json = JSON(parseJSON: str)
                     
                     // test
-                    let apiRoot = FGApiRoot(response: response, json: json)
+                    let apiRootLink = FGApiLink(response: response, json: json)
                     
                     // verify
-                    expect(apiRoot).notTo(beNil())
-                    expect(apiRoot?.description).notTo(beEmpty())
+                    expect(apiRootLink).notTo(beNil())
+                    expect(apiRootLink?.description).notTo(beEmpty())
                 }
                 
                 it("nil") {
@@ -38,26 +38,28 @@ class FGApiRootSpec: QuickSpec {
                     let json = JSON(parseJSON: "")
                     
                     // test
-                    let apiRoot = FGApiRoot(response: response, json: json)
+                    let apiRootLink = FGApiLink(response: response, json: json)
                     
                     // verify
-                    expect(apiRoot).to(beNil())
+                    expect(apiRootLink).to(beNil())
                 }
                 
                 it("should serialize") {
                     
                     // prepare
-                    let apiRoot = FGApiRoot()
-                    apiRoot.links = [FGApiLink()]
-                    apiRoot.versions = [FGApiRootVersion()]
+                    let rel = "self"
+                    let href = "/here"
+                    let apiLink = FGApiLink()
+                    apiLink.rel = rel
+                    apiLink.href = href
                     
                     // test
-                    let serialized = apiRoot.serialize()
+                    let serialized = apiLink.serialize()
                     
                     // verify
                     expect(serialized).toNot(beNil())
-                    expect(serialized["versions"].array).toNot(beEmpty())
-                    expect(serialized["_links"].array).toNot(beEmpty())
+                    expect(serialized["rel"].string).to(equal(rel))
+                    expect(serialized["href"].string).to(equal(href))
                 }
             }
         }

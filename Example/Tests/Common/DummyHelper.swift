@@ -14,6 +14,7 @@ class DummyHelper: FGRequestHelper {
     
     var dummyResponse: HTTPURLResponse?
     var dummyError: FGFutureGatewayError?
+    var dummyErrorResponseBody: String?
     var dummyValue: Any?
     
     init() {
@@ -26,10 +27,18 @@ class DummyHelper: FGRequestHelper {
     
     func send<Value : FGObjectSerializable>(_ payload: FGRequestHelperPayload, callback: @escaping (FGRequestHelperResponse<Value>) -> ()) {
         getBackgroundQueue().async {
+            
+            do {
+                let _ = try payload.asURLRequest()
+            }
+            catch {
+                
+            }
+            
             print(payload.description)
             let response = FGRequestHelperResponse<Value>(request: nil,
                                                           response: self.dummyResponse,
-                                                          data: nil,
+                                                          data: self.dummyErrorResponseBody?.data(using: .utf8),
                                                           error: self.dummyError,
                                                           value: (self.dummyValue as? Value))
             print(response.description)

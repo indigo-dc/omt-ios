@@ -1,5 +1,5 @@
 //
-//  FGApiResolverSpec.swift
+//  FGRootApiResolver.swift
 //  IndigoOmtIosLibrary
 //
 //  Created by Sebastian Mamczak on 03.02.2017.
@@ -11,23 +11,23 @@ import Nimble
 import Alamofire
 import IndigoOmtIosLibrary
 
-class FGApiResolverSpec: QuickSpec {
+class FGRootApiResolverSpec: QuickSpec {
     override func spec() {
         let baseUrl = Constants.notExistingServerUrl
         let versionID = "v1.0"
         let dummyHelper = DummyHelper()
         var resolver: FGApiResolver?
         
-        describe("FGApiResolver") {
+        describe("FGRootApiResolver") {
             context("resolveUrlWithVersion") {
                 beforeEach {
                     dummyHelper.dummyError = nil
                     dummyHelper.dummyResponse = nil
                     dummyHelper.dummyValue = nil
-                    resolver = FGApiResolver(baseUrl: baseUrl, versionID: versionID, helper: dummyHelper)
+                    resolver = FGRootApiResolver(baseUrl: baseUrl, versionID: versionID, helper: dummyHelper)
                 }
                 
-                it("network error") {
+                it("should return network error") {
                     
                     // prepare
                     dummyHelper.dummyError = FGFutureGatewayError.network(error: DummyError(msg: "A network error"))
@@ -38,6 +38,7 @@ class FGApiResolverSpec: QuickSpec {
                             
                             // verify
                             expect(response.error).to(beNetworkError())
+                            expect(response.errorResponseBody).to(beNil())
                             expect(response.value).to(beNil())
                             
                             done()
@@ -45,7 +46,28 @@ class FGApiResolverSpec: QuickSpec {
                     }
                 }
                 
-                it("version not found") {
+                it("should return json error with body") {
+                    
+                    // prepare
+                    dummyHelper.dummyError = FGFutureGatewayError.jsonSerialization(error: DummyError(msg: "Service is not available"))
+                    dummyHelper.dummyErrorResponseBody = "{\"message\":\"Please check later\"}"
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        resolver?.resolveUrlWithVersion { response in
+                            
+                            // verify
+                            expect(response.error).to(beJsonSerializationError())
+                            expect(response.errorResponseBody).toNot(beNil())
+                            expect(response.description).toNot(beNil())
+                            expect(response.value).to(beNil())
+                            
+                            done()
+                        }
+                    }
+                }
+                
+                it("should return version not found") {
                     
                     // prepare
                     let notExistingVersion = "v2.0"
@@ -66,7 +88,7 @@ class FGApiResolverSpec: QuickSpec {
                     }
                 }
                 
-                it("version was found - no link") {
+                it("should return version was found - no link") {
                     
                     // prepare
                     let data = createApiRootStringWithNoLinks(versionID).data(using: .utf8)!
@@ -85,7 +107,7 @@ class FGApiResolverSpec: QuickSpec {
                     }
                 }
                 
-                it("version was found") {
+                it("should return version was found") {
                     
                     // prepare
                     let data = createApiRootString(versionID).data(using: .utf8)!
@@ -97,6 +119,7 @@ class FGApiResolverSpec: QuickSpec {
                             
                             // verify
                             expect(response.error).to(beNil())
+                            expect(response.errorResponseBody).to(beNil())
                             expect(response.value).toNot(beNil())
                             expect(response.description).toNot(beNil())
                             
@@ -105,7 +128,7 @@ class FGApiResolverSpec: QuickSpec {
                     }
                 }
                 
-                it("version was found on second attempt") {
+                it("should return version was found on second attempt") {
                     
                     // prepare
                     let data = createApiRootString(versionID).data(using: .utf8)!

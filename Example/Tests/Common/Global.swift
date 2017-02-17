@@ -35,6 +35,10 @@ func createRuntimeDataString(_ name: String, value: String) -> String {
     return "{\"name\":\"\(name)\",\"value\":\"\(value)\",\"description\":\"This define something\",\"creation\":\"2014-11-11T12:12:00.421Z\",\"last_change\":\"2017-01-01T12:00:01.352Z\"}"
 }
 
+func createTaskCollectionString(_ task: String) -> String {
+    return "{\"tasks\":[\(task)]}"
+}
+
 func makeObject<T: FGObjectSerializable>(_ data: Data) -> T? {
     return DataRequest.serializeFGObject(request: nil, response: HTTPURLResponse(), data: data, error: nil).value
 }

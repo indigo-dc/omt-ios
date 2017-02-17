@@ -24,8 +24,8 @@ class FGFutureGatewaySpec: QuickSpec {
                     let fg = FGFutureGateway(url: url, username: username, provider: provider)
                     
                     // verify
-                    expect(fg.taskCollection.resolver.baseUrl).to(equal(url))
-                    expect(fg.taskCollection.username).to(equal(username))
+                    expect(fg.taskCollectionApi.resolver.baseUrl).to(equal(url))
+                    expect(fg.taskCollectionApi.username).to(equal(username))
                     expect(fg.description).toNot(beEmpty())
                 }
             }

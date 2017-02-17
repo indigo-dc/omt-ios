@@ -54,30 +54,35 @@ and then run shell script from root directory
 ./run_code_coverage.sh
 ```
 
-## Current coverage for IndigoOmtIosLibrary.framework is `73%`
+
+> Powered by [xcov](https://github.com/nakiostudio/xcov)
+## Current coverage for IndigoOmtIosLibrary.framework is `94%`
 Files changed | - | - 
 --- | --- | ---
 FGApplication.swift | `0%` | :skull:
-FGTaskCollection.swift | `0%` | :skull:
-FGTaskCollectionApi.swift | `0%` | :skull:
-FGAbstractResolvedApi.swift | `16%` | :skull:
-FGRuntimeDataObject.swift | `41%` | :no_entry_sign:
-FGOutputFile.swift | `48%` | :no_entry_sign:
-FGInputFile.swift | `48%` | :no_entry_sign:
-FGTask.swift | `53%` | :warning:
-FGAbstractApi.swift | `71%` | :warning:
-FGRequestHelper.swift | `94%` | :white_check_mark:
-FGAlamofireRequestHelper.swift | `98%` | :white_check_mark:
-FGFutureGateway.swift | `100%` | :white_check_mark:
+FGTaskApi.swift | `0%` | :skull:
+FGTaskCollection.swift | `21%` | :skull:
+FGTaskCollectionApi.swift | `62%` | :warning:
+FGAlamofireRequestHelper.swift | `100%` | :white_check_mark:
 FGApiLink.swift | `100%` | :white_check_mark:
-FGApiResolver.swift | `100%` | :white_check_mark:
+FGRootApiResolver.swift | `100%` | :white_check_mark:
 FGApiRoot.swift | `100%` | :white_check_mark:
 FGApiRootVersion.swift | `100%` | :white_check_mark:
 FGDateUtil.swift | `100%` | :white_check_mark:
-FGEmptyObject.swift | `100%` | :white_check_mark:
 DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
+FGFutureGateway.swift | `100%` | :white_check_mark:
 FGFutureGatewayError.swift | `100%` | :white_check_mark:
+FGApiResponse.swift | `100%` | :white_check_mark:
+FGInputFile.swift | `100%` | :white_check_mark:
+FGOutputFile.swift | `100%` | :white_check_mark:
+FGRuntimeDataObject.swift | `100%` | :white_check_mark:
 FGSessionHelper.swift | `100%` | :white_check_mark:
+FGTask.swift | `100%` | :white_check_mark:
+FGAbstractResolvedApi.swift | `100%` | :white_check_mark:
+FGEmptyObject.swift | `100%` | :white_check_mark:
+FGRequestHelperResponse.swift | `100%` | :white_check_mark:
+FGAbstractApi.swift | `100%` | :white_check_mark:
+FGRequestHelperPayload.swift | `100%` | :white_check_mark:
 
 ---
 

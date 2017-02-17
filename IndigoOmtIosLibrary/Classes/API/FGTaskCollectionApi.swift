@@ -49,7 +49,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
     
-    /// Not working
+    /// Not implemented
     public func addMultipleTasks(_ taskCollection: FGTaskCollection, callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
@@ -62,7 +62,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
     
-    /// Not working
+    /// Not implemented
     public func deleteTaskList(_ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
         
         // prepare payload
