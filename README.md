@@ -76,7 +76,7 @@ FGFutureGatewayError.swift | `100%` | :white_check_mark:
 FGApiResponse.swift | `100%` | :white_check_mark:
 FGInputFile.swift | `100%` | :white_check_mark:
 FGOutputFile.swift | `100%` | :white_check_mark:
-FGRuntimeDataObject.swift | `100%` | :white_check_mark:
+FGRuntimeDataParameter.swift | `100%` | :white_check_mark:
 FGSessionHelper.swift | `100%` | :white_check_mark:
 FGTask.swift | `100%` | :white_check_mark:
 FGTaskCollection.swift | `100%` | :white_check_mark:

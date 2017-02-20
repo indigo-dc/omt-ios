@@ -1,5 +1,5 @@
 //
-//  FGRuntimeDataObjectSpec.swift
+//  FGRuntimeDataParameterSpec.swift
 //  IndigoOmtIosLibrary
 //
 //  Created by Sebastian Mamczak on 16.02.2017.
@@ -11,12 +11,12 @@ import Nimble
 import SwiftyJSON
 import IndigoOmtIosLibrary
 
-class FGRuntimeDataObjectSpec: QuickSpec {
+class FGRuntimeDataParameterSpec: QuickSpec {
     override func spec() {
         let response = HTTPURLResponse()
         let _ = FGTask()
         
-        describe("FGRuntimeDataObject") {
+        describe("FGRuntimeDataParameter") {
             context("methods") {
                 
                 it("should create object from json") {
@@ -28,12 +28,12 @@ class FGRuntimeDataObjectSpec: QuickSpec {
                     let json = JSON(parseJSON: jsonString)
                     
                     // test
-                    let runtimeData = FGRuntimeDataObject(response: response, json: json)
+                    let runtimeDataParameter = FGRuntimeDataParameter(response: response, json: json)
                     
                     // verify
-                    expect(runtimeData).toNot(beNil())
-                    expect(runtimeData?.name).to(equal(name))
-                    expect(runtimeData?.value).to(equal(value))
+                    expect(runtimeDataParameter).toNot(beNil())
+                    expect(runtimeDataParameter?.name).to(equal(name))
+                    expect(runtimeDataParameter?.value).to(equal(value))
                 }
                 
                 it("should not create object from json") {
@@ -43,10 +43,10 @@ class FGRuntimeDataObjectSpec: QuickSpec {
                     let json = JSON(parseJSON: jsonString)
                     
                     // test
-                    let inputFile = FGRuntimeDataObject(response: response, json: json)
+                    let runtimeDataParameter = FGRuntimeDataParameter(response: response, json: json)
                     
                     // verify
-                    expect(inputFile).to(beNil())
+                    expect(runtimeDataParameter).to(beNil())
                 }
                 
                 it("should serialize") {
@@ -55,15 +55,15 @@ class FGRuntimeDataObjectSpec: QuickSpec {
                     let name = "name"
                     let value = "value"
                     let description = "description"
-                    let runtimeDataObject = FGRuntimeDataObject()
-                    runtimeDataObject.name = name
-                    runtimeDataObject.value = value
-                    runtimeDataObject.dataDescription = description
-                    runtimeDataObject.creation = Date()
-                    runtimeDataObject.lastChange = Date()
+                    let runtimeDataParameter = FGRuntimeDataParameter()
+                    runtimeDataParameter.name = name
+                    runtimeDataParameter.value = value
+                    runtimeDataParameter.parameterDescription = description
+                    runtimeDataParameter.creation = Date()
+                    runtimeDataParameter.lastChange = Date()
                     
                     // test
-                    let serialized = runtimeDataObject.serialize()
+                    let serialized = runtimeDataParameter.serialize()
                     
                     // verify
                     expect(serialized).toNot(beNil())

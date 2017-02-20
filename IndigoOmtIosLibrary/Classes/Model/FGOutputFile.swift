@@ -45,10 +45,10 @@ open class FGOutputFile: FGObjectSerializable, CustomStringConvertible {
     public func serialize() -> JSON {
         var json = JSON([:])
         
-        if let name = name {
+        if let name = self.name {
             json["name"].string = name
         }
-        if let url = url {
+        if let url = self.url {
             json["url"].string = url
         }
         

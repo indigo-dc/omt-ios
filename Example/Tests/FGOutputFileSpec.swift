@@ -43,10 +43,10 @@ class FGOutputFileSpec: QuickSpec {
                     let json = JSON(parseJSON: jsonString)
                     
                     // test
-                    let inputFile = FGOutputFile(response: response, json: json)
+                    let outputFile = FGOutputFile(response: response, json: json)
                     
                     // verify
-                    expect(inputFile).to(beNil())
+                    expect(outputFile).to(beNil())
                 }
                 
                 it("should serialize") {

@@ -55,10 +55,10 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
     public func serialize() -> JSON {
         var json = JSON([:])
         
-        if let name = name {
+        if let name = self.name {
             json["name"].string = name
         }
-        if let status = status {
+        if let status = self.status {
             json["status"].string = status.rawValue
         }
         

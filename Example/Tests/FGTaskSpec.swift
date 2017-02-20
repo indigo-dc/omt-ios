@@ -84,7 +84,7 @@ class FGTaskSpec: QuickSpec {
                     task.arguments = ["arg"]
                     task.inputFiles = [FGInputFile()]
                     task.outputFiles = [FGOutputFile()]
-                    task.runtimeData = [FGRuntimeDataObject()]
+                    task.runtimeData = [FGRuntimeDataParameter()]
                     task.links = [FGApiLink()]
                     
                     // test

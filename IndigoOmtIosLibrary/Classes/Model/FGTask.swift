@@ -76,7 +76,7 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     public var outputFiles: [FGOutputFile] = []
     
     /// Information of the running task provided back to the user. This is needed to allow users to interact with the application. As an example, for a task running a VM the runtime_data can contains the ip address and the credentials. The format is similar to parameters with the addition of two optional time fields: creation and last_change.
-    public var runtimeData: [FGRuntimeDataObject] = []
+    public var runtimeData: [FGRuntimeDataParameter] = []
     
     /// Task links.
     public var links: [FGApiLink] = []
@@ -125,9 +125,9 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
             }
         }
         if let runtimeData = json["runtime_data"].array {
-            for runtimeDataObjectJson in runtimeData {
-                if let runtimeDataObject = FGRuntimeDataObject(response: response, json: runtimeDataObjectJson) {
-                    self.runtimeData.append(runtimeDataObject)
+            for runtimeDataParameterJson in runtimeData {
+                if let runtimeDataParameter = FGRuntimeDataParameter(response: response, json: runtimeDataParameterJson) {
+                    self.runtimeData.append(runtimeDataParameter)
                 }
             }
         }
@@ -147,28 +147,28 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     public func serialize() -> JSON {
         var json = JSON([:])
         
-        if let id = id {
+        if let id = self.id {
             json["id"].string = id
         }
-        if let status = status {
+        if let status = self.status {
             json["status"].string = status.rawValue
         }
-        if let taskDescription = taskDescription {
+        if let taskDescription = self.taskDescription {
             json["description"].string = taskDescription
         }
-        if let creation = creation {
+        if let creation = self.creation {
             json["creation"].string = FGDateUtil.format("yyyy-MM-ddTHH:mm:ssZ", date: creation)
         }
-        if let lastChange = lastChange {
+        if let lastChange = self.lastChange {
             json["last_change"].string = FGDateUtil.format("yyyy-MM-ddTHH:mm:ssZ", date: lastChange)
         }
-        if let application = application {
+        if let application = self.application {
             json["application"].string = application
         }
-        if let infrastructureTask = infrastructureTask {
+        if let infrastructureTask = self.infrastructureTask {
             json["infrastructure_task"].string = infrastructureTask
         }
-        if let user = user {
+        if let user = self.user {
             json["user"].string = user
         }
         

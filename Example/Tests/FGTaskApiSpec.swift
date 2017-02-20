@@ -57,7 +57,6 @@ class FGTaskApiSpec: QuickSpec {
                             expect(response.error).to(beNil())
                             expect(response.value).toNot(beNil())
                             
-                            
                             done()
                         })
                     }
