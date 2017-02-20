@@ -46,7 +46,7 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     public var id: String?
     
     /// An date when the task was created.
-    public var date: Date?
+    public var creation: Date?
     
     /// An date when the task status was updated.
     public var lastChange: Date?
@@ -99,7 +99,7 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
         self.id = id
         self.status = status
         self.taskDescription = json["description"].string
-        self.date = FGDateUtil.parseDate(json["date"].string)
+        self.creation = FGDateUtil.parseDate(json["creation"].string)
         self.lastChange = FGDateUtil.parseDate(json["last_change"].string)
         self.application = json["application"].string
         self.infrastructureTask = json["infrastructure_task"].string
@@ -156,8 +156,8 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
         if let taskDescription = taskDescription {
             json["description"].string = taskDescription
         }
-        if let date = date {
-            json["date"].string = FGDateUtil.format("yyyy-MM-ddTHH:mm:ssZ", date: date)
+        if let creation = creation {
+            json["creation"].string = FGDateUtil.format("yyyy-MM-ddTHH:mm:ssZ", date: creation)
         }
         if let lastChange = lastChange {
             json["last_change"].string = FGDateUtil.format("yyyy-MM-ddTHH:mm:ssZ", date: lastChange)

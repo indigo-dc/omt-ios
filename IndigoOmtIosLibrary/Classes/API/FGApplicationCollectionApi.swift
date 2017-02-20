@@ -13,4 +13,8 @@ open class FGApplicationCollectionApi: FGAbstractResolvedApi {
     
     // MARK: - lifecycle
     
+    
+    
+    
+    
 }

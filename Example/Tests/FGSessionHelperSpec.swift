@@ -145,7 +145,7 @@ class FGSessionHelperSpec: QuickSpec {
                 it("should return false when status code is different than 401") {
                     
                     // prepare
-                    let response500 = HTTPURLResponse(url: url, statusCode: 500, httpVersion: nil, headerFields: nil)
+                    let response500 = HTTPURLResponse(url: url, statusCode: 501, httpVersion: nil, headerFields: nil)
                     
                     // test
                     authSessionHelper.shouldRetry(retryCount: firstRetry, urlResponse: response500) { success, _ in

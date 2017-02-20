@@ -19,9 +19,6 @@ open class FGFutureGateway: CustomStringConvertible {
     /// Application collection API.
     public let applicationCollection: FGApplicationCollectionApi
     
-    /// Infrastructure collection API.
-    public let infrastructureCollection: FGInfrastructureCollectionApi
-    
     /// Task API.
     public let taskApi: FGTaskApi
     
@@ -52,13 +49,9 @@ open class FGFutureGateway: CustomStringConvertible {
         let apiResolver = FGRootApiResolver(baseUrl: url, versionID: self.apiVersion, helper: unauthHelper)
         
         // create required APIs
-        
-        self.applicationCollection    = FGApplicationCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
-        
-        self.infrastructureCollection = FGInfrastructureCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
-        
-        self.taskApi            = FGTaskApi(username: username, resolver: apiResolver, helper: authHelper)
-        self.taskCollectionApi  = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
+        self.applicationCollection  = FGApplicationCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
+        self.taskApi                = FGTaskApi(username: username, resolver: apiResolver, helper: authHelper)
+        self.taskCollectionApi      = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
     }
     
 }

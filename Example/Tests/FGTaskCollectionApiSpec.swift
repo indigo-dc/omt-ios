@@ -46,7 +46,7 @@ class FGTaskCollectionApiSpec: QuickSpec {
                     }
                 }
                 
-                it("should return network error on task list"){
+                it("should return network error on task list") {
                     
                     // prepare
                     dummyHelper.dummyError = FGFutureGatewayError.network(error: DummyError(msg: "405 Method not allowed"))
@@ -105,7 +105,7 @@ class FGTaskCollectionApiSpec: QuickSpec {
                             let responseTask = response.value!
                             
                             expect(responseTask.id).toNot(beNil())
-                            expect(responseTask.date).toNot(beNil())
+                            expect(responseTask.creation).toNot(beNil())
                             expect(responseTask.user).toNot(beNil())
                             expect(responseTask.status?.rawValue).to(equal(FGTaskStatus.waiting.rawValue))
                             expect(responseTask.inputFiles[0].status).to(equal(FGInputFileStatus.needed))
@@ -122,7 +122,7 @@ class FGTaskCollectionApiSpec: QuickSpec {
     
     func makeNewTask(from task: FGTask) -> FGTask {
         task.id = "2"
-        task.date = Date()
+        task.creation = Date()
         task.user = "user"
         task.status = .waiting
         task.inputFiles = task.inputFiles.map { $0.status = .needed; return $0 }

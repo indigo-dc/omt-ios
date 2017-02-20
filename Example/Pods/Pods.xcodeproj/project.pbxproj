@@ -193,6 +193,7 @@
 		D760F5161E55CF21004419C3 /* FGRequestHelperPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */; };
 		D760F5181E55E476004419C3 /* FGApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5171E55E476004419C3 /* FGApiResponse.swift */; };
 		D760F51A1E55F1CA004419C3 /* FGApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5191E55F1CA004419C3 /* FGApiResolver.swift */; };
+		D760F52A1E5B081D004419C3 /* FGMessageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5291E5B081D004419C3 /* FGMessageObject.swift */; };
 		D7BC9A8A1CD4501D7D7AD5DB /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF12D15D419E7FF327EE9FA /* Quick-dummy.m */; };
 		D8040C95CF0A4500D2791783 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45687C293534B947D624CA6 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		DA41741F15AC3C93340F5BF3 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = DFF51288CDB7B97D3AFBFA5B /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -208,7 +209,6 @@
 		EBE0739C262F62ECFD56FEC6 /* RaisesException.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9D4F55AF79B8CFA2C9F74A /* RaisesException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		EC6E5EBC1EF82E07CD48DB33 /* QCKDSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE461EE4A117F5549484864 /* QCKDSL.m */; };
 		ED6C1B4E470306E3372A693C /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C15DF7BA7B1FD9095AC9326 /* DispatchQueue+Alamofire.swift */; };
-		EF421D14B8CF4DCAB8F3B8CB /* FGInfrastructureCollectionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF52DDB9B95E33F39011DB5 /* FGInfrastructureCollectionApi.swift */; };
 		F07C1FF80CB1868915C29D64 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCCFEF6EE01ADE4E6E1DE04 /* Alamofire.swift */; };
 		F1138D4FB0EA87DFFE984BE2 /* Pods-IndigoOmtIosLibrary_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 70E36932912DA221BCD1FE92 /* Pods-IndigoOmtIosLibrary_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F20DCB6FC18925C549FF77F5 /* FGRootApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F1E0D51ADE87BFA9CF6588 /* FGRootApiResolver.swift */; };
@@ -354,7 +354,6 @@
 		37EA84D8C4172F1B6A33CC0C /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/QuickObjectiveC/DSL/World+DSL.h"; sourceTree = "<group>"; };
 		38193B99E97BBB4AA29810C1 /* AsyncMatcherWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncMatcherWrapper.swift; path = Sources/Nimble/Matchers/AsyncMatcherWrapper.swift; sourceTree = "<group>"; };
 		398CB1D20FAC8A2209E0FC0F /* AppAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EF52DDB9B95E33F39011DB5 /* FGInfrastructureCollectionApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGInfrastructureCollectionApi.swift; sourceTree = "<group>"; };
 		40BAE9D8A5EFF7352CDDE129 /* OIDAuthorizationResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDAuthorizationResponse.h; path = Source/OIDAuthorizationResponse.h; sourceTree = "<group>"; };
 		40C2602CF5BF2BEC3FD7A533 /* DSL+Wait.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DSL+Wait.swift"; path = "Sources/Nimble/DSL+Wait.swift"; sourceTree = "<group>"; };
 		447F469B71E8B9759D89E112 /* FGApplication.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGApplication.swift; sourceTree = "<group>"; };
@@ -505,6 +504,7 @@
 		D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRequestHelperPayload.swift; sourceTree = "<group>"; };
 		D760F5171E55E476004419C3 /* FGApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiResponse.swift; sourceTree = "<group>"; };
 		D760F5191E55F1CA004419C3 /* FGApiResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiResolver.swift; sourceTree = "<group>"; };
+		D760F5291E5B081D004419C3 /* FGMessageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGMessageObject.swift; sourceTree = "<group>"; };
 		DAE2D26158AC5C8E6F55C69B /* OIDAuthorizationService+IOS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "OIDAuthorizationService+IOS.m"; path = "Source/iOS/OIDAuthorizationService+IOS.m"; sourceTree = "<group>"; };
 		DC8376DBCD32E6BE95A99038 /* FGAbstractApi.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGAbstractApi.swift; sourceTree = "<group>"; };
 		DE37A8E1D2578494932A1F7F /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
@@ -981,6 +981,7 @@
 				330373A715F9E62C34CEDA74 /* FGApiRootVersion.swift */,
 				447F469B71E8B9759D89E112 /* FGApplication.swift */,
 				B1626FD4621D6643F651893F /* FGInputFile.swift */,
+				D760F5291E5B081D004419C3 /* FGMessageObject.swift */,
 				D157D4337CC288DF67F0D90C /* FGOutputFile.swift */,
 				62A8D960FA6F029F9F70A71B /* FGRuntimeDataObject.swift */,
 				35CE99379CFBBA17C4A6DF5B /* FGTask.swift */,
@@ -1095,7 +1096,6 @@
 				D760F5191E55F1CA004419C3 /* FGApiResolver.swift */,
 				D760F5171E55E476004419C3 /* FGApiResponse.swift */,
 				0A5B37E6BFDE66024F4BB31A /* FGApplicationCollectionApi.swift */,
-				3EF52DDB9B95E33F39011DB5 /* FGInfrastructureCollectionApi.swift */,
 				F8F1E0D51ADE87BFA9CF6588 /* FGRootApiResolver.swift */,
 				D734206C1E54775F00032828 /* FGTaskApi.swift */,
 				4E906DF7A2ADD4954DC1C282 /* FGTaskCollectionApi.swift */,
@@ -1585,12 +1585,12 @@
 				10082617300A8464010F90FE /* FGEmptyObject.swift in Sources */,
 				58F8ED3D4C5FBD2CB0C57FE2 /* FGFutureGateway.swift in Sources */,
 				D1BBE898FDFA5CB8584DCB31 /* FGFutureGatewayError.swift in Sources */,
-				EF421D14B8CF4DCAB8F3B8CB /* FGInfrastructureCollectionApi.swift in Sources */,
 				D760F51A1E55F1CA004419C3 /* FGApiResolver.swift in Sources */,
 				D760F5181E55E476004419C3 /* FGApiResponse.swift in Sources */,
 				B5004C253EFAB50D34DC34F0 /* FGInputFile.swift in Sources */,
 				0F1A362C55361BD5AB0BC94A /* FGObjectSerializable.swift in Sources */,
 				AFC3B93E59A2F474761E535A /* FGOutputFile.swift in Sources */,
+				D760F52A1E5B081D004419C3 /* FGMessageObject.swift in Sources */,
 				67E0B22C5976F7474E00EE34 /* FGRequestHelper.swift in Sources */,
 				8B26F410EA1C082428304230 /* FGRuntimeDataObject.swift in Sources */,
 				181D60FEEBF0E2D49E451844 /* FGSessionHelper.swift in Sources */,

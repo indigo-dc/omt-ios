@@ -11,7 +11,9 @@ import Foundation
 /// API for Future Gateway Task Collection.
 open class FGTaskCollectionApi: FGAbstractResolvedApi {
     
-    /// Returns list of all tasks.
+    /// Retrieve the list of tasks submitted by the user defined in the token.
+    /// The list includes all the submitted tasks to the system.
+    /// If the search has to be limited to a subset the attribute filter has to be used.
     public func listAllTasks(_ callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
@@ -24,6 +26,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
     
+    /// Create a new task.
     public func createTask(_ task: FGTask, callback: @escaping FGApiResponseCallback<FGTask>) {
         
         // prepare payload
@@ -36,8 +39,8 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
     
-    /// This method is not allowed.
-    /// It will return HTTP error 405.
+    /// Replacing the full list of task is not acceptable.
+    /// A bulk operation can be performed using the PATCH method.
     public func replaceTaskList(_ taskCollection: FGTaskCollection, callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
@@ -48,8 +51,8 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         // send
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
-    
-    /// Not implemented
+    /*
+    /// Adds multiple tasks.
     public func addMultipleTasks(_ taskCollection: FGTaskCollection, callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
@@ -62,7 +65,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
     
-    /// Not implemented
+    /// Remove all tasks
     public func deleteTaskList(_ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
         
         // prepare payload
@@ -72,5 +75,5 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         // send
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
-    
+    */
 }
