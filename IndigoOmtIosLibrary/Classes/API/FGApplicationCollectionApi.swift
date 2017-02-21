@@ -12,9 +12,14 @@ import Foundation
 open class FGApplicationCollectionApi: FGAbstractResolvedApi {
     
     // MARK: - lifecycle
-    
-    
-    
-    
+    public func listAllApplications(_ callback: @escaping FGApiResponseCallback<FGApplicationCollection>) {
+        
+        // prepare payload
+        var payload = FGRequestHelperPayload(method: .get)
+        payload.resourcePath = "applications"
+        
+        // send
+        fetchResolvedUrlAndSendPayload(payload, callback)
+    }
     
 }

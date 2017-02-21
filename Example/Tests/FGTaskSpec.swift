@@ -43,7 +43,6 @@ class FGTaskSpec: QuickSpec {
                     expect(task?.status).to(equal(status))
                     expect(task?.user).to(equal(user))
                     
-                    expect(task?.infrastructureTask).toNot(beEmpty())
                     expect(task?.creation).toNot(beNil())
                     expect(task?.lastChange).toNot(beNil())
                     
@@ -75,7 +74,6 @@ class FGTaskSpec: QuickSpec {
                     let task = FGTask()
                     task.id = "1"
                     task.application = "2"
-                    task.infrastructureTask = "3"
                     task.status = .waiting
                     task.user = "user"
                     task.taskDescription = "description"
@@ -94,7 +92,6 @@ class FGTaskSpec: QuickSpec {
                     expect(serialized).toNot(beNil())
                     expect(serialized["id"].string).toNot(beNil())
                     expect(serialized["application"].string).toNot(beNil())
-                    expect(serialized["infrastructure_task"].string).toNot(beNil())
                     expect(serialized["status"].string).toNot(beNil())
                     expect(serialized["user"].string).toNot(beNil())
                     expect(serialized["description"].string).toNot(beNil())

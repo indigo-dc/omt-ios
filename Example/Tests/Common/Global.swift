@@ -20,7 +20,7 @@ func createApiRootStringWithNoLinks(_ version: String) -> String {
 }
 
 func createTaskString(_ id: String, application: String, status: FGTaskStatus, desc: String, user: String) -> String {
-    return "{\"status\":\"\(status.rawValue)\",\"description\":\"\(desc)\",\"user\":\"\(user)\",\"creation\":\"2017-01-01T12:00:00Z\",\"id\":\"\(id)\",\"output_files\":[\(createOutputFileString("output1.txt", url: "file?path=/local&name=output1.txt"))],\"application\":\"\(application)\",\"_links\":[{\"href\":\"/v1.0/tasks/\(id)\",\"rel\":\"self\"},{\"href\":\"/v1.0/tasks/\(id)/input\",\"rel\":\"input\"}],\"arguments\":[\"arg1\",\"arg2\"],\"input_files\":[\(createInputFileString("input1.text", status: .needed))],\"last_change\":\"2017-01-01T12:00:00Z\",\"runtime_data\":[\(createRuntimeDataString("key", value: "value"))],\"infrastructure_task\":\"555\"}"
+    return "{\"status\":\"\(status.rawValue)\",\"description\":\"\(desc)\",\"user\":\"\(user)\",\"creation\":\"2017-01-01T12:00:00Z\",\"id\":\"\(id)\",\"output_files\":[\(createOutputFileString("output1.txt", url: "file?path=/local&name=output1.txt"))],\"application\":\"\(application)\",\"_links\":[{\"href\":\"/v1.0/tasks/\(id)\",\"rel\":\"self\"},{\"href\":\"/v1.0/tasks/\(id)/input\",\"rel\":\"input\"}],\"arguments\":[\"arg1\",\"arg2\"],\"input_files\":[\(createInputFileString("input1.text", status: .needed))],\"last_change\":\"2017-01-01T12:00:00Z\",\"runtime_data\":[\(createRuntimeDataString("key", value: "value"))]}"
 }
 
 func createInputFileString(_ name: String, status: FGInputFileStatus) -> String {
