@@ -43,6 +43,18 @@ func createMessageString(_ msg: String) -> String {
     return "{\"message\":\"\(msg)\"}"
 }
 
+func createInfrastructureString(_ id: String, name: String, desc: String) -> String {
+    return "{\"vinfra\":false,\"enabled\":1,\"id\":\"\(id)\",\"creation\":\"2016-12-07T14:48:56Z\",\"description\":\"\(desc)\",\"name\":\"\(name)\",\"parameters\":[{\"name\":\"name\",\"value\":\"jobtest\"}]}"
+}
+
+func createApplicationString(_ id: String, name: String, desc: String) -> String {
+    return "{\"name\":\"\(name)\",\"input_files\":[\(createInputFileString("file", status: .needed))],\"id\":\"\(id)\",\"_links\":[{\"href\": \"/\", \"rel\": \"self\"}],\"description\":\"\(desc)\",\"parameters\":[{\"name\":\"jobdesc_executable\",\"value\":\"\\/bin\\/hostname\",\"description\":\"\"}],\"enabled\":1,\"outcome\":\"JOB\",\"infrastructures\":[\(createInfrastructureString("5", name: "myInfrastructure", desc: "My description"))]}"
+}
+
+func createApplicationCollectionString(_ application: String) -> String {
+    return "{\"applications\":[\(application)]}"
+}
+
 func makeObject<T: FGObjectSerializable>(_ data: Data) -> T? {
     return DataRequest.serializeFGObject(request: nil, response: HTTPURLResponse(), data: data, error: nil).value
 }

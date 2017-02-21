@@ -52,9 +52,6 @@ open class FGInfrastructure: FGObjectSerializable, CustomStringConvertible {
         
         self.id = id
         
-        print(json.rawString())
-        
-        
         if let name = json["name"].string {
             self.name = name
         }
@@ -104,7 +101,7 @@ open class FGInfrastructure: FGObjectSerializable, CustomStringConvertible {
         if let creation = self.creation {
             json["creation"].string = FGDateUtil.format("yyyy-MM-ddTHH:mm:ssZ", date: creation)
         }
-        if parameters.isEmpty {
+        if parameters.isEmpty == false {
             json["parameters"].arrayObject = self.parameters.map { $0.serialize().object }
         }
         
