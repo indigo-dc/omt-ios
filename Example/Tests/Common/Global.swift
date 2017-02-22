@@ -24,7 +24,7 @@ func createTaskString(_ id: String, application: String, status: FGTaskStatus, d
 }
 
 func createInputFileString(_ name: String, status: FGInputFileStatus) -> String {
-    return "{\"status\":\"\(status.rawValue)\",\"name\":\"\(name)\"}"
+    return "{\"status\":\"\(status.rawValue)\",\"name\":\"\(name)\", \"url\":\"file\"}"
 }
 
 func createOutputFileString(_ name: String, url: String) -> String {

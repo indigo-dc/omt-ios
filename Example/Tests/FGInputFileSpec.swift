@@ -39,7 +39,7 @@ class FGInputFileSpec: QuickSpec {
                 it("should not create object from json") {
                     
                     // prepare
-                    let jsonString = "{}"
+                    let jsonString = "not a valid json"
                     let json = JSON(parseJSON: jsonString)
                     
                     // test
@@ -54,9 +54,11 @@ class FGInputFileSpec: QuickSpec {
                     // prepare
                     let name = "name"
                     let status = FGInputFileStatus.needed
+                    let url = "file"
                     let inputFile = FGInputFile()
                     inputFile.name = name
                     inputFile.status = status
+                    inputFile.url = url
                     
                     // test
                     let serialized = inputFile.serialize()
@@ -65,6 +67,7 @@ class FGInputFileSpec: QuickSpec {
                     expect(serialized).toNot(beNil())
                     expect(serialized["name"].string).to(equal(name))
                     expect(serialized["status"].string).to(equal(status.rawValue))
+                    expect(serialized["url"].string).to(equal(url))
                 }
             }
         }

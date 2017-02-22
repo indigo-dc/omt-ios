@@ -58,21 +58,6 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             .responseObject(queue: self.session.getDispatchQueue())
         { (dataResponse: DataResponse<Value>) in
             
-            
-            
-            
-            print(dataResponse.request?.httpMethod)
-            print(dataResponse.request?.allHTTPHeaderFields)
-            
-            if dataResponse.request?.httpBody != nil {
-            print(
-                String(data: dataResponse.request!.httpBody!, encoding: .utf8)
-            )
-            }
-            
-            
-            
-            
             // create response object
             let response = FGRequestHelperResponse(request: dataResponse.request,
                                                    response: dataResponse.response,

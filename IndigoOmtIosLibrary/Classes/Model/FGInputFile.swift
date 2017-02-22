@@ -30,6 +30,9 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
     /// Status of the input file.
     public var status: FGInputFileStatus?
     
+    /// .
+    public var url: String?
+    
     public var description: String {
         return "FGInputFile { name: \(name), status: \(status) }"
     }
@@ -38,14 +41,18 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
     
     public required init?(response: HTTPURLResponse, json: JSON) {
         guard
-            let name = json["name"].string,
-            let status = FGInputFileStatus(rawValue: json["status"].stringValue)
+            let name = json["name"].string
         else {
             return nil
         }
         
         self.name = name
-        self.status = status
+        if let status = FGInputFileStatus(rawValue: json["status"].stringValue) {
+            self.status = status
+        }
+        if let url = json["url"].string {
+            self.url = url
+        }
     }
     
     public init() {
@@ -60,6 +67,9 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
         }
         if let status = self.status {
             json["status"].string = status.rawValue
+        }
+        if let url = self.url {
+            json["url"].string = url
         }
         
         return json

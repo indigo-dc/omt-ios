@@ -28,14 +28,15 @@ open class FGOutputFile: FGObjectSerializable, CustomStringConvertible {
     
     public required init?(response: HTTPURLResponse, json: JSON) {
         guard
-            let name = json["name"].string,
-            let url = json["url"].string
+            let name = json["name"].string
         else {
             return nil
         }
         
         self.name = name
-        self.url = url
+        if let url = json["url"].string {
+            self.url = url
+        }
     }
     
     public init() {
