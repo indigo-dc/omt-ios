@@ -10,12 +10,18 @@ import Foundation
 import IndigoOmtIosLibrary
 import AppAuth
 
+protocol AppAuthAccessTokenProviderDelegate: class {
+    
+    func didRefreshAccessToken(for provider: AppAuthAccessTokenProvider)
+}
+
 class AppAuthAccessTokenProvider: FGAccessTokenProvider {
     
     // MARK: - properties
     
     private let authState: OIDAuthState
     private let queue: DispatchQueue
+    public weak var delegate: AppAuthAccessTokenProviderDelegate?
     
     // MARK: - lifecycle
     
@@ -45,6 +51,11 @@ class AppAuthAccessTokenProvider: FGAccessTokenProvider {
             
             // success means no errors
             let success = (error == nil)
+            
+            // call delegate
+            if let delegate = self.delegate, success {
+                delegate.didRefreshAccessToken(for: self)
+            }
             
             // call in dispatch queue
             self.queue.async {

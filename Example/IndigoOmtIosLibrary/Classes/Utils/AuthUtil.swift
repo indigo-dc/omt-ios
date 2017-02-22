@@ -15,7 +15,7 @@ import IndigoOmtIosLibrary
 typealias AuthUtilAuthorizationCallback = (_ provider: FGAccessTokenProvider?, _ error: Error?) -> ()
 
 /// Auth helper util for OAuth flow with AppAuth library.
-class AuthUtil {
+class AuthUtil: AppAuthAccessTokenProviderDelegate {
     
     // MARK: - properties
     
@@ -183,7 +183,10 @@ class AuthUtil {
             return nil
         }
         
-        return AppAuthAccessTokenProvider(authState: authState, queue: self.queue)
+        let accessTokenProvider = AppAuthAccessTokenProvider(authState: authState, queue: self.queue)
+        accessTokenProvider.delegate = self
+        
+        return accessTokenProvider
     }
     
     public func getUserInfo() -> UserInfo? {
@@ -246,6 +249,12 @@ class AuthUtil {
                 callback(userInfo, nil)
             }
         }
+    }
+    
+    // MARK: - AppAuthAccessTokenProviderDelegate
+    
+    func didRefreshAccessToken(for provider: AppAuthAccessTokenProvider) {
+        saveState(self.config)
     }
     
 }
