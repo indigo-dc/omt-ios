@@ -15,6 +15,7 @@
 		D74E8C871E5C613A00D25BFB /* FGInfrastructureSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C861E5C613A00D25BFB /* FGInfrastructureSpec.swift */; };
 		D74E8C891E5C866000D25BFB /* FGMessageObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C881E5C866000D25BFB /* FGMessageObjectSpec.swift */; };
 		D74E8C8A1E5C8C4E00D25BFB /* FGApplicationSpec.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */; };
+		D74E8C8C1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */; };
 		D760F5121E55B850004419C3 /* DummyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5111E55B850004419C3 /* DummyResolver.swift */; };
 		D760F51C1E55F38E004419C3 /* FGApiLinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F51B1E55F38E004419C3 /* FGApiLinkSpec.swift */; };
 		D760F51E1E55F3AF004419C3 /* FGApiRootVersionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F51D1E55F3AF004419C3 /* FGApiRootVersionSpec.swift */; };
@@ -83,6 +84,7 @@
 		D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationSpec.swift.swift; sourceTree = "<group>"; };
 		D74E8C861E5C613A00D25BFB /* FGInfrastructureSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInfrastructureSpec.swift; sourceTree = "<group>"; };
 		D74E8C881E5C866000D25BFB /* FGMessageObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGMessageObjectSpec.swift; sourceTree = "<group>"; };
+		D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollectionApiSpec.swift; sourceTree = "<group>"; };
 		D760F5111E55B850004419C3 /* DummyResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyResolver.swift; sourceTree = "<group>"; };
 		D760F51B1E55F38E004419C3 /* FGApiLinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiLinkSpec.swift; sourceTree = "<group>"; };
 		D760F51D1E55F3AF004419C3 /* FGApiRootVersionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootVersionSpec.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				D760F51B1E55F38E004419C3 /* FGApiLinkSpec.swift */,
 				D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */,
 				D760F51D1E55F3AF004419C3 /* FGApiRootVersionSpec.swift */,
+				D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */,
 				D74E8C811E5C60FA00D25BFB /* FGApplicationCollectionSpec.swift */,
 				D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */,
 				D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */,
@@ -199,7 +202,7 @@
 				D760F5251E572097004419C3 /* FGTaskCollectionSpec.swift */,
 				D73420771E559A5200032828 /* FGTaskCollectionApiSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
-				D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */,
+				D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7C9C5D41E4C8D200073C50A /* FGSessionHelperSpec.swift in Sources */,
+				D74E8C8C1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift in Sources */,
 				D7C9C5D71E4DA4E10073C50A /* Constants.swift in Sources */,
 				D73420781E559A5200032828 /* FGTaskCollectionApiSpec.swift in Sources */,
 				D7C9C5B81E4C66710073C50A /* Global.swift in Sources */,

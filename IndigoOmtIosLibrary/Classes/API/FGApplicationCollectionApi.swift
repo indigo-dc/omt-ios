@@ -11,7 +11,8 @@ import Foundation
 /// API for Future Gateway Application Collection.
 open class FGApplicationCollectionApi: FGAbstractResolvedApi {
     
-    // MARK: - lifecycle
+    // MARK: - public methods
+    
     public func listAllApplications(_ callback: @escaping FGApiResponseCallback<FGApplicationCollection>) {
         
         // prepare payload
