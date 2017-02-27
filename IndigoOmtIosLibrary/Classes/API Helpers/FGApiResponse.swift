@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// API response callback.
+public typealias FGApiResponseCallback<Value> = (FGApiResponse<Value>) -> ()
+
 /// API response object.
 public enum FGApiResponse<Value>: CustomStringConvertible {
     
@@ -60,6 +63,3 @@ public enum FGApiResponse<Value>: CustomStringConvertible {
     }
     
 }
-
-/// API response callback.
-public typealias FGApiResponseCallback<Value> = (FGApiResponse<Value>) -> ()
