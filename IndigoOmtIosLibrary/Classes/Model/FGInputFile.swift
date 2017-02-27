@@ -30,9 +30,10 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
     /// Status of the input file.
     public var status: FGInputFileStatus?
     
-    /// .
+    /// Download link to the input file.
     public var url: String?
     
+    // CustomStringConvertible.
     public var description: String {
         return "FGInputFile { name: \(name), status: \(status) }"
     }

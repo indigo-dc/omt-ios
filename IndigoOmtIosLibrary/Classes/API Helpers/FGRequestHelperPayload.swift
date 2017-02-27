@@ -35,7 +35,7 @@ public struct FGRequestHelperPayload: CustomStringConvertible {
     /// HTTP method of the payload.
     public var method: FGHTTPMethod
     
-    /// Accepted respons encodings.
+    /// Accepted response encodings.
     public var accept: [String]
     
     /// HTTP request headers.

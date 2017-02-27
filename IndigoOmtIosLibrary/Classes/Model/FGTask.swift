@@ -93,9 +93,6 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
             return nil
         }
         
-        print(json.rawString())
-        
-        
         self.id = id
         self.status = status
         self.taskDescription = json["description"].string

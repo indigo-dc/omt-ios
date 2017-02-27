@@ -20,8 +20,9 @@ open class FGOutputFile: FGObjectSerializable, CustomStringConvertible {
     /// Download link to the output file.
     public var url: String?
     
+    // CustomStringConvertible.
     public var description: String {
-        return "FGOutputApiLink { name: \(name), url: \(url) }"
+        return "FGOutputFile { name: \(name), url: \(url) }"
     }
     
     // MARK: - lifecycle
