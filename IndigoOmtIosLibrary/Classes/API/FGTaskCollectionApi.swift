@@ -17,7 +17,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func listAllTasks(_ callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .get)
+        var payload = FGRequestPayload(method: .get)
         payload.resourcePath = "tasks"
         payload.addParam("user", value: self.username)
         payload.addParam("status", value: FGTaskStatus.any.rawValue)
@@ -30,7 +30,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func createTask(_ task: FGTask, callback: @escaping FGApiResponseCallback<FGTask>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .post)
+        var payload = FGRequestPayload(method: .post)
         payload.resourcePath = "tasks"
         payload.addHeader("Content-Type", value: "application/vnd.indigo-datacloud.apiserver+json")
         payload.body = task
@@ -44,7 +44,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func replaceTaskList(_ taskCollection: FGTaskCollection, callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .put)
+        var payload = FGRequestPayload(method: .put)
         payload.resourcePath = "tasks"
         payload.body = taskCollection
         
@@ -56,7 +56,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func addMultipleTasks(_ taskCollection: FGTaskCollection, callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .patch)
+        var payload = FGRequestPayload(method: .patch)
         payload.resourcePath = "tasks"
         payload.addHeader("Content-Type", value: "application/vnd.indigo-datacloud.apiserver+json")
         payload.body = taskCollection
@@ -69,7 +69,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func deleteTaskList(_ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .delete)
+        var payload = FGRequestPayload(method: .delete)
         payload.resourcePath = "tasks"
         
         // send

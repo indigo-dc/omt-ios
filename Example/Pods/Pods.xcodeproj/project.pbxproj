@@ -190,12 +190,15 @@
 		D73420721E54892600032828 /* FGTaskApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D734206C1E54775F00032828 /* FGTaskApi.swift */; };
 		D7561BCCD197F8063F31D14E /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0937730DE0A594B6E7A0C50A /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D760F5141E55CE4B004419C3 /* FGRequestHelperResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5131E55CE4B004419C3 /* FGRequestHelperResponse.swift */; };
-		D760F5161E55CF21004419C3 /* FGRequestHelperPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */; };
 		D760F52A1E5B081D004419C3 /* FGMessageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5291E5B081D004419C3 /* FGMessageObject.swift */; };
 		D760F52C1E5B297D004419C3 /* FGApplicationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52B1E5B297D004419C3 /* FGApplicationCollection.swift */; };
 		D760F52E1E5B2C27004419C3 /* FGParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52D1E5B2C27004419C3 /* FGParameter.swift */; };
 		D760F5301E5B3E87004419C3 /* FGInfrastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52F1E5B3E87004419C3 /* FGInfrastructure.swift */; };
 		D7BC9A8A1CD4501D7D7AD5DB /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF12D15D419E7FF327EE9FA /* Quick-dummy.m */; };
+		D7DEEF9C1E5EE1D800EF424A /* FGAbstractPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEF9B1E5EE1D800EF424A /* FGAbstractPayload.swift */; };
+		D7DEEF9E1E5EE36C00EF424A /* FGUploadPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEF9D1E5EE36C00EF424A /* FGUploadPayload.swift */; };
+		D7DEEFA01E5EE58000EF424A /* FGDownloadPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEF9F1E5EE58000EF424A /* FGDownloadPayload.swift */; };
+		D7DEEFA21E5EE64D00EF424A /* FGRequestPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEFA11E5EE64D00EF424A /* FGRequestPayload.swift */; };
 		D7DEEFA51E5EF67900EF424A /* FGApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEFA31E5EF67900EF424A /* FGApiResolver.swift */; };
 		D7DEEFA61E5EF67900EF424A /* FGApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEFA41E5EF67900EF424A /* FGApiResponse.swift */; };
 		D7DEEFA81E5EF69200EF424A /* FGRootApiResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEFA71E5EF69200EF424A /* FGRootApiResolver.swift */; };
@@ -504,11 +507,14 @@
 		D734206C1E54775F00032828 /* FGTaskApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskApi.swift; sourceTree = "<group>"; };
 		D73420701E547C7200032828 /* FGAbstractResolvedApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractResolvedApi.swift; sourceTree = "<group>"; };
 		D760F5131E55CE4B004419C3 /* FGRequestHelperResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRequestHelperResponse.swift; sourceTree = "<group>"; };
-		D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRequestHelperPayload.swift; sourceTree = "<group>"; };
 		D760F5291E5B081D004419C3 /* FGMessageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGMessageObject.swift; sourceTree = "<group>"; };
 		D760F52B1E5B297D004419C3 /* FGApplicationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollection.swift; sourceTree = "<group>"; };
 		D760F52D1E5B2C27004419C3 /* FGParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGParameter.swift; sourceTree = "<group>"; };
 		D760F52F1E5B3E87004419C3 /* FGInfrastructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInfrastructure.swift; sourceTree = "<group>"; };
+		D7DEEF9B1E5EE1D800EF424A /* FGAbstractPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractPayload.swift; sourceTree = "<group>"; };
+		D7DEEF9D1E5EE36C00EF424A /* FGUploadPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadPayload.swift; sourceTree = "<group>"; };
+		D7DEEF9F1E5EE58000EF424A /* FGDownloadPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGDownloadPayload.swift; sourceTree = "<group>"; };
+		D7DEEFA11E5EE64D00EF424A /* FGRequestPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRequestPayload.swift; sourceTree = "<group>"; };
 		D7DEEFA31E5EF67900EF424A /* FGApiResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiResolver.swift; sourceTree = "<group>"; };
 		D7DEEFA41E5EF67900EF424A /* FGApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiResponse.swift; sourceTree = "<group>"; };
 		D7DEEFA71E5EF69200EF424A /* FGRootApiResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRootApiResolver.swift; sourceTree = "<group>"; };
@@ -816,6 +822,7 @@
 				A455CC2DF381FDB7F60FB7C5 /* FGFutureGatewayError.swift */,
 				FBFB5622137AEA5C762259A8 /* API */,
 				6959A0F5F44347B00BC79201 /* API Helpers */,
+				D7DEEF9A1E5EE1B400EF424A /* API Payloads */,
 				7B5D75E09CB808675B359360 /* Extensions */,
 				91074AC8DFA2460C11E1E069 /* Model */,
 				FA06588C073634F82D99DE2E /* Utils */,
@@ -917,7 +924,6 @@
 				D7DEEFA31E5EF67900EF424A /* FGApiResolver.swift */,
 				D7DEEFA41E5EF67900EF424A /* FGApiResponse.swift */,
 				51D9521DC32175309EB3F56C /* FGRequestHelper.swift */,
-				D760F5151E55CF21004419C3 /* FGRequestHelperPayload.swift */,
 				D760F5131E55CE4B004419C3 /* FGRequestHelperResponse.swift */,
 				D7DEEFA71E5EF69200EF424A /* FGRootApiResolver.swift */,
 				6886E86A3AB05FC7FCFB00C0 /* FGSessionHelper.swift */,
@@ -1063,6 +1069,17 @@
 				5406F43790D459029B1F2EBE /* Support Files */,
 			);
 			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		D7DEEF9A1E5EE1B400EF424A /* API Payloads */ = {
+			isa = PBXGroup;
+			children = (
+				D7DEEF9B1E5EE1D800EF424A /* FGAbstractPayload.swift */,
+				D7DEEF9D1E5EE36C00EF424A /* FGUploadPayload.swift */,
+				D7DEEF9F1E5EE58000EF424A /* FGDownloadPayload.swift */,
+				D7DEEFA11E5EE64D00EF424A /* FGRequestPayload.swift */,
+			);
+			path = "API Payloads";
 			sourceTree = "<group>";
 		};
 		DAF0624A484B71631F3EE3CB /* Pods */ = {
@@ -1577,10 +1594,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7DEEFA01E5EE58000EF424A /* FGDownloadPayload.swift in Sources */,
 				A9B60B0625B32EB0EA360F97 /* DataRequest+IndigoOmtIosLibrary.swift in Sources */,
 				D760F5141E55CE4B004419C3 /* FGRequestHelperResponse.swift in Sources */,
 				3FF794A24AB2B8E8470A3AE6 /* FGAbstractApi.swift in Sources */,
-				D760F5161E55CF21004419C3 /* FGRequestHelperPayload.swift in Sources */,
 				D73420721E54892600032828 /* FGTaskApi.swift in Sources */,
 				D760F52C1E5B297D004419C3 /* FGApplicationCollection.swift in Sources */,
 				D7DEEFA51E5EF67900EF424A /* FGApiResolver.swift in Sources */,
@@ -1595,6 +1612,7 @@
 				3E5AA9262E02AAA56E6FC2E6 /* FGApplicationCollectionApi.swift in Sources */,
 				DCCFA96999C2EE3CDCA16228 /* FGDateUtil.swift in Sources */,
 				10082617300A8464010F90FE /* FGEmptyObject.swift in Sources */,
+				D7DEEFA21E5EE64D00EF424A /* FGRequestPayload.swift in Sources */,
 				58F8ED3D4C5FBD2CB0C57FE2 /* FGFutureGateway.swift in Sources */,
 				D7DEEFA81E5EF69200EF424A /* FGRootApiResolver.swift in Sources */,
 				D1BBE898FDFA5CB8584DCB31 /* FGFutureGatewayError.swift in Sources */,
@@ -1605,7 +1623,9 @@
 				D760F5301E5B3E87004419C3 /* FGInfrastructure.swift in Sources */,
 				67E0B22C5976F7474E00EE34 /* FGRequestHelper.swift in Sources */,
 				8B26F410EA1C082428304230 /* FGRuntimeDataParameter.swift in Sources */,
+				D7DEEF9C1E5EE1D800EF424A /* FGAbstractPayload.swift in Sources */,
 				181D60FEEBF0E2D49E451844 /* FGSessionHelper.swift in Sources */,
+				D7DEEF9E1E5EE36C00EF424A /* FGUploadPayload.swift in Sources */,
 				D546DAC527B4E212F671E540 /* FGTask.swift in Sources */,
 				C49BF2819BEE8F7A73CB3E4C /* FGTaskCollection.swift in Sources */,
 				D73420711E547C7200032828 /* FGAbstractResolvedApi.swift in Sources */,

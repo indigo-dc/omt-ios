@@ -33,19 +33,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
         return session.getDispatchQueue()
     }
     
-    public func send<Value: FGObjectSerializable>(_ payload: FGRequestHelperPayload, callback: @escaping FGRequestHelperCallback<Value>) {
-        
-        // check url
-        guard payload.url != nil else {
-            
-            // return error
-            let error = FGFutureGatewayError.urlIsEmpty(reason: "Payload has an empty URL")
-            
-            self.getBackgroundQueue().async {
-                callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
-            }
-            return
-        }
+    public func send<Value: FGObjectSerializable>(_ payload: FGRequestPayload, callback: @escaping FGRequestHelperCallback<Value>) {
         
         // acceptable content types
         let accept = payload.accept.isEmpty ? ["*/*"] : payload.accept
@@ -55,7 +43,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             .request(payload)
             .validate()
             .validate(contentType: accept)
-            .responseObject(queue: self.session.getDispatchQueue())
+            .responseObject(queue: self.getBackgroundQueue())
         { (dataResponse: DataResponse<Value>) in
             
             // create response object
@@ -72,67 +60,10 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
     
 }
 
-extension FGRequestHelperPayload: URLRequestConvertible {
+extension FGAbstractPayload: URLRequestConvertible {
     
     public func asURLRequest() throws -> URLRequest {
-        
-        // prepare url
-        var requestUrl = self.url!
-        if let path = self.resourcePath {
-            requestUrl.appendPathComponent(path)
-        }
-        
-        // create request
-        var request = try URLRequest(url: requestUrl)
-        
-        // add method
-        request.httpMethod = self.method.rawValue
-        
-        // add headers
-        for (header, value) in self.headers {
-            request.setValue(value, forHTTPHeaderField: header)
-        }
-        
-        // add url params
-        request = encodeParams(request, with: self.parameters)
-        
-        // add body
-        if let body = self.body {
-            request.httpBody = try body.serialize().rawData(options: JSONSerialization.WritingOptions.prettyPrinted)
-        }
-        
-        return request
-    }
-    
-    private func encodeParams(_ request: URLRequest, with: Parameters) -> URLRequest {
-        var mutableRequest = request
-        
-        if var urlComponents = URLComponents(url: mutableRequest.url!, resolvingAgainstBaseURL: false), !parameters.isEmpty {
-            var queryString = ""
-            if let query = urlComponents.percentEncodedQuery {
-                queryString += query
-            }
-            if parameters.isEmpty == false && queryString.isEmpty == false {
-                queryString += "&"
-            }
-            queryString += makeQueryFromParams(parameters)
-            
-            urlComponents.percentEncodedQuery = queryString
-            mutableRequest.url = urlComponents.url
-        }
-        
-        return mutableRequest
-    }
-    
-    private func makeQueryFromParams(_ parameters: [String: Any]) -> String {
-        var components: [(String, String)] = []
-        
-        for key in parameters.keys {
-            let value = parameters[key]!
-            components += URLEncoding.default.queryComponents(fromKey: key, value: value)
-        }
-        
-        return components.map { (k, v) in "\(k)=\(v)" }.joined(separator: "&")
+        return try self.toURLRequest()
     }
     
 }

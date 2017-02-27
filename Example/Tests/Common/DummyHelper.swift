@@ -25,7 +25,7 @@ class DummyHelper: FGRequestHelper {
         return DispatchQueue.global()
     }
     
-    func send<Value : FGObjectSerializable>(_ payload: FGRequestHelperPayload, callback: @escaping (FGRequestHelperResponse<Value>) -> ()) {
+    public func send<Value : FGObjectSerializable>(_ payload: FGRequestPayload, callback: @escaping FGRequestHelperCallback<Value>) {
         getBackgroundQueue().async {
             
             do {
@@ -45,6 +45,14 @@ class DummyHelper: FGRequestHelper {
             
             callback(response)
         }
+    }
+    
+    public func downloadFile(_ payload: FGDownloadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
+        
+    }
+    
+    public func uploadFile(_ payload: FGUploadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
+        
     }
     
 }

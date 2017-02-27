@@ -17,7 +17,7 @@ open class FGTaskApi: FGAbstractResolvedApi {
     public func viewTaskDetails(with id: String, _ callback: @escaping FGApiResponseCallback<FGTask>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .get)
+        var payload = FGRequestPayload(method: .get)
         payload.resourcePath = "tasks/\(id)"
         
         // send
@@ -29,7 +29,7 @@ open class FGTaskApi: FGAbstractResolvedApi {
     public func createTask(with task: FGTask, _ callback: @escaping FGApiResponseCallback<FGTask>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .put)
+        var payload = FGRequestPayload(method: .put)
         payload.resourcePath = "tasks/\(task.id ?? "-1")"
         payload.addHeader("Content-Type", value: "application/vnd.indigo-datacloud.apiserver+json")
         payload.body = task
@@ -48,7 +48,7 @@ open class FGTaskApi: FGAbstractResolvedApi {
         task.status = status
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .patch)
+        var payload = FGRequestPayload(method: .patch)
         payload.resourcePath = "tasks/\(id)"
         payload.addHeader("Content-Type", value: "application/vnd.indigo-datacloud.apiserver+json")
         payload.body = task
@@ -61,7 +61,7 @@ open class FGTaskApi: FGAbstractResolvedApi {
     public func deleteTask(with id: String, _ callback: @escaping FGApiResponseCallback<FGMessageObject>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .delete)
+        var payload = FGRequestPayload(method: .delete)
         payload.resourcePath = "tasks/\(id)"
         
         // send

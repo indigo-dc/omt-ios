@@ -27,10 +27,10 @@ open class FGAbstractResolvedApi: FGAbstractApi {
         super.init(helper: helper)
     }
     
-    // MARK: - public methods
+    // MARK: - internal methods
     
     /// Fetches URL from resolver, updated payload URL and sends payload
-    func fetchResolvedUrlAndSendPayload<Value: FGObjectSerializable>(_ payload: FGRequestHelperPayload, _ callback: @escaping FGApiResponseCallback<Value>) {
+    func fetchResolvedUrlAndSendPayload<Value: FGObjectSerializable>(_ payload: FGRequestPayload, _ callback: @escaping FGApiResponseCallback<Value>) {
         self.resolver.resolveUrlWithVersion { response in
             
             // return error

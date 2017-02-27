@@ -15,6 +15,6 @@ public protocol FGRequestHelper {
     func getBackgroundQueue() -> DispatchQueue
     
     /// Makes remote request and returns response in callback.
-    func send<Value: FGObjectSerializable>(_ payload: FGRequestHelperPayload, callback: @escaping FGRequestHelperCallback<Value>)
+    func send<Value: FGObjectSerializable>(_ payload: FGRequestPayload, callback: @escaping FGRequestHelperCallback<Value>)
     
 }

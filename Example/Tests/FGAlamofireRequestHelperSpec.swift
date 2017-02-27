@@ -23,7 +23,7 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                 it("should return urlIsEmpty error") {
                     
                     // prepare
-                    var payload = FGRequestHelperPayload(url: nil, method: .get)
+                    let payload = FGRequestPayload(method: .get)
                     payload.addAccept("application/json")
                     
                     // test
@@ -47,7 +47,8 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                     let param = "user"
                     let value = "myuser"
                     
-                    var payload = FGRequestHelperPayload(url: url, method: .get)
+                    let payload = FGRequestPayload(method: .get)
+                    payload.url = url
                     payload.addParam(param, value: value)
                     payload.addHeader("Cache-Control", value: "no-cache")
                     
@@ -76,7 +77,8 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                     let param = "user"
                     let value = "myLogin"
                     
-                    var payload = FGRequestHelperPayload(url: Constants.notExistingServerUrl, method: .post)
+                    let payload = FGRequestPayload(method: .post)
+                    payload.url = Constants.notExistingServerUrl
                     payload.addParam(param, value: value)
                     payload.body = link
                     

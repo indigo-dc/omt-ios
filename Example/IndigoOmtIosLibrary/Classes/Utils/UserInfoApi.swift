@@ -19,7 +19,8 @@ class UserInfoApi: FGAbstractApi {
     func fetchUserInfo(_ url: URL, callback: @escaping UserInfoApiCallback) {
         
         // payload to send
-        let payload = FGRequestHelperPayload(url: url, method: .get)
+        let payload = FGRequestPayload(method: .get)
+        payload.url = url
         
         // make request
         self.helper.send(payload) { (response: FGRequestHelperResponse<UserInfo>) in

@@ -43,7 +43,8 @@ open class FGRootApiResolver: FGAbstractApi, FGApiResolver {
         }
         
         // prepare payload
-        let payload = FGRequestHelperPayload(url: self.baseUrl, method: .get)
+        let payload = FGRequestPayload(method: .get)
+        payload.url = self.baseUrl
         
         // resolve url
         self.helper.send(payload) { (response: FGRequestHelperResponse<FGApiRoot>) in

@@ -16,7 +16,7 @@ open class FGApplicationCollectionApi: FGAbstractResolvedApi {
     public func listAllApplications(_ callback: @escaping FGApiResponseCallback<FGApplicationCollection>) {
         
         // prepare payload
-        var payload = FGRequestHelperPayload(method: .get)
+        var payload = FGRequestPayload(method: .get)
         payload.resourcePath = "applications"
         
         // send
