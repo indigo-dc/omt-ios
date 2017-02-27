@@ -10,14 +10,14 @@ import Foundation
 import SwiftyJSON
 
 /// Future Gateway output file object.
-open class FGOutputFile: FGObjectSerializable, CustomStringConvertible {
+open class FGOutputFile: FGObjectSerializable, FGDownloadableFile, CustomStringConvertible {
     
     // MARK: - properties
     
     /// Name of the output file.
     public var name: String?
     
-    /// Download link to the output file.
+    /// FGDownloadableFile.
     public var url: String?
     
     // CustomStringConvertible.

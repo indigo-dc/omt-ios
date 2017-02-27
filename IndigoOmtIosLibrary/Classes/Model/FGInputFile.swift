@@ -20,7 +20,7 @@ public enum FGInputFileStatus: String {
 }
 
 /// Future Gateway input file object.
-open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
+open class FGInputFile: FGObjectSerializable, FGDownloadableFile, CustomStringConvertible {
     
     // MARK: - properties
     
@@ -30,7 +30,7 @@ open class FGInputFile: FGObjectSerializable, CustomStringConvertible {
     /// Status of the input file.
     public var status: FGInputFileStatus?
     
-    /// Download link to the input file.
+    /// FGDownloadableFile.
     public var url: String?
     
     // CustomStringConvertible.
