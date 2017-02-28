@@ -25,6 +25,9 @@ open class FGFutureGateway: CustomStringConvertible {
     /// Task collection API.
     public let taskCollectionApi: FGTaskCollectionApi
     
+    /// File API.
+    public let fileApi: FGFileApi
+    
     /// CustomStringConvertible
     public var description: String {
         return "FGFutureGateway { apiVersion: \(apiVersion) }"
@@ -52,6 +55,7 @@ open class FGFutureGateway: CustomStringConvertible {
         self.applicationCollection  = FGApplicationCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
         self.taskApi                = FGTaskApi(username: username, resolver: apiResolver, helper: authHelper)
         self.taskCollectionApi      = FGTaskCollectionApi(username: username, resolver: apiResolver, helper: authHelper)
+        self.fileApi                = FGFileApi(username: username, resolver: apiResolver, helper: authHelper)
     }
     
 }

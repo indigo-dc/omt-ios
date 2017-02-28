@@ -58,6 +58,58 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
         }
     }
     
+    public func downloadFile(_ payload: FGDownloadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
+        
+        // check file
+        guard payload.destinationURL != nil else {
+            
+            // return error
+            let error = FGFutureGatewayError.fileURLIsEmpty(reason: "Payload has an empty destination file URL")
+            
+            self.getBackgroundQueue().async {
+                callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
+            }
+            return
+        }
+        
+        // acceptable content types
+        let accept = payload.accept.isEmpty ? ["*/*"] : payload.accept
+        
+        // make request
+        self.manager
+            .download(payload, to: getDownloadDestination(payload.destinationURL!))
+            .validate()
+            .validate(contentType: accept)
+            .response(queue: self.session.getDispatchQueue())
+            { (downloadResponse: DefaultDownloadResponse) in
+                
+                // get error
+                var futureGatewayError: FGFutureGatewayError?
+                if let error = downloadResponse.error {
+                    futureGatewayError = FGFutureGatewayError.downloadFileError(error: error)
+                }
+                
+                // create response object
+                let response: FGRequestHelperResponse<FGEmptyObject> =
+                    FGRequestHelperResponse(request: downloadResponse.request,
+                                            response: downloadResponse.response,
+                                            data: nil,
+                                            error: futureGatewayError,
+                                            value: FGEmptyObject())
+                
+                // execute
+                callback(response)
+        }
+    }
+    
+    // MARK: - Private mthods
+    
+    private func getDownloadDestination(_ file: URL) -> DownloadRequest.DownloadFileDestination {
+        return { _, _ in
+            return (file, [.removePreviousFile, .createIntermediateDirectories])
+        }
+    }
+    
 }
 
 extension FGAbstractPayload: URLRequestConvertible {

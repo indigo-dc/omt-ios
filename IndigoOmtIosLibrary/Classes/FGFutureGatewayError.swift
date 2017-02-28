@@ -26,6 +26,12 @@ public enum FGFutureGatewayError: Error, LocalizedError {
     /// Request URL was nil.
     case urlIsEmpty(reason: String)
     
+    /// Download destination or upload source is empty.
+    case fileURLIsEmpty(reason: String)
+    
+    /// File download error.
+    case downloadFileError(error: Error)
+    
     // MARK: - LocalizedError
     
     public var errorDescription: String? {
@@ -45,6 +51,12 @@ public enum FGFutureGatewayError: Error, LocalizedError {
             
         case .urlIsEmpty(reason: let reason):
             return "Future Gateway url is empty error: \(reason)"
+            
+        case .fileURLIsEmpty(reason: let reason):
+            return "Future Gateway file URL is empty error: \(reason)"
+            
+        case .downloadFileError(error: let error):
+            return "Future Gateway download file error: \(error.localizedDescription)"
         }
     }
     
