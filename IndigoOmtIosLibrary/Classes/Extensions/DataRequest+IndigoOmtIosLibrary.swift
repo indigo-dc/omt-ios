@@ -37,8 +37,8 @@ public extension DataRequest {
         guard
             case let .success(jsonObject) = result,
             let swiftyJsonObject = JSON(rawValue: jsonObject)
-            else {
-                return .failure(FGFutureGatewayError.jsonSerialization(error: result.error!))
+        else {
+            return .failure(FGFutureGatewayError.jsonSerialization(error: result.error!))
         }
         
         guard let response = response, let responseObject = T(response: response, json: swiftyJsonObject) else {

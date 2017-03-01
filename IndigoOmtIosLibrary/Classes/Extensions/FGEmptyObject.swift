@@ -9,11 +9,12 @@
 import Foundation
 import SwiftyJSON
 
-/// Empty serialization object.
+/// Empty serialization object for HTTP status codes 204 and 205.
 open class FGEmptyObject: FGObjectSerializable {
     
+    public let emptyStatusCodes = [204, 205]
+    
     public required init?(response: HTTPURLResponse, json: JSON) {
-        let emptyStatusCodes = [204, 205]
         guard emptyStatusCodes.contains(response.statusCode) else {
             return nil
         }

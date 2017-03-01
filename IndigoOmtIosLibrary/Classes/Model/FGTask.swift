@@ -168,19 +168,15 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
         if arguments.isEmpty == false {
             json["arguments"].arrayObject = arguments
         }
-        
         if inputFiles.isEmpty == false {
             json["input_files"].arrayObject = inputFiles.map { $0.serialize().object }
         }
-        
         if outputFiles.isEmpty == false {
             json["output_files"].arrayObject = outputFiles.map { $0.serialize().object }
         }
-        
         if runtimeData.isEmpty == false {
             json["runtime_data"].arrayObject = runtimeData.map { $0.serialize().object }
         }
-        
         if links.isEmpty == false {
             json["_links"].arrayObject = links.map { $0.serialize().object }
         }

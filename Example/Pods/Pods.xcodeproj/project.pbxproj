@@ -196,6 +196,7 @@
 		D760F52C1E5B297D004419C3 /* FGApplicationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52B1E5B297D004419C3 /* FGApplicationCollection.swift */; };
 		D760F52E1E5B2C27004419C3 /* FGParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52D1E5B2C27004419C3 /* FGParameter.swift */; };
 		D760F5301E5B3E87004419C3 /* FGInfrastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52F1E5B3E87004419C3 /* FGInfrastructure.swift */; };
+		D790C0B51E65B8AE00B0CF2A /* FGUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D790C0B41E65B8AE00B0CF2A /* FGUploadResponse.swift */; };
 		D7BC9A8A1CD4501D7D7AD5DB /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF12D15D419E7FF327EE9FA /* Quick-dummy.m */; };
 		D7DEEF9C1E5EE1D800EF424A /* FGAbstractPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEF9B1E5EE1D800EF424A /* FGAbstractPayload.swift */; };
 		D7DEEF9E1E5EE36C00EF424A /* FGUploadPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEF9D1E5EE36C00EF424A /* FGUploadPayload.swift */; };
@@ -515,6 +516,7 @@
 		D760F52B1E5B297D004419C3 /* FGApplicationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollection.swift; sourceTree = "<group>"; };
 		D760F52D1E5B2C27004419C3 /* FGParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGParameter.swift; sourceTree = "<group>"; };
 		D760F52F1E5B3E87004419C3 /* FGInfrastructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInfrastructure.swift; sourceTree = "<group>"; };
+		D790C0B41E65B8AE00B0CF2A /* FGUploadResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadResponse.swift; sourceTree = "<group>"; };
 		D7DEEF9B1E5EE1D800EF424A /* FGAbstractPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractPayload.swift; sourceTree = "<group>"; };
 		D7DEEF9D1E5EE36C00EF424A /* FGUploadPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadPayload.swift; sourceTree = "<group>"; };
 		D7DEEF9F1E5EE58000EF424A /* FGDownloadPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGDownloadPayload.swift; sourceTree = "<group>"; };
@@ -1009,6 +1011,7 @@
 				62A8D960FA6F029F9F70A71B /* FGRuntimeDataParameter.swift */,
 				35CE99379CFBBA17C4A6DF5B /* FGTask.swift */,
 				5C07228CB98DD80A8DE50650 /* FGTaskCollection.swift */,
+				D790C0B41E65B8AE00B0CF2A /* FGUploadResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1634,6 +1637,7 @@
 				181D60FEEBF0E2D49E451844 /* FGSessionHelper.swift in Sources */,
 				D7DEEF9E1E5EE36C00EF424A /* FGUploadPayload.swift in Sources */,
 				D7378EF91E647691006BF71E /* FGDownloadableFile.swift in Sources */,
+				D790C0B51E65B8AE00B0CF2A /* FGUploadResponse.swift in Sources */,
 				D546DAC527B4E212F671E540 /* FGTask.swift in Sources */,
 				C49BF2819BEE8F7A73CB3E4C /* FGTaskCollection.swift in Sources */,
 				D73420711E547C7200032828 /* FGAbstractResolvedApi.swift in Sources */,
