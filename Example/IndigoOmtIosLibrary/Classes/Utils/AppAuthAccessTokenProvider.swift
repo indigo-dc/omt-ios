@@ -52,6 +52,11 @@ class AppAuthAccessTokenProvider: FGAccessTokenProvider {
             // success means no errors
             let success = (error == nil)
             
+            // print error
+            if let error = error {
+                print("AppAuthAccessTokenProvider - requestNewAccessToken: \(error.localizedDescription)")
+            }
+            
             // call delegate
             if let delegate = self.delegate, success {
                 delegate.didRefreshAccessToken(for: self)
