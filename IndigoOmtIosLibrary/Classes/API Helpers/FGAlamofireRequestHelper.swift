@@ -47,13 +47,13 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
         { (dataResponse: DataResponse<Value>) in
             
             // create response object
-            let response = FGRequestHelperResponse(request: dataResponse.request,
-                                                   response: dataResponse.response,
-                                                   data: dataResponse.data,
-                                                   error: dataResponse.error as? FGFutureGatewayError,
-                                                   value: dataResponse.value)
+            let response =
+                FGRequestHelperResponse(request: dataResponse.request,
+                                        response: dataResponse.response,
+                                        data: dataResponse.data,
+                                        error: dataResponse.error as? FGFutureGatewayError,
+                                        value: dataResponse.value)
             
-            // execute
             callback(response)
         }
     }
@@ -61,7 +61,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
     public func downloadFile(_ payload: FGDownloadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
         
         // check file
-        guard payload.destinationURL != nil else {
+        guard let destinationURL = payload.destinationURL else {
             
             // return error
             let error = FGFutureGatewayError.fileURLIsEmpty(reason: "Payload has an empty destination file URL")
@@ -77,7 +77,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
         
         // make request
         self.manager
-            .download(payload, to: getDownloadDestination(payload.destinationURL!))
+            .download(payload, to: getDownloadDestination(destinationURL))
             .validate()
             .validate(contentType: accept)
             .response(queue: self.session.getDispatchQueue())
@@ -97,9 +97,76 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                                             error: futureGatewayError,
                                             value: FGEmptyObject())
                 
-                // execute
                 callback(response)
         }
+    }
+    
+    public func uploadFile(_ payload: FGUploadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
+        
+        // check file
+        guard let sourceURL = payload.sourceURL else {
+            
+            // return error
+            let error = FGFutureGatewayError.fileURLIsEmpty(reason: "Payload has an empty source file URL")
+            
+            self.getBackgroundQueue().async {
+                callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
+            }
+            return
+        }
+        
+        // check filename
+        guard let uploadFilename = payload.uploadFilename else {
+            
+            // return error
+            let error = FGFutureGatewayError.uploadFilenameIsEmpty(reason: "Payload has an empty upload filename")
+            
+            self.getBackgroundQueue().async {
+                callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
+            }
+            return
+        }
+        
+        // make request and encode data
+        self.manager.upload(
+            multipartFormData: { multipartFormData in
+                
+                // add file
+                multipartFormData.append(sourceURL, withName: "file[]", fileName: uploadFilename, mimeType: "application/octet-stream")
+                
+            },
+            with: payload) { encodingResult in
+                
+                // check encoding result
+                switch encodingResult {
+                case .success(request: let uploadRequest, streamingFromDisk: _, streamFileURL: _):
+                    
+                    // get response
+                    uploadRequest
+                        .validate()
+                        .responseObject { (dataResponse: DataResponse<FGUploadResponse>) in
+                        
+                        // return success
+                        let response: FGRequestHelperResponse<FGEmptyObject> =
+                            FGRequestHelperResponse(request: dataResponse.request,
+                                                    response: dataResponse.response,
+                                                    data: dataResponse.data,
+                                                    error: nil,
+                                                    value: FGEmptyObject())
+                        
+                        callback(response)
+                    }
+                    break
+                    
+                case .failure(let error):
+                    
+                    // return error
+                    let error = FGFutureGatewayError.fileEncodingError(error: error)
+                    
+                    callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
+                    break
+                }
+            }
     }
     
     // MARK: - Private mthods

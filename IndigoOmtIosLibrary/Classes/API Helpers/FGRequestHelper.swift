@@ -19,4 +19,7 @@ public protocol FGRequestHelper {
     
     /// Makes remote download file request and returns response in callback.
     func downloadFile(_ payload: FGDownloadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>)
+    
+    /// Makes remote upload file request and returns response in callback.
+    func uploadFile(_ payload: FGUploadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>)
 }

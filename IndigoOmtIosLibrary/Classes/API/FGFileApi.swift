@@ -18,7 +18,6 @@ open class FGFileApi: FGAbstractResolvedApi {
         
         // prepare payload
         let payload = FGDownloadPayload(method: .get)
-        payload.url = self.resolver.baseUrl
         payload.resourcePath = downloadableFile.url
         payload.destinationURL = destination
         
@@ -26,9 +25,22 @@ open class FGFileApi: FGAbstractResolvedApi {
         fetchResolvedUrlAndDownloadFile(payload, callback)
     }
     
+    /// Uploads file.
+    public func upload(_ inputFile: FGInputFile, to uploadLink: FGApiLink, from source: URL, _ callback: @escaping FGUploadPayloadResponseCallback) {
+        
+        // prepare payload
+        let payload = FGUploadPayload(method: .post)
+        payload.resourcePath = uploadLink.href
+        payload.sourceURL = source
+        payload.uploadFilename = inputFile.name
+        
+        // send
+        fetchBaseUrlAndUploadFile(payload, callback)
+    }
+    
     // MARK: - internal methods
     
-    /// Fetches URL from resolver, updates URL in payload and downloads file
+    /// Fetches URL from resolver, updates URL in payload and downloads the file
     func fetchResolvedUrlAndDownloadFile(_ payload: FGDownloadPayload, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
         self.resolver.resolveUrlWithVersion { response in
             
@@ -54,6 +66,27 @@ open class FGFileApi: FGAbstractResolvedApi {
                 // return success
                 callback(FGApiResponse.success(response.value!))
             }
+        }
+    }
+    
+    /// Fetches base URL from resolver, updates URL in payload and uploads the file.
+    func fetchBaseUrlAndUploadFile(_ payload: FGUploadPayload, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
+        
+        // append api path to the url
+        var mutablePayload = payload
+        mutablePayload.url = self.resolver.baseUrl
+        
+        // send payload
+        self.helper.uploadFile(payload) { (response: FGRequestHelperResponse<FGEmptyObject>) in
+            
+            // check for error
+            guard response.error == nil else {
+                callback(FGApiResponse.failure(response.error!, response.errorResponseBody))
+                return
+            }
+            
+            // return success
+            callback(FGApiResponse.success(response.value!))
         }
     }
     
