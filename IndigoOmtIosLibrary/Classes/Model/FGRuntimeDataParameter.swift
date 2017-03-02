@@ -14,16 +14,11 @@ open class FGRuntimeDataParameter: FGParameter {
     
     // MARK: - properties
     
-    
     /// Parameter creation date.
     public var creation: Date?
     
     /// Parameter last change date.
     public var lastChange: Date?
-    
-    public override var description: String {
-        return "FGRuntimeDataParameter { name: \(name), value: \(value) }"
-    }
     
     // MARK: - lifecycle
     
