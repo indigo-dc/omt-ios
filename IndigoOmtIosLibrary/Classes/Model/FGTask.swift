@@ -15,6 +15,12 @@ public enum FGTaskStatus: String {
     /// Value for any Task status.
     case any = "ANY"
     
+    /// Task submitt state.
+    case submit = "SUBMIT"
+    
+    /// Task summited state.
+    case submitted = "SUBMITTED"
+    
     /// Task created but input still required.
     case waiting = "WAITING"
     
