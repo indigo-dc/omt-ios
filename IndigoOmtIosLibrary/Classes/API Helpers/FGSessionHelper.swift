@@ -74,8 +74,8 @@ open class FGSessionHelper: RequestAdapter, RequestRetrier {
             
             guard
                 retryCount < maxRetryCount,
-                let httpResponse = urlResponse as? HTTPURLResponse,(
-                httpResponse.statusCode == 401 || httpResponse.statusCode == 500)
+                let httpResponse = urlResponse as? HTTPURLResponse,
+                (httpResponse.statusCode == 401 || httpResponse.statusCode == 500)
             else {
                 // do not retry
                 completion(false, 0.0)
