@@ -16,11 +16,6 @@ open class FGRequestPayload: FGAbstractPayload {
     /// Body of the payload.
     public var body: FGObjectSerializable?
     
-    /// CustomStringConvertible.
-    public override var description: String {
-        return "FGRequestPayload { url: \(url), resourcePath: \(resourcePath), method: \(method) }"
-    }
-    
     // MARK: - Public methods
     
     public override func toURLRequest() throws -> URLRequest {
@@ -28,11 +23,7 @@ open class FGRequestPayload: FGAbstractPayload {
         
         // add body
         if let body = self.body {
-            do {
-                request.httpBody = try body.serialize().rawData(options: JSONSerialization.WritingOptions.prettyPrinted)
-            }
-            catch {
-            }
+            request.httpBody = try body.serialize().rawData(options: JSONSerialization.WritingOptions.prettyPrinted)
         }
         
         return request

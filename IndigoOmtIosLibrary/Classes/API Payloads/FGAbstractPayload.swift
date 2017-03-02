@@ -46,7 +46,7 @@ open class FGAbstractPayload: CustomStringConvertible {
     
     /// CustomStringConvertible.
     public var description: String {
-        return "FGAbstractPayload { url: \(url), resourcePath: \(resourcePath), method: \(method) }"
+        return "\(String(describing: type(of: self))) { url: \(url), resourcePath: \(resourcePath), method: \(method) }"
     }
     
     // MARK: - lifecycle
@@ -73,12 +73,12 @@ open class FGAbstractPayload: CustomStringConvertible {
     }
     
     public func toURLRequest() throws -> URLRequest {
-        guard self.url != nil else {
-            throw FGFutureGatewayError.fileURLIsEmpty(reason: "Payload has an empty URL")
+        guard let payloadUrl = self.url else {
+            throw FGFutureGatewayError.urlIsEmpty(reason: "Payload has an empty URL")
         }
         
         // prepare url
-        var requestUrl = append(resourcePath: self.resourcePath, to: self.url!)
+        var requestUrl = append(resourcePath: self.resourcePath, to: payloadUrl)
         
         // create request
         var request = try URLRequest(url: requestUrl)

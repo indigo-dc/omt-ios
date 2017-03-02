@@ -19,9 +19,4 @@ open class FGDownloadPayload: FGAbstractPayload {
     /// Path to download file.
     public var destinationURL: URL?
     
-    /// CustomStringConvertible.
-    public override var description: String {
-        return "FGRequestPayload { url: \(url), resourcePath: \(resourcePath), method: \(method) }"
-    }
-    
 }
