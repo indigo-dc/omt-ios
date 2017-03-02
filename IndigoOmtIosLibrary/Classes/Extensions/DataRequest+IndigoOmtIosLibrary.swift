@@ -28,6 +28,9 @@ public extension DataRequest {
     
     public class func serializeFGObject<T: FGObjectSerializable>(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) -> Result<T> {
         guard error == nil else {
+            if error is FGFutureGatewayError {
+                return .failure(error!)
+            }
             return .failure(FGFutureGatewayError.network(error: error!))
         }
         

@@ -13,12 +13,12 @@ import IndigoOmtIosLibrary
 
 class FGAlamofireRequestHelperSpec: QuickSpec {
     override func spec() {
+        let backgroundQueue = DispatchQueue.global()
+        let session = FGSessionHelper(queue: backgroundQueue, provider: nil)
+        let alamo = FGAlamofireRequestHelper(session: session)
+        
         describe("FGAlamofireRequestHelper") {
             context("send") {
-                
-                let backgroundQueue = DispatchQueue.global()
-                let session = FGSessionHelper(queue: backgroundQueue, provider: nil)
-                let alamo = FGAlamofireRequestHelper(session: session)
                 
                 it("should return urlIsEmpty error") {
                     
