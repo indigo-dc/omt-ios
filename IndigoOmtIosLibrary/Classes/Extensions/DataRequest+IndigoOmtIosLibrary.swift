@@ -28,6 +28,9 @@ public extension DataRequest {
     
     public class func serializeFGObject<T: FGObjectSerializable>(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) -> Result<T> {
         guard error == nil else {
+            if error is FGFutureGatewayError {
+                return .failure(error!)
+            }
             return .failure(FGFutureGatewayError.network(error: error!))
         }
         
@@ -37,8 +40,8 @@ public extension DataRequest {
         guard
             case let .success(jsonObject) = result,
             let swiftyJsonObject = JSON(rawValue: jsonObject)
-            else {
-                return .failure(FGFutureGatewayError.jsonSerialization(error: result.error!))
+        else {
+            return .failure(FGFutureGatewayError.jsonSerialization(error: result.error!))
         }
         
         guard let response = response, let responseObject = T(response: response, json: swiftyJsonObject) else {

@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// Upload payload callback.
-public typealias FGUploadPayloadCallback = () -> ()
+/// Upload payload response callback.
+public typealias FGUploadPayloadResponseCallback = (FGApiResponse<FGEmptyObject>) -> ()
 
 /// Upload payload class.
 open class FGUploadPayload: FGAbstractPayload {
@@ -19,9 +19,7 @@ open class FGUploadPayload: FGAbstractPayload {
     /// File to upload.
     public var sourceURL: URL?
     
-    /// CustomStringConvertible.
-    public override var description: String {
-        return "FGUploadPayload { url: \(url), resourcePath: \(resourcePath), method: \(method) }"
-    }
+    /// Filename of uploaded file.
+    public var uploadFilename: String?
     
 }

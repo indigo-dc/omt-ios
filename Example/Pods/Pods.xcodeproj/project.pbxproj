@@ -18,7 +18,6 @@
 		0F1A362C55361BD5AB0BC94A /* FGObjectSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB96186B4802FD7E8034E9 /* FGObjectSerializable.swift */; };
 		0F713AD1A38C938611F0B893 /* Pods-IndigoOmtIosLibrary_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B9B63196533163EC089E99D8 /* Pods-IndigoOmtIosLibrary_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FF638C5D44F10FAC5DE7F8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16FFA479AD80EC396F2D637C /* Foundation.framework */; };
-		10082617300A8464010F90FE /* FGEmptyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F869760FD03DA6454E4B38E /* FGEmptyObject.swift */; };
 		15D013D21D7BC4F62E8E5CD1 /* SatisfyAnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBDD95630E5EBD7D2259880 /* SatisfyAnyOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		17408FF580394A228618B2CA /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 03170F97185A617781A79CB3 /* Alamofire-dummy.m */; };
 		181D60FEEBF0E2D49E451844 /* FGSessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6886E86A3AB05FC7FCFB00C0 /* FGSessionHelper.swift */; };
@@ -196,6 +195,8 @@
 		D760F52C1E5B297D004419C3 /* FGApplicationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52B1E5B297D004419C3 /* FGApplicationCollection.swift */; };
 		D760F52E1E5B2C27004419C3 /* FGParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52D1E5B2C27004419C3 /* FGParameter.swift */; };
 		D760F5301E5B3E87004419C3 /* FGInfrastructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F52F1E5B3E87004419C3 /* FGInfrastructure.swift */; };
+		D790C0B51E65B8AE00B0CF2A /* FGUploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D790C0B41E65B8AE00B0CF2A /* FGUploadResponse.swift */; };
+		D7BBB13E1E685664006B495F /* FGEmptyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB13D1E685664006B495F /* FGEmptyObject.swift */; };
 		D7BC9A8A1CD4501D7D7AD5DB /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF12D15D419E7FF327EE9FA /* Quick-dummy.m */; };
 		D7DEEF9C1E5EE1D800EF424A /* FGAbstractPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEF9B1E5EE1D800EF424A /* FGAbstractPayload.swift */; };
 		D7DEEF9E1E5EE36C00EF424A /* FGUploadPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEEF9D1E5EE36C00EF424A /* FGUploadPayload.swift */; };
@@ -389,7 +390,6 @@
 		594D15EEDD7AF0685FB70F96 /* Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Sources/Quick/Configuration/Configuration.swift; sourceTree = "<group>"; };
 		5A11AD275AF43C5FD52D5291 /* OIDTokenRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OIDTokenRequest.h; path = Source/OIDTokenRequest.h; sourceTree = "<group>"; };
 		5C07228CB98DD80A8DE50650 /* FGTaskCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGTaskCollection.swift; sourceTree = "<group>"; };
-		5F869760FD03DA6454E4B38E /* FGEmptyObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGEmptyObject.swift; sourceTree = "<group>"; };
 		5FE178F169F0B861B154045B /* OIDAuthState+IOS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "OIDAuthState+IOS.h"; path = "Source/iOS/OIDAuthState+IOS.h"; sourceTree = "<group>"; };
 		601A9FCD1C4496FEADE17A2C /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		62A8D960FA6F029F9F70A71B /* FGRuntimeDataParameter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FGRuntimeDataParameter.swift; sourceTree = "<group>"; };
@@ -515,6 +515,8 @@
 		D760F52B1E5B297D004419C3 /* FGApplicationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollection.swift; sourceTree = "<group>"; };
 		D760F52D1E5B2C27004419C3 /* FGParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGParameter.swift; sourceTree = "<group>"; };
 		D760F52F1E5B3E87004419C3 /* FGInfrastructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInfrastructure.swift; sourceTree = "<group>"; };
+		D790C0B41E65B8AE00B0CF2A /* FGUploadResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadResponse.swift; sourceTree = "<group>"; };
+		D7BBB13D1E685664006B495F /* FGEmptyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGEmptyObject.swift; sourceTree = "<group>"; };
 		D7DEEF9B1E5EE1D800EF424A /* FGAbstractPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractPayload.swift; sourceTree = "<group>"; };
 		D7DEEF9D1E5EE36C00EF424A /* FGUploadPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadPayload.swift; sourceTree = "<group>"; };
 		D7DEEF9F1E5EE58000EF424A /* FGDownloadPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGDownloadPayload.swift; sourceTree = "<group>"; };
@@ -976,7 +978,6 @@
 			isa = PBXGroup;
 			children = (
 				6F011FC5DE73216F452CCB80 /* DataRequest+IndigoOmtIosLibrary.swift */,
-				5F869760FD03DA6454E4B38E /* FGEmptyObject.swift */,
 				90FB96186B4802FD7E8034E9 /* FGObjectSerializable.swift */,
 			);
 			path = Extensions;
@@ -1001,6 +1002,7 @@
 				447F469B71E8B9759D89E112 /* FGApplication.swift */,
 				D760F52B1E5B297D004419C3 /* FGApplicationCollection.swift */,
 				D7378EF81E647691006BF71E /* FGDownloadableFile.swift */,
+				D7BBB13D1E685664006B495F /* FGEmptyObject.swift */,
 				D760F52F1E5B3E87004419C3 /* FGInfrastructure.swift */,
 				B1626FD4621D6643F651893F /* FGInputFile.swift */,
 				D760F5291E5B081D004419C3 /* FGMessageObject.swift */,
@@ -1009,6 +1011,7 @@
 				62A8D960FA6F029F9F70A71B /* FGRuntimeDataParameter.swift */,
 				35CE99379CFBBA17C4A6DF5B /* FGTask.swift */,
 				5C07228CB98DD80A8DE50650 /* FGTaskCollection.swift */,
+				D790C0B41E65B8AE00B0CF2A /* FGUploadResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1609,6 +1612,7 @@
 				D7DEEFA51E5EF67900EF424A /* FGApiResolver.swift in Sources */,
 				55DCC96F6B7BED97CFB7B1A5 /* FGAccessTokenProvider.swift in Sources */,
 				C76AE0B823E74DA733DF95B0 /* FGAlamofireRequestHelper.swift in Sources */,
+				D7BBB13E1E685664006B495F /* FGEmptyObject.swift in Sources */,
 				D7DEEFA61E5EF67900EF424A /* FGApiResponse.swift in Sources */,
 				03C5713A26BFE4D8078D688F /* FGApiLink.swift in Sources */,
 				D760F52E1E5B2C27004419C3 /* FGParameter.swift in Sources */,
@@ -1617,7 +1621,6 @@
 				29E4E387DFA62D9C0FF6999C /* FGApplication.swift in Sources */,
 				3E5AA9262E02AAA56E6FC2E6 /* FGApplicationCollectionApi.swift in Sources */,
 				DCCFA96999C2EE3CDCA16228 /* FGDateUtil.swift in Sources */,
-				10082617300A8464010F90FE /* FGEmptyObject.swift in Sources */,
 				D74E8C8E1E5DDA2E00D25BFB /* FGFileApi.swift in Sources */,
 				D7DEEFA21E5EE64D00EF424A /* FGRequestPayload.swift in Sources */,
 				58F8ED3D4C5FBD2CB0C57FE2 /* FGFutureGateway.swift in Sources */,
@@ -1634,6 +1637,7 @@
 				181D60FEEBF0E2D49E451844 /* FGSessionHelper.swift in Sources */,
 				D7DEEF9E1E5EE36C00EF424A /* FGUploadPayload.swift in Sources */,
 				D7378EF91E647691006BF71E /* FGDownloadableFile.swift in Sources */,
+				D790C0B51E65B8AE00B0CF2A /* FGUploadResponse.swift in Sources */,
 				D546DAC527B4E212F671E540 /* FGTask.swift in Sources */,
 				C49BF2819BEE8F7A73CB3E4C /* FGTaskCollection.swift in Sources */,
 				D73420711E547C7200032828 /* FGAbstractResolvedApi.swift in Sources */,

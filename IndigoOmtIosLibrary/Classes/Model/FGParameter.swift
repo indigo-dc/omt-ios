@@ -24,7 +24,7 @@ open class FGParameter: FGObjectSerializable, CustomStringConvertible {
     public var parameterDescription: String?
     
     public var description: String {
-        return "FGParameter { name: \(name), value: \(value) }"
+        return "\(String(describing: type(of: self))) { name: \(name), value: \(value) }"
     }
     
     // MARK: - lifecycle

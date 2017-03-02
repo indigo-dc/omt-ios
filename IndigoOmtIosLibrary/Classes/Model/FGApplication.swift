@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 /// An application object.
-open class FGApplication: FGObjectSerializable {
+open class FGApplication: FGObjectSerializable, CustomStringConvertible {
     
     // MARK: - properties
     
@@ -41,6 +41,11 @@ open class FGApplication: FGObjectSerializable {
     
     /// Application links.
     public var links: [FGApiLink] = []
+    
+    /// CustomStringConvertible.
+    public var description: String {
+        return "FGApplication { id: \(id), name: \(name) }"
+    }
     
     // MARK: - lifecycle
     

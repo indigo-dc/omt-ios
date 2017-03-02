@@ -10,12 +10,17 @@ import Foundation
 import SwiftyJSON
 
 /// Message response object.
-open class FGMessageObject: FGObjectSerializable {
+open class FGMessageObject: FGObjectSerializable, CustomStringConvertible {
     
     // MARK: - properties
     
     /// The message.
     public var message: String?
+    
+    /// CustomStringConvertible.
+    public var description: String {
+        return "FGMessageObject { message: \(self.message) }"
+    }
     
     // MARK: - lifecycle
     

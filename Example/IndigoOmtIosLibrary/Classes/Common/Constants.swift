@@ -21,8 +21,8 @@ class Constants {
     /// OAuth client ID
     static let ClientID: String = "YOUR_CLIENT_ID"
     
-    /// OAuth client secret
-    static let ClientSecret: String = "YOUR_CLIENT_SECRET"
+    /// OAuth client secret - optional
+    static let ClientSecret: String? = nil // "YOUR_CLIENT_SECRET"
     
     /// Redirect URI for the client. This scheme must be registered as a scheme in the project's Info
     /// property list ("CFBundleURLTypes" plist key). Any path component will work, we use
