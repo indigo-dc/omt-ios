@@ -14,7 +14,6 @@ import IndigoOmtIosLibrary
 class FGApplicationCollectionSpec: QuickSpec {
     override func spec() {
         let response = HTTPURLResponse()
-        let _ = FGTask()
         
         describe("FGApplicationCollection") {
             context("methods") {

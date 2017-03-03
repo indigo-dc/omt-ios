@@ -29,6 +29,7 @@
 		D784B6EA1E48C876003BC522 /* FGFutureGatewaySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */; };
 		D7860AB91E39F843007AC258 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860AB81E39F843007AC258 /* UserInfo.swift */; };
 		D7860ABB1E39F85C007AC258 /* UserInfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */; };
+		D7B7088F1E685D7E0004374D /* FGUploadResponseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7088D1E685D770004374D /* FGUploadResponseSpec.swift */; };
 		D7BEF7361E2F81B800ACD8DA /* UIDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */; };
 		D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7371E2F983000ACD8DA /* MainViewController.swift */; };
 		D7BF8AE31E449A2C009FA541 /* FGDateUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */; };
@@ -98,6 +99,7 @@
 		D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGFutureGatewaySpec.swift; sourceTree = "<group>"; };
 		D7860AB81E39F843007AC258 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoApi.swift; sourceTree = "<group>"; };
+		D7B7088D1E685D770004374D /* FGUploadResponseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadResponseSpec.swift; sourceTree = "<group>"; };
 		D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDesignHelper.swift; sourceTree = "<group>"; };
 		D7BEF7371E2F983000ACD8DA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGDateUtilSpec.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				D760F51D1E55F3AF004419C3 /* FGApiRootVersionSpec.swift */,
 				D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */,
 				D74E8C811E5C60FA00D25BFB /* FGApplicationCollectionSpec.swift */,
+				D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */,
 				D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */,
 				D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */,
 				D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */,
@@ -201,8 +204,8 @@
 				D760F5271E5AEC8C004419C3 /* FGTaskApiSpec.swift */,
 				D760F5251E572097004419C3 /* FGTaskCollectionSpec.swift */,
 				D73420771E559A5200032828 /* FGTaskCollectionApiSpec.swift */,
+				D7B7088D1E685D770004374D /* FGUploadResponseSpec.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
-				D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				D760F5201E55F70D004419C3 /* FGOutputFileSpec.swift in Sources */,
 				D7BF8AE31E449A2C009FA541 /* FGDateUtilSpec.swift in Sources */,
 				D7C9C5BA1E4C6F340073C50A /* DummyProvider.swift in Sources */,
+				D7B7088F1E685D7E0004374D /* FGUploadResponseSpec.swift in Sources */,
 				D784B6EA1E48C876003BC522 /* FGFutureGatewaySpec.swift in Sources */,
 				D760F5261E572097004419C3 /* FGTaskCollectionSpec.swift in Sources */,
 				D760F5121E55B850004419C3 /* DummyResolver.swift in Sources */,

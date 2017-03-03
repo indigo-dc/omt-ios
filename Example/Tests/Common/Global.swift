@@ -55,6 +55,10 @@ func createApplicationCollectionString(_ application: String) -> String {
     return "{\"applications\":[\(application)]}"
 }
 
+func createUploadResponseString(_ files: [String], message: String, task: String, gestatus: String) -> String {
+    return "{\"files\":[\(files.map { "\"\($0)\"" }.joined(separator: ","))], \"message\":\"\(message)\", \"task\":\"\(task)\", \"gestatus\":\"\(gestatus)\"}"
+}
+
 func makeObject<T: FGObjectSerializable>(_ data: Data) -> T? {
     return DataRequest.serializeFGObject(request: nil, response: HTTPURLResponse(), data: data, error: nil).value
 }

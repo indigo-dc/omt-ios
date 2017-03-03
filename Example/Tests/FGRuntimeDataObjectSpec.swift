@@ -14,7 +14,6 @@ import IndigoOmtIosLibrary
 class FGRuntimeDataParameterSpec: QuickSpec {
     override func spec() {
         let response = HTTPURLResponse()
-        let _ = FGTask()
         
         describe("FGRuntimeDataParameter") {
             context("methods") {
