@@ -20,6 +20,11 @@ class FGTaskApiSpec: QuickSpec {
         
         describe("FGTaskApi") {
             context("methods") {
+                beforeEach {
+                    dummyHelper.dummyError = nil
+                    dummyHelper.dummyValue = nil
+                    dummyHelper.dummyResponse = nil
+                }
                 
                 it("view task details") {
                     
