@@ -146,7 +146,7 @@ open class FGAbstractPayload: CustomStringConvertible {
         if let url = mutableRequest.url, params.isEmpty == false {
             
             // all params to string
-            let paramsAsString = parameters.map { (k, v) in "\(k)=\(v)" }.joined(separator: "&")
+            let paramsAsString = params.map { (k, v) in "\(k)=\(v)" }.joined(separator: "&")
             
             // get url components
             if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
@@ -154,12 +154,13 @@ open class FGAbstractPayload: CustomStringConvertible {
                 var queryString = ""
                 
                 // append existing query
-                if let query = urlComponents.percentEncodedQuery {
-                    queryString += query
+                if let urlQuery = urlComponents.percentEncodedQuery {
+                    queryString += urlQuery
+                    queryString += "&"
                 }
                 
                 // append params
-                queryString += "&" + paramsAsString
+                queryString += paramsAsString
                 
                 // update query
                 urlComponents.percentEncodedQuery = queryString

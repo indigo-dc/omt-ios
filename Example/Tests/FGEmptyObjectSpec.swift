@@ -49,10 +49,10 @@ class FGEmptyObjectSpec: QuickSpec {
                 it("should serialzie to empty string") {
                     
                     // prepare
-                    let empty = FGEmptyObject()
+                    let emptyObj = FGEmptyObject()
                     
                     // test
-                    let result = empty.serialize()
+                    let result = emptyObj.serialize()
                     
                     // verify
                     expect(result).to(beEmpty())

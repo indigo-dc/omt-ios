@@ -54,6 +54,10 @@ open class FGUploadResponse: FGObjectSerializable, CustomStringConvertible {
         }
     }
     
+    public init() {
+        // empty
+    }
+    
     public func serialize() -> JSON {
         var json = JSON([:])
         

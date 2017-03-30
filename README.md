@@ -56,14 +56,14 @@ and then run shell script from root directory
 
 
 > Powered by [xcov](https://github.com/nakiostudio/xcov)
-## Current coverage for IndigoOmtIosLibrary.framework is `82%`
+## Current coverage for IndigoOmtIosLibrary.framework is `88%`
 Files changed | - | - 
 --- | --- | ---
-FGUploadResponse.swift | `0%` | :skull:
-FGFileApi.swift | `0%` | :skull:
 FGAlamofireRequestHelper.swift | `23%` | :skull:
+FGFileApi.swift | `55%` | :warning:
 FGFutureGatewayError.swift | `71%` | :warning:
-FGAbstractPayload.swift | `97%` | :white_check_mark:
+FGTaskApi.swift | `100%` | :white_check_mark:
+FGApplicationCollection.swift | `100%` | :white_check_mark:
 FGEmptyObject.swift | `100%` | :white_check_mark:
 FGApiResponse.swift | `100%` | :white_check_mark:
 FGApiLink.swift | `100%` | :white_check_mark:
@@ -81,7 +81,9 @@ FGOutputFile.swift | `100%` | :white_check_mark:
 FGMessageObject.swift | `100%` | :white_check_mark:
 FGInfrastructure.swift | `100%` | :white_check_mark:
 FGRuntimeDataParameter.swift | `100%` | :white_check_mark:
+FGAbstractPayload.swift | `100%` | :white_check_mark:
 FGSessionHelper.swift | `100%` | :white_check_mark:
+FGUploadResponse.swift | `100%` | :white_check_mark:
 FGTask.swift | `100%` | :white_check_mark:
 FGTaskCollection.swift | `100%` | :white_check_mark:
 FGAbstractResolvedApi.swift | `100%` | :white_check_mark:
@@ -89,8 +91,6 @@ DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
 FGTaskCollectionApi.swift | `100%` | :white_check_mark:
 FGRequestHelperResponse.swift | `100%` | :white_check_mark:
 FGAbstractApi.swift | `100%` | :white_check_mark:
-FGTaskApi.swift | `100%` | :white_check_mark:
-FGApplicationCollection.swift | `100%` | :white_check_mark:
 
 ---
 

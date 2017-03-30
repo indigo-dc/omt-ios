@@ -14,7 +14,6 @@ import IndigoOmtIosLibrary
 class FGInputFileSpec: QuickSpec {
     override func spec() {
         let response = HTTPURLResponse()
-        let _ = FGTask()
         
         describe("FGInputFile") {
             context("methods") {

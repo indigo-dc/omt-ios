@@ -48,7 +48,25 @@ class DummyHelper: FGRequestHelper {
     }
     
     public func downloadFile(_ payload: FGDownloadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
-        
+        getBackgroundQueue().async {
+            
+            do {
+                let _ = try payload.asURLRequest()
+            }
+            catch {
+                
+            }
+            
+            print(payload.description)
+            let response = FGRequestHelperResponse<FGEmptyObject>(request: nil,
+                                                                  response: self.dummyResponse,
+                                                                  data: self.dummyErrorResponseBody?.data(using: .utf8),
+                                                                  error: self.dummyError,
+                                                                  value: (self.dummyValue as? FGEmptyObject))
+            print(response.description)
+            
+            callback(response)
+        }
     }
     
     public func uploadFile(_ payload: FGUploadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
