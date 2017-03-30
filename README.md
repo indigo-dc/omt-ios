@@ -24,17 +24,11 @@ To run the example project
 
 ## Installation
 
-to be continued...
+Indigo Omt Ios Library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
-<!---
- ## Installation
- 
- Indigo Omt Ios Library is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
- 
- ```ruby
- pod 'IndigoOmtIosLibrary'
- ```
- --->
+```
+pod 'IndigoOmtIosLibrary'
+```
 
 ## License
 
