@@ -7,7 +7,7 @@ iOS library which simplifies access to INDIGO DataCloud API
 
 - `macOS >= 10.12`
 - `Xcode >= 8.0`
-- `CocoaPods >= 1.1.1`
+- `CocoaPods >= 1.2.0`
 
 ## Dependencies
 
