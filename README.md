@@ -54,4 +54,4 @@ and then run shell script from root directory
 ./run_unit_tests_coverage.sh
 ```
 
-You can view unit tests coverage [here](http://htmlpreview.github.io/?https://github.com/indigo-dc/omt-ios/blob/master/coverage_output/index.html).
+You can view unit tests coverage [here](http://htmlpreview.github.io/?https://github.com/indigo-dc/omt-ios/blob/master/unit_tests_coverage/index.html).
