@@ -1,3 +1,4 @@
 xcuserdata
 *.xcuserstate
-coverage_output
+xcodebuild.log
+xcov.log

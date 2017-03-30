@@ -51,47 +51,7 @@ sudo gem install xcov
 and then run shell script from root directory
 
 ```
-./run_code_coverage.sh
+./run_unit_tests_coverage.sh
 ```
 
-
-> Powered by [xcov](https://github.com/nakiostudio/xcov)
-## Current coverage for IndigoOmtIosLibrary.framework is `88%`
-Files changed | - | - 
---- | --- | ---
-FGAlamofireRequestHelper.swift | `23%` | :skull:
-FGFileApi.swift | `55%` | :warning:
-FGFutureGatewayError.swift | `71%` | :warning:
-FGTaskApi.swift | `100%` | :white_check_mark:
-FGApplicationCollection.swift | `100%` | :white_check_mark:
-FGEmptyObject.swift | `100%` | :white_check_mark:
-FGApiResponse.swift | `100%` | :white_check_mark:
-FGApiLink.swift | `100%` | :white_check_mark:
-FGParameter.swift | `100%` | :white_check_mark:
-FGApiRoot.swift | `100%` | :white_check_mark:
-FGApiRootVersion.swift | `100%` | :white_check_mark:
-FGApplication.swift | `100%` | :white_check_mark:
-FGApplicationCollectionApi.swift | `100%` | :white_check_mark:
-FGDateUtil.swift | `100%` | :white_check_mark:
-FGRequestPayload.swift | `100%` | :white_check_mark:
-FGFutureGateway.swift | `100%` | :white_check_mark:
-FGRootApiResolver.swift | `100%` | :white_check_mark:
-FGInputFile.swift | `100%` | :white_check_mark:
-FGOutputFile.swift | `100%` | :white_check_mark:
-FGMessageObject.swift | `100%` | :white_check_mark:
-FGInfrastructure.swift | `100%` | :white_check_mark:
-FGRuntimeDataParameter.swift | `100%` | :white_check_mark:
-FGAbstractPayload.swift | `100%` | :white_check_mark:
-FGSessionHelper.swift | `100%` | :white_check_mark:
-FGUploadResponse.swift | `100%` | :white_check_mark:
-FGTask.swift | `100%` | :white_check_mark:
-FGTaskCollection.swift | `100%` | :white_check_mark:
-FGAbstractResolvedApi.swift | `100%` | :white_check_mark:
-DataRequest+IndigoOmtIosLibrary.swift | `100%` | :white_check_mark:
-FGTaskCollectionApi.swift | `100%` | :white_check_mark:
-FGRequestHelperResponse.swift | `100%` | :white_check_mark:
-FGAbstractApi.swift | `100%` | :white_check_mark:
-
----
-
-> Powered by [xcov](https://github.com/nakiostudio/xcov)
+You can view unit tests coverage [here](http://htmlpreview.github.io/?https://github.com/indigo-dc/omt-ios/blob/master/coverage_output/index.html).

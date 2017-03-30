@@ -1,17 +1,14 @@
 #!/bin/bash
 
-# readme file
-README='README.md'
-
 # output dir
-SCRIPT_OUTPUT='coverage_output'
+SCRIPT_OUTPUT='unit_tests_coverage'
 mkdir -p $SCRIPT_OUTPUT
 
 # run test
 echo "Running test"
 xcodebuild \
     -workspace ./Example/IndigoOmtIosLibrary.xcworkspace \
-    -scheme "IndigoOmtIosLibrary-Example" \
+    -scheme "IndigoOmtIosLibrary_Example" \
     test \
     -destination "platform=iOS Simulator,name=iPhone 5" \
     &> "./$SCRIPT_OUTPUT/xcodebuild.log"
@@ -24,18 +21,7 @@ xcov \
     -o "./$SCRIPT_OUTPUT" \
     --exclude_targets Quick.framework,Alamofire.framework,Nimble.framework,AppAuth.framework,SwiftyJSON.framework,IndigoOmtIosLibrary_Example.app \
     --html_report \
-    --markdown_report \
     &> "./$SCRIPT_OUTPUT/xcov.log"
-
-# update readme
-echo "Updating readme"
-
-# remove previous coverage results from README
-sed -i.bak '/## Current coverage for/,$ d' "./$README"
-rm "./$README.bak"
-
-# append new coverage results
-cat "./$SCRIPT_OUTPUT/report.md" >> "./$README"
 
 # show report
 echo "Opening report"

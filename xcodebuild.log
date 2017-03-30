@@ -1,0 +1,1 @@
+xcodebuild: error: If you specify a workspace then you must also specify a scheme.  Use -list to see the schemes in this workspace.
