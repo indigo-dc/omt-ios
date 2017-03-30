@@ -9,43 +9,44 @@
 /* Begin PBXBuildFile section */
 		0A5172F08F8C6250CD528E94 /* Pods_IndigoOmtIosLibrary_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */; };
 		BCE3ACC08416E68D911F5B13 /* Pods_IndigoOmtIosLibrary_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */; };
-		D73420741E549ADF00032828 /* FGEmptyObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */; };
-		D73420781E559A5200032828 /* FGTaskCollectionApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73420771E559A5200032828 /* FGTaskCollectionApiSpec.swift */; };
-		D73E75A41E8BE2F00080F54F /* FGFileApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E75A31E8BE2F00080F54F /* FGFileApiSpec.swift */; };
-		D74E8C831E5C60FC00D25BFB /* FGApplicationCollectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C811E5C60FA00D25BFB /* FGApplicationCollectionSpec.swift */; };
-		D74E8C871E5C613A00D25BFB /* FGInfrastructureSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C861E5C613A00D25BFB /* FGInfrastructureSpec.swift */; };
-		D74E8C891E5C866000D25BFB /* FGMessageObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C881E5C866000D25BFB /* FGMessageObjectSpec.swift */; };
-		D74E8C8A1E5C8C4E00D25BFB /* FGApplicationSpec.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */; };
-		D74E8C8C1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */; };
+		D72EF3A21E8D256C00C0F183 /* UnitTestsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = D72EF3A11E8D256C00C0F183 /* UnitTestsInfo.plist */; };
+		D72EF3BD1E8D257700C0F183 /* DataRequestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A41E8D257700C0F183 /* DataRequestSpec.swift */; };
+		D72EF3BE1E8D257700C0F183 /* FGAbstractPayloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A51E8D257700C0F183 /* FGAbstractPayloadSpec.swift */; };
+		D72EF3BF1E8D257700C0F183 /* FGAlamofireRequestHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A61E8D257700C0F183 /* FGAlamofireRequestHelperSpec.swift */; };
+		D72EF3C01E8D257700C0F183 /* FGApiLinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A71E8D257700C0F183 /* FGApiLinkSpec.swift */; };
+		D72EF3C11E8D257700C0F183 /* FGApiRootSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A81E8D257700C0F183 /* FGApiRootSpec.swift */; };
+		D72EF3C21E8D257700C0F183 /* FGApiRootVersionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A91E8D257700C0F183 /* FGApiRootVersionSpec.swift */; };
+		D72EF3C31E8D257700C0F183 /* FGApplicationCollectionApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3AA1E8D257700C0F183 /* FGApplicationCollectionApiSpec.swift */; };
+		D72EF3C41E8D257700C0F183 /* FGApplicationCollectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3AB1E8D257700C0F183 /* FGApplicationCollectionSpec.swift */; };
+		D72EF3C51E8D257700C0F183 /* FGApplicationSpec.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3AC1E8D257700C0F183 /* FGApplicationSpec.swift.swift */; };
+		D72EF3C61E8D257700C0F183 /* FGDateUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3AD1E8D257700C0F183 /* FGDateUtilSpec.swift */; };
+		D72EF3C71E8D257700C0F183 /* FGEmptyObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3AE1E8D257700C0F183 /* FGEmptyObjectSpec.swift */; };
+		D72EF3C81E8D257700C0F183 /* FGFileApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3AF1E8D257700C0F183 /* FGFileApiSpec.swift */; };
+		D72EF3C91E8D257700C0F183 /* FGFutureGatewaySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B01E8D257700C0F183 /* FGFutureGatewaySpec.swift */; };
+		D72EF3CA1E8D257700C0F183 /* FGInfrastructureSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B11E8D257700C0F183 /* FGInfrastructureSpec.swift */; };
+		D72EF3CB1E8D257700C0F183 /* FGInputFileSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B21E8D257700C0F183 /* FGInputFileSpec.swift */; };
+		D72EF3CC1E8D257700C0F183 /* FGMessageObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B31E8D257700C0F183 /* FGMessageObjectSpec.swift */; };
+		D72EF3CD1E8D257700C0F183 /* FGOutputFileSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B41E8D257700C0F183 /* FGOutputFileSpec.swift */; };
+		D72EF3CE1E8D257700C0F183 /* FGRootApiResolverSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B51E8D257700C0F183 /* FGRootApiResolverSpec.swift */; };
+		D72EF3CF1E8D257700C0F183 /* FGRuntimeDataObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B61E8D257700C0F183 /* FGRuntimeDataObjectSpec.swift */; };
+		D72EF3D01E8D257700C0F183 /* FGSessionHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B71E8D257700C0F183 /* FGSessionHelperSpec.swift */; };
+		D72EF3D11E8D257700C0F183 /* FGTaskApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B81E8D257700C0F183 /* FGTaskApiSpec.swift */; };
+		D72EF3D21E8D257700C0F183 /* FGTaskCollectionApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3B91E8D257700C0F183 /* FGTaskCollectionApiSpec.swift */; };
+		D72EF3D31E8D257700C0F183 /* FGTaskCollectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3BA1E8D257700C0F183 /* FGTaskCollectionSpec.swift */; };
+		D72EF3D41E8D257700C0F183 /* FGTaskSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3BB1E8D257700C0F183 /* FGTaskSpec.swift */; };
+		D72EF3D51E8D257700C0F183 /* FGUploadResponseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3BC1E8D257700C0F183 /* FGUploadResponseSpec.swift */; };
 		D760F5121E55B850004419C3 /* DummyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5111E55B850004419C3 /* DummyResolver.swift */; };
-		D760F51C1E55F38E004419C3 /* FGApiLinkSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F51B1E55F38E004419C3 /* FGApiLinkSpec.swift */; };
-		D760F51E1E55F3AF004419C3 /* FGApiRootVersionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F51D1E55F3AF004419C3 /* FGApiRootVersionSpec.swift */; };
-		D760F5201E55F70D004419C3 /* FGOutputFileSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F51F1E55F70D004419C3 /* FGOutputFileSpec.swift */; };
-		D760F5221E55F719004419C3 /* FGInputFileSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5211E55F719004419C3 /* FGInputFileSpec.swift */; };
-		D760F5241E55F785004419C3 /* FGRuntimeDataObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5231E55F785004419C3 /* FGRuntimeDataObjectSpec.swift */; };
-		D760F5261E572097004419C3 /* FGTaskCollectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5251E572097004419C3 /* FGTaskCollectionSpec.swift */; };
-		D760F5281E5AEC8C004419C3 /* FGTaskApiSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5271E5AEC8C004419C3 /* FGTaskApiSpec.swift */; };
 		D78405101E3B6394003B6684 /* AppAuthAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */; };
-		D784B6E81E48A2C8003BC522 /* FGApiRootSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */; };
-		D784B6EA1E48C876003BC522 /* FGFutureGatewaySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */; };
 		D7860AB91E39F843007AC258 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860AB81E39F843007AC258 /* UserInfo.swift */; };
 		D7860ABB1E39F85C007AC258 /* UserInfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */; };
-		D7B7088F1E685D7E0004374D /* FGUploadResponseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7088D1E685D770004374D /* FGUploadResponseSpec.swift */; };
-		D7B708911E6968BD0004374D /* FGAbstractPayloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B708901E6968BD0004374D /* FGAbstractPayloadSpec.swift */; };
 		D7BEF7361E2F81B800ACD8DA /* UIDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */; };
 		D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7371E2F983000ACD8DA /* MainViewController.swift */; };
-		D7BF8AE31E449A2C009FA541 /* FGDateUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */; };
-		D7BF8AE61E449E81009FA541 /* FGRootApiResolverSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8AE41E449E5F009FA541 /* FGRootApiResolverSpec.swift */; };
-		D7BF8AEC1E44ABF7009FA541 /* DataRequestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BF8AEA1E44ABD9009FA541 /* DataRequestSpec.swift */; };
 		D7C9C5B51E4C61EF0073C50A /* DummyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B31E4C61EF0073C50A /* DummyError.swift */; };
 		D7C9C5B61E4C61EF0073C50A /* DummyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B41E4C61EF0073C50A /* DummyHelper.swift */; };
 		D7C9C5B81E4C66710073C50A /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B71E4C66710073C50A /* Global.swift */; };
 		D7C9C5BA1E4C6F340073C50A /* DummyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */; };
-		D7C9C5D41E4C8D200073C50A /* FGSessionHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5D31E4C8D200073C50A /* FGSessionHelperSpec.swift */; };
 		D7C9C5D51E4CB7750073C50A /* DummyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */; };
 		D7C9C5D71E4DA4E10073C50A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5D61E4DA4E10073C50A /* Constants.swift */; };
-		D7C9C5D91E4DBBE30073C50A /* FGAlamofireRequestHelperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5D81E4DBBE30073C50A /* FGAlamofireRequestHelperSpec.swift */; };
-		D7C9C5DF1E51C18D0073C50A /* FGTaskSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5DE1E51C18D0073C50A /* FGTaskSpec.swift */; };
 		D7DC97B31E3648F900C25191 /* AuthUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC97B21E3648F900C25191 /* AuthUtil.swift */; };
 		D7DC97B61E36495700C25191 /* AuthConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DC97B51E36495700C25191 /* AuthConfig.swift */; };
 		D7DF23991E2CEA830037AA41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DF23981E2CEA830037AA41 /* Constants.swift */; };
@@ -77,46 +78,46 @@
 		58E8A7DC3F1EA93432D00C8F /* Pods-IndigoOmtIosLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_Example/Pods-IndigoOmtIosLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
 		60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* IndigoOmtIosLibrary_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IndigoOmtIosLibrary_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACE51AFB9204008FA782 /* IndigoOmtIosLibrary_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndigoOmtIosLibrary_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		607FACE51AFB9204008FA782 /* IndigoOmtIosLibrary_UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndigoOmtIosLibrary_UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFE4D6AFE87B55B2E647AA4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGEmptyObjectSpec.swift; sourceTree = "<group>"; };
-		D73420771E559A5200032828 /* FGTaskCollectionApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskCollectionApiSpec.swift; sourceTree = "<group>"; };
-		D73E75A31E8BE2F00080F54F /* FGFileApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGFileApiSpec.swift; sourceTree = "<group>"; };
-		D74E8C811E5C60FA00D25BFB /* FGApplicationCollectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollectionSpec.swift; sourceTree = "<group>"; };
-		D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationSpec.swift.swift; sourceTree = "<group>"; };
-		D74E8C861E5C613A00D25BFB /* FGInfrastructureSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInfrastructureSpec.swift; sourceTree = "<group>"; };
-		D74E8C881E5C866000D25BFB /* FGMessageObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGMessageObjectSpec.swift; sourceTree = "<group>"; };
-		D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollectionApiSpec.swift; sourceTree = "<group>"; };
+		D72EF3A11E8D256C00C0F183 /* UnitTestsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UnitTestsInfo.plist; sourceTree = "<group>"; };
+		D72EF3A41E8D257700C0F183 /* DataRequestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestSpec.swift; sourceTree = "<group>"; };
+		D72EF3A51E8D257700C0F183 /* FGAbstractPayloadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractPayloadSpec.swift; sourceTree = "<group>"; };
+		D72EF3A61E8D257700C0F183 /* FGAlamofireRequestHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAlamofireRequestHelperSpec.swift; sourceTree = "<group>"; };
+		D72EF3A71E8D257700C0F183 /* FGApiLinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiLinkSpec.swift; sourceTree = "<group>"; };
+		D72EF3A81E8D257700C0F183 /* FGApiRootSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootSpec.swift; sourceTree = "<group>"; };
+		D72EF3A91E8D257700C0F183 /* FGApiRootVersionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootVersionSpec.swift; sourceTree = "<group>"; };
+		D72EF3AA1E8D257700C0F183 /* FGApplicationCollectionApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollectionApiSpec.swift; sourceTree = "<group>"; };
+		D72EF3AB1E8D257700C0F183 /* FGApplicationCollectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationCollectionSpec.swift; sourceTree = "<group>"; };
+		D72EF3AC1E8D257700C0F183 /* FGApplicationSpec.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApplicationSpec.swift.swift; sourceTree = "<group>"; };
+		D72EF3AD1E8D257700C0F183 /* FGDateUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGDateUtilSpec.swift; sourceTree = "<group>"; };
+		D72EF3AE1E8D257700C0F183 /* FGEmptyObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGEmptyObjectSpec.swift; sourceTree = "<group>"; };
+		D72EF3AF1E8D257700C0F183 /* FGFileApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGFileApiSpec.swift; sourceTree = "<group>"; };
+		D72EF3B01E8D257700C0F183 /* FGFutureGatewaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGFutureGatewaySpec.swift; sourceTree = "<group>"; };
+		D72EF3B11E8D257700C0F183 /* FGInfrastructureSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInfrastructureSpec.swift; sourceTree = "<group>"; };
+		D72EF3B21E8D257700C0F183 /* FGInputFileSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInputFileSpec.swift; sourceTree = "<group>"; };
+		D72EF3B31E8D257700C0F183 /* FGMessageObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGMessageObjectSpec.swift; sourceTree = "<group>"; };
+		D72EF3B41E8D257700C0F183 /* FGOutputFileSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGOutputFileSpec.swift; sourceTree = "<group>"; };
+		D72EF3B51E8D257700C0F183 /* FGRootApiResolverSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRootApiResolverSpec.swift; sourceTree = "<group>"; };
+		D72EF3B61E8D257700C0F183 /* FGRuntimeDataObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRuntimeDataObjectSpec.swift; sourceTree = "<group>"; };
+		D72EF3B71E8D257700C0F183 /* FGSessionHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGSessionHelperSpec.swift; sourceTree = "<group>"; };
+		D72EF3B81E8D257700C0F183 /* FGTaskApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskApiSpec.swift; sourceTree = "<group>"; };
+		D72EF3B91E8D257700C0F183 /* FGTaskCollectionApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskCollectionApiSpec.swift; sourceTree = "<group>"; };
+		D72EF3BA1E8D257700C0F183 /* FGTaskCollectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskCollectionSpec.swift; sourceTree = "<group>"; };
+		D72EF3BB1E8D257700C0F183 /* FGTaskSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskSpec.swift; sourceTree = "<group>"; };
+		D72EF3BC1E8D257700C0F183 /* FGUploadResponseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadResponseSpec.swift; sourceTree = "<group>"; };
 		D760F5111E55B850004419C3 /* DummyResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyResolver.swift; sourceTree = "<group>"; };
-		D760F51B1E55F38E004419C3 /* FGApiLinkSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiLinkSpec.swift; sourceTree = "<group>"; };
-		D760F51D1E55F3AF004419C3 /* FGApiRootVersionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootVersionSpec.swift; sourceTree = "<group>"; };
-		D760F51F1E55F70D004419C3 /* FGOutputFileSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGOutputFileSpec.swift; sourceTree = "<group>"; };
-		D760F5211E55F719004419C3 /* FGInputFileSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGInputFileSpec.swift; sourceTree = "<group>"; };
-		D760F5231E55F785004419C3 /* FGRuntimeDataObjectSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRuntimeDataObjectSpec.swift; sourceTree = "<group>"; };
-		D760F5251E572097004419C3 /* FGTaskCollectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskCollectionSpec.swift; sourceTree = "<group>"; };
-		D760F5271E5AEC8C004419C3 /* FGTaskApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskApiSpec.swift; sourceTree = "<group>"; };
 		D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAuthAccessTokenProvider.swift; sourceTree = "<group>"; };
-		D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGApiRootSpec.swift; sourceTree = "<group>"; };
-		D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGFutureGatewaySpec.swift; sourceTree = "<group>"; };
 		D7860AB81E39F843007AC258 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoApi.swift; sourceTree = "<group>"; };
-		D7B7088D1E685D770004374D /* FGUploadResponseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadResponseSpec.swift; sourceTree = "<group>"; };
-		D7B708901E6968BD0004374D /* FGAbstractPayloadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAbstractPayloadSpec.swift; sourceTree = "<group>"; };
 		D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDesignHelper.swift; sourceTree = "<group>"; };
 		D7BEF7371E2F983000ACD8DA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGDateUtilSpec.swift; sourceTree = "<group>"; };
-		D7BF8AE41E449E5F009FA541 /* FGRootApiResolverSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGRootApiResolverSpec.swift; sourceTree = "<group>"; };
-		D7BF8AEA1E44ABD9009FA541 /* DataRequestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestSpec.swift; sourceTree = "<group>"; };
 		D7C9C5B31E4C61EF0073C50A /* DummyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyError.swift; sourceTree = "<group>"; };
 		D7C9C5B41E4C61EF0073C50A /* DummyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyHelper.swift; sourceTree = "<group>"; };
 		D7C9C5B71E4C66710073C50A /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyProvider.swift; sourceTree = "<group>"; };
-		D7C9C5D31E4C8D200073C50A /* FGSessionHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGSessionHelperSpec.swift; sourceTree = "<group>"; };
 		D7C9C5D61E4DA4E10073C50A /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D7C9C5D81E4DBBE30073C50A /* FGAlamofireRequestHelperSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGAlamofireRequestHelperSpec.swift; sourceTree = "<group>"; };
-		D7C9C5DE1E51C18D0073C50A /* FGTaskSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskSpec.swift; sourceTree = "<group>"; };
 		D7DC97B21E3648F900C25191 /* AuthUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthUtil.swift; sourceTree = "<group>"; };
 		D7DC97B51E36495700C25191 /* AuthConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthConfig.swift; sourceTree = "<group>"; };
 		D7DF23981E2CEA830037AA41 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -167,7 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD01AFB9204008FA782 /* IndigoOmtIosLibrary_Example.app */,
-				607FACE51AFB9204008FA782 /* IndigoOmtIosLibrary_Tests.xctest */,
+				607FACE51AFB9204008FA782 /* IndigoOmtIosLibrary_UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,31 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				D7C9C5B21E4C61EF0073C50A /* Common */,
-				D7BF8AEA1E44ABD9009FA541 /* DataRequestSpec.swift */,
-				D7B708901E6968BD0004374D /* FGAbstractPayloadSpec.swift */,
-				D7C9C5D81E4DBBE30073C50A /* FGAlamofireRequestHelperSpec.swift */,
-				D760F51B1E55F38E004419C3 /* FGApiLinkSpec.swift */,
-				D784B6E71E48A2C8003BC522 /* FGApiRootSpec.swift */,
-				D760F51D1E55F3AF004419C3 /* FGApiRootVersionSpec.swift */,
-				D74E8C841E5C610900D25BFB /* FGApplicationSpec.swift.swift */,
-				D74E8C811E5C60FA00D25BFB /* FGApplicationCollectionSpec.swift */,
-				D74E8C8B1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift */,
-				D7BF8AE11E4499E5009FA541 /* FGDateUtilSpec.swift */,
-				D73420731E549ADF00032828 /* FGEmptyObjectSpec.swift */,
-				D73E75A31E8BE2F00080F54F /* FGFileApiSpec.swift */,
-				D784B6E91E48C876003BC522 /* FGFutureGatewaySpec.swift */,
-				D74E8C861E5C613A00D25BFB /* FGInfrastructureSpec.swift */,
-				D760F5211E55F719004419C3 /* FGInputFileSpec.swift */,
-				D74E8C881E5C866000D25BFB /* FGMessageObjectSpec.swift */,
-				D760F51F1E55F70D004419C3 /* FGOutputFileSpec.swift */,
-				D7BF8AE41E449E5F009FA541 /* FGRootApiResolverSpec.swift */,
-				D760F5231E55F785004419C3 /* FGRuntimeDataObjectSpec.swift */,
-				D7C9C5D31E4C8D200073C50A /* FGSessionHelperSpec.swift */,
-				D7C9C5DE1E51C18D0073C50A /* FGTaskSpec.swift */,
-				D760F5271E5AEC8C004419C3 /* FGTaskApiSpec.swift */,
-				D760F5251E572097004419C3 /* FGTaskCollectionSpec.swift */,
-				D73420771E559A5200032828 /* FGTaskCollectionApiSpec.swift */,
-				D7B7088D1E685D770004374D /* FGUploadResponseSpec.swift */,
+				D72EF3A31E8D257700C0F183 /* UnitTests */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -219,7 +196,7 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEA1AFB9204008FA782 /* Info.plist */,
+				D72EF3A11E8D256C00C0F183 /* UnitTestsInfo.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -253,6 +230,38 @@
 				67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D72EF3A31E8D257700C0F183 /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				D72EF3A41E8D257700C0F183 /* DataRequestSpec.swift */,
+				D72EF3A51E8D257700C0F183 /* FGAbstractPayloadSpec.swift */,
+				D72EF3A61E8D257700C0F183 /* FGAlamofireRequestHelperSpec.swift */,
+				D72EF3A71E8D257700C0F183 /* FGApiLinkSpec.swift */,
+				D72EF3A81E8D257700C0F183 /* FGApiRootSpec.swift */,
+				D72EF3A91E8D257700C0F183 /* FGApiRootVersionSpec.swift */,
+				D72EF3AA1E8D257700C0F183 /* FGApplicationCollectionApiSpec.swift */,
+				D72EF3AB1E8D257700C0F183 /* FGApplicationCollectionSpec.swift */,
+				D72EF3AC1E8D257700C0F183 /* FGApplicationSpec.swift.swift */,
+				D72EF3AD1E8D257700C0F183 /* FGDateUtilSpec.swift */,
+				D72EF3AE1E8D257700C0F183 /* FGEmptyObjectSpec.swift */,
+				D72EF3AF1E8D257700C0F183 /* FGFileApiSpec.swift */,
+				D72EF3B01E8D257700C0F183 /* FGFutureGatewaySpec.swift */,
+				D72EF3B11E8D257700C0F183 /* FGInfrastructureSpec.swift */,
+				D72EF3B21E8D257700C0F183 /* FGInputFileSpec.swift */,
+				D72EF3B31E8D257700C0F183 /* FGMessageObjectSpec.swift */,
+				D72EF3B41E8D257700C0F183 /* FGOutputFileSpec.swift */,
+				D72EF3B51E8D257700C0F183 /* FGRootApiResolverSpec.swift */,
+				D72EF3B61E8D257700C0F183 /* FGRuntimeDataObjectSpec.swift */,
+				D72EF3B71E8D257700C0F183 /* FGSessionHelperSpec.swift */,
+				D72EF3B81E8D257700C0F183 /* FGTaskApiSpec.swift */,
+				D72EF3B91E8D257700C0F183 /* FGTaskCollectionApiSpec.swift */,
+				D72EF3BA1E8D257700C0F183 /* FGTaskCollectionSpec.swift */,
+				D72EF3BB1E8D257700C0F183 /* FGTaskSpec.swift */,
+				D72EF3BC1E8D257700C0F183 /* FGUploadResponseSpec.swift */,
+			);
+			path = UnitTests;
 			sourceTree = "<group>";
 		};
 		D7C9C5B21E4C61EF0073C50A /* Common */ = {
@@ -353,9 +362,9 @@
 			productReference = 607FACD01AFB9204008FA782 /* IndigoOmtIosLibrary_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
-		607FACE41AFB9204008FA782 /* IndigoOmtIosLibrary_Tests */ = {
+		607FACE41AFB9204008FA782 /* IndigoOmtIosLibrary_UnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "IndigoOmtIosLibrary_Tests" */;
+			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "IndigoOmtIosLibrary_UnitTests" */;
 			buildPhases = (
 				F63630DD3927283B15ED2892 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
@@ -369,9 +378,9 @@
 			dependencies = (
 				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
 			);
-			name = IndigoOmtIosLibrary_Tests;
+			name = IndigoOmtIosLibrary_UnitTests;
 			productName = Tests;
-			productReference = 607FACE51AFB9204008FA782 /* IndigoOmtIosLibrary_Tests.xctest */;
+			productReference = 607FACE51AFB9204008FA782 /* IndigoOmtIosLibrary_UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -409,7 +418,7 @@
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* IndigoOmtIosLibrary_Example */,
-				607FACE41AFB9204008FA782 /* IndigoOmtIosLibrary_Tests */,
+				607FACE41AFB9204008FA782 /* IndigoOmtIosLibrary_UnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -419,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72EF3A21E8D256C00C0F183 /* UnitTestsInfo.plist in Resources */,
 				D7EAC8041E2CBFE600110199 /* Images.xcassets in Resources */,
 				D7EAC8061E2CBFE600110199 /* LaunchScreen.xib in Resources */,
 				D7EAC8021E2CBFE600110199 /* Main.storyboard in Resources */,
@@ -552,37 +562,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7C9C5D41E4C8D200073C50A /* FGSessionHelperSpec.swift in Sources */,
-				D74E8C8C1E5D8BC000D25BFB /* FGApplicationCollectionApiSpec.swift in Sources */,
+				D72EF3D41E8D257700C0F183 /* FGTaskSpec.swift in Sources */,
 				D7C9C5D71E4DA4E10073C50A /* Constants.swift in Sources */,
-				D73420781E559A5200032828 /* FGTaskCollectionApiSpec.swift in Sources */,
+				D72EF3C21E8D257700C0F183 /* FGApiRootVersionSpec.swift in Sources */,
+				D72EF3CA1E8D257700C0F183 /* FGInfrastructureSpec.swift in Sources */,
+				D72EF3CD1E8D257700C0F183 /* FGOutputFileSpec.swift in Sources */,
 				D7C9C5B81E4C66710073C50A /* Global.swift in Sources */,
-				D74E8C831E5C60FC00D25BFB /* FGApplicationCollectionSpec.swift in Sources */,
-				D784B6E81E48A2C8003BC522 /* FGApiRootSpec.swift in Sources */,
-				D74E8C871E5C613A00D25BFB /* FGInfrastructureSpec.swift in Sources */,
+				D72EF3C61E8D257700C0F183 /* FGDateUtilSpec.swift in Sources */,
+				D72EF3C81E8D257700C0F183 /* FGFileApiSpec.swift in Sources */,
+				D72EF3C71E8D257700C0F183 /* FGEmptyObjectSpec.swift in Sources */,
+				D72EF3D01E8D257700C0F183 /* FGSessionHelperSpec.swift in Sources */,
+				D72EF3D21E8D257700C0F183 /* FGTaskCollectionApiSpec.swift in Sources */,
+				D72EF3C01E8D257700C0F183 /* FGApiLinkSpec.swift in Sources */,
+				D72EF3C51E8D257700C0F183 /* FGApplicationSpec.swift.swift in Sources */,
+				D72EF3CF1E8D257700C0F183 /* FGRuntimeDataObjectSpec.swift in Sources */,
+				D72EF3C31E8D257700C0F183 /* FGApplicationCollectionApiSpec.swift in Sources */,
 				D7C9C5B51E4C61EF0073C50A /* DummyError.swift in Sources */,
-				D7BF8AE61E449E81009FA541 /* FGRootApiResolverSpec.swift in Sources */,
-				D73420741E549ADF00032828 /* FGEmptyObjectSpec.swift in Sources */,
-				D74E8C891E5C866000D25BFB /* FGMessageObjectSpec.swift in Sources */,
-				D760F5221E55F719004419C3 /* FGInputFileSpec.swift in Sources */,
-				D7C9C5D91E4DBBE30073C50A /* FGAlamofireRequestHelperSpec.swift in Sources */,
-				D760F5201E55F70D004419C3 /* FGOutputFileSpec.swift in Sources */,
-				D7BF8AE31E449A2C009FA541 /* FGDateUtilSpec.swift in Sources */,
+				D72EF3C41E8D257700C0F183 /* FGApplicationCollectionSpec.swift in Sources */,
+				D72EF3CC1E8D257700C0F183 /* FGMessageObjectSpec.swift in Sources */,
+				D72EF3D51E8D257700C0F183 /* FGUploadResponseSpec.swift in Sources */,
+				D72EF3CB1E8D257700C0F183 /* FGInputFileSpec.swift in Sources */,
 				D7C9C5BA1E4C6F340073C50A /* DummyProvider.swift in Sources */,
-				D7B7088F1E685D7E0004374D /* FGUploadResponseSpec.swift in Sources */,
-				D7B708911E6968BD0004374D /* FGAbstractPayloadSpec.swift in Sources */,
-				D784B6EA1E48C876003BC522 /* FGFutureGatewaySpec.swift in Sources */,
-				D760F5261E572097004419C3 /* FGTaskCollectionSpec.swift in Sources */,
+				D72EF3C91E8D257700C0F183 /* FGFutureGatewaySpec.swift in Sources */,
+				D72EF3D11E8D257700C0F183 /* FGTaskApiSpec.swift in Sources */,
+				D72EF3BE1E8D257700C0F183 /* FGAbstractPayloadSpec.swift in Sources */,
 				D760F5121E55B850004419C3 /* DummyResolver.swift in Sources */,
-				D73E75A41E8BE2F00080F54F /* FGFileApiSpec.swift in Sources */,
-				D7C9C5DF1E51C18D0073C50A /* FGTaskSpec.swift in Sources */,
-				D760F51E1E55F3AF004419C3 /* FGApiRootVersionSpec.swift in Sources */,
-				D7BF8AEC1E44ABF7009FA541 /* DataRequestSpec.swift in Sources */,
-				D74E8C8A1E5C8C4E00D25BFB /* FGApplicationSpec.swift.swift in Sources */,
-				D760F51C1E55F38E004419C3 /* FGApiLinkSpec.swift in Sources */,
+				D72EF3C11E8D257700C0F183 /* FGApiRootSpec.swift in Sources */,
+				D72EF3D31E8D257700C0F183 /* FGTaskCollectionSpec.swift in Sources */,
+				D72EF3BF1E8D257700C0F183 /* FGAlamofireRequestHelperSpec.swift in Sources */,
+				D72EF3BD1E8D257700C0F183 /* DataRequestSpec.swift in Sources */,
+				D72EF3CE1E8D257700C0F183 /* FGRootApiResolverSpec.swift in Sources */,
 				D7C9C5B61E4C61EF0073C50A /* DummyHelper.swift in Sources */,
-				D760F5241E55F785004419C3 /* FGRuntimeDataObjectSpec.swift in Sources */,
-				D760F5281E5AEC8C004419C3 /* FGTaskApiSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +733,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Tests/UnitTestsInfo.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -740,7 +750,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Tests/UnitTestsInfo.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -769,7 +779,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "IndigoOmtIosLibrary_Tests" */ = {
+		607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "IndigoOmtIosLibrary_UnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				607FACF31AFB9204008FA782 /* Debug */,
