@@ -9,19 +9,19 @@
 import Foundation
 
 /// API response callback.
-public typealias FGApiResponseCallback<Value> = (FGApiResponse<Value>) -> ()
+public typealias FGApiResponseCallback<Value> = (FGApiResponse<Value>) -> Void
 
 /// API response object.
 public enum FGApiResponse<Value>: CustomStringConvertible {
-    
+
     /// Response was successful.
     case success(Value)
-    
+
     /// Response has an error.
     case failure(FGFutureGatewayError, String?)
-    
+
     // MARK: - properties
-    
+
     /// The error from the response.
     public var error: FGFutureGatewayError? {
         switch self {
@@ -31,9 +31,9 @@ public enum FGApiResponse<Value>: CustomStringConvertible {
             return nil
         }
     }
-    
+
     /// Sometimes when error occurs there is an error message in response body.
-    public var errorResponseBody: String?  {
+    public var errorResponseBody: String? {
         switch self {
         case .failure(_, let errorResponseBody):
             return errorResponseBody
@@ -41,7 +41,7 @@ public enum FGApiResponse<Value>: CustomStringConvertible {
             return nil
         }
     }
-    
+
     /// The value from the response.
     public var value: Value? {
         switch self {
@@ -51,7 +51,7 @@ public enum FGApiResponse<Value>: CustomStringConvertible {
             return nil
         }
     }
-    
+
     /// CustomStringConvertible.
     public var description: String {
         switch self {
@@ -61,5 +61,5 @@ public enum FGApiResponse<Value>: CustomStringConvertible {
             return "FGApiResponse { \(value) }"
         }
     }
-    
+
 }

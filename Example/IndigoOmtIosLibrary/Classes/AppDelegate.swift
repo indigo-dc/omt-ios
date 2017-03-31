@@ -16,30 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         // setup ui
         UIDesignHelper.updateUI(application, window: window)
-        
+
         // load state
         let au = AuthUtil.default
         au.loadState()
-        
+
         // auth util is authorized and we have user info
         if au.isAuthorized, let userInfo = au.getUserInfo() {
-            
+
             // username for future gateway
             //let username = userInfo.preferredUsername
             let username = Constants.tempUsername
-            
+
             // init future gateway object
             let fgu = FutureGatewayUtil.default
             fgu.initializeFutureGateway(username: username, provider: au.getAccessTokenProvider())
-        }
-        else {
+        } else {
             // show login view as first view if not authorized
             self.window?.rootViewController = UIHelper.loadViewController("LoginNavigationController")
         }
-        
+
         return true
     }
 
@@ -64,12 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
     // MARK: - OAuth
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         AuthUtil.default.resumeAuthorizationFlow(url)
         return true
     }
-    
+
 }

@@ -12,20 +12,20 @@ import SwiftyJSON
 
 /// Extension for deserializing SwiftyJSON objects.
 public extension DataRequest {
-    
+
     @discardableResult
     func responseObject<T: FGObjectSerializable>(
         queue: DispatchQueue? = nil,
         completionHandler: @escaping (DataResponse<T>) -> Void)
-        -> Self
-    {
+        -> Self {
         let responseSerializer = DataResponseSerializer<T> { request, response, data, error in
             return DataRequest.serializeFGObject(request: request, response: response, data: data, error: error)
         }
-        
+
         return response(queue: queue, responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
-    
+
+    // swiftlint:disable:next line_length
     public class func serializeFGObject<T: FGObjectSerializable>(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) -> Result<T> {
         guard error == nil else {
             if error is FGFutureGatewayError {
@@ -33,22 +33,22 @@ public extension DataRequest {
             }
             return .failure(FGFutureGatewayError.network(error: error!))
         }
-        
+
         let jsonResponseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
         let result = jsonResponseSerializer.serializeResponse(request, response, data, nil)
-        
+
         guard
             case let .success(jsonObject) = result,
             let swiftyJsonObject = JSON(rawValue: jsonObject)
         else {
             return .failure(FGFutureGatewayError.jsonSerialization(error: result.error!))
         }
-        
+
         guard let response = response, let responseObject = T(response: response, json: swiftyJsonObject) else {
             return .failure(FGFutureGatewayError.objectSerialization(reason: "JSON could not be serialized to generic type: \(T.self)"))
         }
-        
+
         return .success(responseObject)
     }
-    
+
 }

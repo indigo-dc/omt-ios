@@ -11,24 +11,24 @@ import SwiftyJSON
 
 /// Future Gateway parameter object.
 open class FGParameter: FGObjectSerializable, CustomStringConvertible {
-    
+
     // MARK: - properties
-    
+
     /// Parameter name.
     public var name: String?
-    
+
     /// Parameter value.
     public var value: String?
-    
+
     /// Parameter description.
     public var parameterDescription: String?
-    
+
     public var description: String {
         return "\(String(describing: type(of: self))) { name: \(name as String?), value: \(value as String?) }"
     }
-    
+
     // MARK: - lifecycle
-    
+
     public required init?(response: HTTPURLResponse, json: JSON) {
         guard
             let name = json["name"].string,
@@ -36,19 +36,19 @@ open class FGParameter: FGObjectSerializable, CustomStringConvertible {
             else {
                 return nil
         }
-        
+
         self.name = name
         self.value = value
         self.parameterDescription = json["description"].string
     }
-    
+
     public init() {
         // empty
     }
-    
+
     public func serialize() -> JSON {
         var json = JSON([:])
-        
+
         if let name = self.name {
             json["name"].string = name
         }
@@ -58,8 +58,8 @@ open class FGParameter: FGObjectSerializable, CustomStringConvertible {
         if let parameterDescription = self.parameterDescription {
             json["description"].string = parameterDescription
         }
-        
+
         return json
     }
-    
+
 }

@@ -11,9 +11,9 @@ import IndigoOmtIosLibrary
 import SwiftyJSON
 
 class UserInfo: NSObject, NSCoding, FGObjectSerializable {
-    
+
     // MARK: - properties
-    
+
     public var name: String = ""
     public var givenName: String = ""
     public var familyName: String = ""
@@ -22,13 +22,13 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
     public var sub: String = ""
     public var updatedAt: Date = Date(timeIntervalSince1970: 0)
     public var groups: [String] = []
-    
+
     override var description: String {
         return "UserInfo { name: \(name), preferredUsername: \(preferredUsername) }"
     }
-    
+
     // MARK: - lifecycle
-    
+
     required init?(response: HTTPURLResponse, json: JSON) {
         guard
             let name = json["name"].string,
@@ -42,7 +42,7 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
         else {
             return nil
         }
-        
+
         self.name = name
         self.givenName = givenName
         self.familyName = familyName
@@ -54,11 +54,11 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
             self.groups.append(groupJson.stringValue)
         }
     }
-    
+
     func serialize() -> JSON {
         return JSON([:])
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init()
         name = aDecoder.decodeObject(forKey: "name") as! String
@@ -69,9 +69,9 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
         sub = aDecoder.decodeObject(forKey: "sub") as! String
         updatedAt = aDecoder.decodeObject(forKey: "updatedAt") as! Date
         groups = aDecoder.decodeObject(forKey: "groups") as! [String]
-        
+
     }
-    
+
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(givenName, forKey: "givenName")
@@ -82,5 +82,5 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
         aCoder.encode(updatedAt, forKey: "updatedAt")
         aCoder.encode(groups, forKey: "groups")
     }
-    
+
 }

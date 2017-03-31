@@ -9,14 +9,14 @@
 import Foundation
 
 /// Download payload response callback.
-public typealias FGDownloadPayloadResponseCallback = (FGApiResponse<FGEmptyObject>) -> ()
+public typealias FGDownloadPayloadResponseCallback = (FGApiResponse<FGEmptyObject>) -> Void
 
 /// Download paybload class.
 open class FGDownloadPayload: FGAbstractPayload {
-    
+
     /// MARK: - properties
-    
+
     /// Path to download file.
     public var destinationURL: URL?
-    
+
 }

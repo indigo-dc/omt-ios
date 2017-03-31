@@ -11,9 +11,9 @@ import SwiftyJSON
 
 /// Interface for SwiftyJSON deserializer.
 public protocol FGObjectSerializable {
-    
+
     init?(response: HTTPURLResponse, json: JSON)
-    
+
     func serialize() -> JSON
-    
+
 }

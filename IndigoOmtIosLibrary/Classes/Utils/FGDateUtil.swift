@@ -10,10 +10,10 @@ import Foundation
 
 /// Simple Date util.
 open class FGDateUtil {
-    
+
     /// Default locale.
     static let DefaultLocale: Locale = Locale(identifier: "en_US_POSIX")
-    
+
     /// Supported dates formats.
     static let Formats = [
         "EEE MMM dd HH:mm:ss ZZZ yyyy",
@@ -24,7 +24,7 @@ open class FGDateUtil {
         "yyyy-MM-dd HH:mm",
         "yyyy-MM-dd"
     ]
-    
+
     /// Parses string to date.
     static public func parseDate(_ input: String?) -> Date? {
         if let str = input {
@@ -39,7 +39,7 @@ open class FGDateUtil {
         }
         return nil
     }
-    
+
     static public func format(_ format: String, date: Date?) -> String? {
         if let date = date {
             let formatter = DateFormatter()
@@ -49,5 +49,5 @@ open class FGDateUtil {
         }
         return nil
     }
-    
+
 }
