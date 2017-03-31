@@ -56,7 +56,7 @@ public enum FGApiResponse<Value>: CustomStringConvertible {
     public var description: String {
         switch self {
         case .failure(let error, let errorResponseBody):
-            return "FGApiResponse { error: \(error.localizedDescription), errorResponseBody: \(errorResponseBody) }"
+            return "FGApiResponse { error: \(error.localizedDescription as String?), errorResponseBody: \(errorResponseBody as String?) }"
         case .success(let value):
             return "FGApiResponse { \(value) }"
         }

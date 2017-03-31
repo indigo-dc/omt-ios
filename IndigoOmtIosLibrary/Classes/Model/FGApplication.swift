@@ -44,7 +44,7 @@ open class FGApplication: FGObjectSerializable, CustomStringConvertible {
     
     /// CustomStringConvertible.
     public var description: String {
-        return "FGApplication { id: \(id), name: \(name) }"
+        return "FGApplication { id: \(id as String?), name: \(name as String?) }"
     }
     
     // MARK: - lifecycle
@@ -79,9 +79,7 @@ open class FGApplication: FGObjectSerializable, CustomStringConvertible {
         if let inputFilesArray = json["input_files"].array {
             for inputFileJson in inputFilesArray {
                 if let inputFile = FGInputFile(response: response, json: inputFileJson) {
-                    if let inputFile = FGInputFile(response: response, json: inputFileJson) {
-                        self.inputFiles.append(inputFile)
-                    }
+                    self.inputFiles.append(inputFile)
                 }
             }
         }

@@ -19,7 +19,7 @@ open class FGMessageObject: FGObjectSerializable, CustomStringConvertible {
     
     /// CustomStringConvertible.
     public var description: String {
-        return "FGMessageObject { message: \(self.message) }"
+        return "FGMessageObject { message: \(self.message as String?) }"
     }
     
     // MARK: - lifecycle

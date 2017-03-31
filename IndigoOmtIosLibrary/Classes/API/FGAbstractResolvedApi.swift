@@ -40,7 +40,7 @@ open class FGAbstractResolvedApi: FGAbstractApi {
             }
             
             // append api path to the url
-            var mutablePayload = payload
+            let mutablePayload = payload
             mutablePayload.url = response.value
             
             // send payload

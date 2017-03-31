@@ -22,7 +22,7 @@ open class FGOutputFile: FGObjectSerializable, FGDownloadableFile, CustomStringC
     
     // CustomStringConvertible.
     public var description: String {
-        return "FGOutputFile { name: \(name), url: \(url) }"
+        return "FGOutputFile { name: \(name as String?), url: \(url as String?) }"
     }
     
     // MARK: - lifecycle

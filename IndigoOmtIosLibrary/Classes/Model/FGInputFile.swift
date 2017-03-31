@@ -35,7 +35,7 @@ open class FGInputFile: FGObjectSerializable, FGDownloadableFile, CustomStringCo
     
     // CustomStringConvertible.
     public var description: String {
-        return "FGInputFile { name: \(name), status: \(status) }"
+        return "FGInputFile { name: \(name as String?), status: \(status as FGInputFileStatus?) }"
     }
     
     // MARK: - lifecycle
