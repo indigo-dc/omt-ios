@@ -10,8 +10,8 @@ import Foundation
 
 /// Downloadable file protocol.
 public protocol FGDownloadableFile {
-    
+
     /// Download link.
     var url: String? { get }
-    
+
 }

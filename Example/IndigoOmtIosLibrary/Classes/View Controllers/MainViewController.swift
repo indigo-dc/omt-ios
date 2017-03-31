@@ -9,12 +9,12 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // prepare
         UIDesignHelper.updateUI(navigationController?.navigationBar)
     }
-    
+
 }

@@ -10,22 +10,23 @@ import Foundation
 
 /// API for Future Gateway Task.
 open class FGTaskApi: FGAbstractResolvedApi {
-    
+
     // MARK: - public methods
-    
+
     /// Retrieves the details of the specified task.
     public func viewTaskDetails(with id: String, _ callback: @escaping FGApiResponseCallback<FGTask>) {
-        
+
         // prepare payload
         let payload = FGRequestPayload(method: .get)
         payload.resourcePath = "tasks/\(id)"
-        
+
         // send
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
     /*
     /// This method will create a new task with a specific ID assigned by the user.
-    /// If the id already exist the task is not modified but an error is returned to the user because the tasks are not modifiable but only some parameters which have specific APIs for their update.
+    /// If the id already exist the task is not modified but an error is returned to the user because 
+     /// the tasks are not modifiable but only some parameters which have specific APIs for their update.
     public func createTask(with task: FGTask, _ callback: @escaping FGApiResponseCallback<FGTask>) {
         
         // prepare payload
@@ -59,13 +60,13 @@ open class FGTaskApi: FGAbstractResolvedApi {
     */
     /// Deletes a task.
     public func deleteTask(with id: String, _ callback: @escaping FGApiResponseCallback<FGMessageObject>) {
-        
+
         // prepare payload
         let payload = FGRequestPayload(method: .delete)
         payload.resourcePath = "tasks/\(id)"
-        
+
         // send
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
-    
+
 }

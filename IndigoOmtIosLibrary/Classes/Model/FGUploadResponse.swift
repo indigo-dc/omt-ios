@@ -11,35 +11,35 @@ import SwiftyJSON
 
 /// Upload file response object.
 open class FGUploadResponse: FGObjectSerializable, CustomStringConvertible {
-    
+
     /// MARK: - properties
-    
+
     /// Array of uploaded files.
     public var files: [String] = []
-    
+
     /// Upload message.
     public var message: String?
-    
+
     /// Task identifier.
     public var task: String?
-    
+
     /// The gestatus.
     public var gestatus: String?
-    
+
     /// CustomStringConvertible.
     public var description: String {
         return "FGUploadResponse { files: \(files.count) }"
     }
-    
+
     /// MARK: - lifecycle
-    
+
     public required init?(response: HTTPURLResponse, json: JSON) {
         guard
             let filesArray = json["files"].array
         else {
             return nil
         }
-        
+
         for fileJson in filesArray {
             self.files.append(fileJson.stringValue)
         }
@@ -53,14 +53,14 @@ open class FGUploadResponse: FGObjectSerializable, CustomStringConvertible {
             self.gestatus = gestatus
         }
     }
-    
+
     public init() {
         // empty
     }
-    
+
     public func serialize() -> JSON {
         var json = JSON([:])
-        
+
         if files.isEmpty == false {
             json["files"].arrayObject = files
         }
@@ -73,8 +73,8 @@ open class FGUploadResponse: FGObjectSerializable, CustomStringConvertible {
         if let gestatus = self.gestatus {
             json["gestatus"].string = gestatus
         }
-        
+
         return json
     }
-    
+
 }
