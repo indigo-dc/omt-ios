@@ -1,0 +1,20 @@
+included:
+  - ../../IndigoOmtIosLibrary
+
+disabled_rules:
+  - force_cast
+  - for_where
+
+identifier_name:
+  excluded:
+    - id
+    - k
+    - v
+
+line_length:
+  warning: 140
+  error: 160
+
+cyclomatic_complexity:
+  warning: 15
+  error: 20
