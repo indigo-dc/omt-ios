@@ -17,7 +17,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func listAllTasks(_ callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
-        var payload = FGRequestPayload(method: .get)
+        let payload = FGRequestPayload(method: .get)
         payload.resourcePath = "tasks"
         payload.addParam("user", value: self.username)
         payload.addParam("status", value: FGTaskStatus.any.rawValue)
@@ -30,7 +30,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func createTask(_ task: FGTask, callback: @escaping FGApiResponseCallback<FGTask>) {
         
         // prepare payload
-        var payload = FGRequestPayload(method: .post)
+        let payload = FGRequestPayload(method: .post)
         payload.resourcePath = "tasks"
         payload.addHeader("Content-Type", value: "application/vnd.indigo-datacloud.apiserver+json")
         payload.body = task
@@ -44,7 +44,7 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
     public func replaceTaskList(_ taskCollection: FGTaskCollection, callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
         
         // prepare payload
-        var payload = FGRequestPayload(method: .put)
+        let payload = FGRequestPayload(method: .put)
         payload.resourcePath = "tasks"
         payload.body = taskCollection
         

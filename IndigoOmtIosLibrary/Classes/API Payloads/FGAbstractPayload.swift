@@ -46,7 +46,7 @@ open class FGAbstractPayload: CustomStringConvertible {
     
     /// CustomStringConvertible.
     public var description: String {
-        return "\(String(describing: type(of: self))) { url: \(url), resourcePath: \(resourcePath), method: \(method) }"
+        return "\(String(describing: type(of: self))) { url: \(url as URL?), resourcePath: \(resourcePath as String?), method: \(method) }"
     }
     
     // MARK: - lifecycle
@@ -78,10 +78,10 @@ open class FGAbstractPayload: CustomStringConvertible {
         }
         
         // prepare url
-        var requestUrl = append(resourcePath: self.resourcePath, to: payloadUrl)
+        let requestUrl: URL = append(resourcePath: self.resourcePath, to: payloadUrl)
         
         // create request
-        var request = try URLRequest(url: requestUrl)
+        var request: URLRequest = URLRequest(url: requestUrl)
         
         // add method
         request.httpMethod = self.method.rawValue

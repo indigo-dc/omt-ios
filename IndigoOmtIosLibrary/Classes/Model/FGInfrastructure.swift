@@ -38,7 +38,7 @@ open class FGInfrastructure: FGObjectSerializable, CustomStringConvertible {
     
     /// CustomStringConvertible.
     public var description: String {
-        return "FGInfrastructure { id: \(id), name: \(name) }"
+        return "FGInfrastructure { id: \(id as String?), name: \(name as String?) }"
     }
     
     /// MARK: - lifecycle

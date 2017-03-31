@@ -17,7 +17,7 @@ open class FGTaskApi: FGAbstractResolvedApi {
     public func viewTaskDetails(with id: String, _ callback: @escaping FGApiResponseCallback<FGTask>) {
         
         // prepare payload
-        var payload = FGRequestPayload(method: .get)
+        let payload = FGRequestPayload(method: .get)
         payload.resourcePath = "tasks/\(id)"
         
         // send
@@ -61,7 +61,7 @@ open class FGTaskApi: FGAbstractResolvedApi {
     public func deleteTask(with id: String, _ callback: @escaping FGApiResponseCallback<FGMessageObject>) {
         
         // prepare payload
-        var payload = FGRequestPayload(method: .delete)
+        let payload = FGRequestPayload(method: .delete)
         payload.resourcePath = "tasks/\(id)"
         
         // send

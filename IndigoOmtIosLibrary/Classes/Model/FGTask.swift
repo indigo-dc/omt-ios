@@ -86,7 +86,7 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
     
     /// CustomStringConvertible.
     public var description: String {
-        return "FGTask { id: \(id), status: \(status), taskDescription: \(taskDescription) }"
+        return "FGTask { id: \(id as String?), status: \(status as FGTaskStatus?), taskDescription: \(taskDescription as String?) }"
     }
     
     // MARK: - lifecycle

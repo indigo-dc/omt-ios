@@ -51,7 +51,7 @@ open class FGFileApi: FGAbstractResolvedApi {
             }
             
             // append api path to the url
-            var mutablePayload = payload
+            let mutablePayload = payload
             mutablePayload.url = response.value
             
             // send payload
@@ -73,7 +73,7 @@ open class FGFileApi: FGAbstractResolvedApi {
     func fetchBaseUrlAndUploadFile(_ payload: FGUploadPayload, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
         
         // append api path to the url
-        var mutablePayload = payload
+        let mutablePayload = payload
         mutablePayload.url = self.resolver.baseUrl
         
         // send payload

@@ -41,7 +41,7 @@ public struct FGRequestHelperResponse<Value>: CustomStringConvertible {
     
     /// CustomStringConvertible.
     public var description: String {
-        return "FGRequestHelperResponse { error: \(error), value: \(value) }"
+        return "FGRequestHelperResponse { error: \(error as FGFutureGatewayError?), value: \(value as Value?) }"
     }
     
     // MARK: - lifecycle
