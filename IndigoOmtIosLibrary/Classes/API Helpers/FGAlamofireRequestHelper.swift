@@ -138,30 +138,41 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                 // check encoding result
                 switch encodingResult {
                 case .success(request: let uploadRequest, streamingFromDisk: _, streamFileURL: _):
-
+                    
                     // get response
                     uploadRequest
                         .validate()
                         .responseObject { (dataResponse: DataResponse<FGUploadResponse>) in
+                            
+                            if dataResponse.error != nil {
+                                
+                                print(dataResponse.error)
+                            }
+                            
 
-                        // return success
-                        let response: FGRequestHelperResponse<FGEmptyObject> =
-                            FGRequestHelperResponse(request: dataResponse.request,
-                                                    response: dataResponse.response,
-                                                    data: dataResponse.data,
-                                                    error: nil,
-                                                    value: FGEmptyObject())
+                            // return success
+                            let response: FGRequestHelperResponse<FGEmptyObject> =
+                                FGRequestHelperResponse(request: dataResponse.request,
+                                                        response: dataResponse.response,
+                                                        data: dataResponse.data,
+                                                        error: nil,
+                                                        value: FGEmptyObject())
 
-                        callback(response)
+                            callback(response)
                     }
                     break
 
                 case .failure(let error):
 
+                    if let fgError = error as? FGFutureGatewayError {
+                        callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: fgError, value: nil))
+                    }
+
                     // return error
                     let error = FGFutureGatewayError.fileEncodingError(error: error)
 
                     callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
+
                     break
                 }
             }

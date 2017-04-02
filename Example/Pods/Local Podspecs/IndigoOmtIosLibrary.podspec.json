@@ -1,7 +1,7 @@
 {
   "name": "IndigoOmtIosLibrary",
-  "version": "0.1.0",
-  "cocoapods_version": ">= 1.1.1",
+  "version": "0.1.2",
+  "cocoapods_version": ">= 1.2.0",
   "summary": "iOS library which simplifies access to INDIGO DataCloud API.",
   "description": "iOS library which simplifies access to INDIGO DataCloud API.\nFor more information visit https://github.com/indigo-dc",
   "homepage": "https://github.com/indigo-dc/omt-ios",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/indigo-dc/omt-ios.git",
-    "tag": "0.1.0"
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "9.0"

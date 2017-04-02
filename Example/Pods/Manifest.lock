@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.3.0)
   - AppAuth (0.7.1)
-  - IndigoOmtIosLibrary (0.1.0):
+  - IndigoOmtIosLibrary (0.1.2):
     - Alamofire
     - SwiftyJSON
   - Nimble (5.1.1)
@@ -23,11 +23,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AppAuth: c56d352b0d50bb34dbb302d7ba50b20aa6b6ae89
-  IndigoOmtIosLibrary: d8bfd11e91016f3e883496ee423e27b7568b1a3d
+  IndigoOmtIosLibrary: 7e4e76fcaa022a868036ca47cfac0a1c99ed2503
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: e917b96150855391ce9cdad2d8f043d3b47e88a5
+PODFILE CHECKSUM: e5be95c9ba3ee19ab5ffe4fd3f1393ac8409cd31
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

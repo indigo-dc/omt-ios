@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double AlamofireVersionNumber;
-FOUNDATION_EXPORT const unsigned char AlamofireVersionString[];
+FOUNDATION_EXPORT double Pods_IndigoOmtIosLibrary_UnitTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_IndigoOmtIosLibrary_UnitTestsVersionString[];
 

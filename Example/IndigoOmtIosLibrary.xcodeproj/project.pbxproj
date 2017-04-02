@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A5172F08F8C6250CD528E94 /* Pods_IndigoOmtIosLibrary_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */; };
-		BCE3ACC08416E68D911F5B13 /* Pods_IndigoOmtIosLibrary_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */; };
 		D72EF3A21E8D256C00C0F183 /* UnitTestsInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = D72EF3A11E8D256C00C0F183 /* UnitTestsInfo.plist */; };
 		D72EF3BD1E8D257700C0F183 /* DataRequestSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A41E8D257700C0F183 /* DataRequestSpec.swift */; };
 		D72EF3BE1E8D257700C0F183 /* FGAbstractPayloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3A51E8D257700C0F183 /* FGAbstractPayloadSpec.swift */; };
@@ -35,6 +34,7 @@
 		D72EF3D31E8D257700C0F183 /* FGTaskCollectionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3BA1E8D257700C0F183 /* FGTaskCollectionSpec.swift */; };
 		D72EF3D41E8D257700C0F183 /* FGTaskSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3BB1E8D257700C0F183 /* FGTaskSpec.swift */; };
 		D72EF3D51E8D257700C0F183 /* FGUploadResponseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3BC1E8D257700C0F183 /* FGUploadResponseSpec.swift */; };
+		D7565A5B1E911F2500FBAC45 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7565A5A1E911F2500FBAC45 /* FileHelper.swift */; };
 		D760F5121E55B850004419C3 /* DummyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5111E55B850004419C3 /* DummyResolver.swift */; };
 		D78405101E3B6394003B6684 /* AppAuthAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */; };
 		D7860AB91E39F843007AC258 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860AB81E39F843007AC258 /* UserInfo.swift */; };
@@ -57,29 +57,31 @@
 		D7EAC8041E2CBFE600110199 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC7FE1E2CBFE600110199 /* Images.xcassets */; };
 		D7EAC8061E2CBFE600110199 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7EAC8001E2CBFE600110199 /* LaunchScreen.xib */; };
 		D7ECDDA51E422A680033A657 /* FutureGatewayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ECDDA31E42280D0033A657 /* FutureGatewayUtil.swift */; };
+		E5AB89A8A861EA33F3AA96BF /* Pods_IndigoOmtIosLibrary_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BED5DC6E6C37DBB10CE43E7 /* Pods_IndigoOmtIosLibrary_UnitTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		607FACE61AFB9204008FA782 /* PBXContainerItemProxy */ = {
+		D7565A581E9119EB00FBAC45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
-			remoteInfo = IndigoOmtIosLibrary;
+			remoteInfo = IndigoOmtIosLibrary_Example;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		16BA07D6AE6CD1E1C13EA49B /* IndigoOmtIosLibrary.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = IndigoOmtIosLibrary.podspec; path = ../IndigoOmtIosLibrary.podspec; sourceTree = "<group>"; };
+		1BED5DC6E6C37DBB10CE43E7 /* Pods_IndigoOmtIosLibrary_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4885DB6317DAD4CD06989E5A /* Pods-IndigoOmtIosLibrary_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_Example/Pods-IndigoOmtIosLibrary_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		4CD9A37950593C42527F0C68 /* Pods-IndigoOmtIosLibrary_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_Tests/Pods-IndigoOmtIosLibrary_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C00B870491E375105221CD3 /* Pods-IndigoOmtIosLibrary_UnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_UnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_UnitTests/Pods-IndigoOmtIosLibrary_UnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		57C866723DB4274EDE22F5C2 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		58D7FC55213CD5778F8E53C6 /* Pods-IndigoOmtIosLibrary_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_Tests/Pods-IndigoOmtIosLibrary_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		58E8A7DC3F1EA93432D00C8F /* Pods-IndigoOmtIosLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_Example/Pods-IndigoOmtIosLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
 		60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* IndigoOmtIosLibrary_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IndigoOmtIosLibrary_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACE51AFB9204008FA782 /* IndigoOmtIosLibrary_UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndigoOmtIosLibrary_UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IndigoOmtIosLibrary_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8348C5C6D8D1E529EC7A9AD1 /* Pods-IndigoOmtIosLibrary_UnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_UnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_UnitTests/Pods-IndigoOmtIosLibrary_UnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8AFE4D6AFE87B55B2E647AA4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D72EF3A11E8D256C00C0F183 /* UnitTestsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UnitTestsInfo.plist; sourceTree = "<group>"; };
 		D72EF3A41E8D257700C0F183 /* DataRequestSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestSpec.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		D72EF3BA1E8D257700C0F183 /* FGTaskCollectionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskCollectionSpec.swift; sourceTree = "<group>"; };
 		D72EF3BB1E8D257700C0F183 /* FGTaskSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGTaskSpec.swift; sourceTree = "<group>"; };
 		D72EF3BC1E8D257700C0F183 /* FGUploadResponseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadResponseSpec.swift; sourceTree = "<group>"; };
+		D7565A5A1E911F2500FBAC45 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		D760F5111E55B850004419C3 /* DummyResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyResolver.swift; sourceTree = "<group>"; };
 		D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAuthAccessTokenProvider.swift; sourceTree = "<group>"; };
 		D7860AB81E39F843007AC258 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -145,7 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCE3ACC08416E68D911F5B13 /* Pods_IndigoOmtIosLibrary_Tests.framework in Frameworks */,
+				E5AB89A8A861EA33F3AA96BF /* Pods_IndigoOmtIosLibrary_UnitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,8 +219,8 @@
 			children = (
 				4885DB6317DAD4CD06989E5A /* Pods-IndigoOmtIosLibrary_Example.debug.xcconfig */,
 				58E8A7DC3F1EA93432D00C8F /* Pods-IndigoOmtIosLibrary_Example.release.xcconfig */,
-				4CD9A37950593C42527F0C68 /* Pods-IndigoOmtIosLibrary_Tests.debug.xcconfig */,
-				58D7FC55213CD5778F8E53C6 /* Pods-IndigoOmtIosLibrary_Tests.release.xcconfig */,
+				8348C5C6D8D1E529EC7A9AD1 /* Pods-IndigoOmtIosLibrary_UnitTests.debug.xcconfig */,
+				4C00B870491E375105221CD3 /* Pods-IndigoOmtIosLibrary_UnitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				D7ECDD701E4209AC0033A657 /* Alamofire.framework */,
 				60676204E9AB7CBE985CD285 /* Pods_IndigoOmtIosLibrary_Example.framework */,
 				67D6B917ACE2BE80436FFE7C /* Pods_IndigoOmtIosLibrary_Tests.framework */,
+				1BED5DC6E6C37DBB10CE43E7 /* Pods_IndigoOmtIosLibrary_UnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -273,6 +277,7 @@
 				D7C9C5B91E4C6F340073C50A /* DummyProvider.swift */,
 				D760F5111E55B850004419C3 /* DummyResolver.swift */,
 				D7C9C5B71E4C66710073C50A /* Global.swift */,
+				D7565A5A1E911F2500FBAC45 /* FileHelper.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -376,7 +381,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				607FACE71AFB9204008FA782 /* PBXTargetDependency */,
+				D7565A591E9119EB00FBAC45 /* PBXTargetDependency */,
 			);
 			name = IndigoOmtIosLibrary_UnitTests;
 			productName = Tests;
@@ -457,7 +462,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IndigoOmtIosLibrary_Tests/Pods-IndigoOmtIosLibrary_Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IndigoOmtIosLibrary_UnitTests/Pods-IndigoOmtIosLibrary_UnitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7B28B2DAD552F8AB061C6341 /* [CP] Embed Pods Frameworks */ = {
@@ -487,7 +492,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IndigoOmtIosLibrary_Tests/Pods-IndigoOmtIosLibrary_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IndigoOmtIosLibrary_UnitTests/Pods-IndigoOmtIosLibrary_UnitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C51F2EF740EAA43351184679 /* [CP] Copy Pods Resources */ = {
@@ -573,6 +578,7 @@
 				D72EF3C71E8D257700C0F183 /* FGEmptyObjectSpec.swift in Sources */,
 				D72EF3D01E8D257700C0F183 /* FGSessionHelperSpec.swift in Sources */,
 				D72EF3D21E8D257700C0F183 /* FGTaskCollectionApiSpec.swift in Sources */,
+				D7565A5B1E911F2500FBAC45 /* FileHelper.swift in Sources */,
 				D72EF3C01E8D257700C0F183 /* FGApiLinkSpec.swift in Sources */,
 				D72EF3C51E8D257700C0F183 /* FGApplicationSpec.swift.swift in Sources */,
 				D72EF3CF1E8D257700C0F183 /* FGRuntimeDataObjectSpec.swift in Sources */,
@@ -599,10 +605,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		607FACE71AFB9204008FA782 /* PBXTargetDependency */ = {
+		D7565A591E9119EB00FBAC45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* IndigoOmtIosLibrary_Example */;
-			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+			targetProxy = D7565A581E9119EB00FBAC45 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -722,13 +728,10 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CD9A37950593C42527F0C68 /* Pods-IndigoOmtIosLibrary_Tests.debug.xcconfig */;
+			baseConfigurationReference = 8348C5C6D8D1E529EC7A9AD1 /* Pods-IndigoOmtIosLibrary_UnitTests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -743,13 +746,10 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58D7FC55213CD5778F8E53C6 /* Pods-IndigoOmtIosLibrary_Tests.release.xcconfig */;
+			baseConfigurationReference = 4C00B870491E375105221CD3 /* Pods-IndigoOmtIosLibrary_UnitTests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/UnitTestsInfo.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
