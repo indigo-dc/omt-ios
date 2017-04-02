@@ -143,20 +143,19 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                     uploadRequest
                         .validate()
                         .responseObject { (dataResponse: DataResponse<FGUploadResponse>) in
-                            
-                            if dataResponse.error != nil {
-                                
-                                print(dataResponse.error)
+
+                            var value: FGEmptyObject?
+                            if dataResponse.error == nil {
+                                value = FGEmptyObject()
                             }
-                            
 
                             // return success
                             let response: FGRequestHelperResponse<FGEmptyObject> =
                                 FGRequestHelperResponse(request: dataResponse.request,
                                                         response: dataResponse.response,
                                                         data: dataResponse.data,
-                                                        error: nil,
-                                                        value: FGEmptyObject())
+                                                        error: dataResponse.error as? FGFutureGatewayError,
+                                                        value: value)
 
                             callback(response)
                     }
@@ -166,6 +165,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
 
                     if let fgError = error as? FGFutureGatewayError {
                         callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: fgError, value: nil))
+                        return
                     }
 
                     // return error

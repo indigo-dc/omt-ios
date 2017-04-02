@@ -21,7 +21,7 @@ class FileHelper {
     public static func createFile(_ filename: String) {
         if let docPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let filePath = docPath.appendingPathComponent(filename)
-            let data = "".data(using: .utf8)
+            let data = "test".data(using: .utf8)
             try? data?.write(to: filePath)
         }
     }

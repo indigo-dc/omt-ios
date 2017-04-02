@@ -39,6 +39,7 @@
 		D78405101E3B6394003B6684 /* AppAuthAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */; };
 		D7860AB91E39F843007AC258 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860AB81E39F843007AC258 /* UserInfo.swift */; };
 		D7860ABB1E39F85C007AC258 /* UserInfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */; };
+		D7A368331E914EC8004A998F /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7565A5A1E911F2500FBAC45 /* FileHelper.swift */; };
 		D7BEF7361E2F81B800ACD8DA /* UIDesignHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7351E2F81B800ACD8DA /* UIDesignHelper.swift */; };
 		D7BEF7381E2F983000ACD8DA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEF7371E2F983000ACD8DA /* MainViewController.swift */; };
 		D7C9C5B51E4C61EF0073C50A /* DummyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C9C5B31E4C61EF0073C50A /* DummyError.swift */; };
@@ -552,6 +553,7 @@
 				D7EAC8011E2CBFE600110199 /* AppDelegate.swift in Sources */,
 				D7C9C5D51E4CB7750073C50A /* DummyProvider.swift in Sources */,
 				D7DC97B61E36495700C25191 /* AuthConfig.swift in Sources */,
+				D7A368331E914EC8004A998F /* FileHelper.swift in Sources */,
 				D7EAC8031E2CBFE600110199 /* LoginViewController.swift in Sources */,
 				D7ECDDA51E422A680033A657 /* FutureGatewayUtil.swift in Sources */,
 				D7DF239D1E2E0DCB0037AA41 /* UIHelper.swift in Sources */,
