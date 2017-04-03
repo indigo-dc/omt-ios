@@ -82,9 +82,17 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             .response(queue: self.session.getDispatchQueue()) { (downloadResponse: DefaultDownloadResponse) in
 
                 // get error
-                var futureGatewayError: FGFutureGatewayError?
-                if let error = downloadResponse.error {
-                    futureGatewayError = FGFutureGatewayError.downloadFileError(error: error)
+                var value: FGEmptyObject?
+                var error: FGFutureGatewayError?
+
+                if let downloadError = downloadResponse.error {
+                    if downloadError is FGFutureGatewayError {
+                        error = downloadError as? FGFutureGatewayError
+                    } else {
+                        error = FGFutureGatewayError.downloadFileError(error: downloadError)
+                    }
+                } else {
+                    value = FGEmptyObject()
                 }
 
                 // create response object
@@ -92,8 +100,8 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                     FGRequestHelperResponse(request: downloadResponse.request,
                                             response: downloadResponse.response,
                                             data: nil,
-                                            error: futureGatewayError,
-                                            value: FGEmptyObject())
+                                            error: error,
+                                            value: value)
 
                 callback(response)
         }
@@ -138,7 +146,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                 // check encoding result
                 switch encodingResult {
                 case .success(request: let uploadRequest, streamingFromDisk: _, streamFileURL: _):
-                    
+
                     // get response
                     uploadRequest
                         .validate()

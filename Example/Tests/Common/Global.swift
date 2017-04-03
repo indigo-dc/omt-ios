@@ -152,7 +152,16 @@ func beFileEncodingError() -> MatcherFunc<Error> {
     }
 }
 
-
+func beDownloadFileError() -> MatcherFunc<Error> {
+    return MatcherFunc { expression, message in
+        message.postfixMessage = "be download file error"
+        if let actual = try expression.evaluate(),
+            case FGFutureGatewayError.downloadFileError(error: _) = actual {
+            return true
+        }
+        return false
+    }
+}
 
 
 

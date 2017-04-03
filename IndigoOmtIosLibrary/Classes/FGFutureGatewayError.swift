@@ -61,7 +61,7 @@ public enum FGFutureGatewayError: Error, LocalizedError {
 
         case .urlIsEmpty(reason: let reason):
             return "Future Gateway url is empty error: \(reason)"
-/*
+
         case .fileURLIsEmpty(reason: let reason):
             return "Future Gateway file URL is empty error: \(reason)"
 
@@ -76,12 +76,6 @@ public enum FGFutureGatewayError: Error, LocalizedError {
 
         case .uploadFileError(error: let error):
             return "Future Gateway upload file error: \(error.localizedDescription)"
-             
-             
-             */
-
-        default: return ""
-
         }
     }
 

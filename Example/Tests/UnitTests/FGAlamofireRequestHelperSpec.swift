@@ -106,9 +106,108 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                 }
             }
             
+            context("download") {
+                
+                it("should return file url is empty error") {
+                    
+                    // prepare
+                    let fileURL: URL? = nil
+                    let payload = FGDownloadPayload(method: .get)
+                    payload.url = nil
+                    payload.destinationURL = fileURL
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        alamo.downloadFile(payload) { (response: FGRequestHelperResponse<FGEmptyObject>) in
+                            
+                            // verify
+                            expect(response.error).toNot(beNil())
+                            expect(response.error?.localizedDescription).toNot(beNil())
+                            expect(response.error).to(beFileUrlIsEmptyError())
+                            
+                            done()
+                        }
+                    }
+                }
+                
+                it("should return url is empty error") {
+                    
+                    // prepare
+                    let fileURL: URL? = URL(string: "file:///tmp/file1.txt")
+                    let payload = FGDownloadPayload(method: .get)
+                    payload.url = nil
+                    payload.destinationURL = fileURL
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        alamo.downloadFile(payload) { (response: FGRequestHelperResponse<FGEmptyObject>) in
+                            
+                            // verify
+                            expect(response.error).toNot(beNil())
+                            expect(response.error?.localizedDescription).toNot(beNil())
+                            expect(response.error).to(beUrlIsEmptyError())
+                            expect(response.value).to(beNil())
+                            
+                            done()
+                        }
+                    }
+                }
+                
+                it("should download file") {
+                    
+                    // prepare
+                    let filename = "download.txt"
+                    let fileURL: URL? = FileHelper.pathToFile(filename)
+                    let payload = FGDownloadPayload(method: .get)
+                    payload.url = URL(string: "http://127.0.0.1:8080/\(filename)")!
+                    payload.destinationURL = fileURL
+                    self.startServer("200 OK", body: "This is a text file")
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        alamo.downloadFile(payload) { (response: FGRequestHelperResponse<FGEmptyObject>) in
+                            
+                            // verify
+                            expect(response.error).to(beNil())
+                            expect(response.value).toNot(beNil())
+                            
+                            done()
+                        }
+                    }
+                    
+                    self.stopServer()
+                    FileHelper.deleteFile(filename)
+                }
+                
+                it("should return download error") {
+                    
+                    // prepare
+                    let filename = "download.txt"
+                    let fileURL: URL? = FileHelper.pathToFile(filename)
+                    let payload = FGDownloadPayload(method: .get)
+                    payload.url = URL(string: "http://127.0.0.1:8080/\(filename)")!
+                    payload.destinationURL = fileURL
+                    self.startServer("404 Not Found")
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        alamo.downloadFile(payload) { (response: FGRequestHelperResponse<FGEmptyObject>) in
+                            
+                            // verify
+                            expect(response.error).to(beDownloadFileError())
+                            expect(response.value).to(beNil())
+                            
+                            done()
+                        }
+                    }
+                    
+                    self.stopServer()
+                }
+            }
+            
             context("upload") {
                 
-                it("should return urlIsEmpty error") {
+                it("should return file url is empty error") {
                     
                     // prepare
                     let fileURL: URL? = nil
@@ -155,31 +254,7 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                     }
                 }
                 
-                it("should return file encoding error error") {
-                    
-                    // prepare
-                    let fileURL: URL? = URL(string: "file:///tmp/file1.txt")
-                    let payload = FGUploadPayload(method: .get)
-                    payload.url = Constants.notExistingServerUrl
-                    payload.sourceURL = fileURL
-                    payload.uploadFilename = filename
-                    
-                    // test
-                    waitUntil(timeout: 60) { done in
-                        alamo.uploadFile(payload) { (response: FGRequestHelperResponse<FGEmptyObject>) in
-                            
-                            // verify
-                            expect(response.error).toNot(beNil())
-                            expect(response.error?.localizedDescription).toNot(beNil())
-                            expect(response.error).to(beFileEncodingError())
-                            expect(response.value).to(beNil())
-                            
-                            done()
-                        }
-                    }
-                }
-                
-                it("should return file encoding error error") {
+                it("should return file encoding error") {
                     
                     // prepare
                     let fileURL: URL? = URL(string: "file:///tmp/file1.txt")
@@ -227,10 +302,6 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                     }
                 }
                 
-                
-                
-                
-
                 it("should upload file") {
                     
                     // prepare
@@ -255,29 +326,13 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                     }
                     
                     self.stopServer()
+                    FileHelper.deleteFile(filename)
                 }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-        
-                
-                
-                
-                
-                
-                
             }
         }
     }
     
-    func startServer(_ status: String, body: String) {
+    func startServer(_ status: String, body: String = "") {
         DispatchQueue.global().async {
             let loop = try! SelectorEventLoop(selector: try! KqueueSelector())
             self.server = DefaultHTTPServer(eventLoop: loop, interface: "127.0.0.1", port: 8080) {
