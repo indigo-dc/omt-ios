@@ -3,6 +3,10 @@
 
 iOS library which simplifies access to INDIGO DataCloud API
 
+## Current version
+
+Current version od the library is 0.1.3
+
 ## Requirements
 
 - `macOS >= 10.12`

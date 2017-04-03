@@ -43,7 +43,7 @@ open class FGFileApi: FGAbstractResolvedApi {
     // MARK: - internal methods
 
     /// Fetches URL from resolver, updates URL in payload and downloads the file
-    func fetchResolvedUrlAndDownloadFile(_ payload: FGDownloadPayload, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
+    private func fetchResolvedUrlAndDownloadFile(_ payload: FGDownloadPayload, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
         self.resolver.resolveUrlWithVersion { response in
 
             // return error
@@ -72,7 +72,7 @@ open class FGFileApi: FGAbstractResolvedApi {
     }
 
     /// Fetches base URL from resolver, updates URL in payload and uploads the file.
-    func fetchBaseUrlAndUploadFile(_ payload: FGUploadPayload, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
+    private func fetchBaseUrlAndUploadFile(_ payload: FGUploadPayload, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
 
         // append api path to the url
         let mutablePayload = payload

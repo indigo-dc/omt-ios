@@ -51,29 +51,4 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         // send
         fetchResolvedUrlAndSendPayload(payload, callback)
     }
-    /*
-    /// Adds multiple tasks.
-    public func addMultipleTasks(_ taskCollection: FGTaskCollection, callback: @escaping FGApiResponseCallback<FGTaskCollection>) {
-        
-        // prepare payload
-        var payload = FGRequestPayload(method: .patch)
-        payload.resourcePath = "tasks"
-        payload.addHeader("Content-Type", value: "application/vnd.indigo-datacloud.apiserver+json")
-        payload.body = taskCollection
-        
-        // send
-        fetchResolvedUrlAndSendPayload(payload, callback)
-    }
-    
-    /// Remove all tasks
-    public func deleteTaskList(_ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
-        
-        // prepare payload
-        var payload = FGRequestPayload(method: .delete)
-        payload.resourcePath = "tasks"
-        
-        // send
-        fetchResolvedUrlAndSendPayload(payload, callback)
-    }
-    */
 }

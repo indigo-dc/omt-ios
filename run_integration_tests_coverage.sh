@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # output dir
-SCRIPT_OUTPUT='unit_tests_coverage'
+SCRIPT_OUTPUT='integration_tests_coverage'
 mkdir -p $SCRIPT_OUTPUT
 
 # run test
 echo "Running test"
 xcodebuild \
     -workspace ./Example/IndigoOmtIosLibrary.xcworkspace \
-    -scheme "IndigoOmtIosLibrary_Example" \
+    -scheme "IndigoOmtIosLibrary_ExampleIntegration" \
     test \
     -destination "platform=iOS Simulator,name=iPhone 5" \
     &> "./$SCRIPT_OUTPUT/xcodebuild.log"
@@ -23,9 +23,8 @@ xcov \
     --html_report \
     &> "./$SCRIPT_OUTPUT/xcov.log"
 
-# show report
-echo "Opening report"
-open "./$SCRIPT_OUTPUT/index.html"
-
 # generate report
 cat "./$SCRIPT_OUTPUT/xcodebuild.log" | xcpretty -r html --output "./$SCRIPT_OUTPUT/report.html"
+
+# open report
+open "./$SCRIPT_OUTPUT/report.html"

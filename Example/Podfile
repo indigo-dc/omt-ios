@@ -15,3 +15,17 @@ target 'IndigoOmtIosLibrary_Example' do
     pod 'Embassy', '~> 3.1'
   end
 end
+
+target 'IndigoOmtIosLibrary_ExampleIntegration' do
+    pod 'IndigoOmtIosLibrary', :path => '../'
+    pod 'AppAuth'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+    
+    target 'IndigoOmtIosLibrary_IntegrationTests' do
+        inherit! :search_paths
+        
+        pod 'Quick', '~> 1.0.0'
+        pod 'Nimble', '~> 5.1.1'
+    end
+end
