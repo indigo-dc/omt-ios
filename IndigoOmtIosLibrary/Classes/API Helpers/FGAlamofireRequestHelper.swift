@@ -81,10 +81,18 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             .validate(contentType: accept)
             .response(queue: self.session.getDispatchQueue()) { (downloadResponse: DefaultDownloadResponse) in
 
-                // get error
-                var futureGatewayError: FGFutureGatewayError?
-                if let error = downloadResponse.error {
-                    futureGatewayError = FGFutureGatewayError.downloadFileError(error: error)
+                // get error and value
+                var value: FGEmptyObject?
+                var error: FGFutureGatewayError?
+
+                if let downloadError = downloadResponse.error {
+                    if downloadError is FGFutureGatewayError {
+                        error = downloadError as? FGFutureGatewayError
+                    } else {
+                        error = FGFutureGatewayError.downloadFileError(error: downloadError)
+                    }
+                } else {
+                    value = FGEmptyObject()
                 }
 
                 // create response object
@@ -92,8 +100,8 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                     FGRequestHelperResponse(request: downloadResponse.request,
                                             response: downloadResponse.response,
                                             data: nil,
-                                            error: futureGatewayError,
-                                            value: FGEmptyObject())
+                                            error: error,
+                                            value: value)
 
                 callback(response)
         }
@@ -144,24 +152,40 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                         .validate()
                         .responseObject { (dataResponse: DataResponse<FGUploadResponse>) in
 
-                        // return success
-                        let response: FGRequestHelperResponse<FGEmptyObject> =
-                            FGRequestHelperResponse(request: dataResponse.request,
-                                                    response: dataResponse.response,
-                                                    data: dataResponse.data,
-                                                    error: nil,
-                                                    value: FGEmptyObject())
+                            // get error and value
+                            var value: FGEmptyObject?
+                            var error: FGFutureGatewayError?
 
-                        callback(response)
+                            if let uploadError = dataResponse.error {
+                                error = uploadError as? FGFutureGatewayError
+                            } else {
+                                value = FGEmptyObject()
+                            }
+
+                            // return success
+                            let response: FGRequestHelperResponse<FGEmptyObject> =
+                                FGRequestHelperResponse(request: dataResponse.request,
+                                                        response: dataResponse.response,
+                                                        data: dataResponse.data,
+                                                        error: error,
+                                                        value: value)
+
+                            callback(response)
                     }
                     break
 
                 case .failure(let error):
 
+                    if let fgError = error as? FGFutureGatewayError {
+                        callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: fgError, value: nil))
+                        return
+                    }
+
                     // return error
                     let error = FGFutureGatewayError.fileEncodingError(error: error)
 
                     callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
+
                     break
                 }
             }

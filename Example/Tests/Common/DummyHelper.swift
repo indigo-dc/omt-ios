@@ -35,13 +35,14 @@ class DummyHelper: FGRequestHelper {
                 
             }
             
-            print(payload.description)
             let response = FGRequestHelperResponse<Value>(request: nil,
                                                           response: self.dummyResponse,
                                                           data: self.dummyErrorResponseBody?.data(using: .utf8),
                                                           error: self.dummyError,
                                                           value: (self.dummyValue as? Value))
+            print(payload.description)
             print(response.description)
+            print(response.error as Any)
             
             callback(response)
         }
@@ -57,20 +58,40 @@ class DummyHelper: FGRequestHelper {
                 
             }
             
-            print(payload.description)
             let response = FGRequestHelperResponse<FGEmptyObject>(request: nil,
                                                                   response: self.dummyResponse,
                                                                   data: self.dummyErrorResponseBody?.data(using: .utf8),
                                                                   error: self.dummyError,
                                                                   value: (self.dummyValue as? FGEmptyObject))
+            print(payload.description)
             print(response.description)
+            print(response.error as Any)
             
             callback(response)
         }
     }
     
     public func uploadFile(_ payload: FGUploadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
-        
+        getBackgroundQueue().async {
+            
+            do {
+                let _ = try payload.asURLRequest()
+            }
+            catch {
+                
+            }
+            
+            let response = FGRequestHelperResponse<FGEmptyObject>(request: nil,
+                                                                  response: self.dummyResponse,
+                                                                  data: self.dummyErrorResponseBody?.data(using: .utf8),
+                                                                  error: self.dummyError,
+                                                                  value: (self.dummyValue as? FGEmptyObject))
+            print(payload.description)
+            print(response.description)
+            print(response.error as Any)
+            
+            callback(response)
+        }
     }
     
 }

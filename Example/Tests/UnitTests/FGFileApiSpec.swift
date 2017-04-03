@@ -26,7 +26,7 @@ class FGFileApiSpec: QuickSpec {
                     dummyHelper.dummyValue = nil
                 }
                 
-                it("should return error when url is not resolved") {
+                it("should return error when url is not resolved while downloading a file") {
                     
                     // prepare
                     let outputFile = FGOutputFile()
@@ -47,7 +47,7 @@ class FGFileApiSpec: QuickSpec {
                     }
                 }
                 
-                it("should return error when file was not found") {
+                it("should return error when file was not found while downloading a file") {
                     
                     // prepare
                     let outputFile = FGOutputFile()
@@ -88,6 +88,53 @@ class FGFileApiSpec: QuickSpec {
                         })
                     }
                 }
+                
+                it("should return error when file was not found while uploading a file") {
+                    
+                    // prepare
+                    let inputFile = FGInputFile()
+                    inputFile.name = "file1.txt"
+                    let uploadLink = FGApiLink()
+                    uploadLink.rel = "self"
+                    uploadLink.href = "/v1.0/upload"
+                    let localFile = URL(string: "file:///tmp/file1.txt")!
+                    dummyHelper.dummyError = FGFutureGatewayError.network(error: DummyError(msg: "404 File not found"))
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        fileApi.upload(inputFile, to: uploadLink, from: localFile, { (response: FGApiResponse<FGEmptyObject>) in
+                            
+                            expect(response.error).toNot(beNil())
+                            expect(response.value).to(beNil())
+                            
+                            done()
+                        })
+                    }
+                }
+                
+                it("should return empty object when file was uploaded") {
+                    
+                    // prepare
+                    let inputFile = FGInputFile()
+                    inputFile.name = "file1.txt"
+                    let uploadLink = FGApiLink()
+                    uploadLink.rel = "self"
+                    uploadLink.href = "/v1.0/upload"
+                    let localFile = URL(string: "file:///tmp/file1.txt")!
+                    dummyHelper.dummyValue = FGEmptyObject()
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        fileApi.upload(inputFile, to: uploadLink, from: localFile, { (response: FGApiResponse<FGEmptyObject>) in
+                            
+                            expect(response.error).to(beNil())
+                            expect(response.value).toNot(beNil())
+                            
+                            done()
+                        })
+                    }
+                }
+                
             }
         }
     }

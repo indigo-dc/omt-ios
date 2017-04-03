@@ -19,7 +19,7 @@ xcov \
     -w ./Example/IndigoOmtIosLibrary.xcworkspace \
     -s IndigoOmtIosLibrary \
     -o "./$SCRIPT_OUTPUT" \
-    --exclude_targets Quick.framework,Alamofire.framework,Nimble.framework,AppAuth.framework,SwiftyJSON.framework,IndigoOmtIosLibrary_Example.app \
+    --exclude_targets Quick.framework,Alamofire.framework,Nimble.framework,AppAuth.framework,SwiftyJSON.framework,IndigoOmtIosLibrary_Example.app,Embassy.framework \
     --html_report \
     &> "./$SCRIPT_OUTPUT/xcov.log"
 

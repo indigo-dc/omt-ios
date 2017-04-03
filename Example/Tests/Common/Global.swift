@@ -110,9 +110,53 @@ func beJsonSerializationError() -> MatcherFunc<Error> {
 
 func beUrlIsEmptyError() -> MatcherFunc<Error> {
     return MatcherFunc { expression, message in
-        message.postfixMessage = "be json serialization error"
+        message.postfixMessage = "be url is empty error"
         if let actual = try expression.evaluate(),
             case FGFutureGatewayError.urlIsEmpty(reason: _) = actual {
+            return true
+        }
+        return false
+    }
+}
+
+func beFileUrlIsEmptyError() -> MatcherFunc<Error> {
+    return MatcherFunc { expression, message in
+        message.postfixMessage = "be file url is empty error"
+        if let actual = try expression.evaluate(),
+            case FGFutureGatewayError.fileURLIsEmpty(reason: _) = actual {
+            return true
+        }
+        return false
+    }
+}
+
+func beFilenameIsEmptyError() -> MatcherFunc<Error> {
+    return MatcherFunc { expression, message in
+        message.postfixMessage = "be filename is empty error"
+        if let actual = try expression.evaluate(),
+            case FGFutureGatewayError.uploadFilenameIsEmpty(reason: _) = actual {
+            return true
+        }
+        return false
+    }
+}
+
+func beFileEncodingError() -> MatcherFunc<Error> {
+    return MatcherFunc { expression, message in
+        message.postfixMessage = "be file encoding error"
+        if let actual = try expression.evaluate(),
+            case FGFutureGatewayError.fileEncodingError(error: _) = actual {
+            return true
+        }
+        return false
+    }
+}
+
+func beDownloadFileError() -> MatcherFunc<Error> {
+    return MatcherFunc { expression, message in
+        message.postfixMessage = "be download file error"
+        if let actual = try expression.evaluate(),
+            case FGFutureGatewayError.downloadFileError(error: _) = actual {
             return true
         }
         return false

@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>YOUR_SCHEME_FOR_REDIRECT</string>
+				<string>pl.psnc.indigo.omt.sampleapp</string>
 			</array>
 		</dict>
 	</array>
