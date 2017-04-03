@@ -42,7 +42,7 @@ class DummyHelper: FGRequestHelper {
                                                           value: (self.dummyValue as? Value))
             print(payload.description)
             print(response.description)
-            print(response.error)
+            print(response.error as Any)
             
             callback(response)
         }
@@ -65,7 +65,7 @@ class DummyHelper: FGRequestHelper {
                                                                   value: (self.dummyValue as? FGEmptyObject))
             print(payload.description)
             print(response.description)
-            print(response.error)
+            print(response.error as Any)
             
             callback(response)
         }
@@ -88,7 +88,7 @@ class DummyHelper: FGRequestHelper {
                                                                   value: (self.dummyValue as? FGEmptyObject))
             print(payload.description)
             print(response.description)
-            print(response.error)
+            print(response.error as Any)
             
             callback(response)
         }

@@ -81,7 +81,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
             .validate(contentType: accept)
             .response(queue: self.session.getDispatchQueue()) { (downloadResponse: DefaultDownloadResponse) in
 
-                // get error
+                // get error and value
                 var value: FGEmptyObject?
                 var error: FGFutureGatewayError?
 
@@ -152,8 +152,13 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                         .validate()
                         .responseObject { (dataResponse: DataResponse<FGUploadResponse>) in
 
+                            // get error and value
                             var value: FGEmptyObject?
-                            if dataResponse.error == nil {
+                            var error: FGFutureGatewayError?
+
+                            if let uploadError = dataResponse.error {
+                                error = uploadError as? FGFutureGatewayError
+                            } else {
                                 value = FGEmptyObject()
                             }
 
@@ -162,7 +167,7 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                                 FGRequestHelperResponse(request: dataResponse.request,
                                                         response: dataResponse.response,
                                                         data: dataResponse.data,
-                                                        error: dataResponse.error as? FGFutureGatewayError,
+                                                        error: error,
                                                         value: value)
 
                             callback(response)

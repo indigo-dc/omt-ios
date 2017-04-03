@@ -38,9 +38,6 @@ public enum FGFutureGatewayError: Error, LocalizedError {
     /// File download error.
     case downloadFileError(error: Error)
 
-    /// File upload error.
-    case uploadFileError(error: Error)
-
     // MARK: - LocalizedError
 
     public var errorDescription: String? {
@@ -73,9 +70,6 @@ public enum FGFutureGatewayError: Error, LocalizedError {
 
         case .downloadFileError(error: let error):
             return "Future Gateway download file error: \(error.localizedDescription)"
-
-        case .uploadFileError(error: let error):
-            return "Future Gateway upload file error: \(error.localizedDescription)"
         }
     }
 

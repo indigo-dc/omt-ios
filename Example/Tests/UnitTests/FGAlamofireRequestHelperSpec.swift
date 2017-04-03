@@ -195,6 +195,7 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                             
                             // verify
                             expect(response.error).to(beDownloadFileError())
+                            expect(response.error?.errorDescription).toNot(beNil())
                             expect(response.value).to(beNil())
                             
                             done()
@@ -320,6 +321,33 @@ class FGAlamofireRequestHelperSpec: QuickSpec {
                             // verify
                             expect(response.error).to(beNil())
                             expect(response.value).toNot(beNil())
+                            
+                            done()
+                        }
+                    }
+                    
+                    self.stopServer()
+                    FileHelper.deleteFile(filename)
+                }
+                
+                it("should return upload file error") {
+                    
+                    // prepare
+                    FileHelper.createFile(filename)
+                    let fileURL: URL? = FileHelper.pathToFile(filename)
+                    let payload = FGUploadPayload(method: .get)
+                    payload.url = URL(string: "http://127.0.0.1:8080/upload")!
+                    payload.sourceURL = fileURL
+                    payload.uploadFilename = filename
+                    self.startServer("404 Not Found", body: "{\"files\":[]}")
+                    
+                    // test
+                    waitUntil(timeout: 60) { done in
+                        alamo.uploadFile(payload) { (response: FGRequestHelperResponse<FGEmptyObject>) in
+                            
+                            // verify
+                            expect(response.error).to(beNetworkError())
+                            expect(response.value).to(beNil())
                             
                             done()
                         }
