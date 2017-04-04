@@ -1,0 +1,6 @@
+framework module Pods_IndigoOmtIosLibrary_ExampleIntegration {
+  umbrella header "Pods-IndigoOmtIosLibrary_ExampleIntegration-umbrella.h"
+
+  export *
+  module * { export * }
+}

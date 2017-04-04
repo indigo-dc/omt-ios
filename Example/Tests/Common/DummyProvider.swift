@@ -11,8 +11,10 @@ import IndigoOmtIosLibrary
 
 class DummyProvider: FGAccessTokenProvider {
     
+    var token: String = "token"
+    
     func getAccessToken() -> String {
-        return "token"
+        return token
     }
     
     func requestNewAccessToken(_ callback: @escaping FGAccessTokenProviderCallback) {

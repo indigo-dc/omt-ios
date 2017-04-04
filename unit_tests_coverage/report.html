@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Test Results | xcpretty</title>
+    <style type="text/css">
+      body { font-family:Avenir Next, Helvetica Neue, sans-serif; color: #4A4A4A; background-color: #F0F3FB; margin:0;}
+      h1 { font-weight: normal; font-size: 24px; margin: 10px 0 0 0;}
+      h3 { font-weight: normal; margin: 2px; font-size: 1.1em;}
+      header { position: fixed;width: 100%;background: rgba(249, 254, 255, 0.9);margin: 0;padding: 10px;}
+      header:before, header:after { content:""; display:table;}
+      header:after { clear:both;}
+      a:link { color: #A1D761;}
+      footer { clear: both;position: relative;z-index: 10;height: 40px;margin-top: -10px; margin-left:30px; font-size:12px;}
+      table { width:100%; border-collapse: collapse;}
+      tr td:first-child { width:7%}
+      .left { float: left; margin-left:30px;}
+      .right { float: right; margin-right: 40px; margin-top: 0; margin-bottom:0;}
+      .test-suite { margin: 0 0 30px 0;}
+      .test-suite > .heading { font-family:Menlo, Monaco, monospace; font-weight: bold; border-color: #A1D761; background-color: #B8E986; border-width: 1px;}
+      .test-suite.failing > .heading { border-color: #C84F5E; background-color: #E58591;}
+      .test-suite > .heading > .title { margin-top: 4px; margin-left: 10px;}
+      .tests { overflow: scroll;margin: 0 30px 0 60px;}
+      .test, .test-suite > .heading { height: 30px; overflow: hidden; margin: 0 30px;}
+      .test, .test-suite > .heading { border-width: 1px; border-collapse: collapse; border-style: solid; }
+      .test { margin-left: 30px; border-top:none;}
+      .test.failing { border-color: #C84F5E; background-color: #F4DDE0;}
+      .test.passing { border-color: #A1D761;}
+      .test.failing { background-color: #E7A1AA;}
+      .test.passing { background-color: #CAF59F;}
+      .test.failing.odd { background-color: #EEC7CC;}
+      .test.passing.odd { background-color: #E5FBCF;}
+      .details { background-color: #F4DDE0; border: 1px solid #C84F5E;}
+      .test .test-detail:last-child { padding-bottom: 8px;}
+      .test .title { float: left; font-size: 0.9em; margin-top: 8px; font-family: Menlo, Monaco, monospace;}
+      .test .time { float: left;margin: 4px 10px 0 20px;}
+      .test-detail { font-family:Menlo, Monaco, monospace; font-size: 0.9em; margin: 5px 0 5px 0px;}
+      .screenshots { height: auto; overflow: hidden; padding: 4px 4px 0 4px; background-color: #B8E986; border: #A1D761; border-width: 0 1px; border-style: solid; }
+      .screenshots.failing { border-color: #C84F5E; background-color: #E58591; }
+      .screenshot { max-height: 60px; float: left; transition: max-height 0.2s; margin: 0 4px 4px 0 }
+      .screenshot.selected { max-height: 568px; }
+      #test-suites { display: inline-block; width: 100%;margin-top:100px;}
+      #segment-bar { margin-top: 10px;margin-left: 14px;float:right;}
+      #segment-bar a:first-child { border-radius: 9px 0 0 9px; border-right: none;}
+      #segment-bar a:last-child { border-radius: 0 9px 9px 0; border-left: none;}
+      #segment-bar > a { color: #565656; border: 2px solid  #7B7B7B; width: 80px; font-weight: bold; display:inline-block;text-align:center; font-weight: normal;}
+      #segment-bar > a.selected { background-color: #979797; color: #F0F3FB;}
+      #counters { float: left;margin: 10px;text-align: right;}
+      #counters h2 { font-size: 16px; font-family: Avenir, sans-serif; font-weight: lighter; display:inline;}
+      #counters .number { font-size: 20px;}
+      #fail-count { color: #D0021B; margin-left:10px;}
+      @media (max-width: 640px) {
+        h1, #counters, #segment-bar { margin: 5px auto; text-align:center;}
+        header, #segment-bar { width: 100%; position: relative; background:none;}
+        .left, .right { float:none; margin:0;}
+        #test-suites { margin-top: 0;}
+        #counters { float:none;}
+      }
+    </style>
+    <script type="text/javascript">
+      var hide = function(element) { element.style.display = 'none';}
+      var show = function(element) { element.style.display = '';}
+      var isHidden = function(element) { return element.style.display == 'none';}
+      var isSelected = function(element) { return element.classList.contains("selected");}
+      var deselect = function(element) { return element.classList.remove("selected");}
+      var select = function(element) { return element.classList.add("selected");}
+      var toggle = function(element) { isHidden(element) ? show(element) : hide(element);};
+      var toggleTests = function(heading) { toggle(heading.parentNode.children[1]);};
+      var toggleDetails = function(detailClass) {
+        var details = document.querySelectorAll('.' + detailClass);
+        for (var i = details.length - 1; i >= 0; i--) { toggle(details[i]);};
+      };
+      var hideAll = function(collection) {
+        for (var i = collection.length - 1; i >= 0; i--) { hide(collection[i]); };
+      }
+      var showAll = function(collection) {
+        for (var i = collection.length - 1; i >= 0; i--) { show(collection[i]); };
+      }
+      var selectSegment = function(segment) {
+        if (isSelected(segment)) return;
+        var segments = document.querySelectorAll('#segment-bar > a');
+        for (var i = segments.length - 1; i >= 0; i--) { deselect(segments[i]);};
+        select(segment);
+        if (segment.id == "all-segment") {
+          showAll(document.querySelectorAll('.test-suite'));
+          showAll(document.querySelectorAll('.test'));
+        } else if (segment.id == "failing-segment") {
+          hideAll(document.querySelectorAll('.test.passing'));
+          showAll(document.querySelectorAll('.test.failing'));
+          hideAll(document.querySelectorAll('.test-suite.passing'));
+          showAll(document.querySelectorAll('.test-suite.failing'));
+        } else if (segment.id == "passing-segment") {
+          hideAll(document.querySelectorAll('.test.failing'));
+          showAll(document.querySelectorAll('.test.passing'));
+          hideAll(document.querySelectorAll('.test-suite.failing'));
+          showAll(document.querySelectorAll('.test-suite.passing'));
+        }
+      }
+      var toggleScreenshot = function(suiteName, index) {
+        var screenshot = document.getElementById("screenshot-" + suiteName + "-" + index);
+        isSelected(screenshot) ? deselect(screenshot) : select(screenshot);
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <section class="left">
+        <h1>Test Results</h1>
+      </section>
+      <section class="right">
+        <section id="counters">
+          <h2 id="test-count"><span class="number">101</span> tests</h2>
+          
+        </section>
+        <section id="segment-bar">
+          <a id="all-segment" onclick="selectSegment(this);" class="selected">All</a><a id="failing-segment" onclick="selectSegment(this);">Failing</a><a id="passing-segment" onclick="selectSegment(this);">Passing</a>
+        </section>
+      </section>
+    </header>
+    <section id="test-suites">
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.DataRequestSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.DataRequestSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('DataRequest__responseObject__network_error');">
+                <td>
+                  
+                    <h3 class="time">0.034s</h3>
+                  
+                </td>
+                <td><h3 class="title">DataRequest__responseObject__network_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('DataRequest__serializeFGObject__json_serialization_error');">
+                <td>
+                  
+                    <h3 class="time">0.004s</h3>
+                  
+                </td>
+                <td><h3 class="title">DataRequest__serializeFGObject__json_serialization_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('DataRequest__serializeFGObject__object_serialization_error');">
+                <td>
+                  
+                    <h3 class="time">0.005s</h3>
+                  
+                </td>
+                <td><h3 class="title">DataRequest__serializeFGObject__object_serialization_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('DataRequest__serializeFGObject__no_error_when_object_in_response');">
+                <td>
+                  
+                    <h3 class="time">0.005s</h3>
+                  
+                </td>
+                <td><h3 class="title">DataRequest__serializeFGObject__no_error_when_object_in_response</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('DataRequest__serializeFGObject__no_error_when_empty_response');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">DataRequest__serializeFGObject__no_error_when_empty_response</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGAbstractPayloadSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGAbstractPayloadSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAbstractPayloadSpec__toURLRequest__should_throw_exception_when_url_is_empty');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAbstractPayloadSpec__toURLRequest__should_throw_exception_when_url_is_empty</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAbstractPayloadSpec__toURLRequest__should_create_request_object');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAbstractPayloadSpec__toURLRequest__should_create_request_object</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAbstractPayloadSpec__encodeParams__should_return_the_same_request_when_params_are_empty');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAbstractPayloadSpec__encodeParams__should_return_the_same_request_when_params_are_empty</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAbstractPayloadSpec__encodeParams__should_encode_params');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAbstractPayloadSpec__encodeParams__should_encode_params</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAbstractPayloadSpec__encodeParams__should_encode_params_when_url_has_already_a_query_string');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAbstractPayloadSpec__encodeParams__should_encode_params_when_url_has_already_a_query_string</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAbstractPayloadSpec__append__should_return_the_same_urlRequest_when_resource_path_is_empty');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAbstractPayloadSpec__append__should_return_the_same_urlRequest_when_resource_path_is_empty</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAbstractPayloadSpec__append__should_append_resource_path');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAbstractPayloadSpec__append__should_append_resource_path</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGAlamofireRequestHelperSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGAlamofireRequestHelperSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAlamofireRequestHelper__send__should_return_urlIsEmpty_error');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__send__should_return_urlIsEmpty_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAlamofireRequestHelper__send__should_send_request_and_return_network_error');">
+                <td>
+                  
+                    <h3 class="time">0.006s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__send__should_send_request_and_return_network_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAlamofireRequestHelper__send__should_send_request_with_body');">
+                <td>
+                  
+                    <h3 class="time">0.006s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__send__should_send_request_with_body</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAlamofireRequestHelper__download__should_return_file_url_is_empty_error');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__download__should_return_file_url_is_empty_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAlamofireRequestHelper__download__should_return_url_is_empty_error');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__download__should_return_url_is_empty_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAlamofireRequestHelper__download__should_download_file');">
+                <td>
+                  
+                    <h3 class="time">0.190s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__download__should_download_file</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAlamofireRequestHelper__download__should_return_download_error');">
+                <td>
+                  
+                    <h3 class="time">0.009s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__download__should_return_download_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAlamofireRequestHelper__upload__should_return_file_url_is_empty_error');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__upload__should_return_file_url_is_empty_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAlamofireRequestHelper__upload__should_return_filename_is_empty_error');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__upload__should_return_filename_is_empty_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAlamofireRequestHelper__upload__should_return_file_encoding_error');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__upload__should_return_file_encoding_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAlamofireRequestHelper__upload__should_return_url_is_empty_error');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__upload__should_return_url_is_empty_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGAlamofireRequestHelper__upload__should_upload_file');">
+                <td>
+                  
+                    <h3 class="time">0.039s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__upload__should_upload_file</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGAlamofireRequestHelper__upload__should_return_upload_file_error');">
+                <td>
+                  
+                    <h3 class="time">0.012s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGAlamofireRequestHelper__upload__should_return_upload_file_error</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGApiLinkSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGApiLinkSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApiLink__methods__not_nil');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiLink__methods__not_nil</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGApiLink__methods__nil');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiLink__methods__nil</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApiLink__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiLink__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGApiRootSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGApiRootSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApiRoot__methods__not_nil');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiRoot__methods__not_nil</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGApiRoot__methods__nil');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiRoot__methods__nil</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApiRoot__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiRoot__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGApiRootVersionSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGApiRootVersionSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApiRootVersion__methods__not_nil');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiRootVersion__methods__not_nil</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGApiRootVersion__methods__nil');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiRootVersion__methods__nil</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApiRootVersion__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApiRootVersion__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGApplicationCollectionApiSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGApplicationCollectionApiSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTaskCollectionApi__methods__should_return_network_error_on_listAllApplications');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollectionApi__methods__should_return_network_error_on_listAllApplications</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGTaskCollectionApi__methods__should_return_application_list');">
+                <td>
+                  
+                    <h3 class="time">0.004s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollectionApi__methods__should_return_application_list</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGApplicationCollectionSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGApplicationCollectionSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApplicationCollection__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApplicationCollection__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGApplicationCollection__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApplicationCollection__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApplicationCollection__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApplicationCollection__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGApplicationSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGApplicationSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApplication__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApplication__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGApplication__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApplication__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGApplication__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGApplication__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGDateUtilSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGDateUtilSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGDateUtil__parseDate__should_not_parse_invalid_date_string');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGDateUtil__parseDate__should_not_parse_invalid_date_string</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGDateUtil__parseDate__should_parse_valid_date');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGDateUtil__parseDate__should_parse_valid_date</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('format__should_format_date');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">format__should_format_date</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('format__should_return_empty_string_when_date_is_empty');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">format__should_return_empty_string_when_date_is_empty</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGEmptyObjectSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGEmptyObjectSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGEmptyObject__init__Empty_object_when_status_code_is_invalid');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGEmptyObject__init__Empty_object_when_status_code_is_invalid</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGEmptyObject__init__Not_empty_object_when_status_code_is_invalid');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGEmptyObject__init__Not_empty_object_when_status_code_is_invalid</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGEmptyObject__init__should_serialzie_to_empty_string');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGEmptyObject__init__should_serialzie_to_empty_string</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGFileApiSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGFileApiSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGFileApi__methods__should_return_error_when_url_is_not_resolved_while_downloading_a_file');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGFileApi__methods__should_return_error_when_url_is_not_resolved_while_downloading_a_file</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGFileApi__methods__should_return_error_when_file_was_not_found_while_downloading_a_file');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGFileApi__methods__should_return_error_when_file_was_not_found_while_downloading_a_file</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGFileApi__methods__should_return_empty_object_when_file_was_downloaded');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGFileApi__methods__should_return_empty_object_when_file_was_downloaded</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGFileApi__methods__should_return_error_when_file_was_not_found_while_uploading_a_file');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGFileApi__methods__should_return_error_when_file_was_not_found_while_uploading_a_file</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGFileApi__methods__should_return_empty_object_when_file_was_uploaded');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGFileApi__methods__should_return_empty_object_when_file_was_uploaded</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGFutureGatewaySpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGFutureGatewaySpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGFutureGateway__init__create_object');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGFutureGateway__init__create_object</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGInfrastructureSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGInfrastructureSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGInfrastructure__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGInfrastructure__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGInfrastructure__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGInfrastructure__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGInfrastructure__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGInfrastructure__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGInputFileSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGInputFileSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGInputFile__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGInputFile__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGInputFile__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGInputFile__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGInputFile__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGInputFile__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGMessageObjectSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGMessageObjectSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGMessageObject__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGMessageObject__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGMessageObject__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGMessageObject__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGMessageObject__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGMessageObject__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGOutputFileSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGOutputFileSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGOutputFile__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGOutputFile__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGOutputFile__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGOutputFile__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGOutputFile__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGOutputFile__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGRootApiResolverSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGRootApiResolverSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGRootApiResolver__resolveUrlWithVersion__should_return_network_error');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRootApiResolver__resolveUrlWithVersion__should_return_network_error</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGRootApiResolver__resolveUrlWithVersion__should_return_json_error_with_body');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRootApiResolver__resolveUrlWithVersion__should_return_json_error_with_body</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGRootApiResolver__resolveUrlWithVersion__should_return_version_not_found');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRootApiResolver__resolveUrlWithVersion__should_return_version_not_found</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGRootApiResolver__resolveUrlWithVersion__should_return_version_was_found___no_link');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRootApiResolver__resolveUrlWithVersion__should_return_version_was_found___no_link</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGRootApiResolver__resolveUrlWithVersion__should_return_version_was_found');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRootApiResolver__resolveUrlWithVersion__should_return_version_was_found</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGRootApiResolver__resolveUrlWithVersion__should_return_version_was_found_on_second_attempt');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRootApiResolver__resolveUrlWithVersion__should_return_version_was_found_on_second_attempt</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGRuntimeDataParameterSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGRuntimeDataParameterSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGRuntimeDataParameter__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRuntimeDataParameter__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGRuntimeDataParameter__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRuntimeDataParameter__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGRuntimeDataParameter__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGRuntimeDataParameter__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGSessionHelperSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGSessionHelperSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGSessionHelper__getDispatchQueue__check_equal');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__getDispatchQueue__check_equal</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGSessionHelper__getSessionManager__check_delegates');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__getSessionManager__check_delegates</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGSessionHelper__adapt__should_add_token');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__adapt__should_add_token</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGSessionHelper__adapt__should_not_add_token');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__adapt__should_not_add_token</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGSessionHelper__should__should_try_to_retry');">
+                <td>
+                  
+                    <h3 class="time">0.005s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__should__should_try_to_retry</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGSessionHelper__shouldRetry__should_return_false_when_no_provider');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__shouldRetry__should_return_false_when_no_provider</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGSessionHelper__shouldRetry__should_return_false_when_empty_response');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__shouldRetry__should_return_false_when_empty_response</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGSessionHelper__shouldRetry__should_return_false_when_exceeded_max_retry_count');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__shouldRetry__should_return_false_when_exceeded_max_retry_count</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGSessionHelper__shouldRetry__should_return_false_when_status_code_is_different_than_401');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__shouldRetry__should_return_false_when_status_code_is_different_than_401</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGSessionHelper__shouldRetry__should_return_true_when_provider_exists');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGSessionHelper__shouldRetry__should_return_true_when_provider_exists</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGTaskApiSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGTaskApiSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTaskApi__methods__view_task_details');">
+                <td>
+                  
+                    <h3 class="time">0.004s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskApi__methods__view_task_details</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGTaskApi__methods__should_delete_task');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskApi__methods__should_delete_task</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGTaskCollectionApiSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGTaskCollectionApiSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTaskCollectionApi__methods__should_return_network_error_on_replaceTaskList');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollectionApi__methods__should_return_network_error_on_replaceTaskList</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGTaskCollectionApi__methods__should_return_network_error_on_task_list');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollectionApi__methods__should_return_network_error_on_task_list</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTaskCollectionApi__methods__should_return_task_list');">
+                <td>
+                  
+                    <h3 class="time">0.004s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollectionApi__methods__should_return_task_list</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGTaskCollectionApi__methods__should_create_task');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollectionApi__methods__should_create_task</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGTaskCollectionSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGTaskCollectionSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTaskCollection__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollection__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGTaskCollection__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollection__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTaskCollection__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTaskCollection__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGTaskSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGTaskSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTask__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTask__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGTask__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTask__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGTask__methods__should_serialize');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGTask__methods__should_serialize</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+        
+        <section class="test-suite passing" id="IndigoOmtIosLibrary_UnitTests.FGUploadResponseSpec">
+          <section class="heading" onclick="toggleTests(this);">
+            <h3 class="title">IndigoOmtIosLibrary_UnitTests.FGUploadResponseSpec</h3>
+          </section>
+          <section class="tests">
+            
+            <table>
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGUploadResponse__methods__should_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.002s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGUploadResponse__methods__should_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing odd"  onclick="toggleDetails('FGUploadResponse__methods__should_not_create_object_from_json');">
+                <td>
+                  
+                    <h3 class="time">0.001s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGUploadResponse__methods__should_not_create_object_from_json</h3></td>
+              </tr>
+              
+            
+              
+              <tr class="test passing "  onclick="toggleDetails('FGUploadResponse__methods__should_serialzie');">
+                <td>
+                  
+                    <h3 class="time">0.003s</h3>
+                  
+                </td>
+                <td><h3 class="title">FGUploadResponse__methods__should_serialzie</h3></td>
+              </tr>
+              
+            
+            </table>
+          </section>
+        </section>
+      
+    </section>
+    <footer>Report generated with <a href="https://github.com/supermarin/xcpretty">xcpretty</a></footer>
+  </body>
+</html>

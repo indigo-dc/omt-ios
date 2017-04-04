@@ -3,6 +3,10 @@
 
 iOS library which simplifies access to INDIGO DataCloud API
 
+## Current version
+
+Current version od the library is 0.1.3
+
 ## Requirements
 
 - `macOS >= 10.12`
@@ -34,18 +38,6 @@ pod 'IndigoOmtIosLibrary'
 
 IndigoOmtIosLibrary is available under the Apache License, Version 2.0. See the LICENSE file for more info.
 
-## Code coverage
+## Unit and integration tests
 
-To run tests with code coverage please install [xcov](https://github.com/nakiostudio/xcov)
-
-```
-sudo gem install xcov
-```
-
-and then run shell script from root directory
-
-```
-./run_unit_tests_coverage.sh
-```
-
-You can view unit tests coverage [here](http://htmlpreview.github.io/?https://github.com/indigo-dc/omt-ios/blob/master/unit_tests_coverage/index.html).
+See [here](https://github.com/indigo-dc/omt-ios/blob/master/REPORTS.md).
