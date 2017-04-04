@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>pl.psnc.indigo.omt.sampleapp</string>
+				<string>YOUR_APP_BUNDLE</string>
 			</array>
 		</dict>
 	</array>
