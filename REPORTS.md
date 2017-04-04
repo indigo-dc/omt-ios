@@ -35,3 +35,7 @@ The report is available at
 // test methods listing
 ./integration_tests_coverage/report.html
 ```
+
+## View reports
+
+You can view reports [here](http://htmlpreview.github.io/?https://github.com/indigo-dc/omt-ios/blob/master/unit_tests_coverage/index.html) and [here](http://htmlpreview.github.io/?https://github.com/indigo-dc/omt-ios/blob/master/integration_tests_coverage/report.html).
