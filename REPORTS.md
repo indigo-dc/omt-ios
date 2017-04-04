@@ -28,11 +28,11 @@ To get this report run
 ```
 
 The report is available at
-```
-// files coverage
+```sh
+# files coverage
 ./integration_tests_coverage/index.html
 
-// test methods listing
+# test methods listing
 ./integration_tests_coverage/report.html
 ```
 
