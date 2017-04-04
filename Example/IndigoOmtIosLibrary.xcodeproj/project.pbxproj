@@ -59,6 +59,7 @@
 		D72EF3D51E8D257700C0F183 /* FGUploadResponseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72EF3BC1E8D257700C0F183 /* FGUploadResponseSpec.swift */; };
 		D7565A5B1E911F2500FBAC45 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7565A5A1E911F2500FBAC45 /* FileHelper.swift */; };
 		D760F5121E55B850004419C3 /* DummyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D760F5111E55B850004419C3 /* DummyResolver.swift */; };
+		D77D5FB71E93A56600C7ABCB /* InfoIntegration.plist in Resources */ = {isa = PBXBuildFile; fileRef = D77D5FB61E93A56600C7ABCB /* InfoIntegration.plist */; };
 		D78405101E3B6394003B6684 /* AppAuthAccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */; };
 		D7860AB91E39F843007AC258 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860AB81E39F843007AC258 /* UserInfo.swift */; };
 		D7860ABB1E39F85C007AC258 /* UserInfoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */; };
@@ -130,7 +131,6 @@
 		935FDE21EF34EB67EA221C50 /* Pods-IndigoOmtIosLibrary_ExampleIntegration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_ExampleIntegration.release.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_ExampleIntegration/Pods-IndigoOmtIosLibrary_ExampleIntegration.release.xcconfig"; sourceTree = "<group>"; };
 		D0322E5CA941507591B2D642 /* Pods-IndigoOmtIosLibrary_IntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IndigoOmtIosLibrary_IntegrationTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IndigoOmtIosLibrary_IntegrationTests/Pods-IndigoOmtIosLibrary_IntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D7083E451E9235C30024DCEC /* IndigoOmtIosLibrary_ExampleIntegration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IndigoOmtIosLibrary_ExampleIntegration.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7083E461E9235C30024DCEC /* IndigoOmtIosLibrary_Example copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "IndigoOmtIosLibrary_Example copy-Info.plist"; path = "/Users/smamczak/repozytoria/omt-ios/Example/IndigoOmtIosLibrary_Example copy-Info.plist"; sourceTree = "<absolute>"; };
 		D7083E4B1E9235F70024DCEC /* IndigoOmtIosLibrary_IntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndigoOmtIosLibrary_IntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7083E551E923C2A0024DCEC /* IntegrationTestsInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IntegrationTestsInfo.plist; sourceTree = "<group>"; };
 		D71C16AD1E925D48003DC385 /* ApplicationCollectionApiSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationCollectionApiSpec.swift; sourceTree = "<group>"; };
@@ -162,6 +162,7 @@
 		D72EF3BC1E8D257700C0F183 /* FGUploadResponseSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FGUploadResponseSpec.swift; sourceTree = "<group>"; };
 		D7565A5A1E911F2500FBAC45 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		D760F5111E55B850004419C3 /* DummyResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyResolver.swift; sourceTree = "<group>"; };
+		D77D5FB61E93A56600C7ABCB /* InfoIntegration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InfoIntegration.plist; sourceTree = "<group>"; };
 		D784050F1E3B6394003B6684 /* AppAuthAccessTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAuthAccessTokenProvider.swift; sourceTree = "<group>"; };
 		D7860AB81E39F843007AC258 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		D7860ABA1E39F85C007AC258 /* UserInfoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoApi.swift; sourceTree = "<group>"; };
@@ -238,7 +239,6 @@
 				607FACD11AFB9204008FA782 /* Products */,
 				A09294B5DA9033C0CE92B025 /* Pods */,
 				CF62B5895F934EFE55EE7A8D /* Frameworks */,
-				D7083E461E9235C30024DCEC /* IndigoOmtIosLibrary_Example copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,8 +326,8 @@
 			children = (
 				D7919A611E9250E700B15412 /* ApiRootSpec.swift */,
 				D71C16AD1E925D48003DC385 /* ApplicationCollectionApiSpec.swift */,
-				D79490391E9261DC0020FF4F /* TaskCollectionApiSpec.swift */,
 				D794903B1E9261EC0020FF4F /* FileApiSpec.swift */,
+				D79490391E9261DC0020FF4F /* TaskCollectionApiSpec.swift */,
 				D794903D1E9289A20020FF4F /* TaskApiSpec.swift */,
 			);
 			path = IntegrationTests;
@@ -436,6 +436,7 @@
 			children = (
 				D7EAC7FE1E2CBFE600110199 /* Images.xcassets */,
 				D7EAC7FF1E2CBFE600110199 /* Info.plist */,
+				D77D5FB61E93A56600C7ABCB /* InfoIntegration.plist */,
 				D7EAC8001E2CBFE600110199 /* LaunchScreen.xib */,
 			);
 			path = "Supporting Files";
@@ -581,6 +582,7 @@
 				D72EF3A21E8D256C00C0F183 /* UnitTestsInfo.plist in Resources */,
 				D7EAC8041E2CBFE600110199 /* Images.xcassets in Resources */,
 				D7EAC8061E2CBFE600110199 /* LaunchScreen.xib in Resources */,
+				D77D5FB71E93A56600C7ABCB /* InfoIntegration.plist in Resources */,
 				D7083E561E923C2A0024DCEC /* IntegrationTestsInfo.plist in Resources */,
 				D7EAC8021E2CBFE600110199 /* Main.storyboard in Resources */,
 			);
@@ -1063,10 +1065,10 @@
 			baseConfigurationReference = 196753D51AFE0A90AEA2D4B0 /* Pods-IndigoOmtIosLibrary_ExampleIntegration.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "IndigoOmtIosLibrary_Example copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/IndigoOmtIosLibrary/Supporting Files/InfoIntegration.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = pl.psnc.IndigoOmtIosLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.psnc.IndigoOmtIosLibraryIntegration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1078,10 +1080,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = "IndigoOmtIosLibrary_Example copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/IndigoOmtIosLibrary/Supporting Files/InfoIntegration.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = pl.psnc.IndigoOmtIosLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.psnc.IndigoOmtIosLibraryIntegration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

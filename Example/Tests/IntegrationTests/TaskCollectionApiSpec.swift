@@ -13,7 +13,6 @@ import IndigoOmtIosLibrary
 
 class TaskCollectionApiSpec: QuickSpec {
     override func spec() {
-        let username = "test"
         let tokenProvider = DummyProvider()
         
         describe("FGFutureGateway.taskCollectionApi") {
@@ -23,7 +22,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
@@ -43,7 +42,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
@@ -65,7 +64,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     let task = FGTask()
                     task.application = "2"
                     task.taskDescription = "Integration test iOS task"
@@ -94,7 +93,7 @@ class TaskCollectionApiSpec: QuickSpec {
                         }
                     }
                     
-                    // remove task
+                    // clean
                     if let id = newTask?.id {
                         fg.taskApi.deleteTask(with: id, { _ in })
                     }
@@ -104,7 +103,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     let task = FGTask()
                     
                     // test
@@ -127,7 +126,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     let taskCollection = FGTaskCollection()
                     
                     // test

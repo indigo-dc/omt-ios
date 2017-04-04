@@ -9,9 +9,6 @@
 import UIKit
 import IndigoOmtIosLibrary
 
-import SwiftyJSON
-import Alamofire
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -29,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // auth util is authorized and we have user info
         if au.isAuthorized, let userInfo = au.getUserInfo() {
-
+            
             // username for future gateway
             //let username = userInfo.preferredUsername
             let username = Constants.tempUsername
@@ -37,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // init future gateway object
             let fgu = FutureGatewayUtil.default
             fgu.initializeFutureGateway(username: username, provider: au.getAccessTokenProvider())
-
+        } else {
             // show login view as first view if not authorized
             self.window?.rootViewController = UIHelper.loadViewController("LoginNavigationController")
         }

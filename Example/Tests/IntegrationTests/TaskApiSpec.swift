@@ -13,7 +13,6 @@ import IndigoOmtIosLibrary
 
 class TaskApiSpec: QuickSpec {
     override func spec() {
-        let username = "test"
         let tokenProvider = DummyProvider()
         
         describe("FGFutureGateway.taskApi") {
@@ -23,7 +22,7 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
@@ -46,7 +45,7 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     let taskID = "1"
                     
                     // test
@@ -69,7 +68,7 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     let task = self.getTask()
                     
                     // test
@@ -93,7 +92,7 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: username, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
                     let taskID = "1"
                     
                     // test
