@@ -11,6 +11,6 @@ import Foundation
 class Constants {
     
     static let notExistingServerUrl: URL = URL(string: "http://notexisting-test-server.com")!
-    static let integrationServerUrl: URL = URL(string: "http://62.3.168.16")!
+    static let integrationServerUrl: URL = URL(string: "YOUR_FUTURE_GATEWAY_TEST_INSTANCE")!
     static let integrationServerUsername: String = "test"
 }
