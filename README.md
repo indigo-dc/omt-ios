@@ -24,14 +24,14 @@ This project uses following libraries
 To run the example project
 * clone this repository,
 * run `pod install` from the `Example` directory,
-* open `IndigoOmtIosLibrary.xcworkspace` from the same directory.
-* find `Example for IndigoOmtIosLibrary/Classes/Common/Constants.swift` and set
+* open `./IndigoOmtIosLibrary.xcworkspace` from the same directory.
+* find `./Example/IndigoOmtIosLibrary/Classes/Common/Constants.swift` and set
   * YOUR_FUTURE_GATEWAY_URL
   * YOUR_ISSUER_URL // e.g. IAM instance
   * YOUR_CLIENT_ID
   * YOUR_CLIENT_SECRET // optionally
   * YOUR_SCHEME_FOR_REDIRECT
-* find `Example for IndigoOmtIosLibrary/Supporting Files/Info.plist` and set
+* find `./Example/IndigoOmtIosLibrary/Supporting Files/Info.plist` and set
   * YOUR_APP_BUNDLE
 
 ## Installation
