@@ -13,6 +13,7 @@ open class FGApplicationCollectionApi: FGAbstractResolvedApi {
 
     // MARK: - public methods
 
+    // Lists all applications.
     public func listAllApplications(_ callback: @escaping FGApiResponseCallback<FGApplicationCollection>) {
 
         // prepare payload
