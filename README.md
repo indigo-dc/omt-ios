@@ -1,6 +1,6 @@
-#About Indigo Components
+# About Indigo Components
 
-##About
+## About
 
 iOS Library Project which simplifies interaction with FutureGateway from mobile devices.
 

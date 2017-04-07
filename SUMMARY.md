@@ -9,4 +9,4 @@
   * [FGFileApi](doc/api-documentation/fgfileapi.md)
   * [FGTaskApi](doc/api-documentation/fgtaskapi.md)
   * [FGTaskCollectionApi](doc/api-documentation/fgtaskcollectionapi.md)
-
+* [Generating Reports](doc/reports.md)
