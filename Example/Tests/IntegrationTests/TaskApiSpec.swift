@@ -76,10 +76,10 @@ class TaskApiSpec: QuickSpec {
                         
                         fg.taskCollectionApi.createTask(task) { (response: FGApiResponse<FGTask>) in
                             if let taskID = response.value?.id {
-                                fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGMessageObject>) in
+                                fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGEmptyObject>) in
                                     
                                     expect(responseTask.error).to(beNil())
-                                    expect(responseTask.value?.message).to(contain("Successfully removed"))
+                                    expect(responseTask.value).toNot(beNil())
                                     
                                     done()
                                 }
@@ -98,7 +98,7 @@ class TaskApiSpec: QuickSpec {
                     // test
                     waitUntil(timeout: 60) { done in
                         
-                        fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGMessageObject>) in
+                        fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGEmptyObject>) in
                             
                             expect(responseTask.error).to(beNetworkError())
                             expect(responseTask.value).to(beNil())
