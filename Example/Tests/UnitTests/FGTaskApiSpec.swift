@@ -51,12 +51,11 @@ class FGTaskApiSpec: QuickSpec {
                     
                     // prepare
                     let taskID = "3"
-                    let messageData = createMessageString("Successfully deleted a task").data(using: .utf8)!
-                    dummyHelper.dummyValue = makeObject(messageData) as FGMessageObject?
+                    dummyHelper.dummyValue = FGEmptyObject()
                     
                     // test
                     waitUntil(timeout: 60) { done in
-                        taskApi.deleteTask(with: taskID, { (response: FGApiResponse<FGMessageObject>) in
+                        taskApi.deleteTask(with: taskID, { (response: FGApiResponse<FGEmptyObject>) in
                             
                             // verify
                             expect(response.error).to(beNil())

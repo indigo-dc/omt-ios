@@ -25,7 +25,7 @@ open class FGTaskApi: FGAbstractResolvedApi {
     }
     
     /// Deletes a task.
-    public func deleteTask(with id: String, _ callback: @escaping FGApiResponseCallback<FGMessageObject>) {
+    public func deleteTask(with id: String, _ callback: @escaping FGApiResponseCallback<FGEmptyObject>) {
 
         // prepare payload
         let payload = FGRequestPayload(method: .delete)
