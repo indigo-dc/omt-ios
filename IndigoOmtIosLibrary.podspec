@@ -26,5 +26,6 @@ For more information visit https://github.com/indigo-dc
   s.source_files = 'IndigoOmtIosLibrary/Classes/**/*'
   s.dependency 'Alamofire'
   s.dependency 'SwiftyJSON'
+  s.dependency 'XCGLogger'
 
 end

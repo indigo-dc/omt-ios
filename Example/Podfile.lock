@@ -2,12 +2,20 @@ PODS:
   - Alamofire (4.5.0)
   - AppAuth (0.8.1)
   - Embassy (3.1.0)
-  - IndigoOmtIosLibrary (0.1.4):
+  - IndigoOmtIosLibrary (0.1.5):
     - Alamofire
     - SwiftyJSON
+    - XCGLogger
   - Nimble (5.1.1)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
   - Quick (1.0.0)
   - SwiftyJSON (3.1.4)
+  - XCGLogger (5.0.1):
+    - XCGLogger/Core (= 5.0.1)
+  - XCGLogger/Core (5.0.1):
+    - ObjcExceptionBridging
 
 DEPENDENCIES:
   - Alamofire
@@ -26,10 +34,12 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AppAuth: 34db36bac669e7a16758c6765625bb5d2663e3ad
   Embassy: '00408403423e4d9d5f21057bec13b1e96e838a32'
-  IndigoOmtIosLibrary: 16e7679cf8d59cba003901951299bc13b5ba410e
+  IndigoOmtIosLibrary: 6a2c7d616b8389b46cf93d076dc3c4934edfaa44
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  XCGLogger: 0b43697155d41e4a1b15fc776f319c2141646b09
 
 PODFILE CHECKSUM: b13d97ea63dd9167a4dccf1d01f2e2b25fedcdcd
 

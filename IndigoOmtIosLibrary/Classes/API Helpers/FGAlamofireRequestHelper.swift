@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import XCGLogger
 
 /// Implementation of FGRequestHelper with Alamofire library.
 public class FGAlamofireRequestHelper: FGRequestHelper {
@@ -19,6 +20,9 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
 
     /// Session manager.
     public let manager: SessionManager
+
+    // Logger instance.
+    public var logger: XCGLogger?
 
     // MARK: - lifecycle
 
@@ -34,6 +38,16 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
     }
 
     public func send<Value: FGObjectSerializable>(_ payload: FGRequestPayload, callback: @escaping FGRequestHelperCallback<Value>) {
+
+        let dict: [String: Any?] = [
+            "url": payload.url,
+            "resourcePath": payload.resourcePath,
+            "method": payload.method,
+            "headers": payload.headers,
+            "parameters": payload.parameters,
+            "accept": payload.accept
+        ]
+        logger?.debug("Sending request:\n\(dict)")
 
         // acceptable content types
         let accept = payload.accept.isEmpty ? ["*/*"] : payload.accept
@@ -53,6 +67,16 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                                         error: dataResponse.error as? FGFutureGatewayError,
                                         value: dataResponse.value)
 
+            self.logger?.debug("Got response: \(String(describing: dataResponse.response?.statusCode))")
+            self.logger?.debug("error: \(String(describing: dataResponse.error))")
+            if let data = dataResponse.data {
+                let responseString = String(data: data, encoding: .utf8)?
+                    .replacingOccurrences(of: "\n", with: "")
+                    .replacingOccurrences(of: "\t", with: "")
+                    .replacingOccurrences(of: "    ", with: "")
+                self.logger?.debug("data: \(String(describing: responseString))\n")
+            }
+            
             callback(response)
         }
     }
