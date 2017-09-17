@@ -22,7 +22,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
@@ -42,7 +42,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
@@ -64,7 +64,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     let task = FGTask()
                     task.application = "2"
                     task.taskDescription = "Integration test iOS task"
@@ -103,7 +103,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     let task = FGTask()
                     
                     // test
@@ -126,7 +126,7 @@ class TaskCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     let taskCollection = FGTaskCollection()
                     
                     // test

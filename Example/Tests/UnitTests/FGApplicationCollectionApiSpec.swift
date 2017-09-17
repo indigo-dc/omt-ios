@@ -15,7 +15,7 @@ class FGApplicationCollectionApiSpec: QuickSpec {
     override func spec() {
         let dummyHelper = DummyHelper()
         let dummyResolver = DummyResolver(baseUrl: Constants.notExistingServerUrl, versionID: "v1.0")
-        let applicationCollectionApi = FGApplicationCollectionApi(username: "username", resolver: dummyResolver, helper: dummyHelper)
+        let applicationCollectionApi = FGApplicationCollectionApi(resolver: dummyResolver, helper: dummyHelper)
         
         describe("FGTaskCollectionApi") {
             context("methods") {

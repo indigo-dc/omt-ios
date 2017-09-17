@@ -15,7 +15,7 @@ class FGFileApiSpec: QuickSpec {
     override func spec() {
         let dummyHelper = DummyHelper()
         let dummyResolver = DummyResolver(baseUrl: Constants.notExistingServerUrl, versionID: "v1.0")
-        let fileApi = FGFileApi(username: "username", resolver: dummyResolver, helper: dummyHelper)
+        let fileApi = FGFileApi(resolver: dummyResolver, helper: dummyHelper)
         
         describe("FGFileApi") {
             context("methods") {

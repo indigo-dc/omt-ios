@@ -17,15 +17,13 @@ class FGFutureGatewaySpec: QuickSpec {
                 it("create object") {
                     // prepare
                     let url = URL(string: "http://future-gateway-server.com")!
-                    let username = "username"
                     let provider = DummyProvider()
                     
                     // test
-                    let fg = FGFutureGateway(url: url, username: username, provider: provider)
+                    let fg = FGFutureGateway(url: url, provider: provider)
                     
                     // verify
                     expect(fg.taskCollectionApi.resolver.baseUrl).to(equal(url))
-                    expect(fg.taskCollectionApi.username).to(equal(username))
                     expect(fg.description).toNot(beEmpty())
                 }
             }

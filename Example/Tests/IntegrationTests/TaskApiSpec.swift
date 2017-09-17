@@ -22,7 +22,7 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
@@ -45,7 +45,7 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     let taskID = "1"
                     
                     // test
@@ -68,7 +68,7 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     let task = self.getTask()
                     
                     // test
@@ -76,7 +76,7 @@ class TaskApiSpec: QuickSpec {
                         
                         fg.taskCollectionApi.createTask(task) { (response: FGApiResponse<FGTask>) in
                             if let taskID = response.value?.id {
-                                fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGEmptyObject>) in
+                                fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGAnyObject>) in
                                     
                                     expect(responseTask.error).to(beNil())
                                     expect(responseTask.value).toNot(beNil())
@@ -92,13 +92,13 @@ class TaskApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     let taskID = "1"
                     
                     // test
                     waitUntil(timeout: 60) { done in
                         
-                        fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGEmptyObject>) in
+                        fg.taskApi.deleteTask(with: taskID) { (responseTask: FGApiResponse<FGAnyObject>) in
                             
                             expect(responseTask.error).to(beNetworkError())
                             expect(responseTask.value).to(beNil())
