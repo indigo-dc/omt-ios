@@ -28,12 +28,11 @@ import IndigoOmtIosLibrary
 // You can find a sample implementation of the protocol in example app.
 let accessTokenProvider: FGAccessTokenProvider = AppAuthAccessTokenProvider(...)
 
-// It also needs API URL and username for API requests
+// It also needs API URL
 let url: URL = URL(string: "http://my-fg-instance.com")
-let username: String = "futureGatewayUser"
 
 // create future gateway object
-let fg = FGFutureGateway(url: url, username: username, provider: accessTokenProvider)
+let fg = FGFutureGateway(url: url, provider: accessTokenProvider)
 
 // now you can list all tasks
 fg.taskCollectionApi.listAllTasks { (response: FGApiResponse<FGTaskCollection>) in
