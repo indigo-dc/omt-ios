@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import XCGLogger
 
 /// Session helper class for Alamofire's SessionsManager.
 open class FGSessionHelper: RequestAdapter, RequestRetrier {
@@ -24,6 +25,9 @@ open class FGSessionHelper: RequestAdapter, RequestRetrier {
     public var maxRetryCount: UInt {
         return 3
     }
+
+    // Logger instance.
+    public var logger: XCGLogger?
 
     // MARK: - lifecycle
 
@@ -79,16 +83,24 @@ open class FGSessionHelper: RequestAdapter, RequestRetrier {
             else {
                 // do not retry
                 completion(false, 0.0)
+
+                self.logger?.error("Exceeded number of retries to get access token")
+
                 return
             }
 
             // try to get a new access token
             provider.requestNewAccessToken { success in
+
+                self.logger?.debug("Got new access token")
+
                 completion(success, 0.0)
             }
         } else {
             // do not retry
             completion(false, 0.0)
+
+            logger?.error("Will not retry to get access token")
         }
     }
 

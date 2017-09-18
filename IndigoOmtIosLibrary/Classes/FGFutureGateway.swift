@@ -43,11 +43,7 @@ open class FGFutureGateway: CustomStringConvertible {
         // logger
         logger = XCGLogger(identifier: "IndigoOmtIosLibrary", includeDefaultDestinations: false)
         
-        // Create a destination for the system console log (via NSLog)
         let systemDestination = AppleSystemLogDestination(identifier: "IndigoOmtIosLibrary.system")
-        
-        // Optionally set some configuration options
-        systemDestination.outputLevel = .error
         systemDestination.showLogIdentifier = false
         systemDestination.showFunctionName = true
         systemDestination.showThreadName = false
@@ -56,17 +52,11 @@ open class FGFutureGateway: CustomStringConvertible {
         systemDestination.showLineNumber = true
         systemDestination.showDate = true
         systemDestination.logQueue = XCGLogger.logQueue
-        
-        // Add the destination to the logger
         logger.add(destination: systemDestination)
 
-        // Create a file log destination
         let file = URL.urlInDocumentsDirectory(with: "IndigoOmtIosLibrary.log").path
         print("Log file: \(file)")
         let fileDestination = FileDestination(writeToFile: file, identifier: "IndigoOmtIosLibrary.file", shouldAppend: true)
-
-        // Optionally set some configuration options
-        fileDestination.outputLevel = .error
         fileDestination.showLogIdentifier = false
         fileDestination.showFunctionName = true
         fileDestination.showThreadName = false
@@ -75,12 +65,10 @@ open class FGFutureGateway: CustomStringConvertible {
         fileDestination.showLineNumber = true
         fileDestination.showDate = true
         fileDestination.logQueue = XCGLogger.logQueue
-
-        // Process this destination in the background
         fileDestination.logQueue = XCGLogger.logQueue
-
-        // Add the destination to the logger
         logger.add(destination: fileDestination)
+        
+        logger.outputLevel = .error
         logger.logAppDetails()
 
         // create background dispatch queue
@@ -89,6 +77,7 @@ open class FGFutureGateway: CustomStringConvertible {
         // create session helpers for authorized and unauthorized access to API
         let unauthSession = FGSessionHelper(queue: queue, provider: nil)
         let authSession   = FGSessionHelper(queue: queue, provider: provider)
+        authSession.logger = self.logger
 
         // create request helpers - one for each session helper
         let unauthHelper = FGAlamofireRequestHelper(session: unauthSession)

@@ -83,11 +83,24 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
 
     public func downloadFile(_ payload: FGDownloadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
 
+        let dict: [String: Any?] = [
+            "url": payload.url,
+            "resourcePath": payload.resourcePath,
+            "method": payload.method,
+            "headers": payload.headers,
+            "parameters": payload.parameters,
+            "accept": payload.accept,
+            "destinationURL": payload.destinationURL
+        ]
+        logger?.debug("Download file request:\n\(dict)")
+        
         // check file
         guard let destinationURL = payload.destinationURL else {
 
             // return error
             let error = FGFutureGatewayError.fileURLIsEmpty(reason: "Payload has an empty destination file URL")
+
+            logger?.error("Download file error: \(error.localizedDescription)")
 
             self.getBackgroundQueue().async {
                 callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
@@ -127,17 +140,33 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                                             error: error,
                                             value: value)
 
+                self.logger?.debug("Download file response: \(String(describing: response.response?.statusCode))")
+                self.logger?.debug("error: \(String(describing: response.error))")
+
                 callback(response)
         }
     }
 
     public func uploadFile(_ payload: FGUploadPayload, callback: @escaping FGRequestHelperCallback<FGEmptyObject>) {
 
+        let dict: [String: Any?] = [
+            "url": payload.url,
+            "resourcePath": payload.resourcePath,
+            "method": payload.method,
+            "headers": payload.headers,
+            "parameters": payload.parameters,
+            "accept": payload.accept,
+            "destinationURL": payload.sourceURL
+        ]
+        logger?.debug("Upload file request:\n\(dict)")
+
         // check file
         guard let sourceURL = payload.sourceURL else {
 
             // return error
             let error = FGFutureGatewayError.fileURLIsEmpty(reason: "Payload has an empty source file URL")
+
+            logger?.error("Upload file error: \(error.localizedDescription)")
 
             self.getBackgroundQueue().async {
                 callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
@@ -150,6 +179,8 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
 
             // return error
             let error = FGFutureGatewayError.uploadFilenameIsEmpty(reason: "Payload has an empty upload filename")
+
+            logger?.error("Upload file error: \(error.localizedDescription)")
 
             self.getBackgroundQueue().async {
                 callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: error, value: nil))
@@ -194,11 +225,17 @@ public class FGAlamofireRequestHelper: FGRequestHelper {
                                                         error: error,
                                                         value: value)
 
+
+                            self.logger?.debug("Upload file response: \(String(describing: response.response?.statusCode))")
+                            self.logger?.debug("error: \(String(describing: response.error))")
+
                             callback(response)
                     }
                     break
 
                 case .failure(let error):
+
+                    self.logger?.error("Upload file multipart conversion error: \(error.localizedDescription)")
 
                     if let fgError = error as? FGFutureGatewayError {
                         callback(FGRequestHelperResponse(request: nil, response: nil, data: nil, error: fgError, value: nil))
