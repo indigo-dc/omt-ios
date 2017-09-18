@@ -16,7 +16,7 @@ class FGTaskApiSpec: QuickSpec {
     override func spec() {
         let dummyHelper = DummyHelper()
         let dummyResolver = DummyResolver(baseUrl: Constants.notExistingServerUrl, versionID: "v1.0")
-        let taskApi = FGTaskApi(username: "username", resolver: dummyResolver, helper: dummyHelper)
+        let taskApi = FGTaskApi(resolver: dummyResolver, helper: dummyHelper)
         
         describe("FGTaskApi") {
             context("methods") {
@@ -51,11 +51,11 @@ class FGTaskApiSpec: QuickSpec {
                     
                     // prepare
                     let taskID = "3"
-                    dummyHelper.dummyValue = FGEmptyObject()
+                    dummyHelper.dummyValue = FGAnyObject()
                     
                     // test
                     waitUntil(timeout: 60) { done in
-                        taskApi.deleteTask(with: taskID, { (response: FGApiResponse<FGEmptyObject>) in
+                        taskApi.deleteTask(with: taskID, { (response: FGApiResponse<FGAnyObject>) in
                             
                             // verify
                             expect(response.error).to(beNil())

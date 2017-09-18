@@ -4,14 +4,13 @@ FGFutureGateway is the main class and the entry point of the library. It is esse
 
 ## Constructors
 
-### `public init(url: URL, username: String, provider: FGAccessTokenProvider)`
+### `public init(url: URL, provider: FGAccessTokenProvider)`
 
 Creates Future Gateways instance object.
 
 #### Parameters
 
 * `url` - URL to the Future Gateway instance
-* `username` - the Future Gateway username
 * `provider` - the access token provider for accessing Future Gateway API, see [here](/api-documentation/fgaccesstokenprovider.md)
 
 ## Properties

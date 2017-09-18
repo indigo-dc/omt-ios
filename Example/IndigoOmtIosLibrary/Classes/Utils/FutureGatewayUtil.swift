@@ -32,17 +32,16 @@ class FutureGatewayUtil {
     }
 
     @discardableResult
-    func initializeFutureGateway(username: String?, provider: FGAccessTokenProvider?) -> Bool {
+    func initializeFutureGateway(provider: FGAccessTokenProvider?) -> Bool {
         guard
             let url = URL(string: Constants.FutureGatewayUrl),
-            let provider = provider,
-            let username = username
+            let provider = provider
         else {
             print("Future gateway initialization failed")
             return false
         }
 
-        self.futureGateway = FGFutureGateway(url: url, username: username, provider: provider)
+        self.futureGateway = FGFutureGateway(url: url, provider: provider)
 
         print("Future gateway is initialized \(self.futureGateway!)")
 

@@ -19,7 +19,6 @@ open class FGTaskCollectionApi: FGAbstractResolvedApi {
         // prepare payload
         let payload = FGRequestPayload(method: .get)
         payload.resourcePath = "tasks"
-        payload.addParam("user", value: self.username)
         payload.addParam("status", value: FGTaskStatus.any.rawValue)
 
         // send

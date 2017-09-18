@@ -10,8 +10,6 @@ import Foundation
 
 class Constants {
 
-    static let tempUsername: String = "futuregateway"
-
     /// Future gateway instance URL.
     static let FutureGatewayUrl: String = "YOUR_FUTURE_GATEWAY_URL"
 

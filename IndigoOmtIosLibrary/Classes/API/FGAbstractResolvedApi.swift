@@ -13,16 +13,12 @@ open class FGAbstractResolvedApi: FGAbstractApi {
 
     // MARK: - properties
 
-    /// Authorized username for API requests
-    public let username: String
-
     /// API URL resolver.
     public let resolver: FGApiResolver
 
     // MARK: - lifecycle
 
-    public init(username: String, resolver: FGApiResolver, helper: FGRequestHelper) {
-        self.username = username
+    public init(resolver: FGApiResolver, helper: FGRequestHelper) {
         self.resolver = resolver
         super.init(helper: helper)
     }

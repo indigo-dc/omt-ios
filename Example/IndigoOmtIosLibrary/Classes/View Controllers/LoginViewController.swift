@@ -47,12 +47,9 @@ class LoginViewController: UIViewController {
                     return
                 }
 
-                //let username = userInfo!.preferredUsername
-                let username = Constants.tempUsername
-
                 // initialize future gateway
                 let fgu = FutureGatewayUtil.default
-                if fgu.initializeFutureGateway(username: username, provider: provider) {
+                if fgu.initializeFutureGateway(provider: provider) {
 
                     // go to main view controller
                     self.loadMainViewController()

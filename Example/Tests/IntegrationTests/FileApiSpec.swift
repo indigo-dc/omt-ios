@@ -22,7 +22,7 @@ class FileApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     let filename = "sayhello.txt"
                     FileHelper.createFile(filename)
@@ -63,7 +63,7 @@ class FileApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     let filename = "text.txt"
                     let inputFile = FGInputFile()
@@ -90,7 +90,7 @@ class FileApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     let filename = "sayhello.txt"
                     FileHelper.createFile(filename)
@@ -122,7 +122,7 @@ class FileApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     let filename = "sayhello.txt"
                     FileHelper.createFile(filename)

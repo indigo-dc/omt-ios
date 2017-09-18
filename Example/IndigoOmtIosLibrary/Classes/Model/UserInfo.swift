@@ -20,7 +20,6 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
     public var preferredUsername: String = ""
     public var organisationName: String = ""
     public var sub: String = ""
-    public var updatedAt: Date = Date(timeIntervalSince1970: 0)
     public var groups: [String] = []
 
     override var description: String {
@@ -37,7 +36,6 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
             let preferredUsername = json["preferred_username"].string,
             let organisationName = json["organisation_name"].string,
             let sub = json["sub"].string,
-            let updatedAt = FGDateUtil.parseDate(json["updated_at"].string),
             let groups = json["groups"].array
         else {
             return nil
@@ -49,7 +47,6 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
         self.preferredUsername = preferredUsername
         self.organisationName = organisationName
         self.sub = sub
-        self.updatedAt = updatedAt
         for groupJson in groups {
             self.groups.append(groupJson.stringValue)
         }
@@ -67,7 +64,6 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
         preferredUsername = aDecoder.decodeObject(forKey: "preferredUsername") as! String
         organisationName = aDecoder.decodeObject(forKey: "organisationName") as! String
         sub = aDecoder.decodeObject(forKey: "sub") as! String
-        updatedAt = aDecoder.decodeObject(forKey: "updatedAt") as! Date
         groups = aDecoder.decodeObject(forKey: "groups") as! [String]
 
     }
@@ -79,7 +75,6 @@ class UserInfo: NSObject, NSCoding, FGObjectSerializable {
         aCoder.encode(preferredUsername, forKey: "preferredUsername")
         aCoder.encode(organisationName, forKey: "organisationName")
         aCoder.encode(sub, forKey: "sub")
-        aCoder.encode(updatedAt, forKey: "updatedAt")
         aCoder.encode(groups, forKey: "groups")
     }
 

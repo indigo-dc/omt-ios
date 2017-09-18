@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'IndigoOmtIosLibrary_Example' do
   pod 'IndigoOmtIosLibrary', :path => '../'
-  pod 'AppAuth'
+  pod 'AppAuth', '~> 0.8.0', :inhibit_warnings => true
   pod 'Alamofire'
   pod 'SwiftyJSON'
   
@@ -18,7 +18,7 @@ end
 
 target 'IndigoOmtIosLibrary_ExampleIntegration' do
     pod 'IndigoOmtIosLibrary', :path => '../'
-    pod 'AppAuth'
+    pod 'AppAuth', '~> 0.8.0',  :inhibit_warnings => true
     pod 'Alamofire'
     pod 'SwiftyJSON'
     

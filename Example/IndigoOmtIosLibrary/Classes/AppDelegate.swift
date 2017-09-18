@@ -25,15 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         au.loadState()
 
         // auth util is authorized and we have user info
-        if au.isAuthorized, let userInfo = au.getUserInfo() {
+        if au.isAuthorized {
             
-            // username for future gateway
-            //let username = userInfo.preferredUsername
-            let username = Constants.tempUsername
-
             // init future gateway object
             let fgu = FutureGatewayUtil.default
-            fgu.initializeFutureGateway(username: username, provider: au.getAccessTokenProvider())
+            fgu.initializeFutureGateway(provider: au.getAccessTokenProvider())
         } else {
             // show login view as first view if not authorized
             self.window?.rootViewController = UIHelper.loadViewController("LoginNavigationController")

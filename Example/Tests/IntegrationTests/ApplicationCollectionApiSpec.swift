@@ -22,7 +22,7 @@ class ApplicationCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.integrationServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
@@ -42,7 +42,7 @@ class ApplicationCollectionApiSpec: QuickSpec {
                     
                     // prepare
                     let baseURL = Constants.notExistingServerUrl
-                    let fg = FGFutureGateway(url: baseURL, username: Constants.integrationServerUsername, provider: tokenProvider)
+                    let fg = FGFutureGateway(url: baseURL, provider: tokenProvider)
                     
                     // test
                     waitUntil(timeout: 60) { done in
