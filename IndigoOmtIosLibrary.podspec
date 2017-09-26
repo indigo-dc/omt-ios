@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name                = 'IndigoOmtIosLibrary'
-  s.version             = '0.1.5'
+  s.version             = '0.1.6'
   s.cocoapods_version   = '>= 1.2.0'
   s.summary             = 'iOS library which simplifies access to INDIGO DataCloud API.'
   s.description         = <<-DESC
