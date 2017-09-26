@@ -94,7 +94,7 @@ class FGTaskSpec: QuickSpec {
                     expect(serialized["status"].string).toNot(beNil())
                     expect(serialized["user"].string).toNot(beNil())
                     expect(serialized["description"].string).toNot(beNil())
-                    expect(serialized["creation"].string).toNot(beNil())
+                    expect(serialized["date"].string).toNot(beNil())
                     expect(serialized["last_change"].string).toNot(beNil())
                     expect(serialized["arguments"].array).toNot(beNil())
                     expect(serialized["input_files"].array).toNot(beNil())
