@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.5.0)
   - AppAuth (0.8.1)
   - Embassy (3.1.0)
-  - IndigoOmtIosLibrary (0.1.6):
+  - IndigoOmtIosLibrary (0.1.7):
     - Alamofire
     - SwiftyJSON
     - XCGLogger
@@ -34,7 +34,7 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AppAuth: 34db36bac669e7a16758c6765625bb5d2663e3ad
   Embassy: 00408403423e4d9d5f21057bec13b1e96e838a32
-  IndigoOmtIosLibrary: 63a5ad6c000a74188c7d9e913faa5b6bdf349ad3
+  IndigoOmtIosLibrary: 0ae22c60a3020e13e81b63c3134699d48a71b27e
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff

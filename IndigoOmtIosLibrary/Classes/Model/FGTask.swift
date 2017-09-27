@@ -111,7 +111,8 @@ open class FGTask: FGObjectSerializable, CustomStringConvertible {
         self.id = id
         self.status = status
         self.taskDescription = json["description"].string
-        self.creation = FGDateUtil.parseDate(json["date"].string)
+        self.creation = FGDateUtil.parseDate(json["date"].string) ??
+                        FGDateUtil.parseDate(json["creation"].string)
         self.lastChange = FGDateUtil.parseDate(json["last_change"].string)
         self.application = json["application"].string
         self.user = json["user"].string
